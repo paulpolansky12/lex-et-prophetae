@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The United Kingdom</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+:root{
+  --paper:#EDF0F2; --paper-2:#E1E6EB; --ink:#1A2130; --ink-soft:#4F596A; --rule:#C2CAD4;
+  --judah:#24408A; --judah-tint:rgba(36,64,138,.11); --judah-strong:rgba(36,64,138,.28);
+  --israel:#74601A; --israel-tint:rgba(116,96,26,.11); --israel-strong:rgba(116,96,26,.28);
+  --band-a:#8A7425; --band-b:#C4B06A; --band-a-ink:#F6F3E6; --band-b-ink:#2A2410; --judah-ink:#EEF1F8;
+  --prophet:#9A2334; --prophet-tint:rgba(154,35,52,.09); --prophet-strong:rgba(154,35,52,.26);
+  --sheet:#F8F9FA; --shadow:0 -10px 32px rgba(18,24,38,.16);
+  --pc0:#0E7C78; --pc1:#7A3E9C; --pc2:#C0561A; --pc3:#B0263F; --pc4:#3D7B2A; --pc5:#2D5BC0; --pc6:#B0397F; --pc7:#9C760C;
+  --axis:30px; --gap:6px; --band:14px;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121620; --paper-2:#1B212D; --ink:#E4E7EC; --ink-soft:#A5ADBA; --rule:#2F3746;
+    --judah:#94AAE6; --judah-tint:rgba(148,170,230,.12); --judah-strong:rgba(148,170,230,.30);
+    --israel:#D4BE6C; --israel-tint:rgba(212,190,108,.11); --israel-strong:rgba(212,190,108,.28);
+    --band-a:#B19C4D; --band-b:#5F5329; --band-a-ink:#16130A; --band-b-ink:#EDE5C6; --judah-ink:#10162A;
+    --prophet:#EA8C9C; --prophet-tint:rgba(234,140,156,.11); --prophet-strong:rgba(234,140,156,.28);
+    --sheet:#1A202B; --shadow:0 -10px 32px rgba(0,0,0,.5);
+    --pc0:#4CC3BD; --pc1:#BB8BDD; --pc2:#F28C4E; --pc3:#EF7287; --pc4:#82C76C; --pc5:#86A7F2; --pc6:#E87EC1; --pc7:#DCB64C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --pc0:#4CC3BD; --pc1:#BB8BDD; --pc2:#F28C4E; --pc3:#EF7287; --pc4:#82C76C; --pc5:#86A7F2; --pc6:#E87EC1; --pc7:#DCB64C;
+  --paper:#121620; --paper-2:#1B212D; --ink:#E4E7EC; --ink-soft:#A5ADBA; --rule:#2F3746;
+  --judah:#94AAE6; --judah-tint:rgba(148,170,230,.12); --judah-strong:rgba(148,170,230,.30);
+  --israel:#D4BE6C; --israel-tint:rgba(212,190,108,.11); --israel-strong:rgba(212,190,108,.28);
+  --band-a:#B19C4D; --band-b:#5F5329; --band-a-ink:#16130A; --band-b-ink:#EDE5C6; --judah-ink:#10162A;
+  --prophet:#EA8C9C; --prophet-tint:rgba(234,140,156,.11); --prophet-strong:rgba(234,140,156,.28);
+  --sheet:#1A202B; --shadow:0 -10px 32px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+@media (min-width:720px){ :root{ --axis:42px; --gap:14px; --band:16px; } }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"EB Garamond",Garamond,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+button:focus-visible,select:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
+
+/* Header */
+header{padding:40px 0 18px}
+h1{font-weight:500;font-size:clamp(2.5rem,9vw,4.6rem);line-height:1;letter-spacing:-.015em;margin:0 0 14px}
+.lede{max-width:36em;color:var(--ink-soft);margin:0 0 26px;font-size:1.08rem}
+.ledger{font-size:14px;line-height:1.4;align-items:start}
+.ledger p{margin:0}
+.ledger .lj{grid-column:1;color:var(--ink)}
+.ledger .lp{grid-column:2;color:var(--ink-soft);font-style:italic}
+.ledger .li{grid-column:3;text-align:right}
+.ledger b{font-weight:600;display:block;font-size:1.15rem;margin-bottom:2px}
+.ledger .lj b{color:var(--judah)} .ledger .li b{color:var(--israel)} .ledger .lp b{color:var(--prophet);font-style:normal}
+
+/* Sticky reading bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);margin-top:18px}
+.bar-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:8px}
+.bar label{font-style:italic;color:var(--ink-soft)}
+select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:3px 6px}
+.clear{font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:4px}
+.clear[hidden]{display:none}
+.found{white-space:nowrap;overflow-x:auto;scrollbar-width:none;font-size:15px;padding:6px 0 4px;min-height:34px}
+.found::-webkit-scrollbar{display:none}
+.hint{color:var(--ink-soft);font-style:italic;margin-right:4px}
+.cols-head{font-size:15px;font-weight:600;padding:2px 0 6px}
+.cols-head .hj{grid-column:1;color:var(--judah);padding-left:calc(var(--band) + 6px)}
+.cols-head .hp{grid-column:2;color:var(--prophet)}
+.cols-head .hi{grid-column:3;color:var(--israel);text-align:right;padding-right:calc(var(--band) + 6px)}
+
+/* Chips */
+.chip{display:inline-flex;align-items:baseline;gap:4px;border:1px solid var(--cc,var(--rule));color:var(--ink);background:transparent;border-radius:999px;padding:1px 10px 2px;margin:2px 4px 2px 0;font-size:15px;line-height:1.35;white-space:nowrap}
+.chip small{font-size:12px;color:var(--ink-soft);font-style:italic}
+.c-judah{--cc:var(--judah)} .c-israel{--cc:var(--israel)} .c-prop{--cc:var(--prophet)} .c-neutral{--cc:var(--ink-soft)}
+.chip:hover{background:var(--paper-2)}
+
+/* Trunk: David to the split */
+.trunk{padding-top:14px}
+.node{--kc:var(--ink-soft);--kc-strong:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-self:center;width:100%;max-width:150px;padding:5px 8px 4px;border:1px solid var(--rule);background:var(--paper-2);border-radius:2px;line-height:1.15}
+.node .k-name{font-size:17px;font-weight:500}
+.node .k-years{font-size:12px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums}
+.stem{width:2px;height:14px;background:var(--ink-soft);justify-self:center}
+.t-note{font-size:13px;font-style:italic;color:var(--ink-soft);line-height:1.3;align-self:center}
+.fork{position:relative;height:30px}
+.fork span{position:absolute;display:block}
+.f-stem{left:calc(50% - 1px);top:0;width:2px;height:50%;background:var(--ink-soft)}
+.f-bar{top:calc(50% - 1px);height:2px;left:calc((100% - 2 * var(--gap)) / 6 - 1px);right:calc((100% - 2 * var(--gap)) / 6 - 1px);background:linear-gradient(to right,var(--judah) 50%,var(--israel) 50%)}
+.f-l,.f-r{top:50%;width:2px;height:50%}
+.f-l{left:calc((100% - 2 * var(--gap)) / 6 - 1px);background:var(--judah)}
+.f-r{right:calc((100% - 2 * var(--gap)) / 6 - 1px);background:var(--israel)}
+
+/* Chart */
+.chart{position:relative;grid-template-rows:100%}
+.col{position:relative;z-index:1}
+.overlay{position:absolute;inset:0;z-index:0;pointer-events:none}
+.gl{position:absolute;left:var(--axis);right:0;height:1px;background:var(--rule);opacity:.55}
+.axis span{position:absolute;right:4px;font-size:11.5px;color:var(--ink-soft);transform:translateY(-50%);font-variant-numeric:lining-nums tabular-nums;background:var(--paper);padding:0 2px}
+
+.k{position:absolute;left:0;right:0;display:flex;flex-direction:column;justify-content:flex-start;gap:1px;padding:6px 7px;border:1px solid var(--rule);border-radius:2px;text-align:left;overflow:hidden;line-height:1.2}
+.k-judah{--kc:var(--judah);--kc-strong:var(--judah-strong);--tint:var(--judah-tint);padding-left:calc(var(--band) + 6px)}
+.k-israel{--kc:var(--israel);--kc-strong:var(--israel-strong);--tint:var(--israel-tint);padding-right:calc(var(--band) + 6px);align-items:flex-end;text-align:right}
+.k .k-name{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.k .k-years{font-size:12px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.glyph{font-weight:600;color:var(--kc);margin-left:2px}
+.v-right{background:var(--tint)}
+.v-mixed{background-image:repeating-linear-gradient(135deg,var(--tint) 0 4px,transparent 4px 8px)}
+.usurper{border-style:dashed;border-color:var(--prophet)}
+.k:hover{border-color:var(--kc)}
+@media (min-width:720px){ .k .k-name{font-size:17px} .k .k-years{font-size:13px} }
+
+.band{position:absolute;width:var(--band);z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:1px}
+.band i{writing-mode:vertical-rl;font-style:normal;font-size:11px;letter-spacing:.03em;white-space:nowrap}
+.band-j{left:0;background:var(--judah);color:var(--judah-ink)}
+.band-break{left:0;background:repeating-linear-gradient(135deg,var(--judah) 0 2px,transparent 2px 6px)}
+.band-a{right:0;background:var(--band-a);color:var(--band-a-ink)}
+.band-b{right:0;background:var(--band-b);color:var(--band-b-ink)}
+
+.fall{position:absolute;left:0;right:0;padding:8px;border:1px solid var(--rule);border-radius:2px;font-size:13.5px;line-height:1.3;text-align:left;background:repeating-linear-gradient(135deg,var(--tint) 0 5px,transparent 5px 11px)}
+.fall b{display:block;font-size:15px;font-weight:600;color:var(--kc)}
+.fall span{color:var(--ink-soft);font-style:italic}
+.fall.k-israel{text-align:right}
+
+.p{--kc:var(--pc);--kc-strong:var(--prophet-strong);position:absolute;right:0;height:28px;display:flex;align-items:center;gap:3px;padding:0 6px;font-size:14px;line-height:1;background:var(--pbg,var(--prophet-tint));border-left:4px solid var(--pc);border-radius:0 3px 3px 0;white-space:nowrap;overflow:hidden}
+.p span{overflow:hidden;text-overflow:ellipsis}
+.p .bk{color:var(--pc);font-size:13px;flex:none}
+.p.static{position:relative;right:auto;justify-self:start;align-self:center}
+.to-israel{--pc:var(--israel);--pbg:var(--israel-tint)} .to-judah,.to-united{--pc:var(--judah);--pbg:var(--judah-tint)} .to-both,.to-exile,.to-nations{--pc:var(--prophet);--pbg:var(--prophet-tint)}
+.pc0{--pc:var(--pc0)} .pc1{--pc:var(--pc1)} .pc2{--pc:var(--pc2)} .pc3{--pc:var(--pc3)} .pc4{--pc:var(--pc4)} .pc5{--pc:var(--pc5)} .pc6{--pc:var(--pc6)} .pc7{--pc:var(--pc7)}
+.hl{position:absolute;width:3px;background:var(--pc);opacity:.8;border-radius:2px;pointer-events:none}
+.hl.on{opacity:1;width:4px}
+@media (min-width:720px){ .p{font-size:15px} }
+
+/* States */
+.is-sel{outline:2px solid var(--kc);outline-offset:-1px;z-index:3}
+.chart-wrap.filtering [data-id]:not(.hit){opacity:.28}
+.chart-wrap.filtering .hl:not(.on){opacity:.1}
+.chart-wrap [data-id].hit{background-color:var(--kc-strong);border-color:var(--kc)}
+@media (prefers-reduced-motion:no-preference){ .chart-wrap [data-id]{transition:opacity .18s ease} }
+
+/* Key & lower sections */
+.key{margin:22px auto 0;display:grid;grid-template-columns:1fr;gap:10px;font-size:15.5px;line-height:1.45}
+@media (min-width:720px){ .key{grid-template-columns:1fr 1fr;column-gap:32px} }
+.key p{margin:0;display:flex;gap:10px;align-items:flex-start}
+.sw{flex:none;width:18px;height:20px;margin-top:2px;border-radius:1px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
+.sw-david{background:var(--judah)}
+.sw-dyn{background:linear-gradient(var(--band-a) 0 30%,var(--band-b) 30% 55%,var(--band-a) 55% 75%,var(--band-b) 75%)}
+.sw-v{background:var(--judah-tint);color:var(--judah);border:1px solid var(--rule)}
+.sw-p{background:var(--prophet-tint);color:var(--prophet);border-left:3px solid var(--prophet)}
+
+.lower{max-width:700px;margin:0 auto;padding:56px 14px 30vh}
+.lower h2{font-weight:500;font-size:1.9rem;line-height:1.1;margin:44px 0 6px}
+.lower h2:first-child{margin-top:0}
+.lower > p{margin:0 0 14px}
+.clashes{display:grid;gap:18px;margin-top:14px}
+.clashes article h3{font-size:1.15rem;font-weight:600;margin:0 0 2px}
+.clashes article p{margin:0 0 4px}
+.notes p{font-size:16px;color:var(--ink-soft);margin:0 0 10px}
+
+/* Prophet guide */
+.g-nav{margin:6px 0;line-height:1.9}
+.g-nav span{font-style:italic;color:var(--ink-soft);margin-right:6px;font-size:15px}
+.g-era{font-size:1.3rem;font-weight:600;margin:44px 0 2px}
+.g-era-n{margin:0 0 6px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.g{border-left:4px solid var(--pc);padding:4px 0 6px 16px;margin:22px 0 34px;border-radius:0 4px 4px 0}
+@media (prefers-reduced-motion:no-preference){ .g{transition:background-color .8s ease} }
+.g.flash{background:var(--prophet-tint)}
+.g h4{font-size:1.6rem;font-weight:500;line-height:1.1;margin:0;outline:none}
+.g .g-meta{margin:3px 0 10px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.g h5{font-size:1rem;font-weight:600;font-style:italic;margin:16px 0 2px}
+.g p{margin:0 0 6px}
+.g-m{margin:4px 0 0;padding-left:1.3em}
+.g-m li{margin:0 0 13px;padding-left:2px}
+.g-m li b{font-weight:600}
+.g-d{display:block;margin-top:2px}
+.g-m cite{font-style:normal;color:var(--ink-soft);font-size:15px;font-variant-numeric:lining-nums}
+.g-back{margin-top:8px;font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.guide-link{display:inline-block;margin:4px 0 4px;padding:5px 14px;border:1px solid var(--prophet);color:var(--prophet);border-radius:999px;font-size:16px}
+.guide-link:hover{background:var(--prophet-tint)}
+.g-deep{margin:4px 0 0}
+.g-deep p{margin:0 0 13px}
+.g-deep b{font-weight:600}
+.xref{display:inline;padding:0;font:inherit;color:var(--prophet);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.g-mom summary{cursor:pointer;font-weight:600;font-style:italic;margin:16px 0 4px}
+.g-mom[open] summary{margin-bottom:8px}
+.th{margin:18px 0 24px}
+.th h3{font-size:1.15rem;font-weight:600;margin:0 0 2px}
+.th p{margin:0}
+.home-link{margin:0 0 10px;font-size:16px}
+.home-link a{color:var(--ink-soft);text-underline-offset:3px}
+.page-nav{font-size:16px;color:var(--ink-soft)}
+.page-nav a{color:var(--prophet);text-underline-offset:3px}
+.lower h2{scroll-margin-top:150px}
+.era-strip{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:14px 0 6px;font-size:16px;line-height:1.4}
+.era-strip dt{color:var(--ink-soft);white-space:nowrap;font-variant-numeric:lining-nums}
+.era-strip dd{margin:0}
+.nb{border-left:4px solid var(--ink-soft);padding:4px 0 6px 16px;margin:24px 0 32px}
+.nb h3{font-size:1.6rem;font-weight:500;line-height:1.1;margin:0}
+.nb h3 span{font-size:1.1rem;color:var(--ink-soft)}
+.nb .nb-meta{margin:3px 0 10px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.nb p{margin:0 0 8px}
+.nb h5{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.nb-r{margin:0 0 8px;padding-left:1.2em}
+.nb-r li{margin:0 0 8px}
+.nb-r cite{font-style:normal;color:var(--ink-soft);font-size:15px}
+
+/* Detail sheet */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--sheet);border-top:1px solid var(--rule);box-shadow:var(--shadow);max-height:min(66vh,680px);overflow-y:auto;overscroll-behavior:contain;transform:translateY(105%);padding:16px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.sheet.open{transform:none}
+@media (prefers-reduced-motion:no-preference){ .sheet{transition:transform .22s ease} }
+.sheet-inner{max-width:680px;margin:0 auto;position:relative}
+.close{position:absolute;top:-4px;right:-6px;width:40px;height:40px;font-size:28px;line-height:1;color:var(--ink-soft)}
+.sheet h2{font-weight:500;font-size:2rem;line-height:1.05;margin:0 44px 2px 0;outline:none}
+.sh-sub{font-style:italic;color:var(--ink-soft);margin:0}
+.sh-aka{margin:4px 0 0;font-size:16px}
+.sh-aka span{color:var(--ink-soft)}
+.facts{display:grid;grid-template-columns:6.4em 1fr;gap:4px 12px;margin:14px 0;font-size:16.5px;line-height:1.4}
+.facts dt{font-style:italic;color:var(--ink-soft)}
+.facts dd{margin:0}
+.facts .vn{display:block;color:var(--ink-soft);font-size:15px}
+.facts .glyph{--kc:var(--ink);margin:0 3px 0 0}
+.sum{margin:0 0 12px}
+.sheet h3{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.refs{margin:0;font-variant-numeric:lining-nums}
+.clash{margin-top:16px;padding-top:10px;border-top:1px solid var(--rule)}
+.clash p{margin:0 0 8px;font-size:16px}
+
+@media print{
+  .bar,.sheet{display:none}
+  body{background:#fff;color:#000}
+  .chart-wrap.filtering [data-id]{opacity:1}
+  .lower{padding-bottom:0}
+}
+
+/* Samuel page: relationship map */
+.map-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--gap);margin-left:var(--axis)}
+.reigns{font-size:14px;line-height:1.4;gap:14px}
+.reigns p{margin:0}
+.reigns b{font-weight:600;display:block;font-size:1.15rem;margin-bottom:2px}
+.reigns .rs b{color:var(--israel)} .reigns .rd b{color:var(--judah)} .reigns .ro b{color:var(--judah)}
+.reigns .ro{text-align:right}
+.cols-head.map-grid{font-size:13px;line-height:1.15;font-weight:600;padding:2px 0 6px}
+.cols-head.map-grid span{padding-left:6px}
+.h0{color:var(--prophet)} .h1{color:var(--israel)} .h2{color:var(--ink-soft)} .h3{color:var(--judah)}
+@media (min-width:720px){ .cols-head.map-grid{font-size:15px} }
+
+.legend{display:flex;flex-wrap:wrap;gap:2px 0;margin:12px 0 4px;align-items:center}
+.legend .hint{margin-right:8px}
+.lg{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--rule);border-radius:999px;padding:2px 11px 3px;margin:2px 5px 2px 0;font-size:15px}
+.lg i{display:inline-block;width:20px;height:0;border-top:2.5px solid var(--lc)}
+.lg[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
+.lg:hover{background:var(--paper-2)}
+.lc-anoint{--lc:var(--pc7)} .lc-save{--lc:var(--pc4)} .lc-betray{--lc:var(--pc2)} .lc-kill{--lc:var(--pc3)} .lc-rebuke{--lc:var(--pc1)}
+
+.map-wrap{position:relative;padding:8px 0 4px}
+.map{position:relative}
+.mcol{position:relative;z-index:1}
+.yr{position:absolute;left:0;width:var(--axis);text-align:right;padding-right:4px;font-size:11.5px;color:var(--ink-soft);transform:translateY(-50%);font-variant-numeric:lining-nums tabular-nums}
+.yl{position:absolute;left:var(--axis);right:0;height:1px;background:var(--rule);opacity:.55}
+.n{--nc:var(--ink-soft);--kc:var(--nc);position:absolute;left:0;right:0;height:26px;display:flex;align-items:center;padding:0 6px;font-size:13px;line-height:1;border:1px solid var(--rule);border-left:4px solid var(--nc);background:var(--paper-2);border-radius:0 3px 3px 0;white-space:nowrap;overflow:hidden;text-align:left}
+.n span{overflow:hidden;text-overflow:ellipsis}
+.n.crown{font-weight:600}
+.n.crown::after{content:"♛";margin-left:4px;font-size:11px;color:var(--nc);flex:none}
+.c0{--nc:var(--prophet)} .c1{--nc:var(--israel)} .c2{--nc:var(--ink-soft)} .c3{--nc:var(--judah)}
+.n:hover{border-color:var(--nc)}
+@media (min-width:720px){ .n{font-size:15px;height:28px} }
+svg.edges{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.e{fill:none;stroke-width:1.5;opacity:.4}
+.e.x{stroke-dasharray:5 4}
+.t-anoint{stroke:var(--pc7)} .t-save{stroke:var(--pc4)} .t-betray{stroke:var(--pc2)} .t-kill{stroke:var(--pc3)} .t-rebuke{stroke:var(--pc1)}
+.mk-anoint{fill:var(--pc7)} .mk-save{fill:var(--pc4)} .mk-betray{fill:var(--pc2)} .mk-kill{fill:var(--pc3)} .mk-rebuke{fill:var(--pc1)}
+.map-wrap.focus .e{opacity:.05}
+.map-wrap.focus .e.on{opacity:1;stroke-width:2.3}
+.map-wrap.focus .n:not(.rel):not(.is-sel){opacity:.32}
+.map-wrap.filtering:not(.focus) .n:not(.hit){opacity:.28}
+.map-wrap.filtering:not(.focus) .e{opacity:.07}
+.map-wrap.filtering:not(.focus) .e.hit{opacity:1;stroke-width:2.2}
+.map-wrap .n.hit{background:var(--paper);border-color:var(--nc)}
+.map-wrap .n.is-sel{outline:2px solid var(--nc);outline-offset:-1px;z-index:3}
+.hide-anoint .t-anoint,.hide-save .t-save,.hide-betray .t-betray,.hide-kill .t-kill,.hide-rebuke .t-rebuke{display:none}
+@media (prefers-reduced-motion:no-preference){ .n,.e{transition:opacity .18s ease} }
+.split{display:block;margin:10px 0 0 var(--axis);padding:10px 12px;border:1px solid var(--rule);border-radius:2px;color:var(--ink);text-decoration:none;background:repeating-linear-gradient(135deg,var(--judah-tint) 0 5px,transparent 5px 11px);font-size:15px;line-height:1.35}
+.split b{display:block;color:var(--judah);font-weight:600}
+.split:hover{border-color:var(--judah)}
+.rel-list{margin:2px 0 6px;padding-left:1.1em}
+.rel-list li{margin:0 0 7px}
+.rel-list cite{font-style:normal;color:var(--ink-soft);font-size:15px;margin:0 4px}
+.tried{font-style:italic;color:var(--ink-soft)}
+a.xref{color:var(--prophet)}
+a.guide-link{text-decoration:none}
+@media (max-width:719px){ .map-grid{column-gap:4px} .n{padding:0 4px;font-size:12.5px} .n.crown::after{display:none} }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="home-link" id="home-link" hidden><a href="./">Lex et Prophetae</a></p>
+  <h1>The United Kingdom</h1>
+  <p class="lede">Who anointed, spared, betrayed or killed whom, from Samuel’s birth at Shiloh to Solomon’s death, in 1–2 Samuel, 1 Kings 1–11 and 1 Chronicles. Choose the chapter you’re reading to light up who’s in it. Tap a name to draw every line that runs to or from that person.</p>
+  <div class="reigns grid">
+    <p class="rs"><b>Saul</b>Of Benjamin. Anointed by Samuel; reigned from Gibeah, c. 1050–1010. Died on Gilboa.</p>
+    <p class="rd"><b>David</b>Of Judah. Seven years at Hebron, thirty-three at Jerusalem, 1010–970.</p>
+    <p class="ro"><b>Solomon</b>David’s son by Bathsheba. Built the Temple; 970–931. The kingdom split at his death.</p>
+  </div>
+</header>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <div class="bar-row">
+      <label for="book">Reading</label>
+      <select id="book" aria-label="Book">
+        <option value="1S">1 Samuel</option>
+        <option value="2S">2 Samuel</option>
+        <option value="1K">1 Kings 1–11</option>
+        <option value="1C">1 Chronicles</option>
+      </select>
+      <select id="chap" aria-label="Chapter"></select>
+      <button type="button" class="clear" id="clear" hidden>Clear</button>
+    </div>
+    <div class="found" id="found" aria-live="polite"></div>
+    <div class="cols-head map-grid" aria-hidden="true"><span class="h0">Priests and prophets</span><span class="h1">Saul’s house</span><span class="h2">David’s men</span><span class="h3">David’s house</span></div>
+  </div>
+</div>
+
+<main>
+  <section class="wrap" aria-label="Relationship map">
+    <div class="legend" id="legend" role="group" aria-label="Show lines"></div>
+    <div class="map-wrap" id="map-wrap">
+      <div id="axis"></div>
+      <div class="map map-grid" id="map">
+        <svg class="edges" id="edges" aria-hidden="true"></svg>
+        <div class="mcol" id="mc0"></div>
+        <div class="mcol" id="mc1"></div>
+        <div class="mcol" id="mc2"></div>
+        <div class="mcol" id="mc3"></div>
+      </div>
+      <a class="split" href="kings.html"><b>931 The kingdom divides</b>Ten tribes follow Jeroboam; Judah keeps Solomon’s son. The story continues on the divided kingdom page.</a>
+    </div>
+  </section>
+
+  <section class="key wrap" aria-label="How to read the map">
+    <p><span class="sw" style="border-left:4px solid var(--prophet);background:var(--paper-2)"></span><span>Four columns: the priests and prophets, Saul’s family and court, David’s soldiers and counselors, and David’s own family. Time runs down the page; each name sits where that person enters the story.</span></p>
+    <p><span class="sw" style="border-top:3px solid var(--pc3);height:0;margin-top:11px"></span><span>Lines run from the one who acted to the one acted on. A dashed line means an attempt that failed. Use the buttons above the map to hide a kind of line. Tap a name to show only that person’s lines.</span></p>
+    <p><span class="sw" style="color:var(--judah)">♛</span><span>A crown marks the three kings, and Ish-bosheth, who held the north for two years. Blue continues the color of David’s line on the Kings chart.</span></p>
+    <p><span class="sw" style="background:var(--paper-2);border:1px solid var(--rule)"></span><span>Where several people enter the story in the same years, the later names are nudged down so they can be read. Outsiders such as Goliath, Agag and Nabal appear in the details of the person who dealt with them.</span></p>
+  </section>
+
+  <div class="lower">
+    <p class="page-nav">Further down: <a href="#prophets">The prophets</a>, <a href="#threads">Threads</a>, <a href="#names">Same name, different person</a>.</p>
+
+    <h2 id="prophets">The prophets</h2>
+    <p>Three prophets bracket the kingdom: Samuel makes its first two kings, Gad follows David from the cave, and Nathan brings the promise and the rebuke and crowns Solomon.</p>
+    <div id="g-nav"></div>
+    <div id="guide"></div>
+
+    <h2 id="threads">Threads</h2>
+    <p>Objects, places and patterns that keep coming back. Some run on into the <a href="kings.html#threads">Kings page’s threads</a>.</p>
+    <div id="threads-list"></div>
+
+    <h2 id="names">Same name, different person</h2>
+    <p>Fewer traps than Kings, but they are there.</p>
+    <div class="clashes" id="clashes"></div>
+
+    <h2>Notes</h2>
+    <div class="notes">
+      <p>Dates are approximate. Solomon’s follow the Thiele chronology (970–931), and David’s forty years run back from there. Saul’s are the least certain: the Hebrew of 1 Samuel 13:1, which should give his age and reign, is damaged, and the forty years of Acts 13:21 is the usual figure.</p>
+      <p>Older Catholic Bibles (Douay-Rheims) call 1–2 Samuel “1–2 Kings,” 1 Kings “3 Kings,” and 1 Chronicles “1 Paralipomenon,” and spell many names differently, such as Heli for Eli or Bethsabee for Bathsheba. Those spellings are in each person’s details.</p>
+      <p>Chronicles starts its story at Saul’s death and leaves out David’s outlaw years, Bathsheba and Uriah, and Absalom’s revolt. The chapter picker for 1 Chronicles lights up only the people it actually names.</p>
+    </div>
+  </div>
+</main>
+
+<div class="sheet" id="sheet" role="dialog" aria-labelledby="sh-title" inert>
+  <div class="sheet-inner">
+    <button type="button" class="close" id="close" aria-label="Close details">×</button>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const R=(a,b)=>Array.from({length:b-a+1},(_,i)=>a+i);
+
+// People. c = column: 0 priests and prophets, 1 Saul's house, 2 David's men, 3 David's house.
+const SP=[
+{id:'eli',name:'Eli',c:0,s:1110,e:1070,dates:'judged forty years; died c. 1070 BC',role:'Priest at Shiloh and judge',dy:'Heli',sum:'High priest at Shiloh, where the ark and the tabernacle stood. He raised Samuel and failed to restrain his own sons, and a man of God told him his house would lose the priesthood (2:27–36). He died at ninety-eight on hearing that the ark was taken, falling backward from his seat by the gate.',refs:'1 Sam 1–4; 1 Kgs 2:27',ch:{'1S':[1,2,3,4],'1K':[2]}},
+{id:'eli_sons',name:'Hophni and Phinehas',short:'Eli’s sons',c:0,s:1085,e:1070,dates:'died c. 1070 BC',role:'Priests, Eli’s sons',dy:'Ophni and Phinees',sum:'They took the best of the sacrifices by force, before the fat had even been burned, and lay with the women who served at the door of the tabernacle (2:12–17, 22). Both died on one day when the Philistines captured the ark, the sign the man of God had given their father (2:34).',refs:'1 Sam 2:12–36; 4:1–22',ch:{'1S':[1,2,4]}},
+{id:'samuel',name:'Samuel',c:0,s:1105,e:1015,dates:'c. 1105–1015 BC',role:'Prophet, priest and last of the judges',sum:'Asked of God by Hannah and given back to him at Shiloh. He judged Israel from a circuit of towns, anointed both Saul and David, and broke with Saul over Amalek. He died before David became king, and spoke once more after his death, at Endor.',refs:'1 Sam 1–16; 19:18–24; 25:1; 28; 1 Chr 6:28; 9:22',ch:{'1S':[1,2,3,4,7,8,9,10,11,12,13,15,16,19,25,28],'1C':[6,9,11,26,29]},o:[['Killed Agag, king of Amalek','1 Sam 15:32–33','He hewed him in pieces before the Lord at Gilgal, after Saul had spared him.']]},
+{id:'ahimelech',name:'Ahimelech',c:0,s:1015,e:1015,dates:'killed c. 1015 BC',role:'Priest at Nob',dy:'Achimelech',sum:'Great-grandson of Eli and head of the priests at Nob. He gave the fleeing David the holy bread and Goliath’s sword, not knowing David was a fugitive. Saul had him and eighty-five priests killed for it.',refs:'1 Sam 21:1–9; 22:9–23',ch:{'1S':[21,22,23,30]}},
+{id:'abiathar',name:'Abiathar',c:0,s:1015,e:970,dates:'c. 1015–970 BC',role:'Priest, the one survivor of Nob',sum:'Escaped the massacre at Nob, fled to David with the ephod, and served him as priest for some forty years, through the outlaw years and Absalom’s revolt. He backed Adonijah, and Solomon banished him to Anathoth, ending Eli’s line in the priesthood (1 Kgs 2:26–27).',refs:'1 Sam 22:20–23; 23:6–9; 30:7; 2 Sam 15:24–36; 1 Kgs 1:7; 2:26–27',ch:{'1S':[22,23,30],'2S':[8,15,17,19,20],'1K':[1,2,4],'1C':[15,18,24,27]}},
+{id:'gad',name:'Gad',c:0,s:1015,e:975,dates:'c. 1015–975 BC',role:'Prophet, David’s seer',sum:'With David from the outlaw years, when he told him to leave the stronghold for Judah. Decades later he brought David the three choices after the census and told him to build an altar on Araunah’s threshing floor, the future site of the Temple. Chronicles cites a history he wrote.',refs:'1 Sam 22:5; 2 Sam 24:11–19; 1 Chr 21:9–19; 29:29; 2 Chr 29:25',ch:{'1S':[22],'2S':[24],'1C':[21,29]}},
+{id:'nathan',name:'Nathan',c:0,s:1000,e:970,dates:'c. 1000–970 BC',role:'Prophet at David’s court',sum:'Brought God’s covenant promise to David: a house and a throne established forever (2 Sam 7). Everything that happens to David’s line in Kings rests on that promise. He confronted David over Bathsheba with the parable of the poor man’s lamb, and made sure Solomon, not Adonijah, was crowned.',refs:'2 Sam 7; 12; 1 Kgs 1; 1 Chr 17; 29:29',ch:{'2S':[7,12],'1K':[1],'1C':[17,29]}},
+{id:'zadok',name:'Zadok',c:0,s:1000,e:960,dates:'c. 1000–960 BC',role:'Priest; head of the Temple’s priestly line',dy:'Sadoc',sum:'Appears beside Abiathar as David’s priest in Jerusalem (2 Sam 8:17). He stayed loyal during Absalom’s revolt, carrying the ark out of the city and then back, and anointed Solomon at Gihon. Solomon made his line the sole high priests, and Ezekiel later restricts the altar to his sons.',refs:'2 Sam 8:17; 15:24–36; 1 Kgs 1:32–45; 2:35; 1 Chr 6:1–8; 24:3',ch:{'2S':[8,15,17,18,19,20],'1K':[1,2,4],'1C':[6,12,15,16,18,24,27,29]}},
+
+{id:'saul',name:'Saul',c:1,s:1050,e:1010,king:1,dates:'king c. 1050–1010 BC',role:'First king of Israel',sum:'A Benjamite from Gibeah, head and shoulders above everyone, anointed in private by Samuel and confirmed after he rescued Jabesh-gilead. He lost the kingdom over two disobediences, at Gilgal and against Amalek, spent his last years hunting David, and died on Mount Gilboa by his own sword.',refs:'1 Sam 9–31; 1 Chr 10',ch:{'1S':R(9,29).concat([31]),'2S':[1,2,3,4,5,6,7,9,12,16,19,21,22],'1C':[5,8,9,10,11,12,13,15,26]},o:[['Spared Agag, king of Amalek','1 Sam 15:8–9','Against the command to destroy everything.'],['Consulted the medium at Endor','1 Sam 28:7–25',''],['Fell on his own sword at Gilboa','1 Sam 31:4','An Amalekite later claimed to have finished him off (2 Sam 1:10).']]},
+{id:'jonathan',name:'Jonathan',c:1,s:1048,e:1010,dates:'died c. 1010 BC',role:'Saul’s eldest son',sum:'Won the first great victory of Saul’s reign by climbing to a Philistine outpost with only his armor-bearer. He loved David as his own soul, gave him his robe and sword, and protected him from his father, knowing David would take the throne that was his. Killed with his father at Gilboa.',refs:'1 Sam 13–14; 18:1–4; 19:1–7; 20; 23:16–18; 31:2; 2 Sam 1',ch:{'1S':[13,14,18,19,20,23,31],'2S':[1,4,9,21],'1C':[8,9,10]}},
+{id:'abner',name:'Abner',c:1,s:1045,e:1003,dates:'died c. 1003 BC',role:'Saul’s cousin and general',sum:'Commander of Saul’s army and the real power behind Ish-bosheth after Gilboa. He killed Asahel in battle, broke with Ish-bosheth over Saul’s concubine Rizpah, and was negotiating to hand the north to David when Joab murdered him at Hebron.',refs:'1 Sam 14:50–51; 26:5–16; 2 Sam 2–3',ch:{'1S':[14,17,20,26],'2S':[2,3,4],'1K':[2],'1C':[26,27]}},
+{id:'michal',name:'Michal',c:1,s:1022,e:990,dates:'c. 1022 BC on',role:'Saul’s daughter, David’s first wife',dy:'Michol',sum:'The only woman in the Old Testament said to love a man (18:20). She saved David by letting him down through a window, was given by Saul to another husband, and was taken back by David as a condition of peace with the north. She mocked him for dancing before the ark, and had no child to the day of her death.',refs:'1 Sam 18:20–28; 19:11–17; 25:44; 2 Sam 3:13–16; 6:16–23',ch:{'1S':[14,18,19,25],'2S':[3,6,21],'1C':[15]}},
+{id:'doeg',name:'Doeg',c:1,s:1015,e:1015,dates:'c. 1015 BC',role:'Edomite, Saul’s chief herdsman',sum:'He was at Nob, “detained before the Lord,” when Ahimelech helped David. He reported it to Saul, and when Saul’s guards refused to touch the priests, Doeg killed eighty-five of them and put the town to the sword. Psalm 52 is titled for him.',refs:'1 Sam 21:7; 22:9–22; Ps 52',ch:{'1S':[21,22]}},
+{id:'ish_bosheth',name:'Ish-bosheth',c:1,s:1010,e:1003,king:1,dates:'king c. 1010–1008 BC',role:'Saul’s son, king in the north',aka:'Esh-baal',dy:'Isboseth',sum:'Set on the throne by Abner after Gilboa, he ruled two years from Mahanaim, east of the Jordan, while David ruled Judah at Hebron. He lost Abner over a quarrel about Rizpah, and was murdered in his bed by two of his own captains, whom David executed.',refs:'2 Sam 2:8–11; 3:6–11; 4; 1 Chr 8:33',ch:{'2S':[2,3,4],'1C':[8,9]},o:[['Murdered by Rechab and Baanah','2 Sam 4:5–12','They brought his head to David, who had them executed.']]},
+{id:'rizpah',name:'Rizpah',c:1,s:1005,e:990,dates:'c. 1005–990 BC',role:'Saul’s concubine',dy:'Respha',sum:'The cause of the break between Abner and Ish-bosheth. Years later David handed her two sons, with five of Saul’s grandsons, to the Gibeonites to be hanged. She kept watch over their bodies on a rock from the barley harvest until the rains came, driving off the birds by day and the beasts by night, and her vigil moved David to bury Saul and Jonathan.',refs:'2 Sam 3:7; 21:1–14',ch:{'2S':[3,21]}},
+{id:'mephibosheth',name:'Mephibosheth',c:1,s:1000,e:975,dates:'c. 1000 BC on',role:'Jonathan’s son',aka:'Merib-baal',dy:'Miphiboseth',sum:'Lamed at five when his nurse fled with him at the news from Gilboa. David sought him out for Jonathan’s sake, restored Saul’s land to him, and gave him a seat at the king’s table. During Absalom’s revolt his servant Ziba accused him of hoping for the throne; he said Ziba had deceived him, and David split the land between them.',refs:'2 Sam 4:4; 9; 16:1–4; 19:24–30; 21:7; 1 Chr 8:34',ch:{'2S':[4,9,16,19,21],'1C':[8,9]}},
+{id:'ziba',name:'Ziba',c:1,s:999,e:979,dates:'c. 1000–979 BC',role:'Steward of Saul’s house',dy:'Siba',sum:'A servant of Saul’s house with fifteen sons and twenty servants, put in charge of Mephibosheth’s land. He met the fleeing David with supplies and a story that his master had stayed behind to claim the throne, and David gave him everything. When Mephibosheth contradicted him, David split it.',refs:'2 Sam 9:2–12; 16:1–4; 19:17, 26–30',ch:{'2S':[9,16,19]}},
+{id:'shimei',name:'Shimei',c:1,s:979,e:960,dates:'c. 979–960 BC',role:'Benjamite of Saul’s family',dy:'Semei',sum:'He cursed David and threw stones at him as he fled Jerusalem: you are a man of blood, and the Lord has returned on you the blood of Saul’s house. David would not let Abishai kill him and later swore to spare him. On his deathbed David told Solomon otherwise. Solomon confined Shimei to Jerusalem, and when he left to chase two runaway slaves, had him killed.',refs:'2 Sam 16:5–13; 19:16–23; 1 Kgs 2:8–9, 36–46',ch:{'2S':[16,19],'1K':[2]}},
+
+{id:'abishai',name:'Abishai',c:2,s:1013,e:975,dates:'c. 1013 BC on',role:'David’s nephew, Joab’s brother',dy:'Abisai',sum:'A son of David’s sister Zeruiah and the most eager killer in the story. He went with David into Saul’s camp and wanted to pin Saul to the ground, and he asked leave to cut off Shimei’s head. David restrained him both times: what have I to do with you, ye sons of Zeruiah?',refs:'1 Sam 26:6–12; 2 Sam 16:9–12; 19:21–22; 21:17; 23:18–19',ch:{'1S':[26],'2S':[2,3,10,16,18,19,20,21,23],'1C':[2,11,18,19]},o:[['Killed Ishbi-benob, one of the giants, and saved David’s life','2 Sam 21:16–17','']]},
+{id:'joab',name:'Joab',c:2,s:1010,e:970,dates:'c. 1010–970 BC',role:'David’s general and nephew',sum:'Commander of David’s army for nearly his whole reign, and the man who did what David would not, and some things David did not want done. He arranged Uriah’s death on David’s orders, killed Abner, Absalom and Amasa on his own account, and backed Adonijah. Solomon had him killed at the altar.',refs:'2 Sam 2–3; 11; 14; 18–20; 24; 1 Kgs 1:7; 2:5–6, 28–34; 1 Chr 11:6',ch:{'1S':[26],'2S':[2,3,8,10,11,12,14,17,18,19,20,23,24],'1K':[1,2,11],'1C':[2,11,18,19,20,21,26,27]},o:[['Took the stronghold of Jerusalem first','1 Chr 11:6','and was made chief captain for it.']]},
+{id:'asahel',name:'Asahel',c:2,s:1010,e:1009,dates:'died c. 1009 BC',role:'Joab’s youngest brother',dy:'Asael',sum:'As light of foot as a wild roe (2 Sam 2:18). He chased Abner after the battle at Gibeon and would not turn aside, and Abner killed him with a backward thrust of the spear. His death is the reason Joab murdered Abner. He was buried in his father’s tomb at Bethlehem.',refs:'2 Sam 2:18–32; 3:27, 30; 23:24',ch:{'2S':[2,3,23],'1C':[2,11,27]}},
+{id:'uriah',name:'Uriah',c:2,s:993,e:993,dates:'died c. 993 BC',role:'The Hittite, one of David’s Thirty',dy:'Urias',sum:'A foreign soldier among David’s elite, and Bathsheba’s husband. Brought home from the siege of Rabbah to cover David’s adultery, he refused to sleep in his own house while the ark and the army were in tents. David sent him back carrying his own death warrant.',refs:'2 Sam 11; 12:9–10; 23:39; 1 Kgs 15:5',ch:{'2S':[11,12,23],'1C':[11]}},
+{id:'benaiah',name:'Benaiah',c:2,s:990,e:960,dates:'c. 990–960 BC',role:'Captain of David’s bodyguard',dy:'Banaias',sum:'Son of a priest, commander of the Cherethites and Pelethites, David’s foreign bodyguard, and famous for killing a lion in a pit on a snowy day (2 Sam 23:20). He sided with Solomon, carried out his executions of Adonijah, Joab and Shimei, and replaced Joab as commander.',refs:'2 Sam 8:18; 23:20–23; 1 Kgs 1:8, 32–38; 2:25–46; 1 Chr 11:22–25; 27:5',ch:{'2S':[8,20,23],'1K':[1,2,4],'1C':[11,18,27]}},
+{id:'ahithophel',name:'Ahithophel',c:2,s:979,e:979,dates:'died c. 979 BC',role:'David’s counselor',dy:'Achitophel',sum:'His counsel was as if a man had asked at the oracle of God (2 Sam 16:23). He went over to Absalom, told him to take David’s concubines publicly, and urged an immediate strike at the fleeing king. When Absalom took Hushai’s advice instead, he went home, set his house in order, and hanged himself. He was probably Bathsheba’s grandfather (11:3; 23:34).',refs:'2 Sam 15:12, 31; 16:15–17:23; 23:34',ch:{'2S':[15,16,17,23],'1C':[27]},o:[['Hanged himself','2 Sam 17:23','The only suicide by hanging in the Old Testament; Judas is the other in Scripture (Mt 27:5).']]},
+{id:'hushai',name:'Hushai',c:2,s:979,e:979,dates:'c. 979 BC',role:'The Archite, David’s friend',dy:'Chusai',sum:'Sent back by David to pose as a defector to Absalom and defeat Ahithophel’s counsel. He talked Absalom out of the immediate pursuit that would have caught David, and passed the plans to David through the priests’ sons.',refs:'2 Sam 15:32–37; 16:16–19; 17:5–16; 1 Chr 27:33',ch:{'2S':[15,16,17],'1C':[27]}},
+{id:'barzillai',name:'Barzillai',c:2,s:979,e:970,dates:'c. 979 BC',role:'Gileadite who fed David in exile',dy:'Berzellai',sum:'A very old, very rich man of Gilead who brought beds, basins and food to David’s men at Mahanaim. He declined to come to court: he was eighty, and could no longer taste what he ate or hear the singers. David commended his sons to Solomon.',refs:'2 Sam 17:27–29; 19:31–40; 1 Kgs 2:7',ch:{'2S':[17,19],'1K':[2]}},
+{id:'amasa',name:'Amasa',c:2,s:979,e:978,dates:'died c. 978 BC',role:'Absalom’s general, David’s nephew',sum:'Another nephew of David, through his sister Abigail. He commanded Absalom’s army, and after the revolt David made him commander in Joab’s place to win back Judah. Joab took him by the beard as if to kiss him, and stabbed him.',refs:'2 Sam 17:25; 19:13; 20:4–12; 1 Kgs 2:5, 32',ch:{'2S':[17,19,20],'1K':[2],'1C':[2]}},
+
+{id:'david',name:'David',c:3,s:1025,e:970,king:1,dates:'anointed c. 1025; king 1010–970 BC',role:'King of Israel',sum:'The youngest of Jesse’s sons, anointed by Samuel as a boy; court musician, giant-killer, outlaw, Philistine mercenary, king of Judah at Hebron for seven years and of all Israel at Jerusalem for thirty-three. Every king of Judah after him is measured against him.',refs:'1 Sam 16 – 1 Kgs 2:11; 1 Chr 10–29',ch:{'1S':R(16,30),'2S':R(1,24),'1K':[1,2,3,5,6,7,8,9,11],'1C':[2,3,4,6,7,9].concat(R(10,29))},o:[['Killed Goliath of Gath','1 Sam 17:49–51',''],['Served Achish, king of Gath, as a mercenary','1 Sam 27; 29','He raided Israel’s enemies and told Achish he had raided Judah.'],['Swore to wipe out Nabal’s house, and was talked out of it','1 Sam 25','Abigail’s husband; the Lord struck him ten days later.'],['Executed the Amalekite who claimed to have killed Saul','2 Sam 1:13–16','']]},
+{id:'abigail',name:'Abigail',c:3,s:1013,e:990,dates:'c. 1013 BC on',role:'Nabal’s wife, then David’s',sum:'A woman of good understanding married to a churlish man. When Nabal insulted David’s men, she rode out with food and talked David out of the massacre he had sworn, and married him after Nabal died. Captured by the Amalekites at Ziklag and recovered. Her son Chileab (Daniel in Chronicles) is never heard of again.',refs:'1 Sam 25; 27:3; 30:5, 18; 2 Sam 3:3; 1 Chr 3:1',ch:{'1S':[25,27,30],'2S':[2,3],'1C':[3]}},
+{id:'bathsheba',name:'Bathsheba',c:3,s:993,e:965,dates:'c. 993 BC on',role:'Uriah’s wife, then David’s; Solomon’s mother',aka:'Bath-shua',dy:'Bethsabee',sum:'Daughter of Eliam, one of David’s Thirty, and probably granddaughter of Ahithophel. Taken by David while Uriah was at war. Her first child died; her second was Solomon, and with Nathan she secured his succession. As queen mother she carried Adonijah’s request for Abishag to Solomon, and it cost Adonijah his life. Matthew names her only as “her that had been the wife of Urias” (Mt 1:6).',refs:'2 Sam 11:2–27; 12:24; 1 Kgs 1:11–31; 2:13–25',ch:{'2S':[11,12],'1K':[1,2],'1C':[3]}},
+{id:'amnon',name:'Amnon',c:3,s:983,e:981,dates:'died c. 981 BC',role:'David’s firstborn',sum:'David’s eldest son, by Ahinoam of Jezreel. He feigned sickness to get his half-sister Tamar alone, forced her, and then hated her more than he had loved her. David was very wroth and did nothing. Absalom waited two years and had him killed at a sheep-shearing feast.',refs:'2 Sam 3:2; 13',ch:{'2S':[3,13],'1C':[3]}},
+{id:'tamar',name:'Tamar',c:3,s:983,e:981,dates:'c. 983 BC',role:'David’s daughter, Absalom’s sister',dy:'Thamar',sum:'She wore the long robe of the king’s virgin daughters. After Amnon violated her, she tore it, put ashes on her head, and lived desolate in Absalom’s house. Absalom named his own daughter after her.',refs:'2 Sam 13; 14:27',ch:{'2S':[13],'1C':[3]}},
+{id:'absalom',name:'Absalom',c:3,s:983,e:979,dates:'died c. 979 BC',role:'David’s third son',sum:'Son of Maacah, a princess of Geshur, and the handsomest man in Israel. He killed Amnon for Tamar, lived three years in exile and two more in Jerusalem without seeing his father, then spent four years stealing the hearts of Israel at the gate. Proclaimed king at Hebron, he took Jerusalem, and died hanging by his head in an oak in the forest of Ephraim.',refs:'2 Sam 3:3; 13–19',ch:{'2S':[3,13,14,15,16,17,18,19,20],'1K':[1,2],'1C':[3]}},
+{id:'adonijah',name:'Adonijah',c:3,s:971,e:970,dates:'died c. 970 BC',role:'David’s fourth son',dy:'Adonias',sum:'Handsome, never once crossed by his father, and next in line after Amnon and Absalom were dead. He held his own coronation feast with Joab and Abiathar while David lay dying. Solomon spared him; then he asked for Abishag, David’s last companion, and Solomon read it as a claim to the throne.',refs:'2 Sam 3:4; 1 Kgs 1:5–53; 2:13–25',ch:{'2S':[3],'1K':[1,2],'1C':[3]}},
+{id:'solomon',name:'Solomon',c:3,s:991,e:931,king:1,dates:'born c. 991; king 970–931 BC',role:'King of Israel',aka:'Jedidiah',dy:'Salomon',sum:'Bathsheba’s second son, named Jedidiah by Nathan, crowned at Gihon before his brother could take the throne. He asked for wisdom, built the Temple, and married into every neighboring court; in his old age his wives turned away his heart. The kingdom was torn from his son.',refs:'2 Sam 12:24–25; 1 Kgs 1–11; 1 Chr 22–23; 28–29; 2 Chr 1–9',ch:{'2S':[5,12],'1K':R(1,11),'1C':[3,14,22,23,28,29]}}
+];
+
+// Lines. f acted on t. y: anoint, save, betray, kill, rebuke. x: an attempt that failed. by: others who had a hand in it.
+const E=[
+{f:'samuel',y:'anoint',t:'saul',r:'1 Sam 10:1',n:'In private, with a vial of oil and a kiss.'},
+{f:'samuel',y:'anoint',t:'david',r:'1 Sam 16:13',n:'In the midst of his brothers, at Bethlehem.'},
+{f:'zadok',y:'anoint',t:'solomon',r:'1 Kgs 1:39',n:'With the horn of oil from the tabernacle, at Gihon.'},
+{f:'nathan',y:'anoint',t:'solomon',r:'1 Kgs 1:34, 45',n:'David ordered Zadok and Nathan to anoint him together.'},
+{f:'eli',y:'rebuke',t:'eli_sons',r:'1 Sam 2:22–25',n:'Too mildly and too late; they would not listen.'},
+{f:'samuel',y:'rebuke',t:'eli',r:'1 Sam 3:11–18',n:'His first word from God was the end of Eli’s house.'},
+{f:'samuel',y:'rebuke',t:'saul',r:'1 Sam 13:13–14',n:'At Gilgal, for offering the sacrifice himself.'},
+{f:'samuel',y:'rebuke',t:'saul',r:'1 Sam 15:16–29',n:'For sparing Agag: the Lord hath rejected thee.'},
+{f:'jonathan',y:'rebuke',t:'saul',r:'1 Sam 19:4–5; 20:32',n:'Wherefore shall he be slain? What hath he done?'},
+{f:'nathan',y:'rebuke',t:'david',r:'2 Sam 12:1–14',n:'Thou art the man.'},
+{f:'gad',y:'rebuke',t:'david',r:'2 Sam 24:11–14',n:'The three choices after the census.'},
+{f:'michal',y:'rebuke',t:'david',r:'2 Sam 6:20',n:'For dancing before the ark, uncovered before the maids.'},
+{f:'shimei',y:'rebuke',t:'david',r:'2 Sam 16:5–13',n:'Cursed him and threw stones as he fled.'},
+{f:'joab',y:'rebuke',t:'david',r:'2 Sam 19:5–7',n:'Told him his grief for Absalom was shaming the men who had saved him.'},
+{f:'jonathan',y:'save',t:'david',r:'1 Sam 19:1–7; 20',n:'Warned him, pleaded for him, and sent him off with the arrows.'},
+{f:'michal',y:'save',t:'david',r:'1 Sam 19:11–17',n:'Let him down through a window and put an image in his bed.'},
+{f:'ahimelech',y:'save',t:'david',r:'1 Sam 21:1–9',n:'Gave him the holy bread and Goliath’s sword.'},
+{f:'david',y:'save',t:'abiathar',r:'1 Sam 22:20–23',n:'Abide thou with me: he that seeketh my life seeketh thy life.'},
+{f:'abigail',y:'save',t:'david',r:'1 Sam 25:23–35',n:'Kept him from shedding blood with his own hand.'},
+{f:'david',y:'save',t:'saul',r:'1 Sam 24; 26',n:'Twice, in the cave at En-gedi and in the camp at night: I will not stretch forth mine hand against the Lord’s anointed.'},
+{f:'david',y:'save',t:'mephibosheth',r:'2 Sam 9; 21:7',n:'Restored his land and gave him a place at the king’s table, for Jonathan’s sake.'},
+{f:'hushai',y:'save',t:'david',r:'2 Sam 17:5–16',n:'Defeated Ahithophel’s counsel and warned David to cross the Jordan.'},
+{f:'barzillai',y:'save',t:'david',r:'2 Sam 17:27–29',n:'Fed the king and his men at Mahanaim.'},
+{f:'david',y:'save',t:'shimei',r:'2 Sam 19:18–23',n:'Swore he would not die, on the day of the return.'},
+{f:'solomon',y:'save',t:'adonijah',r:'1 Kgs 1:50–53',n:'If he show himself a worthy man, there shall not an hair of him fall.'},
+{f:'solomon',y:'save',t:'abiathar',r:'1 Kgs 2:26–27',n:'Spared because he had carried the ark before David, and banished to Anathoth.'},
+{f:'saul',y:'betray',t:'david',r:'1 Sam 18:17–25; 25:44',n:'Offered his daughters as bait for the Philistines, and gave Michal to another man.'},
+{f:'doeg',y:'betray',t:'ahimelech',r:'1 Sam 22:9–10',n:'Told Saul what the priest had done for David.'},
+{f:'abner',y:'betray',t:'ish_bosheth',r:'2 Sam 3:6–21',n:'Offered the north to David after their quarrel over Rizpah.'},
+{f:'david',y:'betray',t:'uriah',r:'2 Sam 11:2–15',n:'Took his wife, then tried to make him cover it.'},
+{f:'amnon',y:'betray',t:'tamar',r:'2 Sam 13:1–19',n:'Lured her in by feigning sickness, and forced her.'},
+{f:'absalom',y:'betray',t:'david',r:'2 Sam 15:1–12',n:'Four years of stealing hearts at the gate, then a rebellion from Hebron.'},
+{f:'ahithophel',y:'betray',t:'david',r:'2 Sam 15:12, 31',n:'Went over to Absalom. Psalms 41:9 and 55:12–14 are often read of him.'},
+{f:'ziba',y:'betray',t:'mephibosheth',r:'2 Sam 16:1–4; 19:24–27',n:'Told David his master was hoping for the throne.'},
+{f:'joab',y:'betray',t:'david',r:'2 Sam 18:5–15; 1 Kgs 1:7',n:'Killed Absalom against orders, and later backed Adonijah.'},
+{f:'saul',y:'kill',t:'david',x:1,r:'1 Sam 18:10–11; 19:9–10',n:'Threw his spear at him twice, then hunted him for years.'},
+{f:'saul',y:'kill',t:'jonathan',x:1,r:'1 Sam 20:33',n:'Threw his spear at his own son.'},
+{f:'doeg',y:'kill',t:'ahimelech',by:['saul'],r:'1 Sam 22:16–19',n:'With eighty-five priests, on Saul’s order, after the guards refused.'},
+{f:'abner',y:'kill',t:'asahel',r:'2 Sam 2:23',n:'With the butt end of his spear, having begged him to turn aside.'},
+{f:'joab',y:'kill',t:'abner',r:'2 Sam 3:27',n:'In the gate at Hebron, for Asahel’s blood.'},
+{f:'david',y:'kill',t:'uriah',by:['joab'],r:'2 Sam 11:14–17; 12:9',n:'By letter, through Joab: set ye Uriah in the forefront of the hottest battle.'},
+{f:'absalom',y:'kill',t:'amnon',r:'2 Sam 13:28–29',n:'By his servants, at the sheep-shearing at Baal-hazor.'},
+{f:'absalom',y:'kill',t:'david',x:1,r:'2 Sam 17:1–4',n:'Approved Ahithophel’s plan to strike the king alone.'},
+{f:'joab',y:'kill',t:'absalom',r:'2 Sam 18:14–15',n:'Three darts through the heart as he hung in the oak.'},
+{f:'joab',y:'kill',t:'amasa',r:'2 Sam 20:9–10',n:'Took him by the beard as if to kiss him.'},
+{f:'benaiah',y:'kill',t:'adonijah',by:['solomon'],r:'1 Kgs 2:25',n:'On Solomon’s order.'},
+{f:'benaiah',y:'kill',t:'joab',by:['solomon'],r:'1 Kgs 2:34',n:'At the altar, where Joab had caught hold of its horns.'},
+{f:'benaiah',y:'kill',t:'shimei',by:['solomon'],r:'1 Kgs 2:46',n:'On Solomon’s order, after he broke his parole.'}
+];
+
+const TY={anoint:{l:'Anointed',a:'Anointed',p:'Anointed by'},save:{l:'Spared or saved',a:'Spared or saved',p:'Spared or saved by'},betray:{l:'Betrayed',a:'Betrayed',p:'Betrayed by'},kill:{l:'Killed',a:'Killed, or tried to',p:'Killed by, or nearly'},rebuke:{l:'Rebuked or cursed',a:'Rebuked or cursed',p:'Rebuked or cursed by'}};
+const TORDER=['anoint','save','betray','kill','rebuke'];
+
+const GUIDE={
+samuel:{c:'Eli, whose house he told would fall; the elders who asked for a king; and Saul, twice.',r:'1 Samuel 1–4 and 7–16, then 19:18–24, 25:1 and 28. Then Acts 13:20–22 and Hebrews 11:32.',t:'Chapter 12 is his farewell, the counterpart of Joshua’s at Shechem (Josh 24): a retired judge putting the people on oath. He never really retires. He keeps anointing, rebuking and grieving for Saul until God sends him to Bethlehem.'},
+gad:{c:'David, as his adviser in the outlaw years, and in judgment after the census.',r:'1 Samuel 22:1–5, then 2 Samuel 24 and 1 Chronicles 21 side by side.',t:'Read 2 Samuel 24 and 1 Chronicles 21 together. They disagree about who stirred David to count the people, how long the famine would be and what David paid, and the differences look deliberate.'},
+nathan:{c:'David, over Bathsheba and Uriah; later Adonijah’s bid for the throne.',r:'2 Samuel 7, then 2 Samuel 12:1–25, then 1 Kings 1.',t:'Keep 2 Samuel 7 in mind for all of Kings. Every time Judah survives a bad king “for David’s sake,” the writer is pointing back to Nathan’s promise.'}
+};
+const MOM={
+samuel:[
+['Hannah’s prayer','1 Sam 1:9–20','Weeping at Shiloh, her lips moving without sound; Eli takes her for drunk.'],
+['Given to the Lord','1 Sam 1:21–28','Weaned and brought to Shiloh with three bullocks, a measure of flour and a bottle of wine.'],
+['Hannah’s song','1 Sam 2:1–10','The barren hath born seven; he raiseth up the poor out of the dust.'],
+['A little coat','1 Sam 2:18–21','He ministers in a linen ephod, and his mother brings him a new robe every year.'],
+['The call','1 Sam 3','Samuel, Samuel. Speak; for thy servant heareth.'],
+['Ebenezer','1 Sam 7:3–14','Repentance at Mizpah; thunder routs the Philistines; the stone of help.'],
+['Give us a king','1 Sam 8','His sons take bribes; the elders ask for a king like all the nations; he warns them what a king will take.'],
+['Saul anointed','1 Sam 9–10','A search for lost asses ends at Samuel’s table and a vial of oil.'],
+['The farewell','1 Sam 12','Whose ox have I taken? Thunder and rain at wheat harvest.'],
+['Gilgal','1 Sam 13:8–14','Saul does not wait; his kingdom shall not continue.'],
+['Amalek','1 Sam 15','To obey is better than sacrifice. The torn robe. Agag hewn in pieces.'],
+['Bethlehem','1 Sam 16:1–13','The Lord looketh on the heart; the youngest son, out with the sheep.'],
+['Naioth in Ramah','1 Sam 19:18–24','Saul’s messengers, and then Saul himself, fall prophesying.'],
+['Death','1 Sam 25:1','All Israel mourns him and buries him at Ramah.'],
+['At Endor','1 Sam 28:3–25','Called up by the medium, he tells Saul that tomorrow he and his sons will be with him.']
+],
+gad:[
+['Leave the stronghold','1 Sam 22:3–5','He tells David to go into the land of Judah, and David goes to the forest of Hareth.'],
+['The three choices','2 Sam 24:10–14','Famine, flight or pestilence. Let us fall now into the hand of the Lord.'],
+['The plague stops','2 Sam 24:15–17','The angel stretches out his hand over Jerusalem, and the Lord repents of the evil.'],
+['Build an altar','2 Sam 24:18–25','On the threshing floor of Araunah the Jebusite. David insists on paying.'],
+['In Chronicles','1 Chr 21:9–30; 29:29; 2 Chr 29:25','The angel seen with a drawn sword; Gad’s own history of David; his part in ordering the Temple music.']
+],
+nathan:[
+['The covenant with David','2 Sam 7:1–17','David wants to build God a house. Nathan first tells him to go ahead, then comes back with God’s answer: God will build David a house instead, a dynasty, and David’s son will build the Temple. “Thy throne shall be established for ever.”'],
+['The parable of the ewe lamb','2 Sam 12:1–6','After Bathsheba and the death of Uriah, Nathan tells David about a rich man who took a poor man’s only lamb to feed a guest. David, furious, says the man deserves to die.'],
+['“Thou art the man”','2 Sam 12:7–15','Nathan turns the story on David and announces that the sword will never leave his house. David confesses; Psalm 51 is traditionally tied to this moment.'],
+['Names the baby Solomon Jedidiah','2 Sam 12:24–25','Sent to give the newborn the name Jedidiah, “beloved of the Lord.”'],
+['Secures Solomon’s succession','1 Kgs 1:11–40','When Adonijah throws himself a coronation feast, Nathan and Bathsheba go to the dying David, who has Solomon anointed at the spring of Gihon.'],
+['A history of David and Solomon','1 Chr 29:29; 2 Chr 9:29','Chronicles cites “the book of Nathan the prophet” as a source for both reigns.']
+]
+};
+
+const DEEP={
+samuel:[
+['Asked','Hannah names him Samuel “because I have asked him of the Lord” (1:20), and gives him back because he is “lent” to the Lord (1:28). Both verbs are forms of sha’al, and the name they fit is not Samuel but Saul, Sha’ul, asked for. Some scholars think the birth story was first told of Saul; others think the narrator is already hinting that Israel will ask for a king. Either way, the first chapter of the book is punning on the name of the first king.'],
+['Hannah and Mary','Hannah’s song (2:1–10) is the model for the Magnificat (Lk 1:46–55): the mighty brought low, the hungry filled, the poor raised from the dust. Its last line asks the Lord to exalt the horn of “his anointed,” his messiah (2:10), the first time the word is used of a king, before Israel has one.'],
+['The lamp had not yet gone out','The call comes when the word of the Lord was precious, meaning rare, and Eli’s eyes were growing dim, while “the lamp of God” still burned in the sanctuary (3:1–3). That lamp was tended until morning (Exod 27:20–21), so the call comes just before dawn. Kings takes up the same image as God’s promise to keep a lamp for David in Jerusalem (1 Kgs 11:36).'],
+['Samuel, Samuel','God calls him by name twice, as he called “Abraham, Abraham” on Moriah (Gen 22:11) and “Moses, Moses” from the bush (Exod 3:4). Jesus speaks the same way to Martha and to Simon (Lk 10:41; 22:31), and to Saul of Tarsus, a Benjamite named for Israel’s first king (Acts 9:4).'],
+['Priest, prophet, judge','He is born an Ephraimite (1:1), though Chronicles enrolls him among the Levites (1 Chr 6:28). He wears a linen ephod and offers sacrifice; he judges on a yearly circuit of Bethel, Gilgal and Mizpah; and Peter dates the prophets from him (Acts 3:24). Psalm 99:6 sets him beside Moses and Aaron, and [[k:jeremiah|Jeremiah]] hears God say that even Moses and Samuel interceding could not save Jerusalem now (Jer 15:1).'],
+['Dagon on the threshold','Dagon falls on his face before the ark, and the next morning his head and hands lie broken off on the threshold, which is why, the writer says, Dagon’s priests still step over it (5:4–5). [[k:zephaniah|Zephaniah]] condemns those who leap over the threshold (Zeph 1:9), probably the same custom.'],
+['The Philistine cart','The Philistines send the ark home on a new cart drawn by two milk cows taken from their calves, and the cows go straight up the road to Beth-shemesh, lowing as they go (6:7–12). David later moves the ark the same way, on a new cart, and Uzzah dies steadying it (2 Sam 6:3–7), because the Law said Levites were to carry it on poles (Num 4:15). Israel had copied the Philistines. Chronicles spells the lesson out (1 Chr 15:13–15).'],
+['Ebenezer','Samuel names the stone of victory Ebenezer: hitherto hath the Lord helped us (7:12). The battle where the ark was lost was also fought at Ebenezer (4:1). The worst defeat in living memory gets a second meaning in the same name. The hymn line “Here I raise my Ebenezer” comes from this verse.'],
+['What a king will take','Samuel’s warning (8:11–17) is built on one verb: he will take your sons, take your daughters, take your fields, take the tenth, take your servants, until ye shall be his servants. Deuteronomy’s law of the king forbids him to multiply horses, wives and gold (Deut 17:16–17). Solomon does all three (1 Kgs 10:14–11:3) and lays on the heavy yoke that splits the kingdom (1 Kgs 12:4).'],
+['To obey is better than sacrifice','“Behold, to obey is better than sacrifice, and to hearken than the fat of rams” (15:22). [[k:hosea|Hosea]] says it again: I desired mercy, and not sacrifice (Hos 6:6), and Jesus quotes Hosea twice (Mt 9:13; 12:7). In the same speech Samuel says rebellion is as the sin of witchcraft (15:23). Saul ends at a medium’s house.'],
+['The Agagite','Samuel finishes what Saul would not, hewing Agag in pieces at Gilgal (15:33). The quarrel surfaces again centuries later in Persia: Haman is an Agagite, and Mordecai is a Benjamite whose ancestor is named Kish, like Saul’s father (Esth 2:5; 3:1). When the Jews defeat Haman’s sons, they pointedly lay no hand on the plunder (Esth 9:10, 15–16), the very thing Saul did wrong.'],
+['The outward appearance','Saul was chosen tall, head and shoulders above the people (9:2; 10:23). At Bethlehem Samuel admires the tall eldest son, and God says man looketh on the outward appearance, but the Lord looketh on the heart (16:7). Then the narrator cannot resist adding that David was ruddy, with beautiful eyes, and goodly to look to (16:12).'],
+['Gilgal','Saul is confirmed as king at Gilgal (11:14–15), loses his dynasty there by not waiting for Samuel (13:8–14), and loses the kingdom there over Agag (15:12–33). [[k:hosea|Hosea]] says all their wickedness is in Gilgal, for there I hated them (Hos 9:15), and some readers think he has Saul in mind. Gilgal was also Joshua’s first camp in the land and the site of the first Passover there (Josh 4:19; 5:10).'],
+['Sons who took bribes','Samuel makes his sons judges at Beersheba, and they take bribes and pervert judgment (8:1–3). It is Eli’s failure repeated by the man who announced Eli’s punishment, and the narrator passes over it without a word. It is also the immediate reason the elders ask for a king. David’s sons will be worse.'],
+['Was it really Samuel?','At Endor the medium cries out when Samuel appears, which suggests she did not expect her art to work (28:12). The Fathers were divided: some held that a demon took his form, others that God truly sent Samuel. Sirach settles it for the Catholic canon: after his death he prophesied, and showed the king his end (Sir 46:20). Chronicles counts the consultation among the reasons Saul died (1 Chr 10:13).']
+],
+gad:[
+['A prophet and a priest for an outlaw','Gad first appears with David in the stronghold (1 Sam 22:5). In the same chapter Abiathar escapes the massacre at Nob and comes to David with the ephod (22:20; 23:6). Saul has lost Samuel and killed the priests; the fugitive in the wilderness has a prophet and a priest. The narrator does not need to comment.'],
+['Who moved David?','Samuel says the anger of the Lord moved David to number Israel (2 Sam 24:1). Chronicles says Satan stood up against Israel and provoked David (1 Chr 21:1). In Job and Zechariah he is “the satan,” the accuser, with the article; here the word stands without it, and many read it as the first use of Satan as a name. The later book does not contradict the earlier so much as name the agent God permitted.'],
+['Why a census was dangerous','The Law required a half-shekel ransom for every man counted, “that there be no plague among them, when thou numberest them” (Exod 30:12). Even Joab, no scrupler, objects (2 Sam 24:3). The census measures the king’s own military strength, and the plague that follows is the one the Law warned of.'],
+['Seven years or three','Gad offers seven years of famine in Samuel (2 Sam 24:13) and three in Chronicles (1 Chr 21:12); the Greek of Samuel also reads three, so the Hebrew of Samuel is probably the odd one out. Three years, three months, three days: the choices step down in scale. David chooses the one most directly from God’s hand: let us fall now into the hand of the Lord, for his mercies are great.'],
+['The threshing floor','Gad sends David to build an altar on Araunah’s threshing floor, where the angel stopped (2 Sam 24:18). Chronicles says Solomon built the Temple on that spot, on Mount Moriah (2 Chr 3:1), the name of the land where Abraham was told to offer Isaac (Gen 22:2). Twice on that ground a raised hand is stopped. David will not offer what cost him nothing: fifty shekels of silver in Samuel, six hundred of gold for the whole site in Chronicles (2 Sam 24:24; 1 Chr 21:25).'],
+['The seer and the singers','Hezekiah, restoring the Temple music, set the Levites with cymbals, psalteries and harps “according to the commandment of David, and of Gad the king’s seer, and Nathan the prophet” (2 Chr 29:25). Chronicles credits David’s prophets with ordering the liturgy, and cites a book of Gad the seer among its sources (1 Chr 29:29).']
+],
+nathan:[
+['A house for a house','David wants to build God a house, a temple; God answers that he will build David a house, a dynasty (2 Sam 7:5, 11). The Hebrew word bayit carries both meanings, and the oracle turns on it. Nathan had first told David to go ahead (7:3) and had to come back the next morning with God’s correction. A prophet’s own opinion is not the word of the Lord, and Nathan shows it by reversing himself.'],
+['I will be his father','“I will be his father, and he shall be my son” (7:14). If he sins, he will be chastened with the rod of men, but my mercy shall not depart away from him, as I took it from Saul (7:14–15). That is the unconditional half of the covenant, and Hebrews applies the sentence to Christ (Heb 1:5). Compare the offer [[k:ahijah|Ahijah]] makes Jeroboam, which comes with an if.'],
+['For ever','“Thine house and thy kingdom shall be established for ever” (7:16). Psalm 89 quotes the promise at length and then asks where it went, once the line had fallen (Ps 89:38–51). Gabriel answers in Luke: the Lord shall give unto him the throne of his father David, and of his kingdom there shall be no end (Lk 1:32–33). The same promise is why Kings keeps saying “for David’s sake.”'],
+['A trap made of a story','The ewe lamb is a judicial parable: David is asked to rule on a case and convicts himself before he knows it is about him. The lamb lay in the poor man’s bosom, “and was unto him as a daughter” (12:3). The word for daughter, bat, is the first syllable of Bath-sheba. A disguised prophet sets the same trap for Ahab (1 Kgs 20:38–42).'],
+['Fourfold','David rules that the rich man shall restore the lamb fourfold (12:6), the penalty the Law sets for a stolen sheep (Exod 22:1). Jewish and Christian readers have long noticed that David loses four sons: Bathsheba’s first child, Amnon, Absalom and Adonijah. The text never draws the line. It hardly needs to.'],
+['On the same roof','Nathan says another will lie with David’s wives in the sight of this sun (12:11). Absalom pitches a tent on the palace roof and goes in to his father’s concubines in the sight of all Israel (16:22), on the roof where David first saw Bathsheba (11:2). It was Ahithophel’s advice, and he was probably Bathsheba’s grandfather.'],
+['Beloved','Nathan brings the newborn Solomon a second name, Jedidiah, beloved of the Lord (12:25). David’s own name probably means beloved, from the same root, dod. The child born after the sin is named from his father’s name.'],
+['The Miserere','Psalm 51’s heading ties it to the day Nathan came to David. As the Miserere it is the most prayed of the penitential psalms: at Morning Prayer every Friday in the Liturgy of the Hours, through Lent, and in the sprinkling rite outside Easter, which opens with its seventh verse, purge me with hyssop. “Against thee, thee only, have I sinned” (51:4) is David’s answer to “thou art the man.”'],
+['The kingmaker','In 1 Kings 1 Nathan coaches Bathsheba on what to say and comes in to confirm it (1:11–27). The oath she reminds David of, that Solomon would reign after him, is recorded nowhere earlier. Some readers see a prophet enforcing God’s choice, since Solomon was the one called beloved of the Lord; others see palace politics. The text leaves room for both.'],
+['Chronicles’ Nathan','In Chronicles Nathan brings the promise (1 Chr 17) and writes a history (29:29; 2 Chr 9:29), and there is no ewe lamb, because Chronicles never mentions Bathsheba’s adultery or Uriah’s death. It also credits him with ordering the Temple music alongside [[gad]] (2 Chr 29:25). The same prophet, edited for a different purpose.'],
+['Another Nathan','David had a son named Nathan by Bathsheba, older than Solomon (2 Sam 5:14; 1 Chr 3:5). Luke traces Jesus’ genealogy through him, while Matthew goes through Solomon (Lk 3:31; Mt 1:6). Whether the Nathan whose sons served Solomon (1 Kgs 4:5) was the prophet or the prince is not clear.']
+]
+};
+
+const THREADS=[
+['Robes','Jonathan strips off his robe and gives it, with his sword and bow, to [[david]] (1 Sam 18:4): the heir handing over the kingship before anyone else knows. [[saul]] tears [[samuel]]’s robe and loses the kingdom (15:27–28). David cuts off the skirt of Saul’s robe in the cave and his heart smites him (24:4–5). [[tamar]] tears the long robe of the king’s daughters (2 Sam 13:18–19), the same garment Jacob gave Joseph (Gen 37:3). The thread runs on in Kings with [[k:ahijah|Ahijah]]’s cloak; see Torn garments on the Kings page.'],
+['Spears','[[saul]] holds a spear the way other kings hold a scepter (1 Sam 22:6). He throws it at David twice and at [[jonathan]] once (18:11; 19:10; 20:33). David takes it from beside his sleeping head and gives it back (26:7–22). [[abner]] kills [[asahel]] with its butt end (2 Sam 2:23), and at Gilboa Saul is last seen leaning on it (2 Sam 1:6).'],
+['The ark’s road','From Shiloh to the battlefield at Ebenezer, captured, through Ashdod, Gath and Ekron, home to Beth-shemesh on a Philistine cart, twenty years at Kiriath-jearim (1 Sam 7:2), three months in the house of Obed-edom after Uzzah dies (2 Sam 6:11), up to Jerusalem with David dancing before it, and finally into Solomon’s Temple (1 Kgs 8:6). Then it drops out of the story; 2 Maccabees says [[k:jeremiah|Jeremiah]] hid it (2 Macc 2:4–8).'],
+['Sons who don’t follow','[[eli_sons|Eli’s sons]], [[samuel]]’s sons, [[david]]’s sons: the whole story turns on fathers who cannot hand on what they have. The exception is [[jonathan]], the one son who gives up a throne he would have inherited: thou shalt be king over Israel, and I shall be next unto thee (1 Sam 23:17). Kings carries the problem on for four hundred years.'],
+['What a king will take','[[samuel]]’s warning (1 Sam 8:11–17) comes true under [[solomon]] item by item: the officers over the land (1 Kgs 4:7), the forced labor (5:13–14), the chariots and horses (10:26–29), the wives (11:3). His son is asked to lighten the yoke and refuses (1 Kgs 12:4–14), and the kingdom divides. The rest is on the [[k:rehoboam|Kings page]].'],
+['For David’s sake','[[nathan]]’s promise (2 Sam 7:12–16) is why Kings keeps sparing Judah “for David’s sake” (1 Kgs 11:12–13; 15:4; 2 Kgs 8:19; 19:34), why Psalm 89 can accuse God of breaking it, and why Psalm 132 sings it back to him. Gabriel’s message to Mary quotes it (Lk 1:32–33).'],
+['Bethlehem','Ruth’s town and Boaz’s fields; where [[samuel]] anoints the youngest son (1 Sam 16); where [[asahel]] is buried (2 Sam 2:32); whose well [[david]] longs for while the Philistines hold it, and whose water he pours out on the ground when three of his men bring it (2 Sam 23:15–17). [[k:micah|Micah]] names it as the birthplace of the coming ruler (Mic 5:2; 5:1 in NABRE).'],
+['Mules','The king’s sons ride mules (2 Sam 13:29). [[absalom]] rides one into battle and is left hanging when it goes on under the oak (18:9). [[solomon]] is set on David’s own mule and brought down to Gihon to be anointed (1 Kgs 1:33, 38): riding the king’s animal is the announcement. Zechariah’s king comes riding upon an ass (Zech 9:9), and so does Jesus into Jerusalem.']
+];
+
+const CLASH=[
+{t:'Ahimelech',ids:['ahimelech','abiathar'],d:'Ahimelech the priest of Nob, killed by Doeg; Ahimelech the Hittite, one of David’s men (1 Sam 26:6); and an Ahimelech son of Abiathar listed as priest under David (2 Sam 8:17; 1 Chr 24:6), probably a copyist’s reversal of Abiathar son of Ahimelech. Mark 2:26 has Jesus say the bread was eaten “in the days of Abiathar the high priest,” and the tangle has been argued over ever since.'},
+{t:'Nathan',ids:['nathan'],d:'Nathan the prophet, and Nathan son of David and Bathsheba (2 Sam 5:14), through whom Luke traces Jesus’ ancestry (Lk 3:31).'},
+{t:'Uriah',ids:['uriah'],d:'Uriah the Hittite, Bathsheba’s husband; Urijah the priest, who built Ahaz an altar to a Damascus pattern (2 Kgs 16:10); and the prophet [[k:uriah|Uriah]], killed by Jehoiakim.'},
+{t:'Joel',ids:['samuel'],d:'Samuel’s firstborn, a corrupt judge at Beersheba (1 Sam 8:2), is not the prophet [[k:joel|Joel]].'},
+{t:'Tamar',ids:['tamar','absalom'],d:'David’s daughter; Absalom’s daughter, named for her (2 Sam 14:27); and Judah’s daughter-in-law in Genesis 38, an ancestor of David through Perez (Ruth 4:18–22).'},
+{t:'Phinehas',ids:['eli_sons'],d:'Eli’s son Phinehas, killed when the ark was taken, is not Aaron’s grandson Phinehas, whose zeal stopped the plague at Peor (Num 25:7–13). Eli’s son was presumably named after him, which makes it worse.'},
+{t:'Jonathan',ids:['jonathan'],d:'Saul’s son; Jonathan son of Abiathar, the priest’s son who ran messages to David during Absalom’s revolt (2 Sam 15:27; 17:17); Jonathan son of Shimea, David’s nephew, who killed a giant with six fingers on each hand (2 Sam 21:20–21); and David’s uncle Jonathan, a counselor (1 Chr 27:32).'},
+{t:'Shimei',ids:['shimei'],d:'Shimei son of Gera, the Benjamite who cursed David, is not the Shimei who stayed loyal during Adonijah’s bid (1 Kgs 1:8), nor Solomon’s district officer Shimei son of Elah (1 Kgs 4:18).'},
+{t:'Merab and Michal',ids:['michal'],d:'Saul’s two daughters. Merab was promised to David and given to Adriel instead (1 Sam 18:17–19). The Hebrew of 2 Samuel 21:8 says Michal bore Adriel five sons; most modern translations read Merab, with a few manuscripts, since Michal had no children.'},
+{t:'Two named Mephibosheth',ids:['mephibosheth','rizpah'],d:'Jonathan’s lame son, and a son of Saul by Rizpah with the same name, one of the seven handed to the Gibeonites (2 Sam 21:8). David spared the first and gave up the second.'},
+{t:'Baal becomes shame',ids:['ish_bosheth','mephibosheth'],d:'Saul’s son was named Esh-baal and Jonathan’s son Merib-baal, as Chronicles still records (1 Chr 8:33–34). In Samuel the baal is replaced with bosheth, shame. Baal, master, could once be used of the Lord; after Jezebel’s day it could not, and scribes changed the names. Gideon’s name Jerubbaal becomes Jerubbesheth the same way (2 Sam 11:21).'},
+{t:'Abigail',ids:['abigail','amasa'],d:'Abigail, Nabal’s widow and David’s wife, and Abigail, David’s sister, mother of Amasa (2 Sam 17:25; 1 Chr 2:16–17).'},
+{t:'Saul and Saul',ids:['saul'],d:'King Saul son of Kish, of Benjamin, and Saul of Tarsus, also of Benjamin, who names the king in his first recorded sermon (Acts 13:21; Phil 3:5).'}
+];
+
+// Kings-page people and prophets that notes here link to.
+const KP=new Set(['elijah','elisha','ahijah','shemaiah','man_of_god','micaiah','jonah','amos','hosea','isaiah','micah','oded','nahum','zephaniah','huldah','jeremiah','uriah','habakkuk','baruch','daniel','ezekiel','joel','obadiah','zechariah_p','jehu_p','hanani','azariah_o','jahaziel']);
+
+const BOOKS={'1S':'1 Samuel','2S':'2 Samuel','1K':'1 Kings','1C':'1 Chronicles'};
+const COUNT={'1S':31,'2S':24,'1K':11,'1C':29};
+const BK={'1 Sam':'1S','2 Sam':'2S','1 Kgs':'1K','1 Chr':'1C'};
+const TOP=1112, BOT=928;
+let S=7, NH=26, GAPN=4;
+const Y=yr=>(TOP-yr)*S;
+const byId={}; SP.forEach(x=>byId[x.id]=x);
+const PS=new Set(Object.keys(GUIDE));
+const $=s=>document.querySelector(s);
+const state={book:'1S',chap:'',sel:null,hide:new Set()};
+let lastFocus=null;
+
+// Which chapters each line belongs to
+E.forEach((e,i)=>{
+  e.i=i; e.ch=[]; let cur=null;
+  e.r.split(';').forEach(tok=>{
+    const m=tok.match(/([12]) (Sam|Kgs|Chr) (\d+)/);
+    if(m){ cur=BK[m[1]+' '+m[2]]; e.ch.push(cur+':'+m[3]); }
+    else { const m2=tok.match(/^\s*(\d+)/); if(m2&&cur) e.ch.push(cur+':'+m2[1]); }
+  });
+});
+
+function dates(x){ return x.dates || (x.s===x.e?`c. ${x.s} BC`:`c. ${x.s}–${x.e} BC`); }
+function chip(id){
+  const x=byId[id];
+  const cls=PS.has(id)?'c-prop':x.c===3?'c-judah':x.c===1?'c-israel':'c-neutral';
+  return `<button type="button" class="chip ${cls}" data-go="${id}">${x.short||x.name}</button>`;
+}
+
+function render(){
+  const wide=window.innerWidth>=720;
+  S=wide?8:7; NH=wide?28:26;
+  const H=Y(BOT);
+  $('#map').style.height=H+'px';
+  let ax='';
+  [1100,1075,1050,1025,1000,975,950].forEach(y=>{ ax+=`<span class="yl" style="top:${Y(y)+8}px"></span><span class="yr" style="top:${Y(y)+8}px">${y}</span>`; });
+  $('#axis').innerHTML=ax;
+  for(let c=0;c<4;c++){
+    const list=SP.filter(p=>p.c===c).slice().sort((a,b)=>b.s-a.s);
+    let prev=-1e9, h='';
+    list.forEach(p=>{
+      const top=Math.max(Y(p.s)-NH/2,prev);
+      p._top=top; prev=top+NH+GAPN;
+      h+=`<button type="button" class="n c${c}${p.king?' crown':''}" data-id="${p.id}" style="top:${top}px" aria-label="${p.name}, ${p.role}"><span>${p.short||p.name}</span></button>`;
+    });
+    $('#mc'+c).innerHTML=h;
+  }
+  drawEdges();
+  apply();
+}
+
+function box(id){
+  const n=document.querySelector(`#map [data-id="${id}"]`); if(!n) return null;
+  const col=n.parentElement;
+  return {x:col.offsetLeft, y:n.offsetTop+n.offsetHeight/2, w:col.offsetWidth, c:byId[id].c};
+}
+function drawEdges(){
+  const seen={};
+  let defs='<defs>'+TORDER.map(t=>`<marker id="m-${t}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="mk-${t}" d="M0 0L10 5L0 10z"/></marker>`).join('')+'</defs>';
+  let paths='';
+  E.forEach(e=>{
+    const a=box(e.f), b=box(e.t); if(!a||!b) return;
+    const key=[e.f,e.t].sort().join('|'); const k=seen[key]=(seen[key]||0)+1; const off=(k-1)*7;
+    let d;
+    if(a.c===b.c){
+      const right=a.c!==3, xa=right?a.x+a.w:a.x, bow=(right?1:-1)*(30+off);
+      d=`M${xa} ${a.y}C${xa+bow} ${a.y},${xa+bow} ${b.y},${xa} ${b.y}`;
+    } else {
+      const dir=b.c>a.c?1:-1, x1=dir>0?a.x+a.w:a.x, x2=dir>0?b.x:b.x+b.w, dx=Math.max(24,Math.abs(x2-x1)/2);
+      d=`M${x1} ${a.y+off}C${x1+dir*dx} ${a.y+off},${x2-dir*dx} ${b.y+off},${x2} ${b.y+off}`;
+    }
+    paths+=`<path class="e t-${e.y}${e.x?' x':''}" data-i="${e.i}" data-a="${e.f}" data-b="${e.t}" d="${d}" marker-end="url(#m-${e.y})"/>`;
+  });
+  $('#edges').innerHTML=defs+paths;
+}
+
+function hitsNow(){
+  const people=new Set(), lines=new Set();
+  if(!state.chap) return {people,lines};
+  const c=+state.chap, key=state.book+':'+c;
+  SP.forEach(x=>{ if(x.ch[state.book]&&x.ch[state.book].includes(c)) people.add(x.id); });
+  E.forEach(e=>{ if(e.ch.includes(key)) lines.add(e.i); });
+  return {people,lines};
+}
+function apply(){
+  const {people,lines}=hitsNow();
+  const wrap=$('#map-wrap');
+  wrap.classList.toggle('filtering',people.size>0||lines.size>0);
+  wrap.classList.toggle('focus',!!state.sel);
+  TORDER.forEach(t=>wrap.classList.toggle('hide-'+t,state.hide.has(t)));
+  const rel=new Set();
+  if(state.sel) E.forEach(e=>{ if(e.f===state.sel||e.t===state.sel||(e.by||[]).includes(state.sel)){ rel.add(e.f); rel.add(e.t); } });
+  document.querySelectorAll('#map .n').forEach(n=>{
+    const id=n.dataset.id;
+    n.classList.toggle('hit',people.has(id));
+    n.classList.toggle('rel',rel.has(id));
+    n.classList.toggle('is-sel',id===state.sel);
+  });
+  document.querySelectorAll('#edges .e').forEach(p=>{
+    const e=E[+p.dataset.i];
+    p.classList.toggle('hit',lines.has(e.i));
+    p.classList.toggle('on',!!state.sel&&(e.f===state.sel||e.t===state.sel||(e.by||[]).includes(state.sel)));
+  });
+  const f=$('#found');
+  if(!state.chap){ f.innerHTML='<span class="hint">Choose a chapter to light up who appears in it.</span>'; }
+  else {
+    const list=SP.filter(x=>people.has(x.id));
+    f.innerHTML=`<span class="hint">In ${BOOKS[state.book]} ${state.chap}:</span>`+(list.length?list.map(x=>chip(x.id)).join(''):'<span class="hint">no one on the map.</span>');
+  }
+  $('#clear').hidden=!state.chap;
+}
+
+function renderLegend(){
+  $('#legend').innerHTML='<span class="hint">Lines:</span>'+TORDER.map(t=>`<button type="button" class="lg lc-${t}" data-type="${t}" aria-pressed="${!state.hide.has(t)}"><i></i>${TY[t].l}</button>`).join('');
+}
+
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function barBottom(){ return $('#bar').getBoundingClientRect().bottom; }
+function sheetTop(){ const sh=$('#sheet'); return sh.classList.contains('open')?window.innerHeight-sh.offsetHeight:window.innerHeight; }
+function reveal(el,nearTop){
+  const r=el.getBoundingClientRect(), top=barBottom(), bottom=sheetTop();
+  if(!nearTop&&r.top>=top+8&&r.bottom<=bottom-8) return;
+  const target=nearTop?top+16:top+Math.max(10,(bottom-top-r.height)/2);
+  window.scrollBy({top:r.top-target,behavior:reduce?'auto':'smooth'});
+}
+function jumpFirst(){
+  let best=null,bt=Infinity;
+  document.querySelectorAll('#map .n.hit').forEach(n=>{ const t=n.getBoundingClientRect().top+window.scrollY; if(t<bt){bt=t;best=n;} });
+  if(best) reveal(best,true);
+}
+
+function xref(s){
+  return s.replace(/\[\[([\w:]+)(?:\|([^\]]+))?\]\]/g,(m,id,label)=>{
+    if(id.startsWith('k:')){
+      const k=id.slice(2); const lab=label||k;
+      return `<a class="xref" href="kings.html#${KP.has(k)?'guide-':'k-'}${k}">${lab}</a>`;
+    }
+    const x=byId[id]; if(!x) return label||id;
+    const lab=label||x.short||x.name;
+    return GUIDE[id]?`<button type="button" class="xref" data-guide="${id}">${lab}</button>`:`<button type="button" class="xref" data-go="${id}">${lab}</button>`;
+  });
+}
+function clashHTML(id){
+  const gs=CLASH.filter(g=>g.ids.includes(id));
+  if(!gs.length) return '';
+  return `<div class="clash"><h3>Watch the name</h3>${gs.map(g=>`<p><strong>${g.t}.</strong> ${xref(g.d)}</p>`).join('')}</div>`;
+}
+function relItem(e,other,attempt){
+  return `<li>${chip(other)}<cite>${e.r}</cite>${attempt?'<span class="tried">Tried and failed. </span>':''}${e.n}</li>`;
+}
+function personSheet(x){
+  let h=`<h2 id="sh-title" tabindex="-1">${x.name}</h2><p class="sh-sub">${x.role}, ${dates(x)}</p>`;
+  let a=''; if(x.aka) a+=`Also called ${x.aka}. `; if(x.dy) a+=`<span>Douay-Rheims: ${x.dy}.</span>`;
+  if(a) h+=`<p class="sh-aka">${a}</p>`;
+  h+=`<p class="sum" style="margin-top:12px">${x.sum}</p>`;
+  if(GUIDE[x.id]) h+=`<button type="button" class="guide-link" data-guide="${x.id}">Open the reading guide</button>`;
+  TORDER.forEach(t=>{
+    const out=E.filter(e=>e.y===t&&e.f===x.id);
+    if(out.length) h+=`<h3>${TY[t].a}</h3><ul class="rel-list">${out.map(e=>relItem(e,e.t,e.x)).join('')}</ul>`;
+  });
+  TORDER.forEach(t=>{
+    const inn=E.filter(e=>e.y===t&&e.t===x.id);
+    if(inn.length) h+=`<h3>${TY[t].p}</h3><ul class="rel-list">${inn.map(e=>relItem(e,e.f,e.x)).join('')}</ul>`;
+  });
+  const by=E.filter(e=>(e.by||[]).includes(x.id));
+  if(by.length) h+=`<h3>Ordered or arranged</h3><ul class="rel-list">${by.map(e=>`<li>${chip(e.f)} killed ${chip(e.t)}<cite>${e.r}</cite>${e.n}</li>`).join('')}</ul>`;
+  if(x.o) h+=`<h3>Off the map</h3><ul class="rel-list">${x.o.map(o=>`<li><b>${o[0]}</b><cite>${o[1]}</cite>${o[2]}</li>`).join('')}</ul>`;
+  if(x.id==='david'||x.id==='solomon') h+=`<p><a class="guide-link" href="kings.html#k-${x.id}">On the Kings chart</a></p>`;
+  h+=`<h3>Read</h3><p class="refs">${x.refs}</p>`;
+  return h+clashHTML(x.id);
+}
+function open(id){
+  const x=byId[id]; if(!x) return;
+  if(!$('#sheet').contains(document.activeElement)) lastFocus=document.activeElement;
+  state.sel=id;
+  $('#sheet-body').innerHTML=personSheet(x);
+  const sh=$('#sheet'); sh.inert=false; sh.classList.add('open'); sh.scrollTop=0;
+  apply();
+  const t=document.querySelector(`#map [data-id="${id}"]`);
+  requestAnimationFrame(()=>{ const ttl=$('#sh-title'); if(ttl) ttl.focus({preventScroll:true}); if(t) reveal(t,false); });
+}
+function close(){
+  const sh=$('#sheet'); sh.classList.remove('open'); sh.inert=true;
+  state.sel=null; apply();
+  if(lastFocus&&document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
+}
+
+function guideCard(id){
+  const p=byId[id], g=GUIDE[id];
+  return `<article class="g" style="--pc:var(--prophet)" id="guide-${id}"><h4 tabindex="-1">${p.name}</h4><p class="g-meta">${dates(p)}. ${p.role}.</p><p>${p.sum}</p><h5>Confronted</h5><p>${g.c}</p>${DEEP[id]?`<h5>Beneath the surface</h5><div class="g-deep">${DEEP[id].map(d=>`<p><b>${/[.?!]$/.test(d[0])?d[0]:d[0]+'.'}</b> ${xref(d[1])}</p>`).join('')}</div>`:''}<details class="g-mom"><summary>Key moments (${MOM[id].length})</summary><ol class="g-m">${MOM[id].map(m=>`<li><b>${m[0]}</b> <cite>${m[1]}</cite><span class="g-d">${m[2]}</span></li>`).join('')}</ol></details><h5>Reading path</h5><p>${g.r}</p><h5>As you read</h5><p>${g.t}</p><button type="button" class="g-back" data-go="${id}">Show on the map</button></article>`;
+}
+function goGuide(id){
+  const a=document.getElementById('guide-'+id); if(!a) return;
+  if($('#sheet').classList.contains('open')) close();
+  const y=a.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-12;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  a.classList.add('flash'); setTimeout(()=>a.classList.remove('flash'),1800);
+  const hh=a.querySelector('h4'); if(hh) hh.focus({preventScroll:true});
+}
+function renderLower(){
+  const ids=['samuel','gad','nathan'];
+  $('#g-nav').innerHTML=`<p class="g-nav">${ids.map(id=>`<button type="button" class="chip c-prop" data-guide="${id}">${byId[id].name}</button>`).join('')}</p>`;
+  $('#guide').innerHTML=ids.map(guideCard).join('');
+  $('#threads-list').innerHTML=THREADS.map(t=>`<div class="th"><h3>${t[0]}</h3><p>${xref(t[1])}</p></div>`).join('');
+  $('#clashes').innerHTML=CLASH.map(g=>`<article><h3>${g.t}</h3><p>${xref(g.d)}</p><div>${g.ids.map(chip).join('')}</div></article>`).join('');
+}
+
+function buildChaps(){
+  let h='<option value="">Chapter</option>';
+  for(let i=1;i<=COUNT[state.book];i++) h+=`<option value="${i}">${i}</option>`;
+  $('#chap').innerHTML=h; $('#chap').value=state.chap;
+}
+function save(){ try{ localStorage.setItem('uk-reading',JSON.stringify({b:state.book,c:state.chap})); }catch(e){} }
+function load(){
+  try{
+    const v=JSON.parse(localStorage.getItem('uk-reading')||'null');
+    if(v&&BOOKS[v.b]){ state.book=v.b; state.chap=(v.c&&+v.c>=1&&+v.c<=COUNT[v.b])?String(v.c):''; }
+  }catch(e){}
+}
+
+document.addEventListener('click',e=>{
+  const lg=e.target.closest('[data-type]');
+  if(lg){ const t=lg.dataset.type; state.hide.has(t)?state.hide.delete(t):state.hide.add(t); lg.setAttribute('aria-pressed',String(!state.hide.has(t))); apply(); return; }
+  const gd=e.target.closest('[data-guide]');
+  if(gd){ goGuide(gd.dataset.guide); return; }
+  const g=e.target.closest('[data-go]');
+  if(g){ open(g.dataset.go); return; }
+  const n=e.target.closest('#map [data-id]');
+  if(n){ open(n.dataset.id); }
+});
+$('#close').addEventListener('click',close);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('#sheet').classList.contains('open')) close(); });
+$('#book').addEventListener('change',e=>{ state.book=e.target.value; state.chap=''; buildChaps(); save(); apply(); });
+$('#chap').addEventListener('change',e=>{ state.chap=e.target.value; save(); apply(); if(state.chap) requestAnimationFrame(jumpFirst); });
+$('#clear').addEventListener('click',()=>{ state.chap=''; $('#chap').value=''; save(); apply(); });
+let rt=null, lastW=window.innerWidth;
+window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(()=>{ if(window.innerWidth!==lastW){ lastW=window.innerWidth; render(); } },150); });
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ drawEdges(); apply(); });
+
+load();
+$('#book').value=state.book;
+buildChaps();
+renderLegend();
+render();
+renderLower();
+if(state.chap) setTimeout(jumpFirst,250);
+const hm=location.hash.match(/^#p-(\w+)$/);
+if(hm&&byId[hm[1]]) setTimeout(()=>open(hm[1]),300);
+const gm=location.hash.match(/^#guide-(\w+)$/);
+if(gm&&GUIDE[gm[1]]) setTimeout(()=>goGuide(gm[1]),300);
+})();
+</script>
+<script>
+try{ if(/github\.io$/.test(location.hostname)) document.getElementById('home-link').hidden=false; }catch(e){}
+</script>
+</body>
+</html>

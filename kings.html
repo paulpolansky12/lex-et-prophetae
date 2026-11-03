@@ -188,6 +188,7 @@ select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper-2);bo
 .g-back{margin-top:8px;font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
 .guide-link{display:inline-block;margin:4px 0 4px;padding:5px 14px;border:1px solid var(--prophet);color:var(--prophet);border-radius:999px;font-size:16px}
 .guide-link:hover{background:var(--prophet-tint)}
+a.guide-link{text-decoration:none}
 .g-deep{margin:4px 0 0}
 .g-deep p{margin:0 0 13px}
 .g-deep b{font-weight:600}
@@ -437,7 +438,7 @@ const CLASH = [
 ];
 
 const GUIDE={
-nathan:{c:'David, over Bathsheba and Uriah; later Adonijah’s bid for the throne.',m:[['God’s covenant with David: a house and a throne forever','2 Sam 7'],['The parable of the poor man’s lamb, and “Thou art the man”','2 Sam 12:1–15'],['Gets Solomon crowned before Adonijah can take the throne','1 Kgs 1']],r:'2 Samuel 7, then 2 Samuel 12:1–25, then 1 Kings 1.',t:'Keep 2 Samuel 7 in mind for all of Kings. Every time Judah survives a bad king “for David’s sake,” the writer is pointing back to Nathan’s promise.'},
+nathan:{home:'samuel.html#guide-nathan',c:'David, over Bathsheba and Uriah; later Adonijah’s bid for the throne.',m:[['God’s covenant with David: a house and a throne forever','2 Sam 7'],['The parable of the poor man’s lamb, and “Thou art the man”','2 Sam 12:1–15'],['Gets Solomon crowned before Adonijah can take the throne','1 Kgs 1']],r:'2 Samuel 7, then 2 Samuel 12:1–25, then 1 Kings 1.',t:'Keep 2 Samuel 7 in mind for all of Kings. Every time Judah survives a bad king “for David’s sake,” the writer is pointing back to Nathan’s promise.'},
 ahijah:{c:'Jeroboam, the first king of the north, and later his wife, who came to him in disguise.',m:[['Tears his new cloak into twelve pieces and gives Jeroboam ten','1 Kgs 11:29–39'],['Old and blind, sees through the queen’s disguise and foretells the end of Jeroboam’s house','1 Kgs 14:1–18'],['Fulfilled when Baasha wipes out the family','1 Kgs 15:29']],r:'1 Kings 11:26–40, then 14:1–20.',t:'His first promise to Jeroboam was conditional: walk in my ways as David did and I will build you a lasting house (11:38). Chapter 14 is the same prophet delivering the other half of that condition.'},
 shemaiah:{c:'Rehoboam and the army he raised to win back the north; later Rehoboam and the princes of Judah.',m:[['Stops 180,000 men from marching on Israel, because the split is the Lord’s doing','1 Kgs 12:21–24'],['Announces Shishak’s invasion as judgment; the king humbles himself','2 Chr 12:1–8']],r:'1 Kings 12:21–24, then 2 Chronicles 11:1–4 and 12:1–12.',t:'The army listens and goes home. It is one of the few times in these books that a whole army obeys a prophet.'},
 man_of_god:{c:'Jeroboam, at the altar he set up at Bethel.',m:[['Cries out against the altar and names Josiah three centuries early; the altar splits and the king’s hand withers','1 Kgs 13:1–10'],['Deceived by an old prophet into breaking his orders, then killed by a lion','1 Kgs 13:11–32'],['Josiah burns bones on that altar but spares this man’s grave','2 Kgs 23:15–18']],r:'1 Kings 13, then jump ahead to 2 Kings 23:15–20 to see it come true.',t:'A strange story on a first read. The point seems to be that the word outlasts the messenger: the prophet fails, but what he said about Bethel still happens. It is also a warning about trusting a “prophet” over what God has already said.'},
@@ -1415,13 +1416,14 @@ function kingSheet(x){
   const pro=P.filter(p=>p.kings.includes(x.id));
   if(pro.length) h+=section(x.id==="athaliah"?"Prophets in her day":"Prophets in his day",pro.map(p=>chip(p.id)).join(""));
   h+=`<h3>Read</h3><p class="refs">${x.refs}</p>`;
+  if(x.k==="united") h+=`<p><a class="guide-link" href="samuel.html#p-${x.id}">On the united kingdom page</a></p>`;
   return h+clashHTML(x.id);
 }
 function prophetSheet(x){
   let h=`<h2 id="sh-title" tabindex="-1">${x.name}</h2><p class="sh-sub">${x.fem?"Prophetess":"Prophet"}, ${dates(x)}</p>${akaHTML(x)}<dl class="facts">`;
   h+=row("Sent to",TO[x.to])+row("Book",x.book||"None; known from the historical books")+"</dl>";
   h+=`<p class="sum">${x.sum}</p>`;
-  if(GUIDE[x.id]) h+=`<button type="button" class="guide-link" data-guide="${x.id}">Open the reading guide</button>`;
+  if(GUIDE[x.id]) h+= GUIDE[x.id].home ? `<a class="guide-link" href="${GUIDE[x.id].home}">Full guide on the united kingdom page</a>` : `<button type="button" class="guide-link" data-guide="${x.id}">Open the reading guide</button>`;
   if(x.kings.length) h+=section(x.fem?"Kings in her day":"Kings in his day",x.kings.map(chip).join(""));
   h+=`<h3>Read</h3><p class="refs">${x.refs}</p>`;
   return h+clashHTML(x.id);
@@ -1465,6 +1467,7 @@ function load(){
 function xref(s){ return s.replace(/\[\[(\w+)(?:\|([^\]]+))?\]\]/g,(m,id,label)=>{ const x=byId[id]; if(!x) return label||id; const lab=label||x.short||x.name; return GUIDE[id]?`<button type='button' class='xref' data-guide='${id}'>${lab}</button>`:`<button type='button' class='xref' data-go='${id}'>${lab}</button>`; }); }
 function guideCard(id){
   const p=byId[id], g=GUIDE[id];
+  if(g.home) return `<article class='g to-${p.to}' id='guide-${id}'><h4 tabindex='-1'>${p.name}</h4><p class='g-meta'>${dates(p)}. Sent to ${TO[p.to].replace(/^(Both|The) /,m=>m.toLowerCase())}.</p><p>${p.sum}</p><p><a class='guide-link' href='${g.home}'>Full guide on the united kingdom page</a></p></article>`;
   const sent=TO[p.to].replace(/^(Both|The) /,m=>m.toLowerCase());
   const book=p.book?`Book: ${p.book}.`:`No book of ${p.fem?'her':'his'} own.`;
   const col=p._c!=null?` pc${p._c}`:'';
@@ -1513,6 +1516,8 @@ render();
 renderLower();
 lastS=S;
 if(state.chap) setTimeout(jumpFirst,250);
+const hm=location.hash.match(/^#k-(\w+)$/);
+if(hm && byId[hm[1]]) setTimeout(()=>open(hm[1]),300);
 })();
 </script>
 <script>
