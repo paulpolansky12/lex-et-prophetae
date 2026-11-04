@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Exile and Return</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+:root{
+  --paper:#EDF0F2; --paper-2:#E1E6EB; --ink:#1A2130; --ink-soft:#4F596A; --rule:#C2CAD4;
+  --judah:#24408A; --judah-tint:rgba(36,64,138,.11); --judah-strong:rgba(36,64,138,.28);
+  --israel:#74601A; --israel-tint:rgba(116,96,26,.11); --israel-strong:rgba(116,96,26,.28);
+  --band-a:#8A7425; --band-b:#C4B06A; --band-a-ink:#F6F3E6; --band-b-ink:#2A2410; --judah-ink:#EEF1F8;
+  --prophet:#9A2334; --prophet-tint:rgba(154,35,52,.09); --prophet-strong:rgba(154,35,52,.26);
+  --sheet:#F8F9FA; --shadow:0 -10px 32px rgba(18,24,38,.16);
+  --pc0:#0E7C78; --pc1:#7A3E9C; --pc2:#C0561A; --pc3:#B0263F; --pc4:#3D7B2A; --pc5:#2D5BC0; --pc6:#B0397F; --pc7:#9C760C;
+  --axis:30px; --gap:6px; --band:14px;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121620; --paper-2:#1B212D; --ink:#E4E7EC; --ink-soft:#A5ADBA; --rule:#2F3746;
+    --judah:#94AAE6; --judah-tint:rgba(148,170,230,.12); --judah-strong:rgba(148,170,230,.30);
+    --israel:#D4BE6C; --israel-tint:rgba(212,190,108,.11); --israel-strong:rgba(212,190,108,.28);
+    --band-a:#B19C4D; --band-b:#5F5329; --band-a-ink:#16130A; --band-b-ink:#EDE5C6; --judah-ink:#10162A;
+    --prophet:#EA8C9C; --prophet-tint:rgba(234,140,156,.11); --prophet-strong:rgba(234,140,156,.28);
+    --sheet:#1A202B; --shadow:0 -10px 32px rgba(0,0,0,.5);
+    --pc0:#4CC3BD; --pc1:#BB8BDD; --pc2:#F28C4E; --pc3:#EF7287; --pc4:#82C76C; --pc5:#86A7F2; --pc6:#E87EC1; --pc7:#DCB64C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --pc0:#4CC3BD; --pc1:#BB8BDD; --pc2:#F28C4E; --pc3:#EF7287; --pc4:#82C76C; --pc5:#86A7F2; --pc6:#E87EC1; --pc7:#DCB64C;
+  --paper:#121620; --paper-2:#1B212D; --ink:#E4E7EC; --ink-soft:#A5ADBA; --rule:#2F3746;
+  --judah:#94AAE6; --judah-tint:rgba(148,170,230,.12); --judah-strong:rgba(148,170,230,.30);
+  --israel:#D4BE6C; --israel-tint:rgba(212,190,108,.11); --israel-strong:rgba(212,190,108,.28);
+  --band-a:#B19C4D; --band-b:#5F5329; --band-a-ink:#16130A; --band-b-ink:#EDE5C6; --judah-ink:#10162A;
+  --prophet:#EA8C9C; --prophet-tint:rgba(234,140,156,.11); --prophet-strong:rgba(234,140,156,.28);
+  --sheet:#1A202B; --shadow:0 -10px 32px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+@media (min-width:720px){ :root{ --axis:42px; --gap:14px; --band:16px; } }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"EB Garamond",Garamond,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+button:focus-visible,select:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
+
+/* Header */
+header{padding:40px 0 18px}
+h1{font-weight:500;font-size:clamp(2.5rem,9vw,4.6rem);line-height:1;letter-spacing:-.015em;margin:0 0 14px}
+.lede{max-width:36em;color:var(--ink-soft);margin:0 0 26px;font-size:1.08rem}
+.ledger{font-size:14px;line-height:1.4;align-items:start}
+.ledger p{margin:0}
+.ledger .lj{grid-column:1;color:var(--ink)}
+.ledger .lp{grid-column:2;color:var(--ink-soft);font-style:italic}
+.ledger .li{grid-column:3;text-align:right}
+.ledger b{font-weight:600;display:block;font-size:1.15rem;margin-bottom:2px}
+.ledger .lj b{color:var(--judah)} .ledger .li b{color:var(--israel)} .ledger .lp b{color:var(--prophet);font-style:normal}
+
+/* Sticky reading bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);margin-top:18px}
+.bar-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:8px}
+.bar label{font-style:italic;color:var(--ink-soft)}
+select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:3px 6px}
+.clear{font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:4px}
+.clear[hidden]{display:none}
+.found{white-space:nowrap;overflow-x:auto;scrollbar-width:none;font-size:15px;padding:6px 0 4px;min-height:34px}
+.found::-webkit-scrollbar{display:none}
+.hint{color:var(--ink-soft);font-style:italic;margin-right:4px}
+.cols-head{font-size:15px;font-weight:600;padding:2px 0 6px}
+.cols-head .hj{grid-column:1;color:var(--judah);padding-left:calc(var(--band) + 6px)}
+.cols-head .hp{grid-column:2;color:var(--prophet)}
+.cols-head .hi{grid-column:3;color:var(--israel);text-align:right;padding-right:calc(var(--band) + 6px)}
+
+/* Chips */
+.chip{display:inline-flex;align-items:baseline;gap:4px;border:1px solid var(--cc,var(--rule));color:var(--ink);background:transparent;border-radius:999px;padding:1px 10px 2px;margin:2px 4px 2px 0;font-size:15px;line-height:1.35;white-space:nowrap}
+.chip small{font-size:12px;color:var(--ink-soft);font-style:italic}
+.c-judah{--cc:var(--judah)} .c-israel{--cc:var(--israel)} .c-prop{--cc:var(--prophet)} .c-neutral{--cc:var(--ink-soft)}
+.chip:hover{background:var(--paper-2)}
+
+/* Trunk: David to the split */
+.trunk{padding-top:14px}
+.node{--kc:var(--ink-soft);--kc-strong:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-self:center;width:100%;max-width:150px;padding:5px 8px 4px;border:1px solid var(--rule);background:var(--paper-2);border-radius:2px;line-height:1.15}
+.node .k-name{font-size:17px;font-weight:500}
+.node .k-years{font-size:12px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums}
+.stem{width:2px;height:14px;background:var(--ink-soft);justify-self:center}
+.t-note{font-size:13px;font-style:italic;color:var(--ink-soft);line-height:1.3;align-self:center}
+.fork{position:relative;height:30px}
+.fork span{position:absolute;display:block}
+.f-stem{left:calc(50% - 1px);top:0;width:2px;height:50%;background:var(--ink-soft)}
+.f-bar{top:calc(50% - 1px);height:2px;left:calc((100% - 2 * var(--gap)) / 6 - 1px);right:calc((100% - 2 * var(--gap)) / 6 - 1px);background:linear-gradient(to right,var(--judah) 50%,var(--israel) 50%)}
+.f-l,.f-r{top:50%;width:2px;height:50%}
+.f-l{left:calc((100% - 2 * var(--gap)) / 6 - 1px);background:var(--judah)}
+.f-r{right:calc((100% - 2 * var(--gap)) / 6 - 1px);background:var(--israel)}
+
+/* Chart */
+.chart{position:relative;grid-template-rows:100%}
+.col{position:relative;z-index:1}
+.overlay{position:absolute;inset:0;z-index:0;pointer-events:none}
+.gl{position:absolute;left:var(--axis);right:0;height:1px;background:var(--rule);opacity:.55}
+.axis span{position:absolute;right:4px;font-size:11.5px;color:var(--ink-soft);transform:translateY(-50%);font-variant-numeric:lining-nums tabular-nums;background:var(--paper);padding:0 2px}
+
+.k{position:absolute;left:0;right:0;display:flex;flex-direction:column;justify-content:flex-start;gap:1px;padding:6px 7px;border:1px solid var(--rule);border-radius:2px;text-align:left;overflow:hidden;line-height:1.2}
+.k-judah{--kc:var(--judah);--kc-strong:var(--judah-strong);--tint:var(--judah-tint);padding-left:calc(var(--band) + 6px)}
+.k-israel{--kc:var(--israel);--kc-strong:var(--israel-strong);--tint:var(--israel-tint);padding-right:calc(var(--band) + 6px);align-items:flex-end;text-align:right}
+.k .k-name{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.k .k-years{font-size:12px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.glyph{font-weight:600;color:var(--kc);margin-left:2px}
+.v-right{background:var(--tint)}
+.v-mixed{background-image:repeating-linear-gradient(135deg,var(--tint) 0 4px,transparent 4px 8px)}
+.usurper{border-style:dashed;border-color:var(--prophet)}
+.k:hover{border-color:var(--kc)}
+@media (min-width:720px){ .k .k-name{font-size:17px} .k .k-years{font-size:13px} }
+
+.band{position:absolute;width:var(--band);z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:1px}
+.band i{writing-mode:vertical-rl;font-style:normal;font-size:11px;letter-spacing:.03em;white-space:nowrap}
+.band-j{left:0;background:var(--judah);color:var(--judah-ink)}
+.band-break{left:0;background:repeating-linear-gradient(135deg,var(--judah) 0 2px,transparent 2px 6px)}
+.band-a{right:0;background:var(--band-a);color:var(--band-a-ink)}
+.band-b{right:0;background:var(--band-b);color:var(--band-b-ink)}
+
+.fall{position:absolute;left:0;right:0;padding:8px;border:1px solid var(--rule);border-radius:2px;font-size:13.5px;line-height:1.3;text-align:left;background:repeating-linear-gradient(135deg,var(--tint) 0 5px,transparent 5px 11px)}
+.fall b{display:block;font-size:15px;font-weight:600;color:var(--kc)}
+.fall span{color:var(--ink-soft);font-style:italic}
+.fall.k-israel{text-align:right}
+
+.p{--kc:var(--pc);--kc-strong:var(--prophet-strong);position:absolute;right:0;height:28px;display:flex;align-items:center;gap:3px;padding:0 6px;font-size:14px;line-height:1;background:var(--pbg,var(--prophet-tint));border-left:4px solid var(--pc);border-radius:0 3px 3px 0;white-space:nowrap;overflow:hidden}
+.p span{overflow:hidden;text-overflow:ellipsis}
+.p .bk{color:var(--pc);font-size:13px;flex:none}
+.p.static{position:relative;right:auto;justify-self:start;align-self:center}
+.to-israel{--pc:var(--israel);--pbg:var(--israel-tint)} .to-judah,.to-united{--pc:var(--judah);--pbg:var(--judah-tint)} .to-both,.to-exile,.to-nations{--pc:var(--prophet);--pbg:var(--prophet-tint)}
+.pc0{--pc:var(--pc0)} .pc1{--pc:var(--pc1)} .pc2{--pc:var(--pc2)} .pc3{--pc:var(--pc3)} .pc4{--pc:var(--pc4)} .pc5{--pc:var(--pc5)} .pc6{--pc:var(--pc6)} .pc7{--pc:var(--pc7)}
+.hl{position:absolute;width:3px;background:var(--pc);opacity:.8;border-radius:2px;pointer-events:none}
+.hl.on{opacity:1;width:4px}
+@media (min-width:720px){ .p{font-size:15px} }
+
+/* States */
+.is-sel{outline:2px solid var(--kc);outline-offset:-1px;z-index:3}
+.chart-wrap.filtering [data-id]:not(.hit){opacity:.28}
+.chart-wrap.filtering .hl:not(.on){opacity:.1}
+.chart-wrap [data-id].hit{background-color:var(--kc-strong);border-color:var(--kc)}
+@media (prefers-reduced-motion:no-preference){ .chart-wrap [data-id]{transition:opacity .18s ease} }
+
+/* Key & lower sections */
+.key{margin:22px auto 0;display:grid;grid-template-columns:1fr;gap:10px;font-size:15.5px;line-height:1.45}
+@media (min-width:720px){ .key{grid-template-columns:1fr 1fr;column-gap:32px} }
+.key p{margin:0;display:flex;gap:10px;align-items:flex-start}
+.sw{flex:none;width:18px;height:20px;margin-top:2px;border-radius:1px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
+.sw-david{background:var(--judah)}
+.sw-dyn{background:linear-gradient(var(--band-a) 0 30%,var(--band-b) 30% 55%,var(--band-a) 55% 75%,var(--band-b) 75%)}
+.sw-v{background:var(--judah-tint);color:var(--judah);border:1px solid var(--rule)}
+.sw-p{background:var(--prophet-tint);color:var(--prophet);border-left:3px solid var(--prophet)}
+
+.lower{max-width:700px;margin:0 auto;padding:56px 14px 30vh}
+.lower h2{font-weight:500;font-size:1.9rem;line-height:1.1;margin:44px 0 6px}
+.lower h2:first-child{margin-top:0}
+.lower > p{margin:0 0 14px}
+.clashes{display:grid;gap:18px;margin-top:14px}
+.clashes article h3{font-size:1.15rem;font-weight:600;margin:0 0 2px}
+.clashes article p{margin:0 0 4px}
+.notes p{font-size:16px;color:var(--ink-soft);margin:0 0 10px}
+
+/* Prophet guide */
+.g-nav{margin:6px 0;line-height:1.9}
+.g-nav span{font-style:italic;color:var(--ink-soft);margin-right:6px;font-size:15px}
+.g-era{font-size:1.3rem;font-weight:600;margin:44px 0 2px}
+.g-era-n{margin:0 0 6px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.g{border-left:4px solid var(--pc);padding:4px 0 6px 16px;margin:22px 0 34px;border-radius:0 4px 4px 0}
+@media (prefers-reduced-motion:no-preference){ .g{transition:background-color .8s ease} }
+.g.flash{background:var(--prophet-tint)}
+.g h4{font-size:1.6rem;font-weight:500;line-height:1.1;margin:0;outline:none}
+.g .g-meta{margin:3px 0 10px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.g h5{font-size:1rem;font-weight:600;font-style:italic;margin:16px 0 2px}
+.g p{margin:0 0 6px}
+.g-m{margin:4px 0 0;padding-left:1.3em}
+.g-m li{margin:0 0 13px;padding-left:2px}
+.g-m li b{font-weight:600}
+.g-d{display:block;margin-top:2px}
+.g-m cite{font-style:normal;color:var(--ink-soft);font-size:15px;font-variant-numeric:lining-nums}
+.g-back{margin-top:8px;font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.guide-link{display:inline-block;margin:4px 0 4px;padding:5px 14px;border:1px solid var(--prophet);color:var(--prophet);border-radius:999px;font-size:16px}
+.guide-link:hover{background:var(--prophet-tint)}
+a.guide-link{text-decoration:none}
+.g-deep{margin:4px 0 0}
+.g-deep p{margin:0 0 13px}
+.g-deep b{font-weight:600}
+.xref{display:inline;padding:0;font:inherit;color:var(--prophet);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.g-mom summary{cursor:pointer;font-weight:600;font-style:italic;margin:16px 0 4px}
+.g-mom[open] summary{margin-bottom:8px}
+.th{margin:18px 0 24px}
+.th h3{font-size:1.15rem;font-weight:600;margin:0 0 2px}
+.th p{margin:0}
+.home-link{margin:0 0 10px;font-size:16px}
+.home-link a{color:var(--ink-soft);text-underline-offset:3px}
+.page-nav{font-size:16px;color:var(--ink-soft)}
+.page-nav a{color:var(--prophet);text-underline-offset:3px}
+.lower h2{scroll-margin-top:150px}
+.era-strip{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:14px 0 6px;font-size:16px;line-height:1.4}
+.era-strip dt{color:var(--ink-soft);white-space:nowrap;font-variant-numeric:lining-nums}
+.era-strip dd{margin:0}
+.nb{border-left:4px solid var(--ink-soft);padding:4px 0 6px 16px;margin:24px 0 32px}
+.nb h3{font-size:1.6rem;font-weight:500;line-height:1.1;margin:0}
+.nb h3 span{font-size:1.1rem;color:var(--ink-soft)}
+.nb .nb-meta{margin:3px 0 10px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.nb p{margin:0 0 8px}
+.nb h5{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.nb-r{margin:0 0 8px;padding-left:1.2em}
+.nb-r li{margin:0 0 8px}
+.nb-r cite{font-style:normal;color:var(--ink-soft);font-size:15px}
+
+/* Detail sheet */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--sheet);border-top:1px solid var(--rule);box-shadow:var(--shadow);max-height:min(66vh,680px);overflow-y:auto;overscroll-behavior:contain;transform:translateY(105%);padding:16px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.sheet.open{transform:none}
+@media (prefers-reduced-motion:no-preference){ .sheet{transition:transform .22s ease} }
+.sheet-inner{max-width:680px;margin:0 auto;position:relative}
+.close{position:absolute;top:-4px;right:-6px;width:40px;height:40px;font-size:28px;line-height:1;color:var(--ink-soft)}
+.sheet h2{font-weight:500;font-size:2rem;line-height:1.05;margin:0 44px 2px 0;outline:none}
+.sh-sub{font-style:italic;color:var(--ink-soft);margin:0}
+.sh-aka{margin:4px 0 0;font-size:16px}
+.sh-aka span{color:var(--ink-soft)}
+.facts{display:grid;grid-template-columns:6.4em 1fr;gap:4px 12px;margin:14px 0;font-size:16.5px;line-height:1.4}
+.facts dt{font-style:italic;color:var(--ink-soft)}
+.facts dd{margin:0}
+.facts .vn{display:block;color:var(--ink-soft);font-size:15px}
+.facts .glyph{--kc:var(--ink);margin:0 3px 0 0}
+.sum{margin:0 0 12px}
+.sheet h3{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.refs{margin:0;font-variant-numeric:lining-nums}
+.clash{margin-top:16px;padding-top:10px;border-top:1px solid var(--rule)}
+.clash p{margin:0 0 8px;font-size:16px}
+
+@media print{
+  .bar,.sheet{display:none}
+  body{background:#fff;color:#000}
+  .chart-wrap.filtering [data-id]{opacity:1}
+  .lower{padding-bottom:0}
+}
+
+/* Samuel page */
+.reigns{font-size:14px;line-height:1.4;gap:14px}
+.reigns p{margin:0}
+.reigns b{font-weight:600;display:block;font-size:1.15rem;margin-bottom:2px}
+.reigns .rs b{color:var(--israel)} .reigns .rd b,.reigns .ro b{color:var(--judah)}
+.reigns .ro{text-align:right}
+.story{max-width:700px;margin:0 auto;padding:26px 14px 0}
+.story > h2,.lower h2{font-weight:500;font-size:1.9rem;line-height:1.1;margin:0 0 6px;scroll-margin-top:110px}
+.story > p{margin:0 0 10px}
+.verbs{font-size:15.5px;line-height:1.7;color:var(--ink-soft);margin:0 0 6px}
+.verbs span{white-space:nowrap;margin-right:10px}
+.verbs i{font-style:normal;font-weight:600;color:var(--tc)}
+.act{position:relative;margin:34px 0 4px;padding-left:30px}
+.act h3{font-size:1.45rem;font-weight:500;line-height:1.1;margin:0}
+.act p{margin:2px 0 0;font-style:italic;color:var(--ink-soft);font-size:16px}
+.a0,.a1,.a2{--ac:var(--judah)} .a3,.a4,.a5{--ac:var(--israel)}
+.scenes{list-style:none;margin:0;padding:0;position:relative}
+.scenes::before{content:"";position:absolute;left:7px;top:14px;bottom:14px;width:2px;background:var(--rule)}
+.scene{position:relative;padding:14px 0 18px 30px;scroll-margin-top:110px;border-radius:4px}
+.scene::before{content:"";position:absolute;left:1px;top:21px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--ac)}
+.scene.here{background:var(--judah-tint)}
+.scene.here::before{background:var(--ac)}
+@media (prefers-reduced-motion:no-preference){ .scene{transition:background-color .4s ease} }
+.scene h4{font-size:1.3rem;font-weight:500;line-height:1.15;margin:0;outline:none}
+.sc-ref{margin:1px 0 6px;font-size:15px;color:var(--ink-soft);font-variant-numeric:lining-nums}
+.sc-ref span{font-style:italic;margin-left:6px}
+.sc-n{margin:0 0 8px}
+.sc-who{margin:0 0 8px;line-height:1.9}
+.evs{list-style:none;margin:0;padding:0}
+.ev{--tc:var(--ink-soft);border-left:3px solid var(--tc);padding:1px 0 1px 11px;margin:0 0 11px;font-size:16.5px;line-height:1.45}
+.ev .vb{color:var(--tc);font-weight:600;font-style:italic}
+.ev cite{font-style:normal;color:var(--ink-soft);font-size:14.5px;margin-left:5px;white-space:nowrap;font-variant-numeric:lining-nums}
+.ev .nt{display:block;color:var(--ink-soft);font-size:15.5px}
+.ev .who{font-weight:600}
+.ev .who.plain{font-weight:500}
+.t-anoint{--tc:var(--pc7)} .t-save{--tc:var(--pc4)} .t-betray{--tc:var(--pc2)} .t-kill{--tc:var(--pc3)} .t-rebuke{--tc:var(--pc1)}
+.pn{display:inline;padding:0;font:inherit;font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--rule);text-decoration-thickness:1.5px;text-underline-offset:3px}
+.pn:hover{text-decoration-color:var(--ink)}
+.c-saul{--cc:var(--israel)} .c-men{--cc:var(--ink-soft)} .c-dav{--cc:var(--judah)}
+
+.cast h3{font-size:1.15rem;font-weight:600;margin:26px 0 4px}
+.cast-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.cast-row{display:grid;grid-template-columns:8.2em 1fr;gap:10px;width:100%;text-align:left;padding:8px 2px;border-bottom:1px solid var(--rule);line-height:1.3}
+.cast-row b{font-weight:600}
+.cast-row span{color:var(--ink-soft);font-size:16px}
+.cast-row:hover{background:var(--paper-2)}
+
+.sheet .evs{margin-top:4px}
+.sheet .ev{font-size:16px}
+.sc-link{display:inline;padding:0;font:inherit;font-size:14.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.sc-chips{line-height:1.9}
+/* Deep dives */
+.dive{margin:12px 0 4px;border:1px solid var(--rule);border-left:4px solid var(--ac);border-radius:0 4px 4px 0;background:var(--paper-2);scroll-margin-top:110px}
+.dive summary{list-style:none;cursor:pointer;padding:10px 12px 11px;display:block}
+.dive summary::-webkit-details-marker{display:none}
+.dv-k{display:block;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ac);font-weight:600}
+.dv-t{display:block;font-size:1.2rem;font-weight:600;line-height:1.2;margin:1px 0 1px}
+.dv-r{display:block;font-size:14.5px;color:var(--ink-soft);font-variant-numeric:lining-nums}
+.dv-l{display:block;margin-top:5px;font-size:16.5px;line-height:1.45}
+.dv-more{display:inline-block;margin-top:6px;font-size:14.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.dv-more .c,.dive[open] .dv-more .o{display:none}
+.dive[open] .dv-more .c{display:inline}
+.dv-body{padding:0 12px 6px;border-top:1px solid var(--rule)}
+.dv-body h5{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.dv-body p{margin:0 0 11px;font-size:17px;line-height:1.55}
+.dv-body p b{font-weight:600}
+.chs{margin:6px 0 4px}
+.chs summary{cursor:pointer;font-size:15.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:2px 0}
+.chs ul{list-style:none;margin:6px 0 0;padding:0}
+.chs li{font-size:16px;line-height:1.45;margin:0 0 9px;padding:2px 0 2px 10px;border-left:3px solid var(--rule);scroll-margin-top:120px}
+.chs li b{font-weight:600;font-variant-numeric:lining-nums;margin-right:4px}
+.chs li.here{border-left-color:var(--ac);background:var(--paper)}
+.lead-in a,.notes a,#prophets+p a{color:var(--prophet)}
+.lead-in{font-size:16.5px;color:var(--ink-soft)}
+.lead-in b{color:var(--ink);font-weight:600}
+.split-next{margin:18px 0 0;padding:10px 12px;border:1px solid var(--rule);border-radius:2px;font-size:15.5px;line-height:1.4;color:var(--ink-soft)}
+.split-next b{display:block;color:var(--ink);font-weight:600}
+.rulers{list-style:none;margin:10px 0 0;padding:0}
+.rulers li{margin:0 0 14px;padding-left:12px;border-left:3px solid var(--judah);font-size:16.5px;line-height:1.45}
+.rulers li b{font-weight:600}
+.rulers li span{display:block;font-size:14.5px;color:var(--ink-soft);font-style:italic;margin-bottom:2px}
+.dv-close{margin:2px 0 8px;font-size:14.5px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.c-dive{--cc:var(--judah);font-weight:600}
+a.xref{color:var(--prophet)}
+a.guide-link{text-decoration:none}
+.hint .sc-link{font-style:normal;color:var(--ink);font-size:15px}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="home-link" id="home-link" hidden><a href="./">Lex et Prophetae</a></p>
+  <h1>Exile and Return</h1>
+  <p class="lede">Ezra, Nehemiah, Tobit, Judith and Esther, with the three prophets of the return: Haggai, Zechariah and Malachi. Choose the book and chapter you’re reading to jump to its scene; each scene has a chapter-by-chapter guide, and the one you chose is marked. Tap any name for that person’s whole story.</p>
+  <div class="reigns grid">
+    <p class="rs"><b>538</b>Cyrus sends the exiles home.</p>
+    <p class="rd"><b>515</b>The Second Temple finished.</p>
+    <p class="ro"><b>458 · 445</b>Ezra, then Nehemiah.</p>
+  </div>
+</header>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <div class="bar-row">
+      <label for="book">Reading</label>
+      <select id="book" aria-label="Book">
+        <option value="Ezr">Ezra</option>
+        <option value="Neh">Nehemiah</option>
+        <option value="Tob">Tobit</option>
+        <option value="Jdt">Judith</option>
+        <option value="Est">Esther</option>
+        <option value="Hag">Haggai</option>
+        <option value="Zec">Zechariah</option>
+        <option value="Mal">Malachi</option>
+      </select>
+      <select id="chap" aria-label="Chapter"></select>
+      <button type="button" class="clear" id="clear" hidden>Clear</button>
+    </div>
+    <div class="found" id="found" aria-live="polite"></div>
+  </div>
+</div>
+
+<main>
+  <div class="story">
+    <p class="page-nav">Further down: <a href="#rulers">Who ruled when</a>, <a href="#cast">The cast</a>, <a href="#prophets">The prophets</a>, <a href="#threads">Threads</a>, <a href="#names">Same name, different person</a>.</p>
+    <h2 id="scenes">The story in scenes</h2>
+    <p class="lead-in"><b>586 BC.</b> Jerusalem falls and its people go to Babylon; that story, with Jeremiah, Ezekiel and Daniel, is on the <a href="kings.html#prophets">divided kingdom page</a>. This page begins when Cyrus lets them go home.</p>
+    <p>Each scene lists who is in it and what passed between them. The verb’s color says what kind of thing it was:</p>
+    <p class="verbs"><span class="t-anoint"><i>commissions or blesses</i></span> <span class="t-save"><i>spares or saves</i></span> <span class="t-betray"><i>betrays</i></span> <span class="t-kill"><i>kills, or tries to</i></span> <span class="t-rebuke"><i>rebukes or curses</i></span></p>
+    <div id="story"></div>
+    <p class="split-next"><b>331 BC</b>Alexander takes the Persian empire, and the next section, Under the Greeks, takes up the story with 1–2 Maccabees.</p>
+  </div>
+
+  <div class="lower">
+    <h2 id="rulers">Who ruled when</h2>
+    <p>The kings behind these books, oldest first. Persian dates are firm, fixed by Babylonian and Persian records.</p>
+    <ol class="rulers">
+      <li><b>Shalmaneser V, Sennacherib, Esarhaddon</b> <span>Assyria, 727–669</span>The kings of Tobit 1, under whom the northern tribes were carried to Nineveh.</li>
+      <li><b>Nebuchadnezzar II</b> <span>Babylon, 605–562</span>Took Jerusalem in 597 and burned it in 586. Judith borrows his name for a “king of the Assyrians.”</li>
+      <li><b>Cyrus II</b> <span>Persia, 559–530</span>Took Babylon in 539; the decree and the first return (Ezra 1–3).</li>
+      <li><b>Cambyses II</b> <span>530–522</span>Conquered Egypt. Not named in the Bible; the building stood still.</li>
+      <li><b>Darius I</b> <span>522–486</span>Haggai and Zechariah; the Temple finished in 515 (Ezra 5–6).</li>
+      <li><b>Xerxes I, Ahasuerus</b> <span>486–465</span>Esther; the complaint of Ezra 4:6. Defeated by the Greeks at Salamis in 480.</li>
+      <li><b>Artaxerxes I</b> <span>465–424</span>The letters of Ezra 4:7–23; Ezra in 458; Nehemiah in 445 and again about 432; Malachi.</li>
+      <li><b>Darius II</b> <span>423–404</span>Named in Nehemiah 12:22. The Elephantine papyri of 407 mention Sanballat’s sons and the high priest Johanan (Neh 12:22–23).</li>
+    </ol>
+
+    <h2 id="cast">The cast</h2>
+    <p>Everyone above, by group. Tap a name for the full record of what they did and what was done to them.</p>
+    <div class="cast" id="cast-list"></div>
+
+    <h2 id="prophets">The prophets</h2>
+    <p>Three prophets belong to the return. Haggai and Zechariah got the Temple built; Malachi spoke to the community that had it and grew careless. The prophets of the exile itself, Jeremiah, Baruch, Ezekiel and Daniel, are on the <a href="kings.html#prophets">divided kingdom page</a>.</p>
+    <div id="g-nav"></div>
+    <div id="guide"></div>
+
+    <h2 id="threads">Threads</h2>
+    <p>Patterns that run across these books, and sometimes back into earlier ones.</p>
+    <div id="threads-list"></div>
+
+    <h2 id="names">Same name, different person</h2>
+    <p>These books are full of them, and the Douay-Rheims adds a few of its own.</p>
+    <div class="clashes" id="clashes"></div>
+
+    <h2>Notes</h2>
+    <div class="notes">
+      <p>Dates are approximate for Tobit, Judith and the undated prophets. Persian reigns are firm. The traditional order puts Ezra (458) before Nehemiah (445); some scholars put Ezra later, in 398, under Artaxerxes II.</p>
+      <p>Esther exists in two forms. The Hebrew has ten chapters and never names God; the Greek adds six passages, lettered A–F in the NABRE and printed in their places. The Douay-Rheims, following Jerome, gathers them at the end as 10:4–16:24. The chapter picker lists them in reading order with their Douay numbers.</p>
+      <p>Tobit and Judith survive mainly in Greek. Jerome translated them quickly from Aramaic copies, and the Vulgate and Douay-Rheims text differs from modern translations in wording and verse numbers. This page follows the numbering of the NABRE and the King James Apocrypha.</p>
+      <p>Older Catholic Bibles call Ezra and Nehemiah 1 and 2 Esdras, and spell many names differently, such as Zorobabel for Zerubbabel or Mardochai for Mordecai. Those spellings are in each person’s details. Malachi has four chapters in the King James and Douay and three in the NABRE.</p>
+    </div>
+  </div>
+</main>
+
+<div class="sheet" id="sheet" role="dialog" aria-labelledby="sh-title" inert>
+  <div class="sheet-inner">
+    <button type="button" class="close" id="close" aria-label="Close details">×</button>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const R=(a,b)=>Array.from({length:b-a+1},(_,i)=>a+i);
+const SP=[
+{id:'haggai',name:'Haggai',c:0,dates:'prophesied 520 BC',role:'Prophet of the rebuilding',dy:'Aggeus',sum:'Four dated sermons in four months of 520 BC, all about one thing: the Temple lay in ruins while the people paneled their own houses. Within weeks the work started again under Zerubbabel and Jeshua. He promised that the glory of the latter house would be greater than the former, and called Zerubbabel the Lord’s signet ring.',refs:'Ezra 5:1–2; 6:14; Hag 1–2',ch:{'Ezr':[5,6],'Hag':[1,2]}},
+{id:'zechariah',name:'Zechariah',c:0,dates:'prophesied from 520 BC',role:'Prophet of the rebuilding',dy:'Zacharias',sum:'Son of Berechiah, grandson of Iddo, of a priestly family, and Haggai’s younger contemporary. Eight visions in one night, horsemen, horns, a measuring line, the high priest reclothed, a lampstand between two olive trees, tell the returned exiles that God has not abandoned Jerusalem. The second half of his book gives the king riding on an ass, the thirty pieces of silver, and the one they pierced.',refs:'Ezra 5:1; 6:14; Neh 12:16; Zech 1–14',ch:{'Ezr':[5,6],'Neh':[12],'Zec':R(1,14)}},
+{id:'malachi',name:'Malachi',c:0,dates:'c. 460–430 BC',role:'The last of the prophets',dy:'Malachias',sum:'The name means “my messenger,” and may be a title rather than a name. He argues with priests who offer blind and lame animals, men who divorce the wives of their youth, and people who hold back their tithes, in a series of statements, objections and answers. He closes the prophets with the promise of Elijah before the great and dreadful day.',refs:'Mal 1–4 (1–3 in the NABRE)',ch:{'Mal':[1,2,3,4]}},
+{id:'ezra',name:'Ezra',c:0,dates:'came to Jerusalem 458 BC',role:'Priest and scribe of the Law',dy:'Esdras',sum:'A priest of Aaron’s line through Zadok, and a ready scribe in the law of Moses (Ezra 7:6). He came from Babylon with a commission from Artaxerxes to teach and enforce the Law, tore his clothes over the mixed marriages, and stood on a wooden pulpit to read the Law to the whole people from morning to midday (Neh 8). Jewish tradition calls him a second Moses.',refs:'Ezra 7–10; Neh 8; 12:26, 36',ch:{'Ezr':[7,8,9,10],'Neh':[8,12]}},
+{id:'jeshua',name:'Jeshua',c:0,dates:'c. 538–515 BC',role:'High priest of the return',aka:'Joshua (in Haggai and Zechariah)',dy:'Josue; Jesus son of Josedec in Haggai and Zechariah',sum:'Son of Jozadak, grandson of the last high priest before the exile (1 Chr 6:15). He came back with Zerubbabel, rebuilt the altar, and became the first high priest of the Second Temple. In Zechariah’s vision he stands in filthy garments while Satan accuses him, and is reclothed (Zech 3); in another he is crowned (6:11).',refs:'Ezra 2:2; 3:2–9; 5:2; Hag 1:1; 2:2–4; Zech 3; 6:11',ch:{'Ezr':[2,3,4,5,10],'Neh':[7,12],'Hag':[1,2],'Zec':[3,6]}},
+{id:'eliashib',name:'Eliashib',c:0,dates:'c. 445–432 BC',role:'High priest in Nehemiah’s day',dy:'Eliasib',sum:'Jeshua’s grandson. He and the priests rebuilt the Sheep Gate first (Neh 3:1). While Nehemiah was away he gave Tobiah the Ammonite a storeroom in the Temple courts, and his grandson married Sanballat’s daughter (13:4–5, 28). Nehemiah threw Tobiah’s furniture into the street.',refs:'Neh 3:1, 20–21; 12:10, 22; 13:4–9, 28',ch:{'Neh':[3,12,13]}},
+{id:'cyrus',name:'Cyrus',c:1,dates:'king of Persia 559–530 BC; took Babylon 539',role:'King of Persia',sum:'Founder of the Persian empire. He took Babylon in 539 and let peoples Babylon had deported go home with their gods; the Cyrus Cylinder, now in the British Museum, records the policy. Ezra opens with his decree to rebuild the house of the Lord, and Isaiah calls him the Lord’s shepherd and his anointed (Isa 44:28; 45:1).',refs:'Ezra 1; 3:7; 4:3–5; 5:13–17; 6:3–5; 2 Chr 36:22–23; Isa 44:28–45:13',ch:{'Ezr':[1,3,4,5,6]}},
+{id:'darius',name:'Darius I',short:'Darius',c:1,dates:'king of Persia 522–486 BC',role:'King of Persia',sum:'Seized the throne in 522 and spent his first years putting down revolts, which he had carved on the cliff at Behistun. When his governor questioned the Jews’ building, Darius had the archives searched, found Cyrus’s decree, and ordered the work finished at royal expense. The Temple was completed in his sixth year, 515.',refs:'Ezra 4:5, 24; 5–6; Hag 1:1; Zech 1:1, 7; 7:1',ch:{'Ezr':[4,5,6],'Hag':[1,2],'Zec':[1,7]}},
+{id:'ahasuerus',name:'Ahasuerus',c:1,dates:'king of Persia 486–465 BC',role:'King of Persia, Esther’s husband',aka:'Xerxes I; called Artaxerxes in the Greek additions',dy:'Assuerus',sum:'Xerxes, who invaded Greece and lost at Salamis in 480. In Esther he rules 127 provinces from India to Ethiopia, deposes Vashti for refusing to appear at his feast, makes Esther queen, signs Haman’s decree without asking which people it names, and cannot sleep on the night that saves Mordecai. Ezra 4:6 records a complaint against the Jews at the start of his reign.',refs:'Ezra 4:6; Esth 1–10',ch:{'Ezr':[4],'Est':R(1,10).concat(['B','D','E'])}},
+{id:'artaxerxes',name:'Artaxerxes I',short:'Artaxerxes',c:1,dates:'king of Persia 465–424 BC',role:'King of Persia',sum:'He halted the rebuilding of Jerusalem’s walls on a complaint from Samaria (Ezra 4:7–23), then sent Ezra with a commission to teach the Law (458) and let his cupbearer Nehemiah go to rebuild the walls (445). Some scholars put Ezra under Artaxerxes II instead, in 398.',refs:'Ezra 4:7–23; 7:1–26; 8:1; Neh 2:1–9; 5:14; 13:6',ch:{'Ezr':[4,7,8],'Neh':[2,5,13]}},
+{id:'tattenai',name:'Tattenai',c:1,dates:'c. 520 BC',role:'Persian governor beyond the River',dy:'Thathanai',sum:'Governor of the province west of the Euphrates. He asked who had authorized the building and wrote to Darius, fairly, letting the work go on while he waited; when the answer favored the Jews he carried it out with speed. A Babylonian tablet of 502 BC names a Tattannu as governor of the province, very likely the same man.',refs:'Ezra 5:3–6:13',ch:{'Ezr':[5,6]}},
+{id:'sanballat',name:'Sanballat',c:1,dates:'c. 445–407 BC',role:'Governor of Samaria, Nehemiah’s chief opponent',dy:'Sanaballat',sum:'Sanballat the Horonite mocked the wall, plotted an attack, tried four times to lure Nehemiah out to a meeting, and sent him an open letter accusing him of planning to make himself king. His daughter married the high priest’s grandson (13:28). An Aramaic letter of 407 BC from the Jewish colony at Elephantine in Egypt mentions the sons of Sanballat, governor of Samaria.',refs:'Neh 2:10, 19; 4:1–8; 6:1–14; 13:28',ch:{'Neh':[2,4,6,13]}},
+{id:'tobiah_a',name:'Tobiah the Ammonite',short:'Tobiah',c:1,dates:'c. 445–432 BC',role:'Official, Sanballat’s ally',dy:'Tobias the Ammonite',sum:'“The servant, the Ammonite” (2:10), probably the title of an official in the region east of the Jordan. He had married into a leading Jerusalem family and kept up a correspondence with its nobles (6:17–19). While Nehemiah was away the high priest gave him a room in the Temple, and Nehemiah threw his household stuff out. A family of Tobiads held land in Ammon for centuries afterward, and the name is carved in rock at ʿIraq al-Amir in Jordan.',refs:'Neh 2:10, 19; 4:3, 7; 6:1–19; 13:4–9',ch:{'Neh':[2,4,6,13]}},
+{id:'geshem',name:'Geshem the Arabian',short:'Geshem',c:1,dates:'c. 445 BC',role:'Arab ruler, Nehemiah’s opponent',dy:'Gossem',sum:'The third of Nehemiah’s opponents. A silver bowl found in Egypt is inscribed by Qaynu son of Gashmu, king of Qedar, an Arab kingdom of the region; Gashmu is very probably this Geshem, a much bigger figure than the one line in Nehemiah suggests.',refs:'Neh 2:19; 6:1–6',ch:{'Neh':[2,6]}},
+{id:'haman',name:'Haman',c:1,dates:'c. 474 BC',role:'Ahasuerus’s chief minister',dy:'Aman',sum:'Son of Hammedatha the Agagite, of the line of Saul’s old enemy. Raised above all the princes, he could not bear that Mordecai would not bow, and cast lots, pur, to choose the day to destroy every Jew in the empire. Made to lead Mordecai through the city in the king’s robe, he was hanged on the gallows he had built for him.',refs:'Esth 3–9',ch:{'Est':[3,4,5,6,7,8,9,'B','E']}},
+{id:'nebuchadnezzar_j',name:'Nebuchadnezzar (in Judith)',short:'Nebuchadnezzar',c:1,dates:'in the story',role:'“King of the Assyrians” in Judith',dy:'Nabuchodonosor',sum:'The book opens with him reigning over the Assyrians in Nineveh. The historical Nebuchadnezzar ruled Babylon, and Nineveh had fallen before he came to the throne. Most readers take the mismatch as deliberate: he is every great oppressor at once, and his demand to be worshiped as the only god sets the story’s question.',refs:'Jdt 1–3; 6:2',ch:{'Jdt':[1,2,3,6,11]}},
+{id:'holofernes',name:'Holofernes',c:1,dates:'in the story',role:'Commander of Nebuchadnezzar’s army',sum:'Chief general of the king in Judith, sent west to punish every nation that refused to join his war. He besieged Bethulia and seized its springs, scorned Achior’s warning, and was taken with Judith’s beauty. Drunk after his own banquet, he was beheaded in his bed with his own sword.',refs:'Jdt 2–14',ch:{'Jdt':R(2,14)}},
+{id:'sheshbazzar',name:'Sheshbazzar',c:2,dates:'c. 538 BC',role:'Prince of Judah, leader of the first return',dy:'Sassabasar',sum:'Called the prince of Judah (1:8). Cyrus handed him the Temple vessels Nebuchadnezzar had taken, and he laid the foundations of the house (5:16). Then he disappears from the record. Some identify him with Shenazar, a son of King Jehoiachin (1 Chr 3:18), some with Zerubbabel; neither is certain.',refs:'Ezra 1:8–11; 5:14–16',ch:{'Ezr':[1,5]}},
+{id:'zerubbabel',name:'Zerubbabel',c:2,dates:'c. 538–515 BC',role:'Governor of Judah, of David’s line',dy:'Zorobabel',sum:'Grandson of King Jehoiachin, born in exile; the name probably means seed of Babylon. He led the returning exiles with Jeshua, rebuilt the altar, laid the foundation, and finished the Temple after Haggai and Zechariah stirred him up. Haggai called him God’s signet ring (2:23). Then he drops out of the record. Matthew and Luke both name him among Jesus’ ancestors.',refs:'Ezra 2:2; 3:2–8; 4:2–3; 5:2; Hag 1–2; Zech 4:6–10; 1 Chr 3:19; Mt 1:12; Lk 3:27',ch:{'Ezr':[2,3,4,5],'Neh':[7,12],'Hag':[1,2],'Zec':[4]}},
+{id:'nehemiah',name:'Nehemiah',c:2,dates:'governor 445–433 BC; again c. 432',role:'Governor of Judah, rebuilder of the walls',dy:'Nehemias',sum:'Cupbearer to Artaxerxes at Susa. Hearing that Jerusalem’s walls lay broken, he wept, fasted and prayed, and asked the king for leave to rebuild them. He had them up in fifty-two days, half his men building and half on guard, against mockery, threats and plots. He governed twelve years without drawing the governor’s allowance, came back for a second term, and cleaned out what had slid in his absence. His memoir ends: remember me, O my God, for good.',refs:'Neh 1–13',ch:{'Neh':R(1,13)}},
+{id:'tobit',name:'Tobit',c:3,dates:'in the story: the Assyrian exile',role:'Exile of Naphtali in Nineveh',dy:'Tobias (the father)',sum:'A devout man of the tribe of Naphtali, carried to Nineveh by the Assyrians, who gave alms and buried the executed dead of his people at the risk of his life. Blinded by sparrow droppings as he slept outdoors after a burial, he prayed to die, and sent his son to fetch money he had left in Media. He got back his son, his sight, and a daughter-in-law, and died praising God.',refs:'Tob 1–14',ch:{'Tob':R(1,14)}},
+{id:'anna',name:'Anna',c:3,dates:'in the story',role:'Tobit’s wife',dy:'Anna',sum:'She kept the household by weaving after Tobit went blind, and when he accused her of stealing a young goat she had been given as a bonus, she answered him back (2:11–14). She wept the whole time her son was gone and watched the road for him every day.',refs:'Tob 1:9; 2:1–14; 5:17–22; 10:4–7; 11:5–9',ch:{'Tob':[1,2,5,10,11,14]}},
+{id:'tobias',name:'Tobiah',c:3,dates:'in the story',role:'Tobit’s son',dy:'Tobias (the son)',sum:'Sent to Media to collect his father’s money, with a hired guide who was the angel Raphael. A fish leapt at him from the Tigris, and he kept its heart, liver and gall. He married Sarah, whose seven bridegrooms had died on their wedding night, drove the demon off with the burning heart and liver, and prayed with his bride before they slept. He healed his father’s eyes with the gall.',refs:'Tob 1:9; 4–14',ch:{'Tob':[1].concat(R(4,14))}},
+{id:'sarah',name:'Sarah',c:3,dates:'in the story',role:'Raguel’s daughter, Tobiah’s wife',dy:'Sara',sum:'Of Ecbatana in Media. Seven husbands had died on her wedding night, killed by the demon Asmodeus, and her father’s maid taunted her for it. In her grief she went up to her father’s upper room, and for his sake prayed instead, the same hour that Tobit prayed in Nineveh (3:7–17). Her eighth husband was Tobiah.',refs:'Tob 3:7–17; 6:11–18; 7–8; 10:10–12; 11:16–17',ch:{'Tob':[3,6,7,8,10,11]}},
+{id:'raguel',name:'Raguel',c:3,dates:'in the story',role:'Sarah’s father, Tobit’s kinsman',dy:'Raguel',sum:'A kinsman of Tobit in Ecbatana. He gave Tobiah his daughter the same night, and then, expecting the worst, went out with his servants and dug a grave. When a maid reported both alive in the morning, he had it filled in and held a fourteen-day wedding feast.',refs:'Tob 3:7–17; 6:11–13; 7–10',ch:{'Tob':[3,6,7,8,9,10]}},
+{id:'raphael',name:'Raphael',c:3,dates:'archangel',role:'Archangel',aka:'Azariah son of Ananias (his disguise)',dy:'Raphael (as Azarias)',sum:'One of the seven holy angels who stand before the Lord (12:15). Sent to heal Tobit and Sarah, he hired himself out to Tobiah as a guide under the name Azariah, showed him what to do with the fish, bound the demon in Egypt, and revealed himself only at the end. His name means God heals. The Church keeps his feast with Michael and Gabriel on September 29.',refs:'Tob 3:17; 5–12',ch:{'Tob':[3,5,6,7,8,9,10,11,12]}},
+{id:'asmodeus',name:'Asmodeus',c:3,dates:'in the story',role:'Demon',sum:'The evil demon who killed Sarah’s seven bridegrooms. The smoke of the fish’s heart and liver drove him to the remotest parts of Egypt, and Raphael bound him there (8:2–3). The name probably comes from the Persian Aeshma, a demon of wrath.',refs:'Tob 3:8, 17; 6:14–18; 8:2–3',ch:{'Tob':[3,6,8]}},
+{id:'achior',name:'Achior',c:3,dates:'in the story',role:'Leader of the Ammonites',sum:'He warned Holofernes that Israel could not be beaten unless it sinned against its God, and told him its history from Abraham to the return (5:5–21). Holofernes had him bound and left at Bethulia to share its fate. When he saw Holofernes’ head, he believed, was circumcised, and joined Israel (14:10), though the Law kept Ammonites out of the assembly (Deut 23:3).',refs:'Jdt 5–6; 14:6–10',ch:{'Jdt':[5,6,14]}},
+{id:'ozias',name:'Uzziah of Bethulia',short:'Uzziah',c:3,dates:'in the story',role:'Chief magistrate of Bethulia',dy:'Ozias',sum:'The town’s leader during the siege, who promised to hold out five more days and then surrender. Judith rebuked him for setting God a deadline; he answered that the thirsty people had forced the oath, and asked her to pray for rain. He blessed her when she came back with the head.',refs:'Jdt 6:15–16; 7:23–32; 8:9–36; 13:18–20',ch:{'Jdt':[6,7,8,13,15]}},
+{id:'judith',name:'Judith',c:3,dates:'in the story',role:'Widow of Bethulia',dy:'Judith',sum:'A wealthy widow who had kept sackcloth and fasting for three years and four months since her husband died of sunstroke at the barley harvest. When the elders promised to surrender in five days unless God helped, she rebuked them, prayed, dressed in her finest, walked into the enemy camp with her maid, and came back with Holofernes’ head in her food bag. She lived to a hundred and five and was buried beside her husband.',refs:'Jdt 8–16',ch:{'Jdt':R(8,16)}},
+{id:'vashti',name:'Vashti',c:3,dates:'c. 483 BC',role:'Queen of Persia',dy:'Vasthi',sum:'Summoned on the seventh day of the king’s feast to show her beauty to his drunken guests, she refused. The king’s advisers, afraid that every wife in the empire would follow her example, had her deposed by decree (1:10–22). Greek historians name Xerxes’ queen as Amestris; Vashti is known only from Esther.',refs:'Esth 1; 2:1, 17',ch:{'Est':[1,2]}},
+{id:'mordecai',name:'Mordecai',c:3,dates:'c. 480–470 BC',role:'Esther’s cousin and guardian',dy:'Mardochai',sum:'A Benjamite in Susa, son of Jair, son of Shimei, son of Kish (2:5). He raised his orphaned cousin Esther, uncovered a plot against the king, and refused to bow to Haman, which set off the decree. He told Esther, who knoweth whether thou art come to the kingdom for such a time as this? and ended as the king’s second-in-command.',refs:'Esth 2–10; additions A, C and F',ch:{'Est':['A',2,3,4,'C',5,6,7,8,9,10,'F']}},
+{id:'esther',name:'Esther',c:3,dates:'queen from c. 479 BC',role:'Queen of Persia',aka:'Hadassah',dy:'Esther (Edissa)',sum:'An orphan named Hadassah, raised by her cousin Mordecai in Susa. Chosen queen in the king’s search for a new wife, she kept her people secret until Haman’s decree. After three days of fasting she went in to the king unbidden, saying, if I perish, I perish, and named Haman at her second banquet.',refs:'Esth 2–9; additions C and D',ch:{'Est':[2,4,'C','D',5,7,8,9]}}
+];
+const ACTS=[
+{t:'The return and the Temple',n:'Ezra 1–6, with Haggai and Zechariah. 538–515 BC.'},
+{t:'Ezra',n:'Ezra 7–10. 458 BC, fifty-seven years after the Temple was finished.'},
+{t:'Nehemiah',n:'Nehemiah 1–13, with Malachi. 445 to about 430 BC.'},
+{t:'Tobit',n:'Set among the northern exiles in Nineveh under Assyria, more than two centuries before the return. A family story about prayer, almsgiving, marriage and the burial of the dead.'},
+{t:'Judith',n:'Set under a “Nebuchadnezzar, king of the Assyrians,” in no real year. A theological story about a city under siege and the widow who saves it.'},
+{t:'Esther',n:'Set in Susa under Ahasuerus (Xerxes), between Ezra 6 and Ezra 7. Catholic Bibles include the Greek additions, lettered A–F.'}
+];
+const SCENES=[
+{id:'decree',act:0,t:'Cyrus’s decree',r:'Ezra 1–2',d:'538 BC',ch:{'Ezr':[1,2]},who:['cyrus','sheshbazzar','zerubbabel','jeshua'],n:'The new master of Babylon sends the Jews home to rebuild their Temple and hands back the vessels Nebuchadnezzar took. Chapter 2 is the list of who came, family by family.'},
+{id:'altar',act:0,t:'The altar and the foundation',r:'Ezra 3',d:'537–536 BC',ch:{'Ezr':[3]},who:['jeshua','zerubbabel'],n:'They build the altar before anything else, for fear of their neighbors, and lay the Temple’s foundation the next year. The young men shout and the old men who remembered Solomon’s house weep.'},
+{id:'opposition',act:0,t:'Adversaries',r:'Ezra 4',d:'536 BC, and later',ch:{'Ezr':[4]},who:['zerubbabel','jeshua','ahasuerus','artaxerxes'],n:'The people of the land offer to help, are turned away, and spend years obstructing. The chapter runs ahead in time to gather every complaint into one place, then returns to Darius’s second year in its last verse.'},
+{id:'haggai',act:0,t:'Haggai',r:'Haggai 1–2',d:'August–December 520 BC',ch:{'Hag':[1,2]},who:['haggai','zerubbabel','jeshua','darius'],n:'Sixteen years of neglect, one prophet, four dated sermons, and work begins in twenty-three days. Read it alongside Ezra 5:1–2.'},
+{id:'zechariah',act:0,t:'Zechariah’s night visions',r:'Zechariah 1–8',d:'520–518 BC',ch:{'Zec':R(1,8)},who:['zechariah','jeshua','zerubbabel','darius'],n:'Eight visions in a single night, each explained by an angel, tell a small and discouraged community that God is coming back to Jerusalem. Then a question about fasting, answered with justice.'},
+{id:'finished',act:0,t:'The Temple finished',r:'Ezra 5–6',d:'520–515 BC',ch:{'Ezr':[5,6]},who:['haggai','zechariah','zerubbabel','jeshua','tattenai','darius'],n:'A Persian governor asks who authorized the building; the archives turn up Cyrus’s decree; Darius orders the work finished at royal expense. The house is dedicated in 515, and the Passover kept.'},
+{id:'zech_later',act:0,t:'Zechariah’s later oracles',r:'Zechariah 9–14',d:'undated',ch:{'Zec':R(9,14)},who:['zechariah'],n:'Undated, and in a different style: the king on an ass, the shepherd paid off with thirty pieces of silver, the one they pierced, living waters out of Jerusalem. The Gospels draw on these chapters for the Passion more than on any others.'},
+{id:'ezra_comes',act:1,t:'Ezra comes up from Babylon',r:'Ezra 7–8',d:'458 BC',ch:{'Ezr':[7,8]},who:['ezra','artaxerxes'],n:'A priest and scribe arrives with a royal commission to teach and enforce the Law of Moses. At 7:27 the narrative switches to his own voice.'},
+{id:'marriages',act:1,t:'The foreign wives',r:'Ezra 9–10',d:'458–457 BC',ch:{'Ezr':[9,10]},who:['ezra'],n:'Leaders report that men of Judah, priests among them, have married women of the surrounding peoples. Ezra’s confession, an assembly in the rain, and the marriages dissolved. A hard ending, and worth reading against Ruth.'},
+{id:'wall_news',act:2,t:'Nehemiah and the king’s cup',r:'Nehemiah 1–2',d:'445 BC',ch:{'Neh':[1,2]},who:['nehemiah','artaxerxes','sanballat','tobiah_a','geshem'],n:'The king’s cupbearer hears that Jerusalem’s walls are still down, prays for four months, and asks the king. He rides round the ruins by night before telling anyone why he has come.'},
+{id:'wall',act:2,t:'The wall',r:'Nehemiah 3–4; 6',d:'445 BC',ch:{'Neh':[3,4,6]},who:['nehemiah','eliashib','sanballat','tobiah_a','geshem'],n:'Section by section, family by family, with a sword at every builder’s side. Mockery, threats, a hired prophet and an open letter; the wall is finished in fifty-two days.'},
+{id:'debts',act:2,t:'The outcry of the poor',r:'Nehemiah 5',d:'445 BC',ch:{'Neh':[5]},who:['nehemiah'],n:'In the middle of the building, a crisis inside the walls: Jews mortgaging their fields and selling their children to their own kinsmen. Nehemiah makes the nobles give it all back.'},
+{id:'law',act:2,t:'The Law read',r:'Nehemiah 7–10',d:'445 BC',ch:{'Neh':[7,8,9,10]},who:['ezra','nehemiah'],n:'The city is nearly empty, so the list of returnees comes out again. Then Ezra reads the Law from a wooden pulpit, the people weep and are told to feast, they keep Tabernacles, confess their whole history, and sign a covenant.'},
+{id:'dedication',act:2,t:'The city filled, the wall dedicated',r:'Nehemiah 11–12',d:'445 BC on',ch:{'Neh':[11,12]},who:['nehemiah','ezra','eliashib','zerubbabel','jeshua'],n:'One family in ten moves into Jerusalem by lot. Lists of priests and Levites back to Zerubbabel’s day, then two choirs on top of the wall.'},
+{id:'second_term',act:2,t:'Nehemiah’s second term',r:'Nehemiah 13',d:'c. 432 BC',ch:{'Neh':[13]},who:['nehemiah','eliashib','tobiah_a','sanballat'],n:'Back from Susa, he finds everything he fixed slipping: an Ammonite lodged in the Temple, Levites unpaid, the sabbath a market day, mixed marriages again. Each repair ends in a prayer: remember me, O my God.'},
+{id:'malachi',act:2,t:'Malachi',r:'Malachi 1–4 (1–3 in the NABRE)',d:'c. 460–430 BC',ch:{'Mal':[1,2,3,4]},who:['malachi'],n:'The same problems as Nehemiah 13, argued out with the people: blemished sacrifices, broken marriages, withheld tithes. It ends with the promise of Elijah.'},
+{id:'tobit_blind',act:3,t:'Two prayers in one hour',r:'Tobit 1–3',d:'set c. 720–680 BC',ch:{'Tob':[1,2,3]},who:['tobit','anna','sarah','raguel','raphael'],n:'In Nineveh a good man is blinded after burying the dead; in Ecbatana a young woman has lost seven bridegrooms on their wedding nights. On the same day both ask God to let them die, and both prayers are heard.'},
+{id:'journey',act:3,t:'The road to Media',r:'Tobit 4–6',d:'in the story',ch:{'Tob':[4,5,6]},who:['tobit','tobias','anna','raphael'],n:'Tobit gives his son a father’s instructions and sends him for the money left in Media. The guide he hires is an angel, and there is a fish in the Tigris.'},
+{id:'wedding',act:3,t:'The wedding at Ecbatana',r:'Tobit 7–9',d:'in the story',ch:{'Tob':[7,8,9]},who:['tobias','sarah','raguel','raphael','asmodeus'],n:'Raguel gives his daughter the same night; the smoke drives the demon off; the couple pray before they sleep; the father-in-law fills in the grave he had dug.'},
+{id:'home',act:3,t:'Sight restored',r:'Tobit 10–12',d:'in the story',ch:{'Tob':[10,11,12]},who:['tobit','anna','tobias','sarah','raphael'],n:'Anna watching the road, the dog running ahead, the gall on the old man’s eyes, and the guide revealed as Raphael, one of the seven who stand before the Lord.'},
+{id:'tobit_end',act:3,t:'Tobit’s song and last words',r:'Tobit 13–14',d:'in the story',ch:{'Tob':[13,14]},who:['tobit','tobias'],n:'A hymn to the Jerusalem to come, and a dying man’s advice: leave Nineveh, for it will fall.'},
+{id:'holofernes',act:4,t:'The king of the Assyrians',r:'Judith 1–3',d:'in the story',ch:{'Jdt':[1,2,3]},who:['nebuchadnezzar_j','holofernes'],n:'A Nebuchadnezzar who rules from Nineveh defeats the Medes and sends his general to punish the west. Nations surrender, and he destroys their gods so that the king alone is worshiped.'},
+{id:'bethulia',act:4,t:'The siege of Bethulia',r:'Judith 4–7',d:'in the story',ch:{'Jdt':[4,5,6,7]},who:['achior','holofernes','ozias'],n:'Judah, just back from exile, blocks the mountain passes at a town called Bethulia. Achior the Ammonite warns Holofernes that this people falls only when it sins. The springs are seized, and after thirty-four days the town gives God five more.'},
+{id:'judith_enters',act:4,t:'Judith',r:'Judith 8–9',d:'in the story',ch:{'Jdt':[8,9]},who:['judith','ozias'],n:'Halfway through her own book the heroine appears: a widow who calls in the elders and tells them they have no right to set God a deadline. Then she prays.'},
+{id:'camp',act:4,t:'In the camp of Holofernes',r:'Judith 10–13',d:'in the story',ch:{'Jdt':[10,11,12,13]},who:['judith','holofernes'],n:'She dresses for battle in her finest clothes and walks into the enemy camp with her maid and her own food. On the fourth night, at his banquet, Holofernes drinks more wine than he had ever drunk in one day.'},
+{id:'victory',act:4,t:'The head on the wall',r:'Judith 14–16',d:'in the story',ch:{'Jdt':[14,15,16]},who:['judith','achior','ozias'],n:'The Assyrians wake to a headless general and run. Achior believes; the high priest comes from Jerusalem to bless her; she sings, and lives out her life a widow.'},
+{id:'vashti',act:5,t:'A queen deposed, a queen chosen',r:'Esther A; 1–2',d:'483–479 BC',ch:{'Est':['A',1,2]},who:['ahasuerus','vashti','esther','mordecai'],n:'A six-month display of wealth and a week of drinking end with a queen who will not come when called. The search for her replacement brings an orphan named Hadassah into the palace.'},
+{id:'decree_h',act:5,t:'Haman’s lot',r:'Esther 3; B',d:'474 BC',ch:{'Est':[3,'B']},who:['haman','mordecai','ahasuerus'],n:'One man will not bow, so Haman sets out to kill his whole people and casts lots for the day. The king hands over his ring without asking which people.'},
+{id:'if_i_perish',act:5,t:'For such a time as this',r:'Esther 4–5; C–D',d:'474 BC',ch:{'Est':[4,'C','D',5]},who:['esther','mordecai','ahasuerus','haman'],n:'Mordecai in sackcloth at the gate; Esther afraid to go to the king uncalled; three days of fasting; and she goes. The Greek adds their prayers and the moment she faints before the king.'},
+{id:'reversal',act:5,t:'The sleepless night',r:'Esther 6–7',d:'474 BC',ch:{'Est':[6,7]},who:['ahasuerus','haman','mordecai','esther'],n:'The night the king cannot sleep, the chronicles fall open at Mordecai’s good deed, and Haman happens to be in the courtyard. The next day he hangs on his own gallows.'},
+{id:'purim',act:5,t:'Purim',r:'Esther 8–10; E–F',d:'474–473 BC',ch:{'Est':[8,'E',9,10,'F']},who:['mordecai','esther','ahasuerus'],n:'A Persian decree cannot be revoked, so a second decree lets the Jews defend themselves. The day meant for their destruction becomes a feast, and Mordecai rises to second in the empire.'}
+];
+// a acts, b is acted on. y: anoint (commissions or blesses), save, betray, kill, rebuke. x: attempt. '#' = someone not in the cast.
+const EVS=[
+{s:'decree',a:'cyrus',y:'save',v:'sends home',b:'#the exiles of Judah',r:'Ezra 1:1–4',n:'The Lord God of heaven hath charged me to build him an house at Jerusalem.'},
+{s:'decree',a:'cyrus',y:'anoint',v:'hands the Temple vessels to',b:'sheshbazzar',r:'Ezra 1:7–11',n:'Fifty-four hundred vessels of gold and silver that Nebuchadnezzar had carried off.'},
+{s:'altar',a:'jeshua',y:'anoint',v:'rebuilds the altar with',b:'zerubbabel',r:'Ezra 3:1–6',n:'In the seventh month, before a single stone of the Temple, for fear was upon them.'},
+{s:'opposition',a:'zerubbabel',y:'rebuke',v:'refuses the help of',b:'#the adversaries of Judah',r:'Ezra 4:1–3',n:'Ye have nothing to do with us to build an house unto our God.'},
+{s:'opposition',a:'#Rehum and Shimshai',y:'betray',v:'write against Jerusalem to',b:'artaxerxes',r:'Ezra 4:7–16',n:'The rebellious and the bad city: if it is rebuilt, the king will lose his province beyond the River.'},
+{s:'opposition',a:'artaxerxes',y:'rebuke',v:'stops the building of',b:'#Jerusalem’s walls',r:'Ezra 4:17–23',n:'Decades after Cyrus; the chapter gathers all the opposition in one place.'},
+{s:'haggai',a:'haggai',y:'rebuke',v:'rebukes',b:'zerubbabel',r:'Hag 1:1–11',n:'And Jeshua, and the people: is it time for you to dwell in your cieled houses, and this house lie waste?'},
+{s:'haggai',a:'zerubbabel',y:'save',v:'begins the work with',b:'jeshua',r:'Hag 1:12–15',n:'Twenty-three days after the first sermon.'},
+{s:'haggai',a:'haggai',y:'anoint',v:'names as God’s signet',b:'zerubbabel',r:'Hag 2:20–23',n:'For I have chosen thee, saith the Lord of hosts.'},
+{s:'zechariah',a:'zechariah',y:'anoint',v:'sees reclothed',b:'jeshua',r:'Zech 3',n:'Satan stands at his right hand to accuse him; take away the filthy garments from him.'},
+{s:'zechariah',a:'zechariah',y:'anoint',v:'promises the finished house to',b:'zerubbabel',r:'Zech 4:6–10',n:'Not by might, nor by power, but by my spirit, saith the Lord of hosts.'},
+{s:'zechariah',a:'zechariah',y:'anoint',v:'crowns',b:'jeshua',r:'Zech 6:9–15',n:'Behold the man whose name is The BRANCH.'},
+{s:'finished',a:'tattenai',y:'rebuke',v:'questions the builders, and writes to',b:'darius',r:'Ezra 5:3–17',n:'Who hath commanded you to build this house?'},
+{s:'finished',a:'darius',y:'save',v:'confirms the decree for',b:'zerubbabel',r:'Ezra 6:1–12',n:'Cyrus’s record is found at Ecbatana; the cost is to come out of the king’s taxes.'},
+{s:'finished',a:'#The elders of the Jews',y:'anoint',v:'finish and dedicate',b:'#the house of God',r:'Ezra 6:14–18',n:'On the third of Adar, in Darius’s sixth year: 515 BC.'},
+{s:'zech_later',a:'zechariah',y:'anoint',v:'foretells',b:'#a king riding upon an ass',r:'Zech 9:9',n:'Lowly, and riding upon an ass, and upon a colt the foal of an ass.'},
+{s:'zech_later',a:'#The owners of the flock',y:'betray',v:'pay off the shepherd with',b:'#thirty pieces of silver',r:'Zech 11:12–13',n:'A goodly price that I was prised at of them.'},
+{s:'ezra_comes',a:'artaxerxes',y:'anoint',v:'commissions',b:'ezra',r:'Ezra 7:11–26',n:'To appoint judges, teach the law of thy God, and punish those who will not keep it.'},
+{s:'ezra_comes',a:'ezra',y:'save',v:'brings up',b:'#the exiles and the treasure',r:'Ezra 8:21–36',n:'With a fast instead of an escort: I was ashamed to require of the king a band of soldiers.'},
+{s:'marriages',a:'ezra',y:'rebuke',v:'mourns and confesses for',b:'#the people',r:'Ezra 9',n:'He tears his garment and plucks out the hair of his head and beard.'},
+{s:'marriages',a:'ezra',y:'rebuke',v:'has',b:'#the men of Judah',v2:'put away their foreign wives',r:'Ezra 10',n:'They assemble in the rain in the ninth month; hearing every case takes three months.'},
+{s:'wall_news',a:'nehemiah',y:'save',v:'asks leave to rebuild Jerusalem from',b:'artaxerxes',r:'Neh 2:1–8',n:'So I prayed to the God of heaven. And I said unto the king.'},
+{s:'wall_news',a:'sanballat',y:'rebuke',v:'mocks',b:'nehemiah',r:'Neh 2:19–20',n:'With Tobiah and Geshem: will ye rebel against the king?'},
+{s:'wall',a:'tobiah_a',y:'rebuke',v:'mocks',b:'#the wall',r:'Neh 4:3',n:'If a fox go up, he shall even break down their stone wall.'},
+{s:'wall',a:'sanballat',y:'kill',x:1,v:'plots an attack on',b:'#the builders',r:'Neh 4:7–23',n:'Half the men build and half hold spears; every builder has his sword girded by his side.'},
+{s:'wall',a:'sanballat',y:'betray',v:'tries to lure out',b:'nehemiah',r:'Neh 6:1–14',n:'Four invitations, an open letter and a hired prophet. I am doing a great work, so that I cannot come down.'},
+{s:'debts',a:'nehemiah',y:'rebuke',v:'rebukes',b:'#the nobles and rulers',r:'Neh 5:1–13',n:'For lending at interest to their brothers, who had sold their sons and daughters into bondage.'},
+{s:'law',a:'ezra',y:'anoint',v:'reads the Law to',b:'#all the people',r:'Neh 8:1–8',n:'From the morning until midday, on a pulpit of wood; the Levites gave the sense.'},
+{s:'law',a:'nehemiah',y:'save',v:'sends the weeping people',b:'#to feast',r:'Neh 8:9–12',n:'The joy of the Lord is your strength.'},
+{s:'dedication',a:'nehemiah',y:'anoint',v:'dedicates',b:'#the wall',r:'Neh 12:27–43',n:'Two great choirs walk the top of the wall in opposite directions and meet at the Temple; the joy of Jerusalem was heard even afar off.'},
+{s:'second_term',a:'eliashib',y:'betray',v:'gives a Temple chamber to',b:'tobiah_a',r:'Neh 13:4–5',n:'While Nehemiah was away at the king’s court.'},
+{s:'second_term',a:'nehemiah',y:'rebuke',v:'throws out the household stuff of',b:'tobiah_a',r:'Neh 13:6–9',n:'And has the chambers cleansed.'},
+{s:'second_term',a:'nehemiah',y:'rebuke',v:'drives away',b:'#the high priest’s grandson',r:'Neh 13:28',n:'Son-in-law to Sanballat the Horonite.'},
+{s:'malachi',a:'malachi',y:'rebuke',v:'rebukes',b:'#the priests',r:'Mal 1:6–2:9',n:'Ye offer polluted bread upon mine altar. Offer it now unto thy governor.'},
+{s:'malachi',a:'malachi',y:'anoint',v:'promises',b:'#Elijah the prophet',r:'Mal 4:5–6',n:'Before the coming of the great and dreadful day of the Lord (3:23–24 in the NABRE).'},
+{s:'tobit_blind',a:'tobit',y:'save',v:'buries',b:'#the executed dead of Israel',r:'Tob 1:16–20; 2:3–8',n:'At the risk of his life and goods; his neighbors laugh at him.'},
+{s:'tobit_blind',a:'anna',y:'rebuke',v:'answers back to',b:'tobit',r:'Tob 2:11–14',n:'Where are thine alms and thy righteous deeds?'},
+{s:'journey',a:'raphael',y:'save',v:'guides',b:'tobias',r:'Tob 5–6',n:'Disguised as Azariah, a kinsman; he tells him to keep the fish’s heart, liver and gall.'},
+{s:'wedding',a:'raguel',y:'anoint',v:'gives his daughter to',b:'tobias',r:'Tob 7',n:'The same night, knowing what happened to the seven before him.'},
+{s:'wedding',a:'tobias',y:'save',v:'drives the demon from',b:'sarah',r:'Tob 8:1–3',n:'Raphael binds Asmodeus in Upper Egypt.'},
+{s:'home',a:'tobias',y:'save',v:'heals the eyes of',b:'tobit',r:'Tob 11:7–15',n:'With the fish’s gall; the white films peel from the corners of his eyes.'},
+{s:'home',a:'raphael',y:'anoint',v:'reveals himself to',b:'tobit',r:'Tob 12:6–22',n:'I am Raphael, one of the seven holy angels.'},
+{s:'tobit_end',a:'tobit',y:'anoint',v:'blesses',b:'tobias',r:'Tob 14:3–11',n:'And tells him to leave Nineveh, which will fall as the prophet said (Nahum in some manuscripts, Jonah in others).'},
+{s:'holofernes',a:'nebuchadnezzar_j',y:'kill',x:1,v:'sends',b:'holofernes',v2:'against the west',r:'Jdt 2:1–13',n:'To punish every nation that refused to join his war.'},
+{s:'holofernes',a:'holofernes',y:'rebuke',v:'destroys the shrines of',b:'#the coastal peoples',r:'Jdt 3:8',n:'That all nations should worship Nebuchadnezzar only.'},
+{s:'bethulia',a:'achior',y:'rebuke',v:'warns',b:'holofernes',r:'Jdt 5',n:'If they have not sinned, their God will defend them.'},
+{s:'bethulia',a:'holofernes',y:'kill',x:1,v:'hands over to Bethulia',b:'achior',r:'Jdt 6:10–13',n:'Bound at the foot of the hill, to die with the people he praised.'},
+{s:'bethulia',a:'holofernes',y:'kill',x:1,v:'cuts off the water of',b:'#Bethulia',r:'Jdt 7:6–22',n:'After thirty-four days the cisterns are empty.'},
+{s:'judith_enters',a:'judith',y:'rebuke',v:'rebukes',b:'ozias',r:'Jdt 8:9–27',n:'And the elders: who are ye that have tempted God this day?'},
+{s:'camp',a:'judith',y:'betray',v:'deceives',b:'holofernes',r:'Jdt 11–12',n:'She tells him Israel is about to sin and that she will lead him to Jerusalem.'},
+{s:'camp',a:'judith',y:'kill',v:'beheads',b:'holofernes',r:'Jdt 13:6–10',n:'With his own sword, in two strokes, as he lay drunk.'},
+{s:'victory',a:'achior',y:'save',v:'joins',b:'#the house of Israel',r:'Jdt 14:10',n:'He believed, was circumcised, and was added to Israel.'},
+{s:'victory',a:'#Joakim the high priest',y:'anoint',v:'blesses',b:'judith',r:'Jdt 15:8–10',n:'Thou art the exaltation of Jerusalem, thou art the great glory of Israel.'},
+{s:'vashti',a:'vashti',y:'rebuke',v:'refuses the summons of',b:'ahasuerus',r:'Esth 1:10–12',n:'To show her beauty to the drunken princes on the seventh day of the feast.'},
+{s:'vashti',a:'ahasuerus',y:'anoint',v:'crowns',b:'esther',r:'Esth 2:16–18',n:'In the seventh year of his reign.'},
+{s:'vashti',a:'mordecai',y:'save',v:'uncovers a plot against',b:'ahasuerus',r:'Esth 2:21–23',n:'Two chamberlains at the gate; it is written in the chronicles and forgotten.'},
+{s:'decree_h',a:'mordecai',y:'rebuke',v:'will not bow to',b:'haman',r:'Esth 3:1–6',n:'He had told them that he was a Jew.'},
+{s:'decree_h',a:'haman',y:'kill',x:1,v:'obtains a decree against',b:'#all the Jews of the empire',r:'Esth 3:7–15',n:'The day chosen by lot, pur: the thirteenth of Adar. And the king and Haman sat down to drink.'},
+{s:'if_i_perish',a:'mordecai',y:'rebuke',v:'urges',b:'esther',r:'Esth 4:12–14',n:'Who knoweth whether thou art come to the kingdom for such a time as this?'},
+{s:'if_i_perish',a:'esther',y:'save',v:'goes in unbidden to',b:'ahasuerus',r:'Esth 5:1–8; D',n:'After three days of fasting: if I perish, I perish.'},
+{s:'reversal',a:'ahasuerus',y:'anoint',v:'has Haman honor',b:'mordecai',r:'Esth 6',n:'On the sleepless night the chronicles are read to the king.'},
+{s:'reversal',a:'esther',y:'rebuke',v:'names',b:'haman',r:'Esth 7:1–6',n:'The adversary and enemy is this wicked Haman.'},
+{s:'reversal',a:'ahasuerus',y:'kill',v:'hangs',b:'haman',r:'Esth 7:7–10',n:'On the gallows he had made for Mordecai.'},
+{s:'purim',a:'mordecai',y:'save',v:'issues a counter-decree for',b:'#the Jews',r:'Esth 8:7–14',n:'They may gather and defend themselves on the same day.'},
+{s:'purim',a:'esther',y:'anoint',v:'confirms with Mordecai',b:'#the feast of Purim',r:'Esth 9:20–32',n:'Days of feasting and joy, of sending portions one to another, and gifts to the poor.'}
+];
+const DIVES=[];
+
+const CHL={
+'Ezr':{
+1:'Cyrus’s decree; the people rise to go; Cyrus hands Sheshbazzar the Temple vessels Nebuchadnezzar took, fifty-four hundred of them.',
+2:'The list of those who came back, family by family, about 42,360 besides servants and singers. Nehemiah 7 repeats it.',
+3:'The altar rebuilt in the seventh month; the foundation laid in the second year; the old men who saw the first house weep while the young shout.',
+4:'Neighbors offer to help and are refused, then hire counselors against them. 4:6–23 jumps ahead to letters under later kings; 4:24 returns to Darius.',
+5:'Haggai and Zechariah stir the people; building resumes; Tattenai asks who authorized it and writes to Darius.',
+6:'Cyrus’s decree found at Ecbatana; Darius orders the work paid for; the house finished in Adar of his sixth year; dedication and Passover.',
+7:'Ezra comes up from Babylon in Artaxerxes’ seventh year with a royal letter to teach and enforce the Law. From 7:27 he speaks in his own voice.',
+8:'The families who came with him; a fast at the river Ahava instead of an armed escort; the gold and silver weighed out and handed over.',
+9:'The princes report marriages with the peoples of the land; Ezra tears his clothes and beard and prays a confession.',
+10:'A great assembly in the rain; the foreign wives put away; the list of the men who had married them.'},
+'Neh':{
+1:'News at Susa that Jerusalem’s wall is broken down; Nehemiah weeps, fasts and prays.',
+2:'The king sees his sad face; Nehemiah asks to go; he inspects the walls by night; Sanballat, Tobiah and Geshem mock.',
+3:'Who built which section of the wall, gate by gate, from the Sheep Gate all the way round.',
+4:'Mockery, then threats; half the men build and half stand guard; builders work with a weapon to hand.',
+5:'The poor have mortgaged fields and sold children for grain and taxes; Nehemiah makes the nobles restore them, and refuses the governor’s allowance.',
+6:'Plots to lure Nehemiah out, an open letter accusing him of rebellion, a hired prophet; the wall finished in fifty-two days.',
+7:'Guards set; the city large but nearly empty; the list of returnees from Ezra 2 again.',
+8:'Ezra reads the Law from a wooden pulpit from morning to midday; the Levites give the sense; Tabernacles kept in booths.',
+9:'A fast and a long prayer of confession telling Israel’s history from creation to the present servitude.',
+10:'A sealed covenant: no mixed marriages, keep the sabbath, support the Temple.',
+11:'Lots cast to bring one family in ten to live in Jerusalem; who lived where.',
+12:'Lists of priests and Levites; the wall dedicated with two choirs walking its top in opposite directions.',
+13:'Nehemiah returns to find Tobiah lodged in the Temple, the Levites unpaid, the sabbath broken and mixed marriages again; he puts each right.'},
+'Hag':{
+1:'The people say it is not yet time to build, while they live in paneled houses; drought; Zerubbabel and Jeshua start the work.',
+2:'The glory of this latter house shall be greater than of the former; holiness is not catching but uncleanness is; Zerubbabel the signet.'},
+'Zec':{
+1:'A call to return; the first vision, horsemen among the myrtle trees; the second, four horns and four smiths.',
+2:'The third vision: a man with a measuring line. Jerusalem will be a city without walls, the Lord a wall of fire round about.',
+3:'The fourth: Joshua the high priest in filthy garments, Satan accusing him; reclothed; my servant the BRANCH.',
+4:'The fifth: a golden lampstand between two olive trees. Not by might, nor by power, but by my spirit.',
+5:'The sixth and seventh: a flying scroll; a woman in a measuring basket carried off to Shinar.',
+6:'The eighth: four chariots. Then crowns for Joshua, the man whose name is the BRANCH.',
+7:'A question about the exile fasts, answered with justice, mercy and compassion; the fathers would not hear.',
+8:'Ten promises; the fasts to become feasts; ten men take hold of the skirt of a Jew.',
+9:'Thy King cometh, riding upon an ass; the battle bow broken; prisoners of hope.',
+10:'The Lord the true shepherd against the false; the house of Joseph gathered home.',
+11:'The shepherd paid thirty pieces of silver, cast to the potter; the two staffs, Beauty and Bands, broken.',
+12:'Jerusalem a burdensome stone for the nations; they shall look upon me whom they have pierced, and mourn.',
+13:'A fountain opened for sin; prophets ashamed of their visions; smite the shepherd, and the sheep shall be scattered.',
+14:'The day of the Lord: the Mount of Olives split in two, living waters out of Jerusalem, all nations keeping Tabernacles.'},
+'Mal':{
+1:'I have loved Jacob, and I hated Esau; priests offering blind and lame animals; a pure offering among the Gentiles.',
+2:'The covenant with Levi; dealing treacherously against the wife of thy youth; the Lord hateth putting away.',
+3:'My messenger to prepare the way; the refiner’s fire; will a man rob God? the book of remembrance.',
+4:'The day that burns as an oven; the sun of righteousness with healing in his wings; Elijah before the day. In the NABRE this is 3:19–24.'},
+'Tob':{
+1:'Tobit’s piety in Naphtali and in Nineveh; he buries the dead; his goods are seized under Sennacherib; his nephew Ahiqar speaks for him.',
+2:'At Pentecost he leaves his dinner to bury a strangled man, sleeps by the courtyard wall, and is blinded; a quarrel with Anna.',
+3:'Tobit prays to die. In Ecbatana, Sarah, taunted over seven dead bridegrooms, prays the same day. Raphael is sent to both.',
+4:'Tobit’s instructions to his son: honor your mother, give alms, marry within the family, what you hate do to no one.',
+5:'A guide is hired, Azariah, really Raphael; Anna weeps; the dog goes with them.',
+6:'The fish at the Tigris; heart, liver and gall kept; Raphael tells Tobiah that Sarah is meant for him.',
+7:'Raguel recognizes his kinsman’s son; Sarah given in marriage the same night; the contract written.',
+8:'The smoke drives Asmodeus to Egypt; Tobiah and Sarah pray together; Raguel digs a grave in the night and fills it in.',
+9:'Raphael goes on to Rages to collect the money and brings Gabael back to the wedding feast.',
+10:'Tobit and Anna count the days; Raguel lets the couple go with half his goods.',
+11:'Home; Tobiah puts the gall on his father’s eyes and the white films peel away; Tobit sees his son, and Sarah.',
+12:'Raphael reveals himself: one of the seven who stand before the Lord. Prayer is good with fasting and alms and righteousness.',
+13:'Tobit’s song: Jerusalem rebuilt with sapphires and emeralds, and all nations coming to it.',
+14:'Tobit’s last words: Nineveh will fall, so leave it. Tobiah moves to Media and hears of Nineveh’s fall before he dies.'},
+'Jdt':{
+1:'Nebuchadnezzar, king of the Assyrians, defeats Arphaxad of the Medes; the western nations refuse to join him.',
+2:'He sends Holofernes west with a hundred and twenty thousand foot and twelve thousand horse to punish them.',
+3:'The coastal cities surrender; Holofernes destroys their shrines so that Nebuchadnezzar alone is worshiped.',
+4:'Judah, newly back from exile, fortifies the passes; the high priest Joakim orders Bethulia to hold them; all Israel fasts.',
+5:'Achior the Ammonite tells Holofernes Israel’s history: they fall only when they sin.',
+6:'Holofernes has Achior bound and left at Bethulia; the townspeople take him in.',
+7:'The siege; the springs seized; after thirty-four days the people beg to surrender; Uzziah asks for five more days.',
+8:'Judith introduced; she summons the elders and rebukes them for putting God to the test.',
+9:'Judith’s prayer at the hour of the evening incense: break their pride by the hand of a woman.',
+10:'She dresses in her finest and walks out with her maid; the Assyrian guards are dazzled.',
+11:'Before Holofernes she tells a story of Israel about to sin, and promises to lead him to Jerusalem.',
+12:'She eats only her own food and goes out each night to pray; on the fourth day Holofernes invites her to a banquet.',
+13:'Holofernes drunk and asleep; she takes his sword and cuts off his head in two strokes; back to Bethulia with the head in her food bag.',
+14:'The head hung on the wall; Achior believes; the Assyrians find their general headless and panic.',
+15:'Israel plunders the camp; the high priest blesses her: thou art the great glory of Israel.',
+16:'Judith’s song; she gives Holofernes’ goods to God, frees her maid, and lives to a hundred and five.'},
+'Est':{
+'A':'(Douay 11:2–12:6) Mordecai’s dream of two dragons and a little fountain; he uncovers the eunuchs’ plot.',
+1:'Ahasuerus’s hundred-and-eighty-day display and seven-day feast; Vashti refuses to come; she is deposed by decree.',
+2:'A search for a new queen; Esther, Mordecai’s orphaned cousin, is chosen; Mordecai uncovers a plot against the king.',
+3:'Haman promoted; Mordecai will not bow; lots cast; a decree to destroy all the Jews on the thirteenth of Adar.',
+'B':'(Douay 13:1–7) The text of the king’s decree against the Jews.',
+4:'Mordecai in sackcloth; who knoweth whether thou art come to the kingdom for such a time as this? Esther: if I perish, I perish.',
+'C':'(Douay 13:8–14:19) The prayers of Mordecai and of Esther.',
+'D':'(Douay 15) Esther goes in to the king, sees his anger and faints; God changes his spirit to gentleness.',
+5:'The golden sceptre held out; Esther invites the king and Haman to a banquet; Haman builds a gallows fifty cubits high.',
+6:'The king cannot sleep, has the chronicles read, finds Mordecai never rewarded; Haman must lead him through the city.',
+7:'The second banquet; Esther names Haman; he is hanged on his own gallows.',
+8:'Mordecai given Haman’s house and the king’s ring; a counter-decree lets the Jews defend themselves.',
+'E':'(Douay 16) The text of the second decree.',
+9:'The Jews defend themselves on the thirteenth of Adar; Haman’s ten sons hanged; the feast of Purim established.',
+10:'Mordecai’s greatness.',
+'F':'(Douay 10:4–11:1) Mordecai’s dream explained; a note on the Greek translation.'}
+};
+
+const GUIDE={
+haggai:{c:'Zerubbabel the governor, Jeshua the high priest, and the people who said the time had not come to build.',r:'Ezra 4:24–5:2, then Haggai 1–2, then Ezra 6:14–15.',t:'Every sermon is dated to the day, in the second year of Darius. From the first word (1:1) to the start of work (1:15) is twenty-three days.'},
+zechariah:{c:'The returned exiles, the priests who asked about fasting, and the false shepherds of the later chapters.',r:'Zechariah 1–8 alongside Ezra 5–6 and Haggai. Then 9–14, slowly, with the Passion narratives open beside them (Mt 21; 26–27; Jn 12; 19).',t:'The night visions come one after another in a single night (1:7–6:8), and each follows the same pattern: Zechariah sees, asks what these are, and an angel explains.'},
+malachi:{c:'Priests who despised the altar, men who divorced their wives, and people who held back their tithes.',r:'Nehemiah 13 first, then Malachi 1–4. Then Luke 1:16–17 and Matthew 11:10–14.',t:'Read it as a series of disputes. God makes a statement, the people answer “wherein?” and God replies. The pattern comes six or seven times, depending on how you count.'}
+};
+const MOM={
+haggai:[
+['Consider your ways','Hag 1:1–11','Ye have sown much, and bring in little; the people’s houses paneled, the Lord’s in ruins.'],
+['The work begins','Hag 1:12–15','Zerubbabel, Jeshua and the remnant obey; twenty-three days later the work starts.'],
+['The latter glory','Hag 2:1–9','To those who remember the first Temple: the glory of this latter house shall be greater than of the former.'],
+['Unclean','Hag 2:10–19','A question for the priests: holiness does not spread by touch, uncleanness does.'],
+['The signet','Hag 2:20–23','I will make thee as a signet: for I have chosen thee.']],
+zechariah:[
+['Turn ye unto me','Zech 1:1–6','Be ye not as your fathers.'],
+['Eight visions','Zech 1:7–6:8','Horsemen, horns, a measuring line, the high priest reclothed, the lampstand, the flying scroll, the woman in the basket, the chariots.'],
+['The crowns','Zech 6:9–15','Crowns made for Joshua the high priest: the man whose name is the BRANCH.'],
+['Fasting','Zech 7–8','Asked whether to keep the exile fasts, he answers with justice and mercy, and promises they will become feasts.'],
+['Thy King cometh','Zech 9:9','Lowly, and riding upon an ass.'],
+['Thirty pieces of silver','Zech 11:12–13','Cast unto the potter in the house of the Lord.'],
+['Whom they have pierced','Zech 12:10','They shall mourn for him, as one mourneth for his only son.'],
+['Smite the shepherd','Zech 13:7','And the sheep shall be scattered.'],
+['Living waters','Zech 14:8','Out from Jerusalem, half toward each sea.']],
+malachi:[
+['I have loved you','Mal 1:1–5','Jacob loved, Esau hated.'],
+['A pure offering','Mal 1:6–14','Blind and lame sacrifices at home; from the rising of the sun, a pure offering among the Gentiles.'],
+['The wife of thy youth','Mal 2:10–16','For the Lord, the God of Israel, saith that he hateth putting away.'],
+['My messenger','Mal 3:1–4','He shall prepare the way before me; a refiner’s fire.'],
+['Will a man rob God?','Mal 3:6–12','Bring ye all the tithes into the storehouse.'],
+['A book of remembrance','Mal 3:16–18','Written for them that feared the Lord.'],
+['Elijah','Mal 4:4–6','Before the great and dreadful day; he shall turn the heart of the fathers to the children (3:22–24 in the NABRE).']]
+};
+const DEEP={
+haggai:[
+['Four months','His whole recorded ministry fits between the first day of the sixth month and the twenty-fourth of the ninth, August to December 520 BC. No prophet’s career is dated more exactly. Ezra names him with Zechariah (Ezra 5:1; 6:14), and he appears nowhere else in the Old Testament.'],
+['An old man?','He asks, who is left among you that saw this house in her first glory? (2:3). Some take it to mean he had seen Solomon’s Temple himself, which would make him well over seventy. The text does not say.'],
+['A practical prophet','He has no visions and few images. His argument is economic: drought and thin harvests because the house lies waste (1:9–11). It worked. His hearers obey within the chapter (1:12–14), which happens to few prophets; the other famous case is [[k:jonah|Jonah]]’s Nineveh.'],
+['The signet returned','[[k:jeremiah|Jeremiah]] had said of King Jehoiachin, though Coniah were the signet upon my right hand, yet would I pluck thee thence (Jer 22:24). Haggai gives the signet back to Jehoiachin’s grandson: I will make thee as a signet: for I have chosen thee (Hag 2:23). The promise to David, seemingly revoked, is quietly restored, though Zerubbabel himself then disappears from the record.'],
+['The latter glory','The Second Temple had no ark, no cloud of glory, no Urim and Thummim; the Talmud lists five things it lacked (Yoma 21b). Haggai promised its glory would be greater than the first (2:9), and Christian readers took that as fulfilled when Christ came into it. The King James reads 2:7 the desire of all nations shall come, which the Church has long applied to Christ.']
+],
+zechariah:[
+['A priest who prophesies','He is the son of Berechiah son of Iddo (1:1), and Iddo headed one of the priestly families that came back with Zerubbabel (Neh 12:4, 16). Ezra calls him simply son of Iddo (Ezra 5:1). Like [[k:jeremiah|Jeremiah]] and [[k:ezekiel|Ezekiel]], he was a priest as well as a prophet.'],
+['One book or two?','Chapters 1–8 are dated (520–518 BC) and built on visions. Chapters 9–14 are undated oracles in a different style that never mention Zechariah, Zerubbabel or Joshua. Many scholars give them to a later hand, a “Second Zechariah,” and some divide again at chapter 12. Tradition reads one book. The question does not change what the chapters say, but it explains why they feel different.'],
+['An angel to explain','Zechariah is the first prophet who needs an angel to explain what he sees, “the angel that talked with me” (1:9). It is the pattern apocalyptic writing takes up in [[k:daniel|Daniel]] 7–12 and in Revelation.'],
+['The prophet of the Passion','No prophet supplies more of the Passion narratives: the king riding on an ass (9:9; Mt 21:5; Jn 12:15), the thirty pieces of silver (11:12–13; Mt 27:9–10, where Matthew names Jeremiah), smite the shepherd (13:7; Mt 26:31), and whom they have pierced (12:10; Jn 19:37; Rev 1:7).'],
+['The son of Barachias','Jesus speaks of Zacharias son of Barachias, slain between the temple and the altar (Mt 23:35). That murder is of [[k:zechariah_p|Zechariah son of Jehoiada]] (2 Chr 24:20–22); the father’s name seems to come from this prophet. A copyist’s slip, a merging of the two, or a tradition that this Zechariah was martyred too: the Aramaic Targum to Lamentations 2:20 says the son of Iddo was killed in the sanctuary. The question is old and unsettled.']
+],
+malachi:[
+['My messenger','Malachi means “my messenger,” the same word as 3:1, behold, I will send my messenger. The Greek translates the heading “by the hand of his messenger,” and the Aramaic Targum says Malachi was Ezra the scribe. Nothing personal survives about him, not even certainly his name.'],
+['When','He names no king and no date, but the Temple stands (1:10; 3:1), a Persian governor rules (1:8), and the abuses he attacks are the ones in Nehemiah 13: careless priests, mixed marriages, unpaid tithes. Most place him around 460–430 BC.'],
+['The last page','In the Christian Old Testament he closes the prophets, and his last lines point to [[k:elijah|Elijah]]; the next page is Matthew. Gabriel quotes him to Zechariah about John the Baptist (Lk 1:17), and Jesus says of John, this is Elias, which was for to come (Mt 11:14). In the Hebrew Bible the Prophets end with him too, but the Writings follow.'],
+['A pure offering','From the rising of the sun even unto the going down of the same my name shall be great among the Gentiles; and in every place incense shall be offered unto my name, and a pure offering (1:11). The Didache (ch. 14), Justin and Irenaeus apply it to the Eucharist, and the Third Eucharistic Prayer echoes it: from the rising of the sun to its setting a pure sacrifice may be offered to your name.'],
+['In the Mass','Malachi 3:1–4, the Lord, whom ye seek, shall suddenly come to his temple, is the first reading for the Presentation of the Lord on February 2, when the infant Jesus is carried into the Temple.'],
+['Three chapters or four','Hebrew Bibles and the NABRE have three chapters; the King James and the Douay-Rheims split off the last six verses as chapter 4. Malachi 4:1–6 is 3:19–24 in the NABRE.']
+]
+};
+const THREADS=[
+['Walls and gates','[[nehemiah]] rebuilds the walls gate by gate (Neh 3), starting with the Sheep Gate, where John’s pool of Bethesda would later stand (Jn 5:2). Ezra reads the Law before the Water Gate (Neh 8:1). [[mordecai]] sits in the king’s gate at Susa (Esth 2:19, 21). Zechariah sees a Jerusalem that needs no walls at all, with the Lord a wall of fire round about (Zech 2:4–5).'],
+['Prayers of confession','The exile taught Israel to pray “we have sinned”: [[ezra]] (Ezra 9:6–15), [[nehemiah]] (Neh 1:5–11), the Levites (Neh 9:6–37), [[k:daniel|Daniel]] (Dan 9:4–19), [[k:baruch|Baruch]] (Bar 1:15–3:8), [[tobit]] (Tob 3:1–6), [[judith]] (Jdt 9), [[esther]] and [[mordecai]] (Esther C). Each confesses the sins of the fathers as the speaker’s own.'],
+['Fasting and sackcloth','Ezra fasts at the river Ahava instead of asking for soldiers (Ezra 8:21–23). Nehemiah fasts on hearing about the walls (Neh 1:4). Esther asks all the Jews of Susa to fast three days before she goes in (4:16). Judith fasts all the days of her widowhood except sabbaths and feasts (Jdt 8:6). Zechariah promises that the fasts of the exile will become cheerful feasts (Zech 8:19), and Raphael says prayer is good with fasting and alms (Tob 12:8).'],
+['Banquets','Esther is a book of feasts: the king’s hundred and eighty days and seven-day party, Vashti’s feast for the women, Esther’s two banquets, and Purim. [[holofernes]] loses his head after his own banquet (Jdt 12–13). [[tobit]]’s Pentecost dinner is interrupted by a corpse (Tob 2), and [[raguel]] throws a fourteen-day wedding feast (Tob 8:19–20). Nehemiah tells the weeping people to eat the fat and drink the sweet (Neh 8:10).'],
+['Burying the dead','[[tobit]] buries the executed of his people at the risk of his life (Tob 1:17–19; 2:3–8), and Raphael tells him, when thou didst bury the dead, I was with thee likewise (12:12–13). [[raguel]] digs a grave for his son-in-law in the night (8:9–18). [[judith]] is buried beside her husband (Jdt 16:23). Burying the dead became the seventh of the corporal works of mercy, largely on Tobit’s account. Compare [[s:rizpah|Rizpah’s vigil]] on the Samuel page.'],
+['Hidden faces','[[raphael]] travels as Azariah son of Ananias (Tob 5:13). [[esther]] keeps her people secret (Esth 2:10, 20). [[judith]] dresses to deceive (Jdt 10:3–4). [[nehemiah]] inspects the walls by night and tells no one (Neh 2:12–16). And in the Hebrew Esther, God himself is never named, though everything turns his way.'],
+['The house of David','[[sheshbazzar]] is called the prince of Judah, [[zerubbabel]] is King Jehoiachin’s grandson, Haggai calls him the Lord’s signet, and Zechariah speaks of the BRANCH and of a king riding on an ass (Zech 3:8; 6:12; 9:9). Then Zerubbabel drops out of the record, no descendant of David governs after him, and [[nehemiah]] has to deny that he wants to be king (Neh 6:6–7). The family tree runs on in 1 Chronicles 3:17–24, and in Matthew 1:12–16. Compare [[s:covenant|A house for a house]] on the Samuel page.'],
+['Women who save','[[judith]] and [[esther]] save their people by going where no one else could go. Judith’s song echoes Miriam’s and Deborah’s (Exod 15; Judg 5), and Uzziah’s blessing, blessed art thou of the most high God above all the women upon the earth (Jdt 13:18), is close to Elizabeth’s greeting to Mary (Lk 1:42). The Church applies Judith’s praise, thou art the glory of Jerusalem, to the Blessed Virgin.']
+];
+const CLASH=[
+{t:'Tobias, Tobit and Tobiah',ids:['tobit','tobias','tobiah_a'],d:'The Douay-Rheims, following the Vulgate, calls father and son both Tobias. Newer Catholic Bibles call the father Tobit and the son Tobiah. Neither is Tobiah the Ammonite who plagued Nehemiah (Neh 2:10), whom the Douay also calls Tobias.'},
+{t:'Uzziah and Ozias',ids:['ozias'],d:'Uzziah, the magistrate of Bethulia in Judith, is not [[k:uzziah|King Uzziah]] of Judah, whom the Douay also calls Ozias and Kings calls Azariah.'},
+{t:'Nebuchadnezzar',ids:['nebuchadnezzar_j'],d:'Judith’s Nebuchadnezzar reigns over the Assyrians in Nineveh (Jdt 1:1). The historical Nebuchadnezzar II ruled Babylon from 605 to 562 BC, burned Jerusalem in 586, and is the king of [[k:daniel|Daniel]] and [[k:jeremiah|Jeremiah]]. Nineveh had fallen in 612.'},
+{t:'Ahasuerus and Artaxerxes',ids:['ahasuerus','artaxerxes'],d:'Esther’s Ahasuerus is Xerxes I. The Greek additions call him Artaxerxes, so the Douay’s chapters 11–16 do too. [[k:daniel|Daniel]] 9:1 has another Ahasuerus, father of Darius the Mede, and the Greek of Tobit 14:15 has yet another. The Artaxerxes of Ezra and Nehemiah is Artaxerxes I, unless Ezra’s is Artaxerxes II, as some scholars argue.'},
+{t:'Darius',ids:['darius'],d:'Darius I of Ezra, Haggai and Zechariah (522–486 BC) is not Darius the Mede of [[k:daniel|Daniel]] 5–6, whom no other ancient source names. Nehemiah 12:22 mentions Darius the Persian, probably Darius II (423–404).'},
+{t:'Zechariah',ids:['zechariah'],d:'The prophet Zechariah son of Berechiah is not [[k:zechariah_p|Zechariah son of Jehoiada]], the priest stoned in the Temple court (2 Chr 24:20–22), though Matthew 23:35 seems to join them. The Old Testament has some thirty men of the name.'},
+{t:'Jeshua and Joshua',ids:['jeshua'],d:'The high priest Jeshua is called Joshua in Haggai and Zechariah; Jeshua is the later form of the same name, and the Douay calls him Jesus son of Josedec. He is not Joshua son of Nun. In Greek both are Iesous, the name of Jesus, which is why the Fathers read the crowning of Joshua in Zechariah 6:11–13 as a figure of Christ.'},
+{t:'Esdras',ids:['ezra','nehemiah'],d:'In the Vulgate and the Douay-Rheims, Ezra is 1 Esdras and Nehemiah is 2 Esdras. The King James Apocrypha’s 1 and 2 Esdras are different books, which the Vulgate printed as 3 and 4 Esdras in an appendix; they are not in the Catholic canon.'},
+{t:'Mordecai',ids:['mordecai'],d:'A Mordecai is listed among the leaders who came back with Zerubbabel (Ezra 2:2; Neh 7:7). The name was common, built on that of the Babylonian god Marduk, and nothing ties that man to Esther’s cousin.'},
+{t:'Shemaiah',ids:['nehemiah'],d:'Shemaiah son of Delaiah, the prophet hired to frighten Nehemiah into hiding in the Temple (Neh 6:10–13), is not [[k:shemaiah|Shemaiah]] the man of God who stopped Rehoboam’s war (1 Kgs 12:22).'},
+{t:'Kish and the Agagite',ids:['mordecai','haman'],d:'Not a mistake of names but a deliberate echo. Mordecai is a Benjamite, son of Jair, son of Shimei, son of Kish (Esth 2:5), names from Saul’s family, and Haman is an Agagite, of the line of the king Saul spared. See [[s:agag|Amalek and Agag]] on the Samuel page.'}
+];
+
+// Kings-page people and prophets that notes here link to.
+const KP=new Set(['elijah','elisha','ahijah','shemaiah','man_of_god','micaiah','jonah','amos','hosea','isaiah','micah','oded','nahum','zephaniah','huldah','jeremiah','uriah','habakkuk','baruch','daniel','ezekiel','joel','obadiah','zechariah_p','jehu_p','hanani','azariah_o','jahaziel']);
+
+const BOOKS={'Ezr':'Ezra','Neh':'Nehemiah','Tob':'Tobit','Jdt':'Judith','Est':'Esther','Hag':'Haggai','Zec':'Zechariah','Mal':'Malachi'};
+const CHAPS={'Ezr':R(1,10),'Neh':R(1,13),'Tob':R(1,14),'Jdt':R(1,16),'Est':['A',1,2,3,'B',4,'C','D',5,6,7,8,'E',9,10,'F'],'Hag':[1,2],'Zec':R(1,14),'Mal':[1,2,3,4]};
+const ADD={'A':'Douay 11–12','B':'Douay 13:1–7','C':'Douay 13:8–14:19','D':'Douay 15','E':'Douay 16','F':'Douay 10:4–11:1'};
+const GROUPS=[['Prophets, priests and scribes',0],['Kings, governors and enemies',1],['The returned exiles',2],['In Tobit, Judith and Esther',3]];
+
+const byId={}; SP.forEach(x=>byId[x.id]=x);
+const scById={}; SCENES.forEach(s=>scById[s.id]=s);
+const PS=new Set(Object.keys(GUIDE));
+const $=s=>document.querySelector(s);
+const state={book:'Ezr',chap:'',sel:null};
+const cv=v=>(v===''||isNaN(+v))?v:+v;
+function chLabel(b,c){ return typeof c==='string'?`${BOOKS[b]}, addition ${c}`:`${BOOKS[b]} ${c}`; }
+let lastFocus=null;
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function dates(x){ return x.dates || (x.s===x.e?`c. ${x.s} BC`:`c. ${x.s}–${x.e} BC`); }
+function chipCls(x){ return PS.has(x.id)?'c-prop':x.c===1?'c-saul':x.c===2?'c-men':x.c===3?'c-dav':'c-neutral'; }
+function chip(id){ const x=byId[id]; return `<button type="button" class="chip ${chipCls(x)}" data-go="${id}">${x.short||x.name}</button>`; }
+function who(ref,cls){
+  if(ref.startsWith('#')) return `<span class="${cls} plain">${ref.slice(1)}</span>`;
+  if(ref.startsWith('k:')){ const [k,lab]=ref.slice(2).split('|'); return `<a class="xref" href="kings.html#${KP.has(k)?'guide-':'k-'}${k}">${lab||k}</a>`; }
+  const x=byId[ref]; return `<button type="button" class="pn" data-go="${ref}">${x.short||x.name}</button>`;
+}
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+function evHTML(e,withScene){
+  let subj=who(e.a,'who'); if(e.a.startsWith('#')) subj=`<span class="who plain">${cap(e.a.slice(1))}</span>`;
+  const sc=withScene?` <button type="button" class="sc-link" data-scene="${e.s}">Scene: ${scById[e.s].t}</button>`:'';
+  return `<li class="ev t-${e.y}">${subj} <span class="vb">${e.v}</span> ${who(e.b,'who')}${e.v2?` <span class="vb">${e.v2}</span>`:''}<cite>${e.r}</cite><span class="nt">${e.n}${sc}</span></li>`;
+}
+
+function diveHTML(d){
+  const body=d.sec.map(([h,items])=>`<h5>${h}</h5>`+items.map(it=>Array.isArray(it)?`<p><b>${/[.?!]$/.test(it[0])?it[0]:it[0]+'.'}</b> ${xref(it[1])}</p>`:`<p>${xref(it)}</p>`).join('')).join('');
+  return `<details class="dive" id="dd-${d.id}"><summary><span class="dv-k">${d.k||'Deep dive'}</span><span class="dv-t">${d.t}</span><span class="dv-r">${d.r}</span><span class="dv-l">${d.lead}</span><span class="dv-more"><span class="o">${d.k?'Read the portrait':'Read the deep dive'}</span><span class="c">Close</span></span></summary><div class="dv-body">${body}<button type="button" class="dv-close" data-closedive="${d.id}">${d.k?'Close the portrait':'Close the deep dive'}</button></div></details>`;
+}
+function chsHTML(s){
+  const items=[]; Object.keys(s.ch).forEach(b=>s.ch[b].forEach(c=>{ const t=(CHL[b]||{})[c]; if(t) items.push(`<li data-ch="${b}:${c}"><b>${chLabel(b,c)}</b> ${t}</li>`); }));
+  return items.length?`<details class="chs"><summary>Chapter by chapter</summary><ul>${items.join('')}</ul></details>`:'';
+}
+function renderStory(){
+  let h='';
+  ACTS.forEach((a,i)=>{
+    h+=`<div class="act a${i}"><h3>${a.t}</h3><p>${a.n}</p></div><ol class="scenes a${i}">`;
+    SCENES.filter(s=>s.act===i).forEach(s=>{
+      const evs=EVS.filter(e=>e.s===s.id);
+      h+=`<li class="scene" id="sc-${s.id}"><h4 tabindex="-1">${s.t}</h4><p class="sc-ref">${s.r}<span>${s.d}</span></p><p class="sc-n">${s.n}</p><div class="sc-who">${s.who.map(chip).join('')}</div>${evs.length?`<ul class="evs">${evs.map(e=>evHTML(e,false)).join('')}</ul>`:''}${chsHTML(s)}${DIVES.filter(d=>d.s===s.id).map(diveHTML).join('')}</li>`;
+    });
+    h+='</ol>';
+  });
+  $('#story').innerHTML=h;
+}
+function renderCast(){
+  $('#cast-list').innerHTML=GROUPS.map(([t,c])=>`<h3>${t}</h3><ul class="cast-list">${SP.filter(p=>p.c===c).map(p=>`<li><button type="button" class="cast-row" data-go="${p.id}"><b>${p.name}</b><span>${p.role}</span></button></li>`).join('')}</ul>`).join('');
+}
+
+function scenesFor(){
+  if(!state.chap) return [];
+  const c=cv(state.chap);
+  return SCENES.filter(s=>s.ch[state.book]&&s.ch[state.book].includes(c));
+}
+function apply(){
+  const scs=scenesFor();
+  document.querySelectorAll('.scene').forEach(n=>n.classList.toggle('here',scs.some(s=>'sc-'+s.id===n.id)));
+  const f=$('#found');
+  if(!state.chap){ f.innerHTML='<span class="hint">Choose a chapter to jump to its scene.</span>'; }
+  else {
+    const c=cv(state.chap);
+    const people=SP.filter(x=>x.ch[state.book]&&x.ch[state.book].includes(c));
+    const sc=scs.map(s=>`<button type="button" class="sc-link" data-scene="${s.id}">${s.t}</button>`).join(', ');
+    const dv=DIVES.filter(d=>d.ch[state.book]&&d.ch[state.book].includes(c));
+    f.innerHTML=`<span class="hint">${chLabel(state.book,c)}: ${sc}</span>`+dv.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">Deep dive: ${d.t}</button>`).join('')+people.map(x=>chip(x.id)).join('');
+  }
+  $('#clear').hidden=!state.chap;
+  const key=state.chap?`${state.book}:${state.chap}`:'';
+  document.querySelectorAll('.chs li').forEach(li=>{ const on=li.dataset.ch===key; li.classList.toggle('here',on); if(on) li.closest('details').open=true; });
+}
+function goScene(id,flash){
+  const a=document.getElementById('sc-'+id); if(!a) return;
+  if($('#sheet').classList.contains('open')) close();
+  const y=a.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  if(flash){ a.classList.add('here'); setTimeout(()=>apply(),1600); }
+  const hh=a.querySelector('h4'); if(hh) hh.focus({preventScroll:true});
+}
+
+function goDive(id){
+  const d=document.getElementById('dd-'+id); if(!d) return;
+  if($('#sheet').classList.contains('open')) close();
+  d.open=true;
+  const y=d.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  const t=d.querySelector('summary'); if(t) t.focus({preventScroll:true});
+}
+function xref(s){
+  return s.replace(/\[\[([\w:]+)(?:\|([^\]]+))?\]\]/g,(m,id,label)=>{
+    if(id.startsWith('dd:')){ const dd=DIVES.find(v=>v.id===id.slice(3)); return `<button type="button" class="xref" data-dive="${id.slice(3)}">${label||(dd?dd.t:id)}</button>`; }
+    if(id.startsWith('k:')){ const k=id.slice(2); return `<a class="xref" href="kings.html#${KP.has(k)?'guide-':'k-'}${k}">${label||k}</a>`; }
+    if(id.startsWith('s:')){ const k=id.slice(2); return `<a class="xref" href="samuel.html#dd-${k}">${label||k}</a>`; }
+    const x=byId[id]; if(!x) return label||id;
+    const lab=label||x.short||x.name;
+    return GUIDE[id]?`<button type="button" class="xref" data-guide="${id}">${lab}</button>`:`<button type="button" class="xref" data-go="${id}">${lab}</button>`;
+  });
+}
+function clashHTML(id){
+  const gs=CLASH.filter(g=>g.ids.includes(id));
+  if(!gs.length) return '';
+  return `<div class="clash"><h3>Watch the name</h3>${gs.map(g=>`<p><strong>${g.t}.</strong> ${xref(g.d)}</p>`).join('')}</div>`;
+}
+function personSheet(x){
+  let h=`<h2 id="sh-title" tabindex="-1">${x.name}</h2><p class="sh-sub">${x.role}, ${dates(x)}</p>`;
+  let a=''; if(x.aka) a+=`Also called ${x.aka}. `; if(x.dy) a+=`<span>Douay-Rheims: ${x.dy}.</span>`;
+  if(a) h+=`<p class="sh-aka">${a}</p>`;
+  h+=`<p class="sum" style="margin-top:12px">${x.sum}</p>`;
+  if(GUIDE[x.id]) h+=`<button type="button" class="guide-link" data-guide="${x.id}">Open the reading guide</button>`;
+  const pts=DIVES.filter(d=>d.p===x.id);
+  if(pts.length) h+=`<h3>${pts.length>1?'Portraits':'Portrait'}</h3><p class="sc-chips">${pts.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">${d.t}</button>`).join('')}</p>`;
+  const evs=EVS.filter(e=>e.a===x.id||e.b===x.id||(e.by||[]).includes(x.id));
+  if(evs.length) h+=`<h3>What they did, and what was done to them</h3><ul class="evs">${evs.map(e=>{
+    const li=evHTML(e,true);
+    return (e.by||[]).includes(x.id)?li.replace('<span class="nt">',`<span class="nt">${x.short||x.name} gave the order. `):li;
+  }).join('')}</ul>`;
+  const dvs=DIVES.filter(d=>d.who.includes(x.id));
+  if(dvs.length) h+=`<h3>Deep dives</h3><p class="sc-chips">${dvs.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">${d.t}</button>`).join('')}</p>`;
+  const scs=SCENES.filter(s=>s.who.includes(x.id));
+  h+=`<h3>Scenes</h3><p class="sc-chips">${scs.map(s=>`<button type="button" class="chip c-neutral" data-scene="${s.id}">${s.t}</button>`).join('')}</p>`;
+  h+=`<h3>Read</h3><p class="refs">${x.refs}</p>`;
+  return h+clashHTML(x.id);
+}
+function open(id){
+  const x=byId[id]; if(!x) return;
+  if(!$('#sheet').contains(document.activeElement)) lastFocus=document.activeElement;
+  state.sel=id;
+  $('#sheet-body').innerHTML=personSheet(x);
+  const sh=$('#sheet'); sh.inert=false; sh.classList.add('open'); sh.scrollTop=0;
+  requestAnimationFrame(()=>{ const t=$('#sh-title'); if(t) t.focus({preventScroll:true}); });
+}
+function close(){
+  const sh=$('#sheet'); sh.classList.remove('open'); sh.inert=true; state.sel=null;
+  if(lastFocus&&document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
+}
+
+function guideCard(id){
+  const p=byId[id], g=GUIDE[id];
+  return `<article class="g" style="--pc:var(--prophet)" id="guide-${id}"><h4 tabindex="-1">${p.name}</h4><p class="g-meta">${dates(p)}. ${p.role}.</p><p>${p.sum}</p><h5>Confronted</h5><p>${g.c}</p>${DEEP[id]?`<h5>Beneath the surface</h5><div class="g-deep">${DEEP[id].map(d=>`<p><b>${/[.?!]$/.test(d[0])?d[0]:d[0]+'.'}</b> ${xref(d[1])}</p>`).join('')}</div>`:''}<details class="g-mom"><summary>Key moments (${MOM[id].length})</summary><ol class="g-m">${MOM[id].map(m=>`<li><b>${m[0]}</b> <cite>${m[1]}</cite><span class="g-d">${m[2]}</span></li>`).join('')}</ol></details><h5>Reading path</h5><p>${g.r}</p><h5>As you read</h5><p>${g.t}</p><button type="button" class="g-back" data-go="${id}">Details and scenes</button></article>`;
+}
+function goGuide(id){
+  const a=document.getElementById('guide-'+id); if(!a) return;
+  if($('#sheet').classList.contains('open')) close();
+  const y=a.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-12;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  a.classList.add('flash'); setTimeout(()=>a.classList.remove('flash'),1800);
+  const hh=a.querySelector('h4'); if(hh) hh.focus({preventScroll:true});
+}
+function renderLower(){
+  const ids=['haggai','zechariah','malachi'];
+  $('#g-nav').innerHTML=`<p class="g-nav">${ids.map(id=>`<button type="button" class="chip c-prop" data-guide="${id}">${byId[id].name}</button>`).join('')}</p>`;
+  $('#guide').innerHTML=ids.map(guideCard).join('');
+  $('#threads-list').innerHTML=THREADS.map(t=>`<div class="th"><h3>${t[0]}</h3><p>${xref(t[1])}</p></div>`).join('');
+  $('#clashes').innerHTML=CLASH.map(g=>`<article><h3>${g.t}</h3><p>${xref(g.d)}</p><div>${g.ids.map(chip).join('')}</div></article>`).join('');
+}
+
+function buildChaps(){
+  let h='<option value="">Chapter</option>';
+  CHAPS[state.book].forEach(c=>{ h+=`<option value="${c}">${typeof c==='string'?`Addition ${c}`:c}</option>`; });
+  $('#chap').innerHTML=h; $('#chap').value=state.chap;
+}
+function save(){ try{ localStorage.setItem('ex-reading',JSON.stringify({b:state.book,c:state.chap})); }catch(e){} }
+function load(){
+  try{
+    const v=JSON.parse(localStorage.getItem('ex-reading')||'null');
+    if(v&&BOOKS[v.b]){ state.book=v.b; state.chap=(v.c&&CHAPS[v.b].map(String).includes(String(v.c)))?String(v.c):''; }
+  }catch(e){}
+}
+
+document.addEventListener('click',e=>{
+  const cd=e.target.closest('[data-closedive]');
+  if(cd){ const d=document.getElementById('dd-'+cd.dataset.closedive); if(d){ d.open=false; const y=d.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10; window.scrollTo({top:y,behavior:'auto'}); } return; }
+  const dvb=e.target.closest('[data-dive]');
+  if(dvb){ goDive(dvb.dataset.dive); return; }
+  const sc=e.target.closest('[data-scene]');
+  if(sc){ goScene(sc.dataset.scene,true); return; }
+  const gd=e.target.closest('[data-guide]');
+  if(gd){ goGuide(gd.dataset.guide); return; }
+  const g=e.target.closest('[data-go]');
+  if(g){ open(g.dataset.go); }
+});
+$('#close').addEventListener('click',close);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('#sheet').classList.contains('open')) close(); });
+$('#book').addEventListener('change',e=>{ state.book=e.target.value; state.chap=''; buildChaps(); save(); apply(); });
+$('#chap').addEventListener('change',e=>{ state.chap=e.target.value; save(); apply(); const s=scenesFor(); if(s.length) requestAnimationFrame(()=>goScene(s[0].id,false)); });
+$('#clear').addEventListener('click',()=>{ state.chap=''; $('#chap').value=''; save(); apply(); });
+
+load();
+$('#book').value=state.book;
+buildChaps();
+renderStory();
+renderCast();
+renderLower();
+apply();
+if(state.chap){ const s=scenesFor(); if(s.length) setTimeout(()=>goScene(s[0].id,false),250); }
+const hm=location.hash.match(/^#p-(\w+)$/);
+if(hm&&byId[hm[1]]) setTimeout(()=>open(hm[1]),300);
+const dm=location.hash.match(/^#dd-(\w+)$/);
+if(dm) setTimeout(()=>goDive(dm[1]),300);
+const gm=location.hash.match(/^#guide-(\w+)$/);
+if(gm&&GUIDE[gm[1]]) setTimeout(()=>goGuide(gm[1]),300);
+})();
+</script>
+<script>
+try{ if(/github\.io$/.test(location.hostname)) document.getElementById('home-link').hidden=false; }catch(e){}
+</script>
+</body>
+</html>
