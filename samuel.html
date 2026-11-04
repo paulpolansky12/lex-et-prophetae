@@ -296,6 +296,23 @@ a.guide-link{text-decoration:none}
 .sheet .ev{font-size:16px}
 .sc-link{display:inline;padding:0;font:inherit;font-size:14.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .sc-chips{line-height:1.9}
+/* Deep dives */
+.dive{margin:12px 0 4px;border:1px solid var(--rule);border-left:4px solid var(--ac);border-radius:0 4px 4px 0;background:var(--paper-2);scroll-margin-top:110px}
+.dive summary{list-style:none;cursor:pointer;padding:10px 12px 11px;display:block}
+.dive summary::-webkit-details-marker{display:none}
+.dv-k{display:block;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ac);font-weight:600}
+.dv-t{display:block;font-size:1.2rem;font-weight:600;line-height:1.2;margin:1px 0 1px}
+.dv-r{display:block;font-size:14.5px;color:var(--ink-soft);font-variant-numeric:lining-nums}
+.dv-l{display:block;margin-top:5px;font-size:16.5px;line-height:1.45}
+.dv-more{display:inline-block;margin-top:6px;font-size:14.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.dv-more .c,.dive[open] .dv-more .o{display:none}
+.dive[open] .dv-more .c{display:inline}
+.dv-body{padding:0 12px 6px;border-top:1px solid var(--rule)}
+.dv-body h5{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.dv-body p{margin:0 0 11px;font-size:17px;line-height:1.55}
+.dv-body p b{font-weight:600}
+.dv-close{margin:2px 0 8px;font-size:14.5px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.c-dive{--cc:var(--judah);font-weight:600}
 a.xref{color:var(--prophet)}
 a.guide-link{text-decoration:none}
 .hint .sc-link{font-style:normal;color:var(--ink);font-size:15px}
@@ -306,7 +323,7 @@ a.guide-link{text-decoration:none}
 <header class="wrap">
   <p class="home-link" id="home-link" hidden><a href="./">Lex et Prophetae</a></p>
   <h1>The United Kingdom</h1>
-  <p class="lede">Samuel, Saul, David and Solomon, told in eighteen scenes from Shiloh to Solomon’s death: who is in each one, and who anointed, spared, betrayed or killed whom. Choose the chapter you’re reading to jump to its scene. Tap any name for that person’s whole story.</p>
+  <p class="lede">Samuel, Saul, David and Solomon, told in eighteen scenes from Shiloh to Solomon’s death: who is in each one, who anointed, spared, betrayed or killed whom, and deep dives on the episodes that carry the weight. Choose the chapter you’re reading to jump to its scene. Tap any name for that person’s whole story.</p>
   <div class="reigns grid">
     <p class="rs"><b>Saul</b>Of Benjamin. Reigned from Gibeah, c. 1050–1010. Died on Gilboa.</p>
     <p class="rd"><b>David</b>Of Judah. Seven years at Hebron, thirty-three at Jerusalem, 1010–970.</p>
@@ -491,6 +508,7 @@ const EVS=[
 {s:'twokings',a:'joab',y:'kill',v:'kills',b:'abner',r:'2 Sam 3:27',n:'In the gate at Hebron, for Asahel’s blood. David curses Joab’s house and weeps at the grave.'},
 {s:'twokings',a:'#Rechab and Baanah',y:'kill',v:'kill',b:'ish_bosheth',r:'2 Sam 4:5–7',n:'In his bed at noon, and bring his head to Hebron.'},
 {s:'twokings',a:'david',y:'kill',v:'executes',b:'#Rechab and Baanah',r:'2 Sam 4:9–12',n:'And buries Ish-bosheth’s head in Abner’s grave.'},
+{s:'jerusalem',a:'#The Lord',y:'kill',v:'strikes down',b:'#Uzzah',r:'2 Sam 6:6–8; 1 Chr 13:9–11',n:'For putting his hand to the ark when the oxen stumbled. It was meant to be carried on the Levites’ shoulders, not rolled on a cart.'},
 {s:'jerusalem',a:'michal',y:'rebuke',v:'mocks',b:'david',r:'2 Sam 6:20–23',n:'For dancing before the ark, uncovered before the maids. She has no child to the day of her death.'},
 {s:'jerusalem',a:'nathan',y:'anoint',v:'brings God’s promise to',b:'david',r:'2 Sam 7:4–17; 1 Chr 17',n:'A house for a house: God will build David a dynasty.'},
 {s:'jerusalem',a:'david',y:'save',v:'restores',b:'mephibosheth',r:'2 Sam 9',n:'Saul’s land, and a place at the king’s table, for Jonathan’s sake.'},
@@ -525,6 +543,191 @@ const EVS=[
 {s:'crowned',a:'benaiah',y:'kill',v:'kills',b:'shimei',by:['solomon'],r:'1 Kgs 2:36–46',n:'After Shimei leaves Jerusalem to chase two runaway slaves.'},
 {s:'reign',a:'#The Lord',y:'rebuke',v:'rebukes',b:'solomon',r:'1 Kgs 11:9–13',n:'I will surely rend the kingdom from thee, but not in thy days, for David thy father’s sake.'},
 {s:'reign',a:'k:ahijah|Ahijah of Shiloh',y:'anoint',v:'promises ten tribes to',b:'#Jeroboam',r:'1 Kgs 11:29–39',n:'Tearing his new cloak into twelve pieces.'}
+];
+
+const DIVES=[
+{id:'hannah',s:'shiloh',t:'Hannah’s prayer and song',r:'1 Sam 1:1–2:11',ch:{'1S':[1,2]},who:['eli','samuel'],lead:'A barren woman’s silent prayer at Shiloh opens the books of Samuel, and her song is the first in the Bible to speak of the Lord’s anointed king.',sec:[
+['What happens',['Elkanah, an Ephraimite, has two wives: Peninnah, who has children, and Hannah, who has none. Every year at Shiloh, Peninnah provokes her until she weeps and will not eat. Hannah prays at the tabernacle with her lips moving and no sound, vowing that if God gives her a son he will be the Lord’s all his life. Eli takes her for drunk, then blesses her. She bears Samuel, and when he is weaned she brings him to Shiloh to stay, and sings.']],
+['Beneath the surface',[
+['After Judges','The book opens with “a certain man of Ramathaim-zophim, of mount Ephraim” (1:1). The last chapters of Judges open the same way, “there was a man of mount Ephraim” (Judg 17:1; 19:1), and they are the ugliest stories in the Bible, framed by “in those days there was no king in Israel” (Judg 21:25). Samuel begins with the same kind of man from the same hills, and this time the story goes somewhere.'],
+['Asked','Hannah names him Samuel “because I have asked him of the Lord” (1:20), and gives him back because he is “lent” to the Lord (1:28). Both verbs are forms of sha’al, and the name they fit is not Samuel but Saul, Sha’ul, asked for. Some scholars think the birth story was first told of Saul; others think the narrator is already hinting that Israel will ask for a king. Either way, the first chapter is punning on the name of the first king.'],
+['Rival wives','Sarah and Hagar, Rachel and Leah, Hannah and Peninnah: the loved wife is barren and the other is fruitful and lets her know it. Every barren mother in Scripture, Sarah, Rebekah, Rachel, Samson’s mother, Elizabeth, bears a child who opens a new chapter. Hannah’s son ends the judges and begins the kings.'],
+['How to pray','She “spake in her heart; only her lips moved, but her voice was not heard” (1:13). The Talmud takes the rules for Judaism’s central daily prayer from this verse: direct the heart, form the words with the lips, keep the voice low (Berakhot 31a). The priest who should have recognized prayer mistook it for drunkenness.'],
+['No razor','“There shall no razor come upon his head” (1:11) is the Nazirite vow (Num 6:5), the one taken for Samson (Judg 13:5). A Dead Sea Scrolls copy of Samuel makes it explicit, calling Samuel a Nazirite for ever. Samson was the Nazirite judge who wasted it; Samuel is the one who keeps it.'],
+['Anna','Hannah’s name means grace or favor, and in Greek and Latin it is Anna. The second-century Protoevangelium of James tells how Anne, the mother of Mary, was barren, prayed, and gave her daughter to the Temple at three. Its story of St. Anne is modeled on Hannah’s. The Church keeps the Presentation of Mary on November 21.']
+]],
+['Hannah’s song',[
+['The model for the Magnificat','My heart rejoiceth in the Lord (2:1); the mighty brought low and the poor raised up; the full hire themselves out for bread and the hungry cease (2:4–5). Mary’s song follows the same shape (Lk 1:46–55), and Psalm 113:7–8 repeats “he raiseth up the poor out of the dust … to set him with princes” word for word.'],
+['Death and life','“The Lord killeth, and maketh alive: he bringeth down to the grave, and bringeth up” (2:6; compare Deut 32:39). It may mean no more than God’s power over life and death, but the Church has always heard resurrection in it.'],
+['His anointed','The song ends, “he shall give strength unto his king, and exalt the horn of his anointed” (2:10). It is the first time Scripture speaks of the Lord’s anointed king, his messiah, sung by a woman at Shiloh before Israel has a king at all.']
+]],
+['Liturgy',['The song is the canticle at Morning Prayer on Wednesday of Week II in the Liturgy of the Hours. On December 22, the Mass sets Hannah bringing Samuel to Shiloh beside the Magnificat, with her song as the psalm between. It is also a first reading for the Holy Family in Year C.']],
+['Watch for',['Elkanah’s comfort: “am not I better to thee than ten sons?” (1:8). Kind, and entirely beside the point. And Hannah, not her husband, makes the vow, names the child, and decides when he goes to Shiloh.']]
+]},
+{id:'call',s:'shiloh',t:'Speak, for thy servant heareth',r:'1 Sam 2:12–3:21',ch:{'1S':[2,3]},who:['eli','eli_sons','samuel'],lead:'The priesthood at Shiloh is rotting from the top, and God speaks instead to the boy sleeping by the ark.',sec:[
+['What happens',['Eli’s sons take the sacrifices by force and lie with the women serving at the tabernacle door. Eli rebukes them mildly. A man of God tells him his house will lose the priesthood, both sons will die on one day, and God will raise up a faithful priest. Then, one night, the Lord calls the boy Samuel by name, three times he runs to Eli, and the fourth time he answers. The message is the end of Eli’s house. Eli makes him tell it all, and says, it is the Lord.']],
+['Beneath the surface',[
+['The fork','The priests’ servant plunged a three-pronged fork into the pot and took whatever came up, and even demanded raw meat before the fat had been burned (2:13–16). The fat belonged to God (Lev 3:16; 7:23–25). They served themselves before him, and “men abhorred the offering of the Lord” (2:17).'],
+['Heavy','The man of God says Eli honors his sons above God, to make themselves fat (2:29). The Hebrew root k-b-d means heavy, honor and glory. Eli dies falling backward from his seat because he was “heavy” (4:18), and his daughter-in-law names her son Ichabod, “the glory is departed” (4:21). Honor, weight and glory are one word, and the house of Eli lost all three.'],
+['A faithful priest and a sure house','“I will raise me up a faithful priest … and I will build him a sure house” (2:35). It comes true when Solomon banishes Abiathar, the last of Eli’s line, and installs Zadok (1 Kgs 2:27, 35). The phrase “sure house” returns in Nathan’s promise to David and [[k:ahijah|Ahijah]]’s offer to Jeroboam. Hebrews calls Christ the faithful high priest (Heb 2:17; 3:1–2).'],
+['The lamp had not yet gone out','The call comes when the word of the Lord was precious, meaning rare, and Eli’s eyes were growing dim, while “the lamp of God” still burned in the sanctuary (3:1–3). That lamp was tended until morning (Exod 27:20–21), so the call comes just before dawn. Kings takes up the image as God’s promise to keep a lamp for David in Jerusalem (1 Kgs 11:36).'],
+['Samuel, Samuel','God calls him by name twice, as he called “Abraham, Abraham” on Moriah (Gen 22:11) and “Moses, Moses” from the bush (Exod 3:4). Jesus speaks the same way to Martha and to Simon (Lk 10:41; 22:31), and to Saul of Tarsus, a Benjamite named for Israel’s first king (Acts 9:4).'],
+['A word left out','Eli tells him to answer, “Speak, Lord; for thy servant heareth.” What Samuel actually says is “Speak; for thy servant heareth” (3:9–10), without the divine name. The rabbis noticed. He does not yet know the Lord (3:7); he will.'],
+['Tingling ears','“Both the ears of every one that heareth it shall tingle” (3:11). The same phrase announces Jerusalem’s fall in Manasseh’s day and in [[k:jeremiah|Jeremiah]] (2 Kgs 21:12; Jer 19:3). Shiloh’s fall is the template for Jerusalem’s, and Jeremiah makes the comparison himself (Jer 7:12–14).'],
+['It is the Lord','Eli hears the sentence and answers, “It is the Lord: let him do what seemeth him good” (3:18). It sounds like Job (Job 1:21), and also like Hezekiah, relieved that the disaster will come after his day (2 Kgs 20:19). Whether Eli’s is faith or exhaustion, the text does not say.']
+]],
+['Liturgy',['1 Samuel 3:3–10, 19 is the first reading on the Second Sunday in Ordinary Time, Year B, beside the first disciples following Jesus in John 1:35–42. It is the classic text for vocations.']],
+['Watch for',['Samuel sleeps “in the temple of the Lord, where the ark of God was” (3:3), and Eli sleeps in his own place. And at the end: “the Lord … did let none of his words fall to the ground” (3:19), Deuteronomy’s test of a true prophet (Deut 18:22).']]
+]},
+{id:'arkcaptured',s:'ark',t:'The ark taken and sent back',r:'1 Sam 4–7',ch:{'1S':[4,5,6,7]},who:['eli','eli_sons','samuel'],lead:'Israel uses the ark as a charm and loses it. In Philistine hands it reenacts the Exodus, and the Philistines understand that better than Israel did.',sec:[
+['What happens',['Beaten at Aphek, the elders send for the ark so that “it may save us.” The Philistines panic, then fight harder; Israel is routed, Hophni and Phinehas die, and the ark is taken. Eli falls dead at the news, and his daughter-in-law dies naming her son Ichabod. In Ashdod the ark topples Dagon and brings tumors on the city; Gath and Ekron pass it on in terror. After seven months the Philistines send it back on a new cart with golden tumors and golden mice. At Beth-shemesh men look into it and die. It rests at Kiriath-jearim for twenty years, until Samuel calls Israel to repentance at Mizpah and the Lord routs the Philistines.']],
+['Beneath the surface',[
+['A charm','The elders say, let us fetch the ark, “that, when it cometh among us, it may save us” (4:3). It, not he. [[k:jeremiah|Jeremiah]] preaches against the same thinking about the Temple, trust ye not in lying words, saying, the temple of the Lord, and sends Jerusalem to look at what happened to Shiloh (Jer 7:4, 12–14).'],
+['The Philistines know the Exodus','“These are the Gods that smote the Egyptians with all the plagues” (4:8). Their priests later warn, wherefore then do ye harden your hearts, as the Egyptians and Pharaoh hardened their hearts? (6:6). The ark repeats the Exodus in Philistia: plagues on the captors until they send it away loaded with gold (Exod 12:35–36). The pagans read the signs; Israel had treated its God as a weapon.'],
+['Dagon on the threshold','Dagon falls on his face before the ark, and the next morning his head and hands lie broken off on the threshold, which is why, the writer says, Dagon’s priests still step over it (5:4–5). [[k:zephaniah|Zephaniah]] condemns those who leap over the threshold (Zeph 1:9), probably the same custom. Dagon was a grain god (dagan is grain), known from texts at Ebla and Ugarit; the old idea that he was a fish-god comes from a medieval guess.'],
+['Tumors and mice','The plague is swellings, emerods in the King James, and the guilt offering is five golden tumors and five golden mice (6:4–5). Rodents and swellings together suggest bubonic plague to many scholars; the Greek text even mentions mice overrunning the land earlier, in chapter 5. It is a reasonable guess, not a diagnosis.'],
+['The cows','The test is designed to fail: two cows that have never been yoked, their calves shut up at home. They go straight up the road to Beth-shemesh, lowing as they go, turning neither right nor left (6:7–12). Israel will later move the ark the same way, on a new cart, against the Law: see [[dd:uzzah|Uzzah and the ark]].'],
+['Beth-shemesh','The men of Beth-shemesh look into the ark and are struck; the Hebrew says fifty thousand and seventy (6:19), Josephus says seventy, and most scholars think the larger number is a copying error. Their question is the right one: who is able to stand before this holy Lord God? (6:20). It is the lesson of Uzzah a generation early.'],
+['What happened to Shiloh?','Samuel never says Shiloh was destroyed. Psalm 78 says God forsook the tabernacle of Shiloh, his priests fell by the sword, and their widows made no lamentation (Ps 78:60–64), and Jeremiah treats Shiloh as a ruin (Jer 26:6). Excavations at Shiloh found a destruction layer from about this time, though how it should be dated and read is argued over.'],
+['Ebenezer','Twenty years later, Samuel names the stone of victory Ebenezer: hitherto hath the Lord helped us (7:12). The battle where the ark was lost was also fought at Ebenezer (4:1). The worst defeat in living memory gets a second meaning in the same name. The hymn line “Here I raise my Ebenezer” comes from this verse.']
+]],
+['Psalms and New Testament',[
+['Psalm 78 and Psalm 132','Psalm 78:59–64 tells this chapter as judgment: he delivered his strength into captivity, and his glory into the enemy’s hand. Psalm 132:6 remembers finding the ark “in the fields of the wood,” which is the meaning of Kiriath-jearim, town of forests.'],
+['The glory departed','Ichabod’s mother says the glory has gone from Israel (4:21). [[k:ezekiel|Ezekiel]] watches it leave the Temple again before the next exile, and John says the Word pitched his tent among us, and we beheld his glory (Jn 1:14).']
+]],
+['Watch for',['Eli sits by the road with his heart trembling for the ark (4:13). It is the ark’s capture, not his sons’ deaths, that kills him (4:18).']]
+]},
+{id:'king',s:'king',t:'Give us a king',r:'1 Sam 8; 12',ch:{'1S':[8,12]},who:['samuel','saul'],lead:'The elders ask for a king like all the nations. God gives them one, and Samuel tells them exactly what he will cost.',sec:[
+['What happens',['Samuel is old, and his sons, judges at Beersheba, take bribes. The elders come to him at Ramah: make us a king to judge us like all the nations. Samuel is displeased. God tells him, they have not rejected thee, but they have rejected me, and has him warn them what a king will do. They insist. Years later, with Saul on the throne, Samuel gives his farewell at Gilgal, calls down thunder and rain at the wheat harvest, and promises not to stop praying for them.']],
+['Beneath the surface',[
+['Sons who took bribes','Samuel makes his sons judges, and they turn aside after lucre, take bribes and pervert judgment (8:1–3). It is Eli’s failure repeated by the man who announced Eli’s punishment, and the narrator passes over it without a word. It is also the immediate reason the elders ask for a king.'],
+['Like all the nations','Deuteronomy had foreseen this very request, in the same words: I will set a king over me, like as all the nations that are about me (Deut 17:14). It allowed a king, on conditions: one God chooses, who does not multiply horses, wives or silver and gold, and who keeps a copy of the Law and reads it all his life (17:15–20). The sin in chapter 8 is the motive: they want a king in place of God, not under him. Gideon had refused the crown for that reason, the Lord shall rule over you (Judg 8:23).'],
+['What a king will take','Samuel’s warning (8:11–17) is built on one verb: he will take your sons, take your daughters, take your fields, take the tenth, take your servants, until ye shall be his servants. Solomon does all of it and breaks all three of Deuteronomy’s limits (1 Kgs 4:7; 5:13; 10:14–11:3), and the people ask his son to lighten the yoke (1 Kgs 12:4).'],
+['Fight our battles','They want a king who will “go out before us, and fight our battles” (8:20). David, the king God chooses next, tells Goliath that the battle is the Lord’s (17:47). The same David, at the height of his power, sends Joab out to fight and stays home (2 Sam 11:1).'],
+['Whose ox?','In his farewell Samuel challenges them: whose ox have I taken? or whose ass? or whom have I defrauded? (12:3). Moses said the same of himself (Num 16:15), and Paul, saying goodbye at Miletus: I have coveted no man’s silver, or gold, or apparel (Acts 20:33). It is a farewell speech set against the king they asked for, who will take.'],
+['Rain at the wheat harvest','Wheat is harvested in late spring, in the dry season, when rain is almost unknown and can ruin the crop; Proverbs uses “rain in harvest” for something out of place (Prov 26:1). Samuel’s sign is a thunderstorm on a cloudless harvest day (12:17–18).'],
+['Not ceasing to pray','“God forbid that I should sin against the Lord in ceasing to pray for you” (12:23). Samuel is above all an intercessor: he prayed at Mizpah while the Philistines attacked (7:5–9), Psalm 99:6 puts him among those who call upon the Lord’s name, and [[k:jeremiah|Jeremiah]] hears that even Moses and Samuel could not intercede for Jerusalem now (Jer 15:1).']
+]],
+['A note on the text',['Chapters 8–12 seem to hold two views of the monarchy side by side: in 9:1–10:16 God chooses Saul to save his people, while chapters 8, 10:17–27 and 12 treat the request as rebellion. Many scholars think two older accounts were woven together. The finished book keeps both, and the rest of Samuel and Kings bears both out.']],
+['Watch for',['God tells Samuel three times to hearken unto their voice (8:7, 9, 22). He gives them what they ask for, and lets them find out.']]
+]},
+{id:'saulchosen',s:'king',t:'Saul chosen',r:'1 Sam 9–11',ch:{'1S':[9,10,11]},who:['samuel','saul'],lead:'A tall young Benjamite goes looking for lost donkeys and comes home anointed. His first act as king echoes the worst story in Judges.',sec:[
+['What happens',['Saul son of Kish, of Benjamin, head and shoulders above everyone, searches three days for his father’s lost asses. His servant suggests asking the seer in the next town. God had told Samuel the day before to expect him. Samuel feasts him, anoints him privately at dawn, and gives him three signs; the Spirit comes on him and he prophesies with a band of prophets. At Mizpah the lot falls on him, and he is found hiding among the baggage. When Nahash the Ammonite threatens Jabesh-gilead, the Spirit seizes Saul, he cuts up a yoke of oxen to summon Israel, rescues the town, and the kingdom is renewed at Gilgal.']],
+['Beneath the surface',[
+['The servant knows more','Saul does not know who Samuel is, or that there is a seer in the town, or how to pay him; the servant knows all three and has the quarter shekel (9:6–8). Samuel was the most famous man in Israel. Many readers take Saul’s ignorance as a first quiet sign of how far he stands from the things of God.'],
+['Seers and prophets','“He that is now called a Prophet was beforetime called a Seer” (9:9). The narrator stops to explain an old word to his own readers, a glimpse of a writer looking back across generations.'],
+['Captain, not king','Samuel anoints him nagid, captain or leader (9:16; 10:1), not melek, king. The same title is later given to David (13:14; 25:30) and to Solomon (1 Kgs 1:35). God gives Israel a leader under him before the people make him a king like the nations.'],
+['The priest’s portion','At the feast Samuel has the cook bring the thigh he had set aside and put it before Saul (9:23–24). The right thigh of a peace offering was the priest’s portion (Lev 7:32–34). Saul is honored with what belonged to the altar. Within a few chapters he will help himself to the altar’s work at Gilgal.'],
+['Saul among the prophets','The proverb “Is Saul also among the prophets?” arises twice. The first time, after his anointing, it is wonder: the Spirit has given him another heart (10:9–12). The second time, hunting David at Ramah, the Spirit overpowers him and he lies stripped all day before Samuel (19:23–24). The same saying marks the beginning and the end of the Spirit’s work in him.'],
+['Taken by lot','At Mizpah the lot narrows down tribe, family and man until it takes Saul (10:20–21). The last time Israel used the lot that way was to find Achan, the man who had stolen from the ban (Josh 7:16–18). Saul is found hiding among the stuff (10:22), and some ask, how shall this man save us? He holds his peace.'],
+['Gibeah and Jabesh','Saul comes from Gibeah, the town of the outrage in Judges 19, where a Levite cut his concubine into twelve pieces and sent them through Israel to summon the tribes. Saul cuts up a yoke of oxen and sends the pieces through Israel to summon the tribes (11:7). After that war, Benjamin’s survivors took wives from Jabesh-gilead (Judg 21:12–14), so Saul likely has kin there. He begins as king by saving Jabesh, and at the end the men of Jabesh walk all night to take his body off the wall of Beth-shan (31:11–13).'],
+['The missing paragraph','A Dead Sea Scrolls copy of Samuel has a passage before 11:1 that is missing from the traditional Hebrew text: Nahash had been gouging out the right eyes of the Gadites and Reubenites, and seven thousand had escaped to Jabesh. Josephus knew it too. The New Revised Standard Version prints it; most translations do not.']
+]],
+['New Testament',['Paul, a Benjamite named Saul, recounts this moment in his first recorded sermon: they desired a king, and God gave them Saul the son of Cis, a man of the tribe of Benjamin, by the space of forty years (Acts 13:21).']],
+['Watch for',['His height (9:2; 10:23). Remember it when Samuel admires the tall eldest son at Bethlehem and is told that man looketh on the outward appearance (16:7).']]
+]},
+{id:'zion',s:'jerusalem',t:'Jerusalem taken',r:'2 Sam 5:1–12; 1 Chr 11:1–9',ch:{'2S':[5],'1C':[11]},who:['david','joab'],lead:'A Canaanite fortress no tribe had ever held becomes the city of David, and the Bible’s first “Zion.”',sec:[
+['What happens',['All the tribes come to Hebron and anoint David king over Israel (5:1–3). He marches on Jebus, an enclave the tribes had never taken (Josh 15:63; Judg 1:21). The Jebusites jeer that even the blind and the lame could hold it. David takes the stronghold of Zion and names it the city of David, and Hiram of Tyre sends cedar and craftsmen to build him a house.']],
+['Beneath the surface',[
+['Nobody’s city','Jerusalem sat on the border between Judah and Benjamin (Josh 15:8; 18:16, 28) and belonged in practice to neither. Taken by David’s own men, it was his personal city, owing nothing to his own tribe or to Saul’s. Every later king of Judah rules from a capital that is, literally, the house of David.'],
+['The first Zion','Zion appears here for the first time in Scripture (5:7), as the name of the Jebusite fortress on the city’s southeastern ridge. Over the following centuries the name moves north to the Temple mount, then stretches to cover the whole city, and finally the people of God (Isa 51:16; Heb 12:22).'],
+['Up the gutter','Whoever gets up the tsinnor and strikes the Jebusites (5:8). The word appears elsewhere only in Psalm 42:7, “thy waterspouts,” so translators guess: gutter, water shaft, conduit. In 1867 Charles Warren found a vertical shaft above the Gihon spring that was long taken to be the route. Later excavations suggest it was not in use in David’s day, and the word remains a puzzle. Chronicles skips the shaft and simply says Joab went up first and was made commander for it (1 Chr 11:6).'],
+['The blind and the lame','The Jebusites’ taunt became a saying: the blind and the lame shall not come into the house (5:8). Four chapters later the lame Mephibosheth eats at David’s table for the rest of his life (9:13). And the one place Matthew says the blind and the lame came to Jesus in the Temple and were healed is right after he enters Jerusalem hailed as son of David (Mt 21:14–15).'],
+['Salem and the priest-king','Tradition identifies Jerusalem with the Salem of Melchizedek, priest and king, who blessed Abraham (Gen 14:18; Ps 76:2). Its king in Joshua’s day was Adoni-zedek, my lord is righteous (Josh 10:1). Psalm 110 makes David’s lord “a priest for ever after the order of Melchizedek,” and Hebrews 7 builds on it. Some scholars think Zadok, who appears beside David only after Jerusalem is taken, came from the city’s old priesthood. That is a guess from his name and the timing, not something the text says.'],
+['Thirty years old','David was thirty when he began to reign (5:4), the age at which Joseph stood before Pharaoh (Gen 41:46), priests began their service (Num 4:3), and Jesus began his ministry (Lk 3:23).']
+]],
+['In Chronicles',['Chronicles goes straight from Saul’s death to all Israel anointing David at Hebron and taking Jerusalem (1 Chr 10–11), skipping the seven years of civil war with Saul’s house entirely. Its David is king of all Israel from the start.']],
+['Psalms, New Testament, liturgy',['Psalms 48, 87, 122 and 132 sing of Zion. Psalm 122’s “I was glad when they said unto me” is the verse of the Laetare Sunday introit. Hebrews tells Christians they are come unto mount Sion, the heavenly Jerusalem (Heb 12:22), and Revelation ends with the new Jerusalem (Rev 21).']],
+['Watch for',['“The city of David” means the fortress of Zion in the Old Testament. In Luke 2:4 and 11 it means Bethlehem, David’s hometown.']]
+]},
+{id:'uzzah',s:'jerusalem',t:'Uzzah and the ark',r:'2 Sam 6; 1 Chr 13; 15–16',ch:{'2S':[6],'1C':[13,15,16]},who:['david','michal','zadok','abiathar'],lead:'The ark was made to be carried on Levites’ shoulders. David put it on a cart, and Uzzah died for it.',sec:[
+['What happens',['David goes with thirty thousand men to bring the ark up from the house of Abinadab, where it had sat for about twenty years. They put it on a new cart driven by Abinadab’s sons Uzzah and Ahio. At the threshing floor of Nachon the oxen stumble, Uzzah puts out his hand to steady it, and God strikes him dead. David, angry and afraid, leaves the ark at the house of Obed-edom the Gittite for three months, and the house is blessed. The second time it comes up properly, with David dancing before it, and Michal despises him from a window.']],
+['What the Law said',[
+['Built to be carried','The ark had rings and poles, and the poles were never to be taken out (Exod 25:14–15). It was made to be lifted, not set on anything.'],
+['On their shoulders','When the tribal princes gave wagons and oxen for the tabernacle, Moses gave them to the Levite clans that hauled curtains and frames. The Kohathites, who carried the holy things, got none, “because the service of the sanctuary belonging unto them was that they should bear upon their shoulders” (Num 7:9). Even they were not to touch the holy things, lest they die (Num 4:15).'],
+['David admits it','In Chronicles, before the second attempt: “None ought to carry the ark of God but the Levites” (1 Chr 15:2). The Lord made a breach upon us “for that we sought him not after the due order” (15:13). This time the Levites carry it on their shoulders with the poles, “as Moses commanded” (15:15).']
+]],
+['Beneath the surface',[
+['A Philistine method','A new cart is exactly how the Philistines sent the ark home, drawn by two milk cows (1 Sam 6:7–12). The Philistines had no Law, and God brought the ark back anyway. Israel had the procedure in writing and copied the people who had captured it.'],
+['The breach','David calls the place Perez-uzzah, the breach of Uzzah (6:8). One chapter earlier he had named a victory site Baal-perazim, because “the Lord hath broken forth upon mine enemies before me, as the breach of waters” (5:20). Same word: the God who broke out against the Philistines now breaks out against Israel. Perez is also the name of Judah’s son, David’s ancestor (Gen 38:29).'],
+['Threshing floors','It happens at a threshing floor, and the story of David ends at one: Araunah’s, where the plague stops and the Temple will be built (24:18; 2 Chr 3:1). Threshing is where grain is separated from chaff, and the Bible uses it for judgment (Mt 3:12).'],
+['Twenty years in the house','The ark had stood in Abinadab’s house since it came back from the Philistines, with his son Eleazar set apart to keep it (1 Sam 7:1–2). Uzzah grew up with it in the family. Many readers see his reflex as the danger of familiarity with holy things; the text calls it his error, or rashness (6:7), and leaves it there.'],
+['Obed-edom the Gittite','Gittite means a man of Gath, Goliath’s city, and David’s Philistine bodyguard Ittai is called the same (15:19). If he was a Philistine, the ark that killed an Israelite blessed a foreigner’s household. Chronicles lists an Obed-edom among the Levite gatekeepers and musicians (1 Chr 15:18, 24; 26:4–8), which suggests a Levite from Gath-rimmon, a Levitical town (Josh 21:24). Both readings have defenders.'],
+['Michal at the window','The narrator calls her “Michal Saul’s daughter” here, not David’s wife (6:16, 20, 23). Women watching from windows in these books are watching the fate of a royal house: Sisera’s mother (Judg 5:28) and Jezebel (2 Kgs 9:30). Michal’s scene ends with her childless, and Saul’s line through her ends with it.']
+]],
+['In Chronicles',['Three chapters instead of one. Chronicles places the failed attempt before David’s Philistine victories (1 Chr 13–14), arranging by theme rather than sequence. It adds the lesson about the Levites, names the singers Asaph, Heman and Ethan, and gives the psalm sung that day (1 Chr 16:8–36), assembled from Psalms 105, 96 and 106.']],
+['Psalms, New Testament, liturgy',[
+['The ark’s psalms','Psalm 132 remembers David’s vow and prays, “Arise, O Lord, into thy rest; thou, and the ark of thy strength” (132:8). Psalm 24, “Lift up your heads, O ye gates,” has long been read as the ark’s entry into the city.'],
+['Mary, the ark','Luke’s Visitation is built on this chapter. David says, “How shall the ark of the Lord come to me?” (6:9); Elizabeth says, “Whence is this to me, that the mother of my Lord should come to me?” (Lk 1:43). The ark stays three months in Obed-edom’s house (6:11); Mary stays about three months with Elizabeth (Lk 1:56). David dances before the ark; John leaps in the womb (Lk 1:41). The Litany of Loreto calls Mary the Ark of the Covenant, and the Vigil Mass of the Assumption reads the ark’s entry into Jerusalem (1 Chr 15–16).']
+]],
+['Watch for',['David’s anger comes before his fear (6:8–9). And the second procession stops every six paces for a sacrifice (6:13): the same king who rushed the ark the first time takes no chances the second.']]
+]},
+{id:'covenant',s:'jerusalem',t:'A house for a house',r:'2 Sam 7; 1 Chr 17',ch:{'2S':[7],'1C':[17]},who:['nathan','david','solomon'],lead:'David offers to build God a house. God promises to build David one instead, and the rest of the Bible leans on the promise.',sec:[
+['What happens',['Settled in his cedar palace with rest from his enemies, David tells Nathan he is uneasy that the ark lives in a tent. Nathan says go ahead. That night the word of the Lord comes to Nathan: David will not build God a house; God will build David a house, and David’s son will build the Temple. David goes in, sits before the Lord, and prays.']],
+['Beneath the surface',[
+['House and house','The Hebrew bayit means both a building and a family line, and the whole oracle turns on it (7:5, 11, 13, 16). David wants to give God a temple. God answers that he will give David a dynasty, and the son will build the temple.'],
+['Rest, and why not yet','The chapter opens with the Lord giving David rest round about (7:1). Deuteronomy had said that when God gave rest from enemies, he would choose a place for his name (Deut 12:10–11), so David reads the moment rightly and is still told not yet. Chronicles gives the reason: he has shed much blood (1 Chr 22:8; 28:3). The builder will be Solomon, whose name sounds like shalom, peace (1 Chr 22:9).'],
+['I will be his father','“I will be his father, and he shall be my son” (7:14). If he sins, he will be chastened with the rod of men, “but my mercy shall not depart away from him, as I took it from Saul” (7:15). The word is hesed, covenant loyalty. This is the unconditional half of the promise; compare the offer [[k:ahijah|Ahijah]] makes Jeroboam, which comes with an if (1 Kgs 11:38).'],
+['For ever','“Thine house and thy kingdom shall be established for ever before thee: thy throne shall be established for ever” (7:16). For ever comes back again and again in the oracle and in David’s prayer (7:13–29). It is why Kings keeps sparing Judah “for David’s sake,” and why Psalm 89, written after the line fell, quotes the promise at length and then asks God where it went (Ps 89:38–51).'],
+['Who am I?','David’s prayer is the longest he speaks in Samuel, and it is nearly all wonder: who am I, and what is my house? (7:18). In the middle he says, “is this the manner of man, O Lord God?” (7:19). The Hebrew, torat ha-adam, could also mean “this is the law for mankind,” and some readers take it to mean the promise to David reaches beyond Israel. The phrase is obscure and translators disagree.']
+]],
+['In Chronicles',['Two small changes do a great deal. Chronicles drops “if he commit iniquity, I will chasten him” (1 Chr 17:13), since its Solomon commits none worth recording. And where Samuel says “thine house and thy kingdom,” Chronicles has God say “mine house and my kingdom” (17:14). The kingdom is God’s, and David’s son only sits on it.']],
+['Psalms, New Testament, liturgy',[
+['The promise in the psalms','Psalm 89 and Psalm 132:11–12 retell it. Psalm 2’s “Thou art my Son; this day have I begotten thee” is its coronation form.'],
+['The promise in the New Testament','Gabriel quotes it to Mary: the Lord God shall give unto him the throne of his father David, and of his kingdom there shall be no end (Lk 1:32–33). Peter cites it at Pentecost (Acts 2:30), Paul opens Romans with Jesus “made of the seed of David” (Rom 1:3), and Hebrews applies 7:14 to Christ (Heb 1:5).'],
+['In the Mass','It is the first reading on the Fourth Sunday of Advent in Year B, paired with the Annunciation, and on the Solemnity of St. Joseph, the son of David through whom Jesus is legally David’s heir.']
+]],
+['Watch for',['Nathan says “Go, do all that is in thine heart” before he has asked God (7:3), and has to come back the next morning and reverse himself. A prophet’s own opinion is not the word of the Lord, and the text lets Nathan show it.']]
+]},
+{id:'mephibosheth',s:'jerusalem',t:'Kindness for Jonathan’s sake',r:'2 Sam 9; with 4:4; 16:1–4; 19:24–30; 21:7',ch:{'2S':[9]},who:['david','mephibosheth','ziba'],lead:'David looks for someone of Saul’s house to show “the kindness of God,” and finds a lame man at Lo-debar.',sec:[
+['What happens',['David asks whether anyone is left of Saul’s house, that he may show him kindness for Jonathan’s sake. Ziba, a servant of Saul’s house, tells him of Jonathan’s son Mephibosheth, lame in both feet. David restores Saul’s land to him, puts Ziba and his household to work it, and gives Mephibosheth a place at the king’s table for good.']],
+['Beneath the surface',[
+['The kindness of God','“Is there not yet any of the house of Saul, that I may shew the kindness of God unto him?” (9:3). The word is hesed again, covenant loyalty. David is keeping two oaths: to Jonathan, that he would not cut off his kindness from Jonathan’s house (1 Sam 20:14–17, 42), and to Saul, that he would not cut off Saul’s seed (1 Sam 24:21–22).'],
+['And a precaution','A grandson of Saul at the king’s table is also a grandson of Saul under the king’s eye. Many readers think both motives are present. The text gives only the first, and the later chapters show Mephibosheth in a more loyal light than anyone expected.'],
+['A dead dog','Mephibosheth bows and calls himself “such a dead dog as I am” (9:8). David had called himself a dead dog when Saul hunted him (1 Sam 24:14); Abner asks whether he is a dog’s head (3:8); Abishai calls Shimei a dead dog (16:9). The insult follows the fall of Saul’s house from beginning to end.'],
+['Lame on both his feet','The chapter ends with the fact, not the feast: “and was lame on both his feet” (9:13). The Jebusites’ saying was that the blind and the lame shall not come into the house (5:8). Four chapters later a lame man eats at the king’s table always. Jesus tells hosts to invite the poor, the maimed, the lame and the blind (Lk 14:13, 21).'],
+['Lo-debar','He was living at Lo-debar, east of the Jordan (9:4). The name sounds like “no pasture,” or “nothing.” [[k:amos|Amos]] later puns on it when Israel boasts of capturing the town: ye which rejoice in a thing of nought, lo dabar (Amos 6:13).']
+]],
+['How it ends',[
+['Who was lying?','When David flees Absalom, Ziba meets him with supplies and says his master stayed behind hoping to get back his grandfather’s kingdom, and David gives Ziba everything (16:1–4). On David’s return, Mephibosheth comes out unwashed, his beard untrimmed and his feet undressed since the day the king left, and says Ziba deceived him. David splits the land between them, and Mephibosheth answers, let him take all, since the king is home safe (19:24–30). Compare Solomon’s two mothers (1 Kgs 3:16–28): the one who gives up the claim is usually the honest one.'],
+['Spared again','When David hands seven of Saul’s descendants to the Gibeonites, he spares Mephibosheth “because of the Lord’s oath” with Jonathan (21:7). His son Micha carries Saul’s line on: Chronicles traces it for generations, through Merib-baal, the name Mephibosheth was born with (1 Chr 8:34–40).']
+]],
+['Watch for',['Mephibosheth’s fall as a child of five, when his nurse fled at the news from Gilboa (4:4), is told in the middle of the story of Ish-bosheth’s murder: the two surviving heirs of Saul, one killed and one crippled, side by side.']]
+]},
+{id:'uriah',s:'bathsheba',t:'Bathsheba and Uriah',r:'2 Sam 11',ch:{'2S':[11]},who:['david','bathsheba','uriah','joab'],lead:'The chapter that turns David’s story, told with almost no comment until its last line.',sec:[
+['What happens',['In the spring, when kings go out to war, David stays in Jerusalem. From his roof he sees Bathsheba bathing, sends for her, and lies with her; she sends word that she is pregnant. David brings her husband Uriah home from the siege of Rabbah to sleep with his wife and cover it. Uriah will not go down to his house, sober or drunk. David sends him back to Joab with a letter ordering him put where the fighting is hardest, and Uriah dies. After her mourning, David takes Bathsheba as his wife.']],
+['Beneath the surface',[
+['When kings go forth to battle','The first verse is the charge: at the time when kings go forth to battle, David sent Joab, but David tarried still at Jerusalem (11:1). Everything that follows happens to a king who is where he should not be.'],
+['Sending','The verb “send” runs through the chapter about a dozen times: David sends Joab, sends to ask about the woman, sends messengers to take her; she sends to tell him; he sends for Uriah, sends him back with the letter; Joab sends his report. Whoever sends holds the power. The next chapter begins, “And the Lord sent Nathan” (12:1).'],
+['Whose daughter, whose wife','She is the daughter of Eliam and the wife of Uriah (11:3). Both men are on the roll of David’s Thirty, his elite (23:34, 39), and Eliam is the son of Ahithophel, David’s counselor. David took the wife of one of his own officers and, very probably, the granddaughter of his chief adviser. Ahithophel’s later defection to Absalom may have roots here, though the text never says so.'],
+['Purified from her uncleanness','The note that she had been purifying herself (11:4) refers to the washing after her monthly period (Lev 15:19–28). It tells the reader the child cannot be Uriah’s. It also means her bath was a ritual one, not a performance; the text puts the looking and the sending on David.'],
+['The Hittite who kept the Law','Uriah is a foreigner with an Israelite name: Uriah, the Lord is my light. Soldiers on campaign kept away from women (1 Sam 21:5; Deut 23:9–10), and he keeps the rule: the ark, and Israel, and Judah, abide in tents, and shall I go into mine house to eat and drink and lie with my wife? (11:11). The foreign soldier is more faithful to Israel’s ark and Israel’s army than Israel’s king.'],
+['His own death warrant','David sends the letter by Uriah’s own hand (11:14). The Greeks told the same kind of story about Bellerophon, sent with sealed tablets asking his host to kill him (Iliad 6). A message that dooms its bearer is still called a Uriah letter.'],
+['A woman on the wall','Joab coaches the messenger for David’s anger: who smote Abimelech? Did not a woman cast a piece of a millstone upon him from the wall? (11:21; Judg 9:53). He means the danger of going near the wall. The example he reaches for is a man killed because of a woman.'],
+['Evil in whose eyes','David sends Joab word: let not this thing displease thee, for the sword devoureth one as well as another (11:25). Literally, let not this thing be evil in your eyes. The chapter’s last line uses the same words: but the thing that David had done was evil in the eyes of the Lord (11:27). It is the only moral comment in the chapter, and it is enough. Nathan will turn the sword back on David as well (12:10).']
+]],
+['In Chronicles',['None of it. 1 Chronicles 20:1 copies the first verse, the spring, the war, David staying in Jerusalem, and goes straight on to the capture of Rabbah. Chronicles’ David never sees the roof.']],
+['New Testament',['Matthew’s genealogy names four women before Mary: Tamar, Rahab, Ruth, and “her that had been the wife of Urias” (Mt 1:6). He leaves her unnamed and names the man David wronged, so the crime stays in the line of Christ.']],
+['Watch for',['How little anyone says. Bathsheba speaks two words in Hebrew in the whole chapter, “I am with child” (11:5), and the narrator gives no one’s feelings. The silence is deliberate, and the next chapter breaks it.']]
+]},
+{id:'parable',s:'bathsheba',t:'Thou art the man',r:'2 Sam 12; Ps 51',ch:{'2S':[12]},who:['nathan','david','bathsheba','solomon'],lead:'Nathan gets David to sentence himself, and Psalm 51 is the answer tradition gives him.',sec:[
+['What happens',['The Lord sends Nathan to tell David a case: a rich man with many flocks takes a poor man’s one ewe lamb to feed a guest. David, furious, says the man deserves to die and shall restore fourfold. Nathan says, thou art the man, and announces that the sword shall never depart from David’s house. David says, I have sinned against the Lord. He is forgiven and will not die, but the child will. David fasts and lies on the ground for seven days while the child is sick, and when it dies he rises, washes and eats. Bathsheba bears Solomon, whom Nathan names Jedidiah. The chapter ends with Rabbah taken.']],
+['Beneath the surface',[
+['A trap made of a story','The ewe lamb is a judicial parable: David is asked to rule on a case and convicts himself before he knows it is about him. The lamb lay in the poor man’s bosom, “and was unto him as a daughter” (12:3). The word for daughter, bat, is the first syllable of Bath-sheba. A disguised prophet sets the same kind of trap for Ahab (1 Kgs 20:38–42).'],
+['Fourfold','David rules that the rich man shall restore the lamb fourfold (12:6), the penalty the Law sets for a stolen sheep (Exod 22:1). Jewish and Christian readers have long noticed that David loses four sons: Bathsheba’s first child, Amnon, Absalom and Adonijah. The text never draws the line.'],
+['I have sinned','David’s confession is two words in Hebrew, chatati la-YHWH (12:13). Saul said “I have sinned” too, twice, with excuses before and a request to be honored before the elders after (1 Sam 15:24, 30). The words are the same; the difference is what comes with them.'],
+['Forgiven, and the child dies','“The Lord also hath put away thy sin; thou shalt not die. Howbeit … the child also that is born unto thee shall surely die” (12:13–14). Forgiveness and consequence are separated in one breath. Catholic teaching draws the same distinction between the guilt of sin, which is forgiven, and its temporal punishment, which may remain (Catechism 1472–1473).'],
+['I shall go to him','When the child dies, David gets up and eats, and explains: while it lived, God might have been gracious; now, “I shall go to him, but he shall not return to me” (12:23). The line has comforted parents for centuries. How much David meant by it is uncertain; he may mean only the grave.'],
+['On the same roof','Another will lie with your wives in the sight of this sun (12:11). Absalom pitches a tent on the palace roof and goes in to his father’s concubines in the sight of all Israel (16:22), on the roof where David first saw Bathsheba (11:2), on the advice of Ahithophel, very probably her grandfather.'],
+['Beloved','Nathan brings the newborn a second name, Jedidiah, beloved of the Lord (12:25). David’s own name probably means beloved, from the same root, dod. The child born after the sin is named from his father’s name.']
+]],
+['Psalm 51',[
+['The Miserere','Its heading ties it to the day Nathan came to David. “Against thee, thee only, have I sinned” (51:4) is David’s answer to “thou art the man.” “Create in me a clean heart, O God” (51:10) asks for what no sacrifice could buy, and the psalm says so: thou desirest not sacrifice (51:16).'],
+['In the Church’s prayer','It is the most prayed of the penitential psalms: at Morning Prayer every Friday in the Liturgy of the Hours, as the responsorial psalm on Ash Wednesday, and in the sprinkling rite outside Easter, which opens with its seventh verse, purge me with hyssop. Psalm 32, “Blessed is he whose transgression is forgiven,” is often read as its sequel.'],
+['In the Mass','2 Samuel 12:7–10, 13 is read on the Eleventh Sunday in Ordinary Time, Year C, beside the sinful woman who washes Jesus’ feet (Lk 7:36–50): two stories about who knows he has been forgiven much.']
+]],
+['Watch for',['“And the Lord sent Nathan” (12:1). After a chapter of David sending, God sends. And the chapter does not end on the penitence: Joab tells David to come take Rabbah himself so the city won’t be named after Joab (12:28). The war goes on, and the king is still a king.']]
+]}
 ];
 
 const GUIDE={
@@ -569,20 +772,12 @@ nathan:[
 
 const DEEP={
 samuel:[
-['Asked','Hannah names him Samuel “because I have asked him of the Lord” (1:20), and gives him back because he is “lent” to the Lord (1:28). Both verbs are forms of sha’al, and the name they fit is not Samuel but Saul, Sha’ul, asked for. Some scholars think the birth story was first told of Saul; others think the narrator is already hinting that Israel will ask for a king. Either way, the first chapter of the book is punning on the name of the first king.'],
-['Hannah and Mary','Hannah’s song (2:1–10) is the model for the Magnificat (Lk 1:46–55): the mighty brought low, the hungry filled, the poor raised from the dust. Its last line asks the Lord to exalt the horn of “his anointed,” his messiah (2:10), the first time the word is used of a king, before Israel has one.'],
-['The lamp had not yet gone out','The call comes when the word of the Lord was precious, meaning rare, and Eli’s eyes were growing dim, while “the lamp of God” still burned in the sanctuary (3:1–3). That lamp was tended until morning (Exod 27:20–21), so the call comes just before dawn. Kings takes up the same image as God’s promise to keep a lamp for David in Jerusalem (1 Kgs 11:36).'],
-['Samuel, Samuel','God calls him by name twice, as he called “Abraham, Abraham” on Moriah (Gen 22:11) and “Moses, Moses” from the bush (Exod 3:4). Jesus speaks the same way to Martha and to Simon (Lk 10:41; 22:31), and to Saul of Tarsus, a Benjamite named for Israel’s first king (Acts 9:4).'],
+['His early chapters','The stories of Samuel’s birth, call, the lost ark and the demand for a king have deep dives of their own in the story above: [[dd:hannah|Hannah’s prayer and song]], [[dd:call|Speak, for thy servant heareth]], [[dd:arkcaptured|The ark taken and sent back]], [[dd:king|Give us a king]] and [[dd:saulchosen|Saul chosen]]. The notes here are about Samuel himself and the later chapters.'],
 ['Priest, prophet, judge','He is born an Ephraimite (1:1), though Chronicles enrolls him among the Levites (1 Chr 6:28). He wears a linen ephod and offers sacrifice; he judges on a yearly circuit of Bethel, Gilgal and Mizpah; and Peter dates the prophets from him (Acts 3:24). Psalm 99:6 sets him beside Moses and Aaron, and [[k:jeremiah|Jeremiah]] hears God say that even Moses and Samuel interceding could not save Jerusalem now (Jer 15:1).'],
-['Dagon on the threshold','Dagon falls on his face before the ark, and the next morning his head and hands lie broken off on the threshold, which is why, the writer says, Dagon’s priests still step over it (5:4–5). [[k:zephaniah|Zephaniah]] condemns those who leap over the threshold (Zeph 1:9), probably the same custom.'],
-['The Philistine cart','The Philistines send the ark home on a new cart drawn by two milk cows taken from their calves, and the cows go straight up the road to Beth-shemesh, lowing as they go (6:7–12). David later moves the ark the same way, on a new cart, and Uzzah dies steadying it (2 Sam 6:3–7), because the Law said Levites were to carry it on poles (Num 4:15). Israel had copied the Philistines. Chronicles spells the lesson out (1 Chr 15:13–15).'],
-['Ebenezer','Samuel names the stone of victory Ebenezer: hitherto hath the Lord helped us (7:12). The battle where the ark was lost was also fought at Ebenezer (4:1). The worst defeat in living memory gets a second meaning in the same name. The hymn line “Here I raise my Ebenezer” comes from this verse.'],
-['What a king will take','Samuel’s warning (8:11–17) is built on one verb: he will take your sons, take your daughters, take your fields, take the tenth, take your servants, until ye shall be his servants. Deuteronomy’s law of the king forbids him to multiply horses, wives and gold (Deut 17:16–17). Solomon does all three (1 Kgs 10:14–11:3) and lays on the heavy yoke that splits the kingdom (1 Kgs 12:4).'],
 ['To obey is better than sacrifice','“Behold, to obey is better than sacrifice, and to hearken than the fat of rams” (15:22). [[k:hosea|Hosea]] says it again: I desired mercy, and not sacrifice (Hos 6:6), and Jesus quotes Hosea twice (Mt 9:13; 12:7). In the same speech Samuel says rebellion is as the sin of witchcraft (15:23). Saul ends at a medium’s house.'],
 ['The Agagite','Samuel finishes what Saul would not, hewing Agag in pieces at Gilgal (15:33). The quarrel surfaces again centuries later in Persia: Haman is an Agagite, and Mordecai is a Benjamite whose ancestor is named Kish, like Saul’s father (Esth 2:5; 3:1). When the Jews defeat Haman’s sons, they pointedly lay no hand on the plunder (Esth 9:10, 15–16), the very thing Saul did wrong.'],
 ['The outward appearance','Saul was chosen tall, head and shoulders above the people (9:2; 10:23). At Bethlehem Samuel admires the tall eldest son, and God says man looketh on the outward appearance, but the Lord looketh on the heart (16:7). Then the narrator cannot resist adding that David was ruddy, with beautiful eyes, and goodly to look to (16:12).'],
 ['Gilgal','Saul is confirmed as king at Gilgal (11:14–15), loses his dynasty there by not waiting for Samuel (13:8–14), and loses the kingdom there over Agag (15:12–33). [[k:hosea|Hosea]] says all their wickedness is in Gilgal, for there I hated them (Hos 9:15), and some readers think he has Saul in mind. Gilgal was also Joshua’s first camp in the land and the site of the first Passover there (Josh 4:19; 5:10).'],
-['Sons who took bribes','Samuel makes his sons judges at Beersheba, and they take bribes and pervert judgment (8:1–3). It is Eli’s failure repeated by the man who announced Eli’s punishment, and the narrator passes over it without a word. It is also the immediate reason the elders ask for a king. David’s sons will be worse.'],
 ['Was it really Samuel?','At Endor the medium cries out when Samuel appears, which suggests she did not expect her art to work (28:12). The Fathers were divided: some held that a demon took his form, others that God truly sent Samuel. Sirach settles it for the Catholic canon: after his death he prophesied, and showed the king his end (Sir 46:20). Chronicles counts the consultation among the reasons Saul died (1 Chr 10:13).']
 ],
 gad:[
@@ -594,14 +789,8 @@ gad:[
 ['The seer and the singers','Hezekiah, restoring the Temple music, set the Levites with cymbals, psalteries and harps “according to the commandment of David, and of Gad the king’s seer, and Nathan the prophet” (2 Chr 29:25). Chronicles credits David’s prophets with ordering the liturgy, and cites a book of Gad the seer among its sources (1 Chr 29:29).']
 ],
 nathan:[
-['A house for a house','David wants to build God a house, a temple; God answers that he will build David a house, a dynasty (2 Sam 7:5, 11). The Hebrew word bayit carries both meanings, and the oracle turns on it. Nathan had first told David to go ahead (7:3) and had to come back the next morning with God’s correction. A prophet’s own opinion is not the word of the Lord, and Nathan shows it by reversing himself.'],
-['I will be his father','“I will be his father, and he shall be my son” (7:14). If he sins, he will be chastened with the rod of men, but my mercy shall not depart away from him, as I took it from Saul (7:14–15). That is the unconditional half of the covenant, and Hebrews applies the sentence to Christ (Heb 1:5). Compare the offer [[k:ahijah|Ahijah]] makes Jeroboam, which comes with an if.'],
-['For ever','“Thine house and thy kingdom shall be established for ever” (7:16). Psalm 89 quotes the promise at length and then asks where it went, once the line had fallen (Ps 89:38–51). Gabriel answers in Luke: the Lord shall give unto him the throne of his father David, and of his kingdom there shall be no end (Lk 1:32–33). The same promise is why Kings keeps saying “for David’s sake.”'],
-['A trap made of a story','The ewe lamb is a judicial parable: David is asked to rule on a case and convicts himself before he knows it is about him. The lamb lay in the poor man’s bosom, “and was unto him as a daughter” (12:3). The word for daughter, bat, is the first syllable of Bath-sheba. A disguised prophet sets the same trap for Ahab (1 Kgs 20:38–42).'],
-['Fourfold','David rules that the rich man shall restore the lamb fourfold (12:6), the penalty the Law sets for a stolen sheep (Exod 22:1). Jewish and Christian readers have long noticed that David loses four sons: Bathsheba’s first child, Amnon, Absalom and Adonijah. The text never draws the line. It hardly needs to.'],
-['On the same roof','Nathan says another will lie with David’s wives in the sight of this sun (12:11). Absalom pitches a tent on the palace roof and goes in to his father’s concubines in the sight of all Israel (16:22), on the roof where David first saw Bathsheba (11:2). It was Ahithophel’s advice, and he was probably Bathsheba’s grandfather.'],
-['Beloved','Nathan brings the newborn Solomon a second name, Jedidiah, beloved of the Lord (12:25). David’s own name probably means beloved, from the same root, dod. The child born after the sin is named from his father’s name.'],
-['The Miserere','Psalm 51’s heading ties it to the day Nathan came to David. As the Miserere it is the most prayed of the penitential psalms: at Morning Prayer every Friday in the Liturgy of the Hours, through Lent, and in the sprinkling rite outside Easter, which opens with its seventh verse, purge me with hyssop. “Against thee, thee only, have I sinned” (51:4) is David’s answer to “thou art the man.”'],
+['His own opinion first','When David says he wants to build God a house, Nathan answers, “Go, do all that is in thine heart; for the Lord is with thee” (7:3), before he has asked. That night the word of the Lord comes, and he has to go back and reverse himself. The text lets a prophet be wrong in his own voice and right in God’s, and does not hide the difference.'],
+['His two great scenes','Nathan’s promise and his rebuke have deep dives of their own in the story above: [[dd:covenant|A house for a house]] and [[dd:parable|Thou art the man]]. The notes here are about the man himself.'],
 ['The kingmaker','In 1 Kings 1 Nathan coaches Bathsheba on what to say and comes in to confirm it (1:11–27). The oath she reminds David of, that Solomon would reign after him, is recorded nowhere earlier. Some readers see a prophet enforcing God’s choice, since Solomon was the one called beloved of the Lord; others see palace politics. The text leaves room for both.'],
 ['Chronicles’ Nathan','In Chronicles Nathan brings the promise (1 Chr 17) and writes a history (29:29; 2 Chr 9:29), and there is no ewe lamb, because Chronicles never mentions Bathsheba’s adultery or Uriah’s death. It also credits him with ordering the Temple music alongside [[gad]] (2 Chr 29:25). The same prophet, edited for a different purpose.'],
 ['Another Nathan','David had a son named Nathan by Bathsheba, older than Solomon (2 Sam 5:14; 1 Chr 3:5). Luke traces Jesus’ genealogy through him, while Matthew goes through Solomon (Lk 3:31; Mt 1:6). Whether the Nathan whose sons served Solomon (1 Kgs 4:5) was the prophet or the prince is not clear.']
@@ -664,13 +853,17 @@ function evHTML(e,withScene){
   return `<li class="ev t-${e.y}">${subj} <span class="vb">${e.v}</span> ${who(e.b,'who')}${e.v2?` <span class="vb">${e.v2}</span>`:''}<cite>${e.r}</cite><span class="nt">${e.n}${sc}</span></li>`;
 }
 
+function diveHTML(d){
+  const body=d.sec.map(([h,items])=>`<h5>${h}</h5>`+items.map(it=>Array.isArray(it)?`<p><b>${/[.?!]$/.test(it[0])?it[0]:it[0]+'.'}</b> ${xref(it[1])}</p>`:`<p>${xref(it)}</p>`).join('')).join('');
+  return `<details class="dive" id="dd-${d.id}"><summary><span class="dv-k">Deep dive</span><span class="dv-t">${d.t}</span><span class="dv-r">${d.r}</span><span class="dv-l">${d.lead}</span><span class="dv-more"><span class="o">Read the deep dive</span><span class="c">Close</span></span></summary><div class="dv-body">${body}<button type="button" class="dv-close" data-closedive="${d.id}">Close the deep dive</button></div></details>`;
+}
 function renderStory(){
   let h='';
   ACTS.forEach((a,i)=>{
     h+=`<div class="act a${i}"><h3>${a.t}</h3><p>${a.n}</p></div><ol class="scenes a${i}">`;
     SCENES.filter(s=>s.act===i).forEach(s=>{
       const evs=EVS.filter(e=>e.s===s.id);
-      h+=`<li class="scene" id="sc-${s.id}"><h4 tabindex="-1">${s.t}</h4><p class="sc-ref">${s.r}<span>${s.d}</span></p><p class="sc-n">${s.n}</p><div class="sc-who">${s.who.map(chip).join('')}</div>${evs.length?`<ul class="evs">${evs.map(e=>evHTML(e,false)).join('')}</ul>`:''}</li>`;
+      h+=`<li class="scene" id="sc-${s.id}"><h4 tabindex="-1">${s.t}</h4><p class="sc-ref">${s.r}<span>${s.d}</span></p><p class="sc-n">${s.n}</p><div class="sc-who">${s.who.map(chip).join('')}</div>${evs.length?`<ul class="evs">${evs.map(e=>evHTML(e,false)).join('')}</ul>`:''}${DIVES.filter(d=>d.s===s.id).map(diveHTML).join('')}</li>`;
     });
     h+='</ol>';
   });
@@ -694,7 +887,8 @@ function apply(){
     const c=+state.chap;
     const people=SP.filter(x=>x.ch[state.book]&&x.ch[state.book].includes(c));
     const sc=scs.length?scs.map(s=>`<button type="button" class="sc-link" data-scene="${s.id}">${s.t}</button>`).join(', '):'no scene; this part of Chronicles is genealogy';
-    f.innerHTML=`<span class="hint">${BOOKS[state.book]} ${state.chap}: ${sc}</span>`+people.map(x=>chip(x.id)).join('');
+    const dv=DIVES.filter(d=>d.ch[state.book]&&d.ch[state.book].includes(c));
+    f.innerHTML=`<span class="hint">${BOOKS[state.book]} ${state.chap}: ${sc}</span>`+dv.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">Deep dive: ${d.t}</button>`).join('')+people.map(x=>chip(x.id)).join('');
   }
   $('#clear').hidden=!state.chap;
 }
@@ -707,8 +901,17 @@ function goScene(id,flash){
   const hh=a.querySelector('h4'); if(hh) hh.focus({preventScroll:true});
 }
 
+function goDive(id){
+  const d=document.getElementById('dd-'+id); if(!d) return;
+  if($('#sheet').classList.contains('open')) close();
+  d.open=true;
+  const y=d.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  const t=d.querySelector('summary'); if(t) t.focus({preventScroll:true});
+}
 function xref(s){
   return s.replace(/\[\[([\w:]+)(?:\|([^\]]+))?\]\]/g,(m,id,label)=>{
+    if(id.startsWith('dd:')){ const dd=DIVES.find(v=>v.id===id.slice(3)); return `<button type="button" class="xref" data-dive="${id.slice(3)}">${label||(dd?dd.t:id)}</button>`; }
     if(id.startsWith('k:')){ const k=id.slice(2); return `<a class="xref" href="kings.html#${KP.has(k)?'guide-':'k-'}${k}">${label||k}</a>`; }
     const x=byId[id]; if(!x) return label||id;
     const lab=label||x.short||x.name;
@@ -731,6 +934,8 @@ function personSheet(x){
     const li=evHTML(e,true);
     return (e.by||[]).includes(x.id)?li.replace('<span class="nt">',`<span class="nt">${x.short||x.name} gave the order. `):li;
   }).join('')}</ul>`;
+  const dvs=DIVES.filter(d=>d.who.includes(x.id));
+  if(dvs.length) h+=`<h3>Deep dives</h3><p class="sc-chips">${dvs.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">${d.t}</button>`).join('')}</p>`;
   const scs=SCENES.filter(s=>s.who.includes(x.id));
   h+=`<h3>Scenes</h3><p class="sc-chips">${scs.map(s=>`<button type="button" class="chip c-neutral" data-scene="${s.id}">${s.t}</button>`).join('')}</p>`;
   if(x.id==='david'||x.id==='solomon') h+=`<p><a class="guide-link" href="kings.html#k-${x.id}">On the Kings chart</a></p>`;
@@ -784,6 +989,10 @@ function load(){
 }
 
 document.addEventListener('click',e=>{
+  const cd=e.target.closest('[data-closedive]');
+  if(cd){ const d=document.getElementById('dd-'+cd.dataset.closedive); if(d){ d.open=false; const y=d.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10; window.scrollTo({top:y,behavior:'auto'}); } return; }
+  const dvb=e.target.closest('[data-dive]');
+  if(dvb){ goDive(dvb.dataset.dive); return; }
   const sc=e.target.closest('[data-scene]');
   if(sc){ goScene(sc.dataset.scene,true); return; }
   const gd=e.target.closest('[data-guide]');
@@ -807,6 +1016,8 @@ apply();
 if(state.chap){ const s=scenesFor(); if(s.length) setTimeout(()=>goScene(s[0].id,false),250); }
 const hm=location.hash.match(/^#p-(\w+)$/);
 if(hm&&byId[hm[1]]) setTimeout(()=>open(hm[1]),300);
+const dm=location.hash.match(/^#dd-(\w+)$/);
+if(dm) setTimeout(()=>goDive(dm[1]),300);
 const gm=location.hash.match(/^#guide-(\w+)$/);
 if(gm&&GUIDE[gm[1]]) setTimeout(()=>goGuide(gm[1]),300);
 })();
