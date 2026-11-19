@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Under the Greeks</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕎</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+:root{
+  --paper:#EDF0F2; --paper-2:#E1E6EB; --ink:#1A2130; --ink-soft:#4F596A; --rule:#C2CAD4;
+  --judah:#24408A; --judah-tint:rgba(36,64,138,.11); --judah-strong:rgba(36,64,138,.28);
+  --israel:#74601A; --israel-tint:rgba(116,96,26,.11); --israel-strong:rgba(116,96,26,.28);
+  --band-a:#8A7425; --band-b:#C4B06A; --band-a-ink:#F6F3E6; --band-b-ink:#2A2410; --judah-ink:#EEF1F8;
+  --prophet:#9A2334; --prophet-tint:rgba(154,35,52,.09); --prophet-strong:rgba(154,35,52,.26);
+  --sheet:#F8F9FA; --shadow:0 -10px 32px rgba(18,24,38,.16);
+  --pc0:#0E7C78; --pc1:#7A3E9C; --pc2:#C0561A; --pc3:#B0263F; --pc4:#3D7B2A; --pc5:#2D5BC0; --pc6:#B0397F; --pc7:#9C760C;
+  --axis:30px; --gap:6px; --band:14px;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121620; --paper-2:#1B212D; --ink:#E4E7EC; --ink-soft:#A5ADBA; --rule:#2F3746;
+    --judah:#94AAE6; --judah-tint:rgba(148,170,230,.12); --judah-strong:rgba(148,170,230,.30);
+    --israel:#D4BE6C; --israel-tint:rgba(212,190,108,.11); --israel-strong:rgba(212,190,108,.28);
+    --band-a:#B19C4D; --band-b:#5F5329; --band-a-ink:#16130A; --band-b-ink:#EDE5C6; --judah-ink:#10162A;
+    --prophet:#EA8C9C; --prophet-tint:rgba(234,140,156,.11); --prophet-strong:rgba(234,140,156,.28);
+    --sheet:#1A202B; --shadow:0 -10px 32px rgba(0,0,0,.5);
+    --pc0:#4CC3BD; --pc1:#BB8BDD; --pc2:#F28C4E; --pc3:#EF7287; --pc4:#82C76C; --pc5:#86A7F2; --pc6:#E87EC1; --pc7:#DCB64C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --pc0:#4CC3BD; --pc1:#BB8BDD; --pc2:#F28C4E; --pc3:#EF7287; --pc4:#82C76C; --pc5:#86A7F2; --pc6:#E87EC1; --pc7:#DCB64C;
+  --paper:#121620; --paper-2:#1B212D; --ink:#E4E7EC; --ink-soft:#A5ADBA; --rule:#2F3746;
+  --judah:#94AAE6; --judah-tint:rgba(148,170,230,.12); --judah-strong:rgba(148,170,230,.30);
+  --israel:#D4BE6C; --israel-tint:rgba(212,190,108,.11); --israel-strong:rgba(212,190,108,.28);
+  --band-a:#B19C4D; --band-b:#5F5329; --band-a-ink:#16130A; --band-b-ink:#EDE5C6; --judah-ink:#10162A;
+  --prophet:#EA8C9C; --prophet-tint:rgba(234,140,156,.11); --prophet-strong:rgba(234,140,156,.28);
+  --sheet:#1A202B; --shadow:0 -10px 32px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+@media (min-width:720px){ :root{ --axis:42px; --gap:14px; --band:16px; } }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"EB Garamond",Garamond,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+button:focus-visible,select:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
+
+/* Header */
+header{padding:40px 0 18px}
+h1{font-weight:500;font-size:clamp(2.5rem,9vw,4.6rem);line-height:1;letter-spacing:-.015em;margin:0 0 14px}
+.lede{max-width:36em;color:var(--ink-soft);margin:0 0 26px;font-size:1.08rem}
+.ledger{font-size:14px;line-height:1.4;align-items:start}
+.ledger p{margin:0}
+.ledger .lj{grid-column:1;color:var(--ink)}
+.ledger .lp{grid-column:2;color:var(--ink-soft);font-style:italic}
+.ledger .li{grid-column:3;text-align:right}
+.ledger b{font-weight:600;display:block;font-size:1.15rem;margin-bottom:2px}
+.ledger .lj b{color:var(--judah)} .ledger .li b{color:var(--israel)} .ledger .lp b{color:var(--prophet);font-style:normal}
+
+/* Sticky reading bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);margin-top:18px}
+.bar-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:8px}
+.bar label{font-style:italic;color:var(--ink-soft)}
+select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:3px 6px}
+.clear{font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:4px}
+.clear[hidden]{display:none}
+.found{white-space:nowrap;overflow-x:auto;scrollbar-width:none;font-size:15px;padding:6px 0 4px;min-height:34px}
+.found::-webkit-scrollbar{display:none}
+.hint{color:var(--ink-soft);font-style:italic;margin-right:4px}
+.cols-head{font-size:15px;font-weight:600;padding:2px 0 6px}
+.cols-head .hj{grid-column:1;color:var(--judah);padding-left:calc(var(--band) + 6px)}
+.cols-head .hp{grid-column:2;color:var(--prophet)}
+.cols-head .hi{grid-column:3;color:var(--israel);text-align:right;padding-right:calc(var(--band) + 6px)}
+
+/* Chips */
+.chip{display:inline-flex;align-items:baseline;gap:4px;border:1px solid var(--cc,var(--rule));color:var(--ink);background:transparent;border-radius:999px;padding:1px 10px 2px;margin:2px 4px 2px 0;font-size:15px;line-height:1.35;white-space:nowrap}
+.chip small{font-size:12px;color:var(--ink-soft);font-style:italic}
+.c-judah{--cc:var(--judah)} .c-israel{--cc:var(--israel)} .c-prop{--cc:var(--prophet)} .c-neutral{--cc:var(--ink-soft)}
+.chip:hover{background:var(--paper-2)}
+
+/* Trunk: David to the split */
+.trunk{padding-top:14px}
+.node{--kc:var(--ink-soft);--kc-strong:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-self:center;width:100%;max-width:150px;padding:5px 8px 4px;border:1px solid var(--rule);background:var(--paper-2);border-radius:2px;line-height:1.15}
+.node .k-name{font-size:17px;font-weight:500}
+.node .k-years{font-size:12px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums}
+.stem{width:2px;height:14px;background:var(--ink-soft);justify-self:center}
+.t-note{font-size:13px;font-style:italic;color:var(--ink-soft);line-height:1.3;align-self:center}
+.fork{position:relative;height:30px}
+.fork span{position:absolute;display:block}
+.f-stem{left:calc(50% - 1px);top:0;width:2px;height:50%;background:var(--ink-soft)}
+.f-bar{top:calc(50% - 1px);height:2px;left:calc((100% - 2 * var(--gap)) / 6 - 1px);right:calc((100% - 2 * var(--gap)) / 6 - 1px);background:linear-gradient(to right,var(--judah) 50%,var(--israel) 50%)}
+.f-l,.f-r{top:50%;width:2px;height:50%}
+.f-l{left:calc((100% - 2 * var(--gap)) / 6 - 1px);background:var(--judah)}
+.f-r{right:calc((100% - 2 * var(--gap)) / 6 - 1px);background:var(--israel)}
+
+/* Chart */
+.chart{position:relative;grid-template-rows:100%}
+.col{position:relative;z-index:1}
+.overlay{position:absolute;inset:0;z-index:0;pointer-events:none}
+.gl{position:absolute;left:var(--axis);right:0;height:1px;background:var(--rule);opacity:.55}
+.axis span{position:absolute;right:4px;font-size:11.5px;color:var(--ink-soft);transform:translateY(-50%);font-variant-numeric:lining-nums tabular-nums;background:var(--paper);padding:0 2px}
+
+.k{position:absolute;left:0;right:0;display:flex;flex-direction:column;justify-content:flex-start;gap:1px;padding:6px 7px;border:1px solid var(--rule);border-radius:2px;text-align:left;overflow:hidden;line-height:1.2}
+.k-judah{--kc:var(--judah);--kc-strong:var(--judah-strong);--tint:var(--judah-tint);padding-left:calc(var(--band) + 6px)}
+.k-israel{--kc:var(--israel);--kc-strong:var(--israel-strong);--tint:var(--israel-tint);padding-right:calc(var(--band) + 6px);align-items:flex-end;text-align:right}
+.k .k-name{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.k .k-years{font-size:12px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.glyph{font-weight:600;color:var(--kc);margin-left:2px}
+.v-right{background:var(--tint)}
+.v-mixed{background-image:repeating-linear-gradient(135deg,var(--tint) 0 4px,transparent 4px 8px)}
+.usurper{border-style:dashed;border-color:var(--prophet)}
+.k:hover{border-color:var(--kc)}
+@media (min-width:720px){ .k .k-name{font-size:17px} .k .k-years{font-size:13px} }
+
+.band{position:absolute;width:var(--band);z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:1px}
+.band i{writing-mode:vertical-rl;font-style:normal;font-size:11px;letter-spacing:.03em;white-space:nowrap}
+.band-j{left:0;background:var(--judah);color:var(--judah-ink)}
+.band-break{left:0;background:repeating-linear-gradient(135deg,var(--judah) 0 2px,transparent 2px 6px)}
+.band-a{right:0;background:var(--band-a);color:var(--band-a-ink)}
+.band-b{right:0;background:var(--band-b);color:var(--band-b-ink)}
+
+.fall{position:absolute;left:0;right:0;padding:8px;border:1px solid var(--rule);border-radius:2px;font-size:13.5px;line-height:1.3;text-align:left;background:repeating-linear-gradient(135deg,var(--tint) 0 5px,transparent 5px 11px)}
+.fall b{display:block;font-size:15px;font-weight:600;color:var(--kc)}
+.fall span{color:var(--ink-soft);font-style:italic}
+.fall.k-israel{text-align:right}
+
+.p{--kc:var(--pc);--kc-strong:var(--prophet-strong);position:absolute;right:0;height:28px;display:flex;align-items:center;gap:3px;padding:0 6px;font-size:14px;line-height:1;background:var(--pbg,var(--prophet-tint));border-left:4px solid var(--pc);border-radius:0 3px 3px 0;white-space:nowrap;overflow:hidden}
+.p span{overflow:hidden;text-overflow:ellipsis}
+.p .bk{color:var(--pc);font-size:13px;flex:none}
+.p.static{position:relative;right:auto;justify-self:start;align-self:center}
+.to-israel{--pc:var(--israel);--pbg:var(--israel-tint)} .to-judah,.to-united{--pc:var(--judah);--pbg:var(--judah-tint)} .to-both,.to-exile,.to-nations{--pc:var(--prophet);--pbg:var(--prophet-tint)}
+.pc0{--pc:var(--pc0)} .pc1{--pc:var(--pc1)} .pc2{--pc:var(--pc2)} .pc3{--pc:var(--pc3)} .pc4{--pc:var(--pc4)} .pc5{--pc:var(--pc5)} .pc6{--pc:var(--pc6)} .pc7{--pc:var(--pc7)}
+.hl{position:absolute;width:3px;background:var(--pc);opacity:.8;border-radius:2px;pointer-events:none}
+.hl.on{opacity:1;width:4px}
+@media (min-width:720px){ .p{font-size:15px} }
+
+/* States */
+.is-sel{outline:2px solid var(--kc);outline-offset:-1px;z-index:3}
+.chart-wrap.filtering [data-id]:not(.hit){opacity:.28}
+.chart-wrap.filtering .hl:not(.on){opacity:.1}
+.chart-wrap [data-id].hit{background-color:var(--kc-strong);border-color:var(--kc)}
+@media (prefers-reduced-motion:no-preference){ .chart-wrap [data-id]{transition:opacity .18s ease} }
+
+/* Key & lower sections */
+.key{margin:22px auto 0;display:grid;grid-template-columns:1fr;gap:10px;font-size:15.5px;line-height:1.45}
+@media (min-width:720px){ .key{grid-template-columns:1fr 1fr;column-gap:32px} }
+.key p{margin:0;display:flex;gap:10px;align-items:flex-start}
+.sw{flex:none;width:18px;height:20px;margin-top:2px;border-radius:1px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
+.sw-david{background:var(--judah)}
+.sw-dyn{background:linear-gradient(var(--band-a) 0 30%,var(--band-b) 30% 55%,var(--band-a) 55% 75%,var(--band-b) 75%)}
+.sw-v{background:var(--judah-tint);color:var(--judah);border:1px solid var(--rule)}
+.sw-p{background:var(--prophet-tint);color:var(--prophet);border-left:3px solid var(--prophet)}
+
+.lower{max-width:700px;margin:0 auto;padding:56px 14px 30vh}
+.lower h2{font-weight:500;font-size:1.9rem;line-height:1.1;margin:44px 0 6px}
+.lower h2:first-child{margin-top:0}
+.lower > p{margin:0 0 14px}
+.clashes{display:grid;gap:18px;margin-top:14px}
+.clashes article h3{font-size:1.15rem;font-weight:600;margin:0 0 2px}
+.clashes article p{margin:0 0 4px}
+.notes p{font-size:16px;color:var(--ink-soft);margin:0 0 10px}
+
+/* Prophet guide */
+.g-nav{margin:6px 0;line-height:1.9}
+.g-nav span{font-style:italic;color:var(--ink-soft);margin-right:6px;font-size:15px}
+.g-era{font-size:1.3rem;font-weight:600;margin:44px 0 2px}
+.g-era-n{margin:0 0 6px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.g{border-left:4px solid var(--pc);padding:4px 0 6px 16px;margin:22px 0 34px;border-radius:0 4px 4px 0}
+@media (prefers-reduced-motion:no-preference){ .g{transition:background-color .8s ease} }
+.g.flash{background:var(--prophet-tint)}
+.g h4{font-size:1.6rem;font-weight:500;line-height:1.1;margin:0;outline:none}
+.g .g-meta{margin:3px 0 10px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.g h5{font-size:1rem;font-weight:600;font-style:italic;margin:16px 0 2px}
+.g p{margin:0 0 6px}
+.g-m{margin:4px 0 0;padding-left:1.3em}
+.g-m li{margin:0 0 13px;padding-left:2px}
+.g-m li b{font-weight:600}
+.g-d{display:block;margin-top:2px}
+.g-m cite{font-style:normal;color:var(--ink-soft);font-size:15px;font-variant-numeric:lining-nums}
+.g-back{margin-top:8px;font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.guide-link{display:inline-block;margin:4px 0 4px;padding:5px 14px;border:1px solid var(--prophet);color:var(--prophet);border-radius:999px;font-size:16px}
+.guide-link:hover{background:var(--prophet-tint)}
+a.guide-link{text-decoration:none}
+.g-deep{margin:4px 0 0}
+.g-deep p{margin:0 0 13px}
+.g-deep b{font-weight:600}
+.xref{display:inline;padding:0;font:inherit;color:var(--prophet);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.g-mom summary{cursor:pointer;font-weight:600;font-style:italic;margin:16px 0 4px}
+.g-mom[open] summary{margin-bottom:8px}
+.th{margin:18px 0 24px}
+.th h3{font-size:1.15rem;font-weight:600;margin:0 0 2px}
+.th p{margin:0}
+.home-link{margin:0 0 10px;font-size:16px}
+.home-link a{color:var(--ink-soft);text-underline-offset:3px}
+.page-nav{font-size:16px;color:var(--ink-soft)}
+.page-nav a{color:var(--prophet);text-underline-offset:3px}
+.lower h2{scroll-margin-top:150px}
+.era-strip{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:14px 0 6px;font-size:16px;line-height:1.4}
+.era-strip dt{color:var(--ink-soft);white-space:nowrap;font-variant-numeric:lining-nums}
+.era-strip dd{margin:0}
+.nb{border-left:4px solid var(--ink-soft);padding:4px 0 6px 16px;margin:24px 0 32px}
+.nb h3{font-size:1.6rem;font-weight:500;line-height:1.1;margin:0}
+.nb h3 span{font-size:1.1rem;color:var(--ink-soft)}
+.nb .nb-meta{margin:3px 0 10px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.nb p{margin:0 0 8px}
+.nb h5{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.nb-r{margin:0 0 8px;padding-left:1.2em}
+.nb-r li{margin:0 0 8px}
+.nb-r cite{font-style:normal;color:var(--ink-soft);font-size:15px}
+
+/* Detail sheet */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--sheet);border-top:1px solid var(--rule);box-shadow:var(--shadow);max-height:min(66vh,680px);overflow-y:auto;overscroll-behavior:contain;transform:translateY(105%);padding:16px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.sheet.open{transform:none}
+@media (prefers-reduced-motion:no-preference){ .sheet{transition:transform .22s ease} }
+.sheet-inner{max-width:680px;margin:0 auto;position:relative}
+.close{position:absolute;top:-4px;right:-6px;width:40px;height:40px;font-size:28px;line-height:1;color:var(--ink-soft)}
+.sheet h2{font-weight:500;font-size:2rem;line-height:1.05;margin:0 44px 2px 0;outline:none}
+.sh-sub{font-style:italic;color:var(--ink-soft);margin:0}
+.sh-aka{margin:4px 0 0;font-size:16px}
+.sh-aka span{color:var(--ink-soft)}
+.facts{display:grid;grid-template-columns:6.4em 1fr;gap:4px 12px;margin:14px 0;font-size:16.5px;line-height:1.4}
+.facts dt{font-style:italic;color:var(--ink-soft)}
+.facts dd{margin:0}
+.facts .vn{display:block;color:var(--ink-soft);font-size:15px}
+.facts .glyph{--kc:var(--ink);margin:0 3px 0 0}
+.sum{margin:0 0 12px}
+.sheet h3{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.refs{margin:0;font-variant-numeric:lining-nums}
+.clash{margin-top:16px;padding-top:10px;border-top:1px solid var(--rule)}
+.clash p{margin:0 0 8px;font-size:16px}
+
+@media print{
+  .bar,.sheet{display:none}
+  body{background:#fff;color:#000}
+  .chart-wrap.filtering [data-id]{opacity:1}
+  .lower{padding-bottom:0}
+}
+
+/* Samuel page */
+.reigns{font-size:14px;line-height:1.4;gap:14px}
+.reigns p{margin:0}
+.reigns b{font-weight:600;display:block;font-size:1.15rem;margin-bottom:2px}
+.reigns .rs b{color:var(--israel)} .reigns .rd b,.reigns .ro b{color:var(--judah)}
+.reigns .ro{text-align:right}
+.story{max-width:700px;margin:0 auto;padding:26px 14px 0}
+.story > h2,.lower h2{font-weight:500;font-size:1.9rem;line-height:1.1;margin:0 0 6px;scroll-margin-top:110px}
+.story > p{margin:0 0 10px}
+.verbs{font-size:15.5px;line-height:1.7;color:var(--ink-soft);margin:0 0 6px}
+.verbs span{white-space:nowrap;margin-right:10px}
+.verbs i{font-style:normal;font-weight:600;color:var(--tc)}
+.act{position:relative;margin:34px 0 4px;padding-left:30px}
+.act h3{font-size:1.45rem;font-weight:500;line-height:1.1;margin:0}
+.act p{margin:2px 0 0;font-style:italic;color:var(--ink-soft);font-size:16px}
+.a0,.a1,.a2{--ac:var(--judah)} .a3,.a4,.a5{--ac:var(--israel)}
+.scenes{list-style:none;margin:0;padding:0;position:relative}
+.scenes::before{content:"";position:absolute;left:7px;top:14px;bottom:14px;width:2px;background:var(--rule)}
+.scene{position:relative;padding:14px 0 18px 30px;scroll-margin-top:110px;border-radius:4px}
+.scene::before{content:"";position:absolute;left:1px;top:21px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--ac)}
+.scene.here{background:var(--judah-tint)}
+.scene.here::before{background:var(--ac)}
+@media (prefers-reduced-motion:no-preference){ .scene{transition:background-color .4s ease} }
+.scene h4{font-size:1.3rem;font-weight:500;line-height:1.15;margin:0;outline:none}
+.sc-ref{margin:1px 0 6px;font-size:15px;color:var(--ink-soft);font-variant-numeric:lining-nums}
+.sc-ref span{font-style:italic;margin-left:6px}
+.sc-n{margin:0 0 8px}
+.sc-who{margin:0 0 8px;line-height:1.9}
+.evs{list-style:none;margin:0;padding:0}
+.ev{--tc:var(--ink-soft);border-left:3px solid var(--tc);padding:1px 0 1px 11px;margin:0 0 11px;font-size:16.5px;line-height:1.45}
+.ev .vb{color:var(--tc);font-weight:600;font-style:italic}
+.ev cite{font-style:normal;color:var(--ink-soft);font-size:14.5px;margin-left:5px;white-space:nowrap;font-variant-numeric:lining-nums}
+.ev .nt{display:block;color:var(--ink-soft);font-size:15.5px}
+.ev .who{font-weight:600}
+.ev .who.plain{font-weight:500}
+.t-anoint{--tc:var(--pc7)} .t-save{--tc:var(--pc4)} .t-betray{--tc:var(--pc2)} .t-kill{--tc:var(--pc3)} .t-rebuke{--tc:var(--pc1)}
+.pn{display:inline;padding:0;font:inherit;font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--rule);text-decoration-thickness:1.5px;text-underline-offset:3px}
+.pn:hover{text-decoration-color:var(--ink)}
+.c-saul{--cc:var(--israel)} .c-men{--cc:var(--ink-soft)} .c-dav{--cc:var(--judah)}
+
+.cast h3{font-size:1.15rem;font-weight:600;margin:26px 0 4px}
+.cast-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.cast-row{display:grid;grid-template-columns:8.2em 1fr;gap:10px;width:100%;text-align:left;padding:8px 2px;border-bottom:1px solid var(--rule);line-height:1.3}
+.cast-row b{font-weight:600}
+.cast-row span{color:var(--ink-soft);font-size:16px}
+.cast-row:hover{background:var(--paper-2)}
+
+.sheet .evs{margin-top:4px}
+.sheet .ev{font-size:16px}
+.sc-link{display:inline;padding:0;font:inherit;font-size:14.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.sc-chips{line-height:1.9}
+/* Deep dives */
+.dive{margin:12px 0 4px;border:1px solid var(--rule);border-left:4px solid var(--ac);border-radius:0 4px 4px 0;background:var(--paper-2);scroll-margin-top:110px}
+.dive summary{list-style:none;cursor:pointer;padding:10px 12px 11px;display:block}
+.dive summary::-webkit-details-marker{display:none}
+.dv-k{display:block;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ac);font-weight:600}
+.dv-t{display:block;font-size:1.2rem;font-weight:600;line-height:1.2;margin:1px 0 1px}
+.dv-r{display:block;font-size:14.5px;color:var(--ink-soft);font-variant-numeric:lining-nums}
+.dv-l{display:block;margin-top:5px;font-size:16.5px;line-height:1.45}
+.dv-more{display:inline-block;margin-top:6px;font-size:14.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.dv-more .c,.dive[open] .dv-more .o{display:none}
+.dive[open] .dv-more .c{display:inline}
+.dv-body{padding:0 12px 6px;border-top:1px solid var(--rule)}
+.dv-body h5{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.dv-body p{margin:0 0 11px;font-size:17px;line-height:1.55}
+.dv-body p b{font-weight:600}
+.chs{margin:6px 0 4px}
+.chs summary{cursor:pointer;font-size:15.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:2px 0}
+.chs ul{list-style:none;margin:6px 0 0;padding:0}
+.chs li{font-size:16px;line-height:1.45;margin:0 0 9px;padding:2px 0 2px 10px;border-left:3px solid var(--rule);scroll-margin-top:120px}
+.chs li b{font-weight:600;font-variant-numeric:lining-nums;margin-right:4px}
+.chs li.here{border-left-color:var(--ac);background:var(--paper)}
+.lead-in a,.notes a,#prophets+p a{color:var(--prophet)}
+.lead-in{font-size:16.5px;color:var(--ink-soft)}
+.lead-in b{color:var(--ink);font-weight:600}
+.split-next{margin:18px 0 0;padding:10px 12px;border:1px solid var(--rule);border-radius:2px;font-size:15.5px;line-height:1.4;color:var(--ink-soft)}
+.split-next b{display:block;color:var(--ink);font-weight:600}
+.rulers{list-style:none;margin:10px 0 0;padding:0}
+.rulers li{margin:0 0 14px;padding-left:12px;border-left:3px solid var(--judah);font-size:16.5px;line-height:1.45}
+.rulers li b{font-weight:600}
+.rulers li span{display:block;font-size:14.5px;color:var(--ink-soft);font-style:italic;margin-bottom:2px}
+.dv-close{margin:2px 0 8px;font-size:14.5px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.c-dive{--cc:var(--judah);font-weight:600}
+a.xref{color:var(--prophet)}
+a.guide-link{text-decoration:none}
+.hint .sc-link{font-style:normal;color:var(--ink);font-size:15px}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="home-link" id="home-link" hidden><a href="./">Lex et Prophetae</a></p>
+  <h1>Under the Greeks</h1>
+  <p class="lede">1 and 2 Maccabees: the Greek kings, the persecution under Antiochus Epiphanes, and the family of priests that fought back. Choose the book and chapter you’re reading to jump to its scene; each scene has a chapter-by-chapter guide, and the one you chose is marked. Tap any name for that person’s whole story.</p>
+  <div class="reigns grid">
+    <p class="rs"><b>167</b>The Law forbidden, the Temple profaned.</p>
+    <p class="rd"><b>164</b>Judas rededicates the Temple.</p>
+    <p class="ro"><b>142</b>Simon wins independence.</p>
+  </div>
+</header>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <div class="bar-row">
+      <label for="book">Reading</label>
+      <select id="book" aria-label="Book">
+        <option value="1Ma">1 Maccabees</option>
+        <option value="2Ma">2 Maccabees</option>
+      </select>
+      <select id="chap" aria-label="Chapter"></select>
+      <button type="button" class="clear" id="clear" hidden>Clear</button>
+    </div>
+    <div class="found" id="found" aria-live="polite"></div>
+  </div>
+</div>
+
+<main>
+  <div class="story">
+    <p class="page-nav">Further down: <a href="#rulers">Who ruled when</a>, <a href="#cast">The cast</a>, <a href="#threads">Threads</a>, <a href="#names">Same name, different person</a>.</p>
+    <h2 id="scenes">The story in scenes</h2>
+    <p class="lead-in"><b>331 BC.</b> Alexander takes the Persian empire. The return from Babylon under Persia is on the <a href="exile.html">exile and return page</a>; Daniel, whose visions describe the years told here, is on the <a href="kings.html#guide-daniel">divided kingdom page</a>.</p>
+    <p>The two books are not volumes one and two. They overlap: 2 Maccabees 3–7 tells at length what led to the revolt, and 1 Maccabees 1 tells it in a chapter. From there the scenes follow 1 Maccabees and bring in 2 Maccabees wherever it covers the same ground.</p>
+    <p>Each scene lists who is in it and what passed between them. The verb’s color says what kind of thing it was:</p>
+    <p class="verbs"><span class="t-anoint"><i>commissions or blesses</i></span> <span class="t-save"><i>spares or saves</i></span> <span class="t-betray"><i>betrays</i></span> <span class="t-kill"><i>kills, or tries to</i></span> <span class="t-rebuke"><i>rebukes or curses</i></span></p>
+    <div id="story"></div>
+    <p class="split-next"><b>63 BC</b>Pompey takes Jerusalem for Rome. The Old Testament’s history ends with Simon’s death in 134; the Herods and the Gospels are what comes next.</p>
+  </div>
+
+  <div class="lower">
+    <h2 id="rulers">Who ruled when</h2>
+    <p>The kings behind these books, oldest first, then the high priests. The books date events by the Seleucid era, which counts from 312 BC; dates here may be a year out either way.</p>
+    <ol class="rulers">
+      <li><b>Alexander the Great</b> <span>Macedon, 336–323</span>Conquers the Persian empire; his generals divide it (1 Macc 1:1–9).</li>
+      <li><b>The Ptolemies</b> <span>Egypt, 301–200</span>Rule Judea for a century, lightly. Not told in these books.</li>
+      <li><b>Antiochus III the Great</b> <span>Syria, 223–187</span>Takes Judea from Egypt in 200. Beaten by Rome in 190 and made to pay, which is why his sons need money (1 Macc 8:6–8).</li>
+      <li><b>Seleucus IV Philopator</b> <span>187–175</span>Sends Heliodorus for the Temple treasury (2 Macc 3). Murdered by him.</li>
+      <li><b>Antiochus IV Epiphanes</b> <span>175–164</span>Sells the high priesthood, plunders the Temple in 169, forbids the Law in 167. Dies in Persia.</li>
+      <li><b>Antiochus V Eupator</b> <span>164–162</span>A boy, with Lysias as regent. Beth-zechariah; the end of the persecution.</li>
+      <li><b>Demetrius I Soter</b> <span>162–150</span>Sends Bacchides and Nicanor. Judas dies in his reign.</li>
+      <li><b>Alexander Balas</b> <span>150–145</span>Makes Jonathan high priest in 152, while still a pretender.</li>
+      <li><b>Demetrius II Nicator</b> <span>145–138</span>Confirms Jonathan, cheats him, and in 142 frees Simon from tribute. Captured by the Parthians.</li>
+      <li><b>Antiochus VI and Tryphon</b> <span>145–138</span>A child king and the officer who crowned him, killed him and replaced him. Tryphon murders Jonathan.</li>
+      <li><b>Antiochus VII Sidetes</b> <span>138–129</span>Confirms Simon, then demands the citadel back. The last strong Seleucid.</li>
+    </ol>
+    <p>The high priests:</p>
+    <ol class="rulers">
+      <li><b>Onias III</b> <span>to 175</span>The last to hold the office by lawful succession.</li>
+      <li><b>Jason</b> <span>175–172</span>His brother, by purchase.</li>
+      <li><b>Menelaus</b> <span>172–162</span>By a higher bid; not of the high-priestly family.</li>
+      <li><b>Alcimus</b> <span>162–159</span>Of Aaron’s line, appointed by Demetrius I.</li>
+      <li><b>No high priest</b> <span>159–152</span>Seven years’ vacancy.</li>
+      <li><b>Jonathan</b> <span>152–143</span>Appointed by Alexander Balas. The first Hasmonean high priest.</li>
+      <li><b>Simon</b> <span>143–134</span>Confirmed by the people in 140, “till there should arise a faithful prophet.”</li>
+      <li><b>John Hyrcanus</b> <span>134–104</span>Simon’s son. The books end as he begins.</li>
+    </ol>
+
+    <h2 id="cast">The cast</h2>
+    <p>Everyone above, by group. Tap a name for the full record of what they did and what was done to them.</p>
+    <div class="cast" id="cast-list"></div>
+
+    <h2 id="threads">Threads</h2>
+    <p>Patterns that run across the two books, back into earlier ones, and forward into the New Testament.</p>
+    <div id="threads-list"></div>
+
+    <h2 id="names">Same name, different person</h2>
+    <p>The same dozen names serve several generations of kings, priests and generals.</p>
+    <div class="clashes" id="clashes"></div>
+
+    <h2>Notes</h2>
+    <div class="notes">
+      <p>The two books were written separately. 1 Maccabees was composed in Hebrew about 100 BC and survives only in Greek; it covers 175 to 134 BC. 2 Maccabees was written in Greek, as an abridgment of a five-volume history by Jason of Cyrene, with two letters set in front of it; it covers about 180 to 161 BC. Neither is in the Hebrew Bible. Both are in the Greek and Latin Bibles and in the Catholic canon. There are a 3 and a 4 Maccabees, which are not.</p>
+      <p>Dates in the books are years of the Seleucid era, counted from 312 BC, so that “the hundred and forty-fifth year” is 167 BC. The two books do not always start the year in the same month, which is why modern dates for the same event can differ by a year.</p>
+      <p>Older Catholic Bibles call these books 1 and 2 Machabees and spell many names differently, such as Mathathias, Jonathas or Ptolemee. Those spellings are in each person’s details. Verse numbers follow the RSV-2CE. The Douay-Rheims runs up to three verses ahead in 1 Maccabees 1 and one verse ahead in parts of 1 Maccabees 12–13 and 2 Maccabees 2, 12 and 15; where a quotation falls in one of those places, the Douay number is given too.</p>
+      <p>Quotations follow the Douay-Rheims, with its name forms left as printed inside quotation marks. Where the Douay, which follows the Latin, parts from the Greek in a way that matters, the note says what the Greek has.</p>
+    </div>
+  </div>
+</main>
+
+<div class="sheet" id="sheet" role="dialog" aria-labelledby="sh-title" inert>
+  <div class="sheet-inner">
+    <button type="button" class="close" id="close" aria-label="Close details">×</button>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const R=(a,b)=>Array.from({length:b-a+1},(_,i)=>a+i);
+const SP=[
+{id:'mattathias',name:'Mattathias',c:2,dates:'died 166 BC',role:'Priest of Modein, father of the five brothers',dy:'Mathathias',sum:'A priest of the family of Joarib who left Jerusalem for the village of Modein. When the king’s officer came to enforce the pagan sacrifice he refused, killed a Jew who stepped up to the altar and the officer with him, and fled to the hills with his five sons. He ruled that Jews might defend themselves on the sabbath, and died within the year, naming Simon as counsellor and Judas as captain. Josephus gives his great-grandfather’s name as Hashmon, which is why the family is called the Hasmoneans.',refs:'1 Macc 2; 14:29',ch:{'1Ma':[2]}},
+{id:'judas',name:'Judas Maccabeus',short:'Judas',c:2,dates:'led 166–160 BC',role:'Third son of Mattathias, captain of the revolt',aka:'Maccabeus, probably “the hammer”',dy:'Judas Machabeus',sum:'In two years he beat four Seleucid armies with a force a fraction of their size, retook Jerusalem, and cleansed and rededicated the Temple in December 164, the feast now called Hanukkah. He fought the surrounding peoples, lost at Beth-zechariah, destroyed Nicanor’s army, made a treaty with Rome, and fell at Elasa in 160 with eight hundred men when the rest had left him. 2 Maccabees is his book, and ends with him victorious.',refs:'1 Macc 2:4, 66; 3:1–9:22; 2 Macc 2:19; 5:27; 8–15',ch:{'1Ma':[2,3,4,5,6,7,8,9],'2Ma':[2,5,8,10,11,12,13,14,15]}},
+{id:'jonathan',name:'Jonathan',c:2,dates:'led 160–143 BC',role:'Youngest son of Mattathias, high priest',aka:'Apphus',dy:'Jonathas',sum:'He took over a beaten movement in the wilderness, outlasted Bacchides, and then played the rival claimants to the Seleucid throne against one another. Alexander Balas made him high priest in 152, the first of the family to hold the office; later kings confirmed him and added territory. Tryphon lured him into Ptolemais with a thousand men, shut the gates, and afterward killed him.',refs:'1 Macc 2:5; 5:17, 24, 55; 9:19–13:30',ch:{'1Ma':[2,5,9,10,11,12,13]}},
+{id:'simon',name:'Simon',c:2,dates:'led 143–134 BC',role:'Second son of Mattathias, high priest and prince',aka:'Thassi',dy:'Simon, surnamed Thasi',sum:'The counsellor of the family and the last of the brothers. He won freedom from tribute from Demetrius II in 142, starved out the citadel in Jerusalem the next year, and was confirmed by priests and people as high priest, commander and prince until a trustworthy prophet should arise. He was murdered at a banquet, with two of his sons, by his son-in-law.',refs:'1 Macc 2:3, 65; 5:17–23; 9:19, 33–42, 62–67; 10:74–82; 11:59–12:38; 13–16',ch:{'1Ma':[2,5,9,10,11,12,13,14,15,16]}},
+{id:'john_g',name:'John Gaddi',short:'John',c:2,dates:'died 160 BC',role:'Eldest son of Mattathias',dy:'John, surnamed Gaddis',sum:'Sent by Jonathan to leave the baggage with the friendly Nabateans, he was ambushed and killed by the sons of Jambri from Medeba. Jonathan and Simon avenged him at a wedding procession.',refs:'1 Macc 2:2; 9:35–42',ch:{'1Ma':[2,9]}},
+{id:'eleazar_a',name:'Eleazar Avaran',short:'Eleazar',c:2,dates:'died 162 BC',role:'Fourth son of Mattathias',dy:'Eleazar, surnamed Abaron',sum:'At Beth-zechariah he saw one elephant taller than the rest and wearing the royal armour, supposed the king was on it, fought his way under it and stabbed it from below. It fell on him. He is the first of the brothers to die.',refs:'1 Macc 2:5; 6:43–46',ch:{'1Ma':[2,6]}},
+{id:'hyrcanus',name:'John Hyrcanus',short:'John Hyrcanus',c:2,dates:'high priest 134–104 BC',role:'Son of Simon',sum:'His father’s commander at Gazara. With his brother Judas he beat Cendebeus; warned in time of the murders at Dok, he killed the men sent for him and succeeded Simon. 1 Maccabees ends by pointing to the chronicle of his high priesthood. Josephus tells the rest: he conquered Idumea and Samaria and destroyed the temple on Mount Gerizim.',refs:'1 Macc 13:53; 16:1–24',ch:{'1Ma':[13,16]}},
+{id:'onias',name:'Onias III',short:'Onias',c:0,dates:'high priest until 175 BC; killed about 170',role:'High priest, the last to hold the office by right',sum:'High priest under Seleucus IV, to whose prayers 2 Maccabees credits the Temple’s safety when Heliodorus came for the treasury. His brother Jason bought the office from under him. When he denounced Menelaus for stealing Temple vessels he was lured out of sanctuary at Daphne, near Antioch, and murdered. He returns in Judas’s dream before the last battle, praying for the people. Many identify him with the anointed one who is cut off in Daniel 9:26.',refs:'2 Macc 3–4; 15:12–14',ch:{'2Ma':[3,4,15]}},
+{id:'eleazar_s',name:'Eleazar the scribe',short:'Eleazar the scribe',c:0,dates:'died 167 BC',role:'Scribe and martyr, ninety years old',sum:'One of the chief scribes, forced to open his mouth for pork. Old friends in charge of the sacrifice offered to let him eat meat of his own and only pretend. He refused, for the sake of the young who would be misled, and went to the rack.',refs:'2 Macc 6:18–31',ch:{'2Ma':[6]}},
+{id:'mother',name:'The mother and her seven sons',short:'The mother of seven',c:0,dates:'died 167 BC',role:'Martyrs',sum:'Seven brothers tortured to death one after another in the king’s presence for refusing pork, their mother urging each of them on in their own language and dying last. The book gives no names and no place. Tradition venerates them as the Holy Maccabees, though they are no kin of Judas, and shows their relics at San Pietro in Vincoli in Rome.',refs:'2 Macc 7',ch:{'2Ma':[7]}},
+{id:'razis',name:'Razis',c:0,dates:'died 161 BC',role:'Elder of Jerusalem',dy:'Razias',sum:'An elder so well thought of that he was called father of the Jews. When Nicanor sent more than five hundred soldiers to arrest him he fell on his sword, threw himself from the wall, and died calling on the Lord of life to give him his body back.',refs:'2 Macc 14:37–46',ch:{'2Ma':[14]}},
+{id:'hasideans',name:'The Hasideans',short:'Hasideans',c:0,dates:'active 167–161 BC',role:'The devout',dy:'Assideans',sum:'The pious ones, a company of strict keepers of the Law who joined Mattathias early. They were the first to seek peace when a priest of Aaron’s line, Alcimus, was sent as high priest, and sixty of them were killed for it in one day. Many see in them the forerunners of the Pharisees, the Essenes or both.',refs:'1 Macc 2:42; 7:12–17; 2 Macc 14:6',ch:{'1Ma':[2,7],'2Ma':[14]}},
+{id:'alexander',name:'Alexander the Great',short:'Alexander',c:1,dates:'king of Macedon 336–323 BC',role:'Conqueror of the Persian empire',sum:'1 Maccabees opens with him: twelve years, the Persian empire overthrown, and a kingdom divided among his officers at his death. Judea fell first to the Ptolemies of Egypt and then, in 200 BC, to the Seleucids of Syria.',refs:'1 Macc 1:1–9; 6:2',ch:{'1Ma':[1,6]}},
+{id:'seleucus4',name:'Seleucus IV Philopator',short:'Seleucus IV',c:1,dates:'king of Syria 187–175 BC',role:'King of Syria',sum:'He paid for the Temple’s sacrifices out of his own revenue until, pressed for money to pay Rome, he sent Heliodorus for the Temple treasury. Heliodorus murdered him in 175, and his brother Antiochus took the throne. He is the raiser of taxes in Daniel 11:20.',refs:'2 Macc 3:1–4:7',ch:{'2Ma':[3,4]}},
+{id:'heliodorus',name:'Heliodorus',c:1,dates:'about 178 BC',role:'Chief minister of Seleucus IV',sum:'Sent to seize the Temple treasury, he was struck down inside it by a horseman in golden armour and scourged by two young men, carried out helpless, and restored when Onias offered sacrifice for him. A stone inscription found in Israel preserves a letter of Seleucus to him, dated 178 BC, about supervising the sanctuaries of the province.',refs:'2 Macc 3',ch:{'2Ma':[3]}},
+{id:'antiochus4',name:'Antiochus IV Epiphanes',short:'Antiochus IV',c:1,dates:'king of Syria 175–164 BC',role:'King of Syria, the persecutor',aka:'Epiphanes, “God manifest”; his subjects said Epimanes, “the madman”',dy:'Antiochus the Illustrious',sum:'A younger son of Antiochus III who had spent years as a hostage in Rome. He sold the high priesthood twice, plundered the Temple in 169, was ordered out of Egypt by a Roman envoy in 168, and in 167 forbade the Law and set an altar to Zeus on the altar of burnt offering. He died in Persia in 164 after failing to rob a temple there. He is the little horn of Daniel 8 and the king of Daniel 11:21–45.',refs:'1 Macc 1:10–64; 3:27–37; 6:1–16; 2 Macc 1:11–17; 4–7; 9',ch:{'1Ma':[1,3,6],'2Ma':[1,4,5,6,7,9]}},
+{id:'lysias',name:'Lysias',c:1,dates:'regent 165–162 BC',role:'Regent of the kingdom, guardian of Antiochus V',sum:'Left in charge of the west when Antiochus IV marched east. Judas beat him at Beth-zur; he came back with elephants, won at Beth-zechariah and besieged the Temple mount, then made peace and restored the Jews’ right to live by their own laws because a rival was marching on Antioch. Demetrius I had him killed with the boy king.',refs:'1 Macc 3:32–4:35; 6:17–63; 7:1–4; 2 Macc 10:11; 11–13; 14:2',ch:{'1Ma':[3,4,6,7],'2Ma':[10,11,12,13,14]}},
+{id:'antiochus5',name:'Antiochus V Eupator',short:'Antiochus V',c:1,dates:'king of Syria 164–162 BC',role:'Boy king of Syria',sum:'Son of Antiochus IV, about nine when his father died, and ruled through Lysias. His army won at Beth-zechariah, and his letter ended the persecution. His cousin Demetrius had him put to death.',refs:'1 Macc 6:17–7:4; 2 Macc 9:25; 10:10–13:26',ch:{'1Ma':[6,7],'2Ma':[9,10,11,13]}},
+{id:'gorgias',name:'Gorgias',c:1,dates:'165–163 BC',role:'Seleucid general',sum:'At Emmaus he took five thousand men by night to surprise Judas’s camp, found it empty, and came back to see his own camp burning. Later, as governor of Idumea, he routed two Jewish commanders who attacked Jamnia against orders.',refs:'1 Macc 3:38–4:25; 5:55–62; 2 Macc 8:9; 10:14; 12:32–37',ch:{'1Ma':[3,4,5],'2Ma':[8,10,12]}},
+{id:'nicanor',name:'Nicanor',c:1,dates:'died 161 BC',role:'Seleucid general',sum:'At Emmaus he brought slave-dealers along to buy the prisoners he expected to take. Sent again by Demetrius I, he first made friends with Judas, by 2 Maccabees’ account, then threatened to burn the Temple unless Judas was handed over. He was killed at Adasa on the thirteenth of Adar; his head and right hand were hung up in sight of the Temple, and the day became a feast.',refs:'1 Macc 3:38; 7:26–50; 2 Macc 8:9–36; 14:12–15:37',ch:{'1Ma':[3,7],'2Ma':[8,14,15]}},
+{id:'bacchides',name:'Bacchides',c:1,dates:'162–157 BC',role:'Seleucid governor and general',sum:'Governor of the lands beyond the Euphrates and a friend of Demetrius I. He installed Alcimus, killed Judas at Elasa, ringed Judea with forts, and hunted Jonathan through the wilderness. After a failed siege at Bethbasi he made peace, exchanged prisoners, went home and did not come back.',refs:'1 Macc 7:8–20; 9',ch:{'1Ma':[7,9]}},
+{id:'demetrius1',name:'Demetrius I Soter',short:'Demetrius I',c:1,dates:'king of Syria 162–150 BC',role:'King of Syria',sum:'Son of Seleucus IV, held hostage in Rome while his uncle and cousin reigned. He escaped, landed in Syria, and had Antiochus V and Lysias killed. He sent Bacchides and Nicanor against Judas. When Alexander Balas challenged him he bid for Jonathan’s support with enormous concessions and was not believed. He died in battle in 150.',refs:'1 Macc 7:1–4; 8:31–32; 9:1; 10:1–52; 2 Macc 14:1–11',ch:{'1Ma':[7,8,9,10],'2Ma':[14]}},
+{id:'balas',name:'Alexander Balas',short:'Balas',c:1,dates:'king of Syria 150–145 BC',role:'King of Syria',aka:'Alexander Epiphanes',sum:'He claimed to be a son of Antiochus IV and had the backing of Rome and Egypt. He made Jonathan high priest and sat him beside him in purple at his wedding to Cleopatra, daughter of Ptolemy VI. When Ptolemy changed sides he lost his wife and his kingdom to Demetrius II, and an Arab chief sent his head to Egypt.',refs:'1 Macc 10:1–11:19',ch:{'1Ma':[10,11]}},
+{id:'ptolemy6',name:'Ptolemy VI Philometor',short:'Ptolemy VI',c:1,dates:'king of Egypt 180–145 BC',role:'King of Egypt',dy:'Ptolemee',sum:'Nephew of Antiochus IV, who invaded his kingdom twice. He gave his daughter Cleopatra to Alexander Balas, then took her back, gave her to Demetrius II, and entered Antioch wearing the crowns of Egypt and Asia. He died of his wounds three days after Balas. The Aristobulus addressed in 2 Maccabees 1:10 was his teacher.',refs:'1 Macc 1:18; 10:51–58; 11:1–18; 2 Macc 1:10; 4:21',ch:{'1Ma':[1,10,11],'2Ma':[1,4]}},
+{id:'demetrius2',name:'Demetrius II Nicator',short:'Demetrius II',c:1,dates:'king of Syria 145–138 BC, and again 129–125',role:'King of Syria',sum:'Son of Demetrius I. He confirmed Jonathan as high priest, was rescued from a rising in Antioch by three thousand Jewish soldiers, and then went back on everything he had promised. In 142, needing Simon against Tryphon, he released Judea from tribute. He was captured campaigning against the Parthians.',refs:'1 Macc 10:67–11:53; 13:34–40; 14:1–3, 38',ch:{'1Ma':[10,11,13,14]}},
+{id:'tryphon',name:'Tryphon',c:1,dates:'died 138 BC',role:'Kingmaker, then usurper',aka:'Diodotus',sum:'An officer of Balas who set up Balas’s infant son as Antiochus VI against Demetrius II and won Jonathan’s support for him. He trapped Jonathan at Ptolemais, took a ransom from Simon and killed Jonathan anyway, then murdered the boy king and took the crown himself. Antiochus VII drove him out; he escaped by ship from Dor.',refs:'1 Macc 11:39–56; 12:39–13:32; 15:10–39',ch:{'1Ma':[11,12,13,15]}},
+{id:'antiochus7',name:'Antiochus VII Sidetes',short:'Antiochus VII',c:1,dates:'king of Syria 138–129 BC',role:'King of Syria',sum:'Brother of Demetrius II. From abroad he wrote to Simon confirming every grant and adding the right to strike coins. Once he had Tryphon shut up in Dor he demanded Joppa, Gazara and the citadel back, or a thousand talents. Simon’s sons beat the general he sent.',refs:'1 Macc 15:1–16:10',ch:{'1Ma':[15,16]}},
+{id:'jason',name:'Jason',c:3,dates:'high priest 175–172 BC',role:'Brother of Onias III, high priest by purchase',sum:'He bought the high priesthood from Antiochus IV for four hundred and forty talents, and paid more for leave to build a gymnasium below the citadel and enrol the men of Jerusalem as citizens of Antioch. Three years later Menelaus outbid him. On a false report that the king was dead he attacked Jerusalem and slaughtered his own townsmen, and he died an exile in Sparta, unmourned and unburied.',refs:'2 Macc 1:7; 4:7–26; 5:5–10',ch:{'2Ma':[1,4,5]}},
+{id:'menelaus',name:'Menelaus',c:3,dates:'high priest 172–162 BC',role:'High priest by purchase',sum:'Brother of Simon the Temple captain, and not of the high-priestly family. Sent to court with Jason’s tribute, he outbid him by three hundred talents, then could not pay, stole Temple vessels to cover it, had Onias murdered for saying so, and guided Antiochus into the sanctuary. Lysias blamed him for the whole war, and he was put to death at Beroea in a tower filled with ashes.',refs:'2 Macc 4:23–50; 5:5, 15, 23; 11:29–32; 13:3–8',ch:{'2Ma':[4,5,11,13]}},
+{id:'simon_t',name:'Simon the Temple captain',short:'Simon the captain',c:3,dates:'about 180–175 BC',role:'Overseer of the Temple',sum:'He quarrelled with Onias over the running of the city market, lost, and told the governor that the Temple treasury was full of money the king could take. Everything in 2 Maccabees follows from that. Menelaus was his brother.',refs:'2 Macc 3:4–6; 4:1–6, 23',ch:{'2Ma':[3,4]}},
+{id:'alcimus',name:'Alcimus',c:3,dates:'high priest 162–159 BC',role:'High priest appointed by Demetrius I',aka:'Jakim',sum:'A priest of Aaron’s line, which is why the Hasideans trusted him; he had sixty of them killed. He accused Judas to the king twice and came back each time with an army. He began to pull down the wall of the inner court of the Temple, was struck with paralysis, and died in pain without a word.',refs:'1 Macc 7:5–25; 9:1, 54–57; 2 Macc 14:3–27',ch:{'1Ma':[7,9],'2Ma':[14]}},
+{id:'ptolemy_a',name:'Ptolemy son of Abubus',short:'Ptolemy of Jericho',c:3,dates:'134 BC',role:'Governor of Jericho, Simon’s son-in-law',dy:'Ptolemee the son of Abobus',sum:'Rich, well connected, and ambitious for the country. He feasted Simon and two of his sons in the small fortress of Dok above Jericho and killed them when they had drunk, then sent to the king for troops and to Gazara to have John killed.',refs:'1 Macc 16:11–22',ch:{'1Ma':[16]}},
+{id:'romans',name:'The Romans',short:'Rome',c:3,dates:'treaty 161 BC',role:'The rising power in the west',sum:'Chapter 8 of 1 Maccabees is what Judas had heard of them: Spain and the kings of the east beaten, a senate of three hundred and twenty, and nobody wearing a crown. They made a treaty with Judas and renewed it with Jonathan and Simon, and their letters warned off the kings. The book admires them without reserve. A century later Pompey walked into the Holy of Holies.',refs:'1 Macc 8; 12:1–4; 14:16–19, 24, 40; 15:15–24; 2 Macc 11:34–38',ch:{'1Ma':[8,12,14,15],'2Ma':[11]}},
+{id:'spartans',name:'The Spartans',short:'Sparta',c:3,dates:'letters about 144 and 142 BC',role:'Supposed kinsmen of the Jews',sum:'Jonathan wrote to Sparta citing an old letter from a Spartan king to the high priest Onias, which claimed that Spartans and Jews were both descended from Abraham. Sparta answered warmly after his death. Jason the high priest had fled there to die.',refs:'1 Macc 12:2, 5–23; 14:16–23; 2 Macc 5:9',ch:{'1Ma':[12,14],'2Ma':[5]}}
+];
+const ACTS=[
+{t:'Before the storm',n:'1 Maccabees 1:1–15; 2 Maccabees 1–4. From Alexander to about 170 BC: how Judea came under the Greek kings, and how the high priesthood came to be for sale.'},
+{t:'The persecution',n:'1 Maccabees 1:16–64; 2 Maccabees 5–7. 169–167 BC. The Temple is plundered, then profaned, and the Law is forbidden on pain of death.'},
+{t:'Mattathias and Judas',n:'1 Maccabees 2:1–9:22; 2 Maccabees 8–15. 167–160 BC. The revolt, the Temple won back, and the death of Judas. The two books cover the same years here.'},
+{t:'Jonathan',n:'1 Maccabees 9:23–13:30. 160–142 BC. The youngest brother survives, then profits from the Seleucids’ civil wars and becomes high priest.'},
+{t:'Simon',n:'1 Maccabees 13:31–16:24. 142–134 BC. Independence, the citadel taken, a high priest and prince confirmed by the people, and a murder.'}
+];
+const SCENES=[
+{id:'letters',act:0,t:'Two letters and a preface',r:'2 Maccabees 1–2',d:'written 124 BC and after',ch:{'2Ma':[1,2]},who:['judas','antiochus4','ptolemy6','jason'],n:'2 Maccabees opens with two letters from Jerusalem asking the Jews of Egypt to keep the new feast of the Temple’s purification, with stories of the sacred fire and of Jeremiah hiding the ark. Then the writer introduces himself: he is boiling down another man’s five books into one. The story proper starts at chapter 3.'},
+{id:'alexander',act:0,t:'Alexander and his heirs',r:'1 Maccabees 1:1–10',d:'336–175 BC',ch:{'1Ma':[1]},who:['alexander','antiochus4'],n:'Ten verses carry the reader from Alexander’s conquests to the accession of Antiochus Epiphanes, a hundred and fifty years later. In between, Judea passed from Persia to Alexander, then to the Ptolemies of Egypt, then in 200 BC to the Seleucids of Syria.'},
+{id:'heliodorus',act:0,t:'Heliodorus in the Temple',r:'2 Maccabees 3',d:'about 178 BC',ch:{'2Ma':[3]},who:['onias','simon_t','seleucus4','heliodorus'],n:'While Onias is high priest the city keeps the Law and the kings honor the Temple. A Temple official with a grudge tells the governor about the treasury, the king sends his chief minister to take it, and the minister is carried out on a stretcher.'},
+{id:'priesthood',act:0,t:'The high priesthood for sale',r:'2 Maccabees 4; 1 Maccabees 1:11–15',d:'175–170 BC',ch:{'2Ma':[4],'1Ma':[1]},who:['onias','jason','menelaus','simon_t','antiochus4','seleucus4'],n:'A new king needs money, and the high priest’s brother offers it. Jason buys the office and a gymnasium with it; three years later Menelaus, who is not even of the priestly line, buys it from under him. Onias protests and is murdered. The trouble starts inside Jerusalem, before any persecution.'},
+{id:'plunder',act:1,t:'Antiochus plunders the Temple',r:'1 Maccabees 1:16–40; 2 Maccabees 5',d:'169–167 BC',ch:{'1Ma':[1],'2Ma':[5]},who:['antiochus4','jason','menelaus','ptolemy6','judas'],n:'Back from a campaign in Egypt, Antiochus strips the Temple of its gold. Two years later, after a rumor of his death sets off fighting in Jerusalem, he treats the city as in revolt: a massacre, a sack on the sabbath, and a Syrian garrison in a new citadel overlooking the Temple. It will stand there for twenty-six years.'},
+{id:'abomination',act:1,t:'The abomination of desolation',r:'1 Maccabees 1:41–64; 2 Maccabees 6:1–17',d:'December 167 BC',ch:{'1Ma':[1],'2Ma':[6]},who:['antiochus4'],n:'The king orders one law for the whole kingdom. Sabbath, circumcision and the possession of a scroll of the Law become capital crimes, the Temple is given to Olympian Zeus, and on the fifteenth of Kislev a pagan altar is set on the altar of burnt offering. Many comply. 2 Maccabees stops to tell the reader why God lets it happen.'},
+{id:'martyrs',act:1,t:'Eleazar, and a mother with seven sons',r:'2 Maccabees 6:18–7:42',d:'167 BC',ch:{'2Ma':[6,7]},who:['eleazar_s','mother','antiochus4'],n:'Two stories of people who would not eat pork to save their lives: an old scribe who refuses even to pretend, and seven brothers who die one by one in front of their mother and the king. Their speeches are the clearest statement of the resurrection of the body in the Old Testament.'},
+{id:'modein',act:2,t:'Mattathias at Modein',r:'1 Maccabees 2',d:'167–166 BC',ch:{'1Ma':[2]},who:['mattathias','judas','simon','jonathan','john_g','eleazar_a','hasideans'],n:'The king’s officers reach a village in the hills and ask its leading man, an old priest, to sacrifice first. He kills at the altar instead and takes to the mountains with his sons. Within a year he is dead, having settled two things: they will fight on the sabbath if attacked, and Judas will lead.'},
+{id:'judas_wins',act:2,t:'Judas takes the field',r:'1 Maccabees 3:1–4:35; 2 Maccabees 8; 11',d:'166–164 BC',ch:{'1Ma':[3,4],'2Ma':[8,11]},who:['judas','antiochus4','lysias','gorgias','nicanor','simon','jonathan'],n:'Four victories against larger armies: Apollonius, Seron at Beth-horon, Nicanor and Gorgias at Emmaus, and the regent Lysias himself at Beth-zur. Before Emmaus the army fasts at Mizpah and opens the book of the Law. 2 Maccabees 11 preserves four letters from the peace that followed.'},
+{id:'dedication',act:2,t:'The Temple cleansed',r:'1 Maccabees 4:36–61; 2 Maccabees 10:1–8',d:'December 164 BC',ch:{'1Ma':[4],'2Ma':[10]},who:['judas'],n:'They find the sanctuary desolate, the gates burned and weeds growing in the courts. Priests clear it, a new altar is built of uncut stones, and on the twenty-fifth of Kislev, three years to the day after the first pagan sacrifice, the offerings begin again. The eight days are kept every year after: Hanukkah.'},
+{id:'epiphanes_dies',act:2,t:'The death of Antiochus',r:'1 Maccabees 6:1–17; 2 Maccabees 9',d:'164 BC',ch:{'1Ma':[6],'2Ma':[9]},who:['antiochus4','antiochus5','lysias'],n:'The king dies in the east after failing to plunder a temple. 1 Maccabees has him die of grief, admitting what he did in Jerusalem. 2 Maccabees gives him worms, a stench, and a deathbed vow to become a Jew. A third version is in the letter at 2 Maccabees 1.'},
+{id:'neighbors',act:2,t:'War on every side',r:'1 Maccabees 5; 2 Maccabees 10:9–38; 12',d:'163 BC',ch:{'1Ma':[5],'2Ma':[10,12]},who:['judas','simon','jonathan','gorgias','lysias'],n:'The peoples around Judea turn on the Jews living among them. Judas and Jonathan cross the Jordan to bring out the Jews of Gilead, Simon goes to Galilee, and two officers left at home attack on their own and are beaten. After one battle Judas has sacrifice offered in Jerusalem for his dead.'},
+{id:'bethzechariah',act:2,t:'Elephants at Beth-zechariah',r:'1 Maccabees 6:18–63; 2 Maccabees 13',d:'163–162 BC',ch:{'1Ma':[6],'2Ma':[13]},who:['judas','eleazar_a','lysias','antiochus5','menelaus'],n:'Judas besieges the citadel, and Lysias brings the boy king south with the largest army yet, thirty-two war elephants in it. Judas loses a battle for the first time, and a brother. The Temple mount is besieged in a sabbath year, with no food stored, and is saved only because Lysias has to hurry home.'},
+{id:'nicanor',act:2,t:'Alcimus, Bacchides and Nicanor',r:'1 Maccabees 7; 2 Maccabees 14–15',d:'162–161 BC',ch:{'1Ma':[7],'2Ma':[14,15]},who:['judas','demetrius1','alcimus','bacchides','nicanor','hasideans','razis','onias','antiochus5','lysias'],n:'A new king, Demetrius, sends a new high priest with an army behind him. The devout accept him and are killed. Nicanor is sent to finish Judas, threatens the Temple, and dies at Adasa. 2 Maccabees ends here, with the city in Jewish hands.'},
+{id:'rome',act:2,t:'A treaty with Rome',r:'1 Maccabees 8',d:'161 BC',ch:{'1Ma':[8]},who:['judas','romans','demetrius1'],n:'Judas sends two envoys on the long journey to Rome. The chapter gives his idea of the Romans, some of it wrong, and the text of the alliance, engraved on bronze. It is the first formal contact between Rome and the Jews.'},
+{id:'elasa',act:2,t:'Judas falls at Elasa',r:'1 Maccabees 9:1–22',d:'160 BC',ch:{'1Ma':[9]},who:['judas','bacchides','alcimus','jonathan','simon'],n:'Bacchides returns with twenty thousand men. Judas’s three thousand see them and slip away until eight hundred are left. He will not withdraw. His brothers bury him at Modein, and Israel mourns him in the words David used for Saul and Jonathan.'},
+{id:'jonathan_rises',act:3,t:'Jonathan in the wilderness',r:'1 Maccabees 9:23–73',d:'160–157 BC',ch:{'1Ma':[9]},who:['jonathan','simon','john_g','bacchides','alcimus'],n:'The renegades are back in control and there is famine. Judas’s friends choose Jonathan, who lives as a guerrilla in the wilderness of Tekoa and across the Jordan. Alcimus dies, Bacchides tires of the war, and Jonathan settles at Michmash, judging the people as the judges once did.'},
+{id:'balas',act:3,t:'High priest by a king’s gift',r:'1 Maccabees 10',d:'152–147 BC',ch:{'1Ma':[10]},who:['jonathan','simon','balas','demetrius1','demetrius2','ptolemy6'],n:'A pretender lands at Ptolemais, and suddenly both kings need Jonathan. Demetrius lets him raise troops; Alexander Balas makes him high priest and sends a purple robe. Jonathan takes both offers and puts on the vestments at the feast of Tabernacles. The office had been vacant for seven years.'},
+{id:'kingmaker',act:3,t:'Between Demetrius and Tryphon',r:'1 Maccabees 11:1–12:38',d:'147–143 BC',ch:{'1Ma':[11,12]},who:['jonathan','simon','ptolemy6','balas','demetrius2','tryphon','romans','spartans'],n:'Egypt changes sides, two kings die in a week, and Demetrius II inherits. Jonathan saves his throne and is cheated, so he goes over to Tryphon and the boy Antiochus VI. He campaigns from Gaza to Damascus, writes to Rome and Sparta, and builds up the walls of Jerusalem.'},
+{id:'ptolemais',act:3,t:'Trapped at Ptolemais',r:'1 Maccabees 12:39–13:30',d:'143–142 BC',ch:{'1Ma':[12,13]},who:['jonathan','simon','tryphon'],n:'Tryphon wants the crown and fears Jonathan. He talks him into dismissing his army and entering Ptolemais with a thousand men. Simon takes command, pays the ransom knowing it is a trick, and buries his brother’s bones at Modein under a monument visible from the sea.'},
+{id:'freedom',act:4,t:'The yoke lifted',r:'1 Maccabees 13:31–14:15',d:'142–141 BC',ch:{'1Ma':[13,14]},who:['simon','demetrius2','tryphon','hyrcanus'],n:'Simon sides with Demetrius II, and the price is the end of all tribute. Contracts begin to be dated by his years. He takes Gazara and, at last, the citadel in Jerusalem. A poem describes the peace: old men in the streets, every man under his vine and fig tree.'},
+{id:'decree',act:4,t:'The bronze tablets',r:'1 Maccabees 14:16–49',d:'September 140 BC',ch:{'1Ma':[14]},who:['simon','romans','spartans','demetrius2'],n:'Rome and Sparta renew their friendship. Then a great assembly of priests, people and elders records what Simon and his brothers did and confirms him as high priest, commander and prince, with the office to pass to his sons. It is engraved on bronze and set up in the Temple precinct.'},
+{id:'sidetes',act:4,t:'Antiochus VII and the last battle',r:'1 Maccabees 15:1–16:10',d:'138–137 BC',ch:{'1Ma':[15,16]},who:['simon','antiochus7','tryphon','hyrcanus','romans'],n:'A new king confirms everything while he needs help and demands most of it back when he does not. Simon, too old to fight, sends his sons John and Judas, who defeat the royal general on the coastal plain.'},
+{id:'dok',act:4,t:'Murder at Dok',r:'1 Maccabees 16:11–24',d:'February 134 BC',ch:{'1Ma':[16]},who:['simon','ptolemy_a','hyrcanus','antiochus7'],n:'Simon, touring the towns with two of his sons, is feasted by his son-in-law at a fortress above Jericho and killed at table. The last of the five brothers dies by treachery, like Jonathan. John is warned in time, and the book ends with him in his father’s place.'}
+];
+// a acts, b is acted on. y: anoint (commissions or blesses), save, betray, kill, rebuke. x: attempt. '#' = someone not in the cast.
+const EVS=[
+{s:'letters',a:'#The Jews of Jerusalem',y:'anoint',v:'write to',b:'#the Jews of Egypt',r:'2 Macc 1:1–2:18',n:'Keep the days of the Temple’s purification in the month of Kislev, as we do.'},
+{s:'letters',a:'#The abridger',y:'anoint',v:'introduces',b:'#his book',r:'2 Macc 2:19–32',n:'Five books by Jason of Cyrene made into one: “no easy task, yea rather a business full of watching and sweat” (2:26; Douay 2:27).'},
+{s:'alexander',a:'alexander',y:'kill',v:'overthrows',b:'#the Persian empire',r:'1 Macc 1:1–9',n:'He reigns twelve years. Then his officers “all put crowns upon themselves after his death … and evils were multiplied in the earth” (1:9; Douay 1:10).'},
+{s:'heliodorus',a:'simon_t',y:'betray',v:'informs on the treasury of',b:'onias',r:'2 Macc 3:4–7',n:'After losing a quarrel over the city market.'},
+{s:'heliodorus',a:'seleucus4',y:'anoint',v:'sends for the money',b:'heliodorus',r:'2 Macc 3:7–14',n:'Onias explains that it is deposits of widows and orphans. The whole city prays in the streets.'},
+{s:'heliodorus',a:'#A horseman and two young men',y:'rebuke',v:'strike down',b:'heliodorus',r:'2 Macc 3:24–30',n:'“There appeared to them a horse with a terrible rider upon him … and he ran fiercely and struck Heliodorus with his fore feet” (3:25).'},
+{s:'heliodorus',a:'onias',y:'save',v:'offers sacrifice for the life of',b:'heliodorus',r:'2 Macc 3:31–40',n:'Asked whom to send next, Heliodorus tells the king: an enemy.'},
+{s:'priesthood',a:'jason',y:'betray',v:'buys the high priesthood over',b:'onias',r:'2 Macc 4:7–17',n:'Four hundred and forty talents, and more for a gymnasium. The priests leave the altar for “the exercise of the discus” (4:14).'},
+{s:'priesthood',a:'#Renegades in Jerusalem',y:'betray',v:'make a covenant with',b:'#the nations',r:'1 Macc 1:11–15',n:'“Let us go, and make a covenant with the heathens that are round about us” (1:11; Douay 1:12). They build a gymnasium and hide their circumcision.'},
+{s:'priesthood',a:'menelaus',y:'betray',v:'outbids',b:'jason',r:'2 Macc 4:23–26',n:'“Jason, who had undermined his own brother, being himself undermined, was driven out a fugitive” (4:26).'},
+{s:'priesthood',a:'#Andronicus',y:'kill',v:'murders',b:'onias',by:['menelaus'],r:'2 Macc 4:30–38',n:'At Daphne, after swearing him safe out of sanctuary. Even the king weeps, and has Andronicus executed on the spot.'},
+{s:'plunder',a:'antiochus4',y:'rebuke',v:'strips',b:'#the Temple',r:'1 Macc 1:20–24; 2 Macc 5:15–21',n:'The golden altar, the lampstand, the table, the veil, and the hidden treasures. Menelaus shows him the way in.'},
+{s:'plunder',a:'#A Roman envoy',y:'rebuke',v:'orders out of Egypt',b:'antiochus4',r:'Dan 11:30',n:'Not told in Maccabees. At Alexandria in 168 the envoy Popilius Laenas drew a circle round the king in the sand and required his answer before he stepped out of it (Polybius 29.27).'},
+{s:'plunder',a:'jason',y:'kill',v:'attacks',b:'#his own city',r:'2 Macc 5:5–10',n:'On a rumor that the king was dead. He ends unburied in Sparta, “he that had cast out many unburied” (5:10).'},
+{s:'plunder',a:'antiochus4',y:'kill',v:'massacres',b:'#the people of Jerusalem',r:'2 Macc 5:11–14; 1 Macc 1:29–40',n:'Then his officer Apollonius sacks the city on a sabbath and garrisons the citadel.'},
+{s:'abomination',a:'antiochus4',y:'rebuke',v:'forbids the Law to',b:'#all Judea',r:'1 Macc 1:41–64; 2 Macc 6:1–11',n:'“King Antiochus set up the abominable idol of desolation upon the altar of God” (1:54; Douay 1:57).'},
+{s:'abomination',a:'#The king’s officers',y:'kill',v:'put to death',b:'#mothers who circumcised their sons',r:'1 Macc 1:60–61; 2 Macc 6:10',n:'With the infants hung at their necks.'},
+{s:'martyrs',a:'#The king’s men',y:'kill',v:'beat to death',b:'eleazar_s',r:'2 Macc 6:18–31',n:'“It doth not become our age … to dissemble” (6:24).'},
+{s:'martyrs',a:'antiochus4',y:'kill',v:'tortures to death',b:'mother',r:'2 Macc 7',n:'“The King of the world will raise us up, who die for his laws, in the resurrection of eternal life” (7:9).'},
+{s:'martyrs',a:'mother',y:'anoint',v:'urges on',b:'#her youngest son',r:'2 Macc 7:20–29',n:'“Look upon heaven and earth, and all that is in them: and consider that God made them out of nothing” (7:28).'},
+{s:'modein',a:'mattathias',y:'rebuke',v:'refuses',b:'#the king’s officer',r:'1 Macc 2:15–22',n:'“I and my sons, and my brethren will obey the law of our fathers” (2:20).'},
+{s:'modein',a:'mattathias',y:'kill',v:'kills',b:'#a Jew at the altar, and the officer',r:'1 Macc 2:23–28',n:'He “shewed zeal for the law, as Phinees did” (2:26). Then: “Every one that hath zeal for the law … let him follow me” (2:27).'},
+{s:'modein',a:'#The king’s troops',y:'kill',v:'slaughter',b:'#a thousand in the caves',r:'1 Macc 2:29–38',n:'They would not fight, or even block the cave mouths, on the sabbath.'},
+{s:'modein',a:'hasideans',y:'save',v:'join',b:'mattathias',r:'1 Macc 2:42–48',n:'“The stoutest of Israel, every one that had a good will for the law” (2:42).'},
+{s:'modein',a:'mattathias',y:'anoint',v:'names as captain',b:'judas',r:'1 Macc 2:49–70',n:'And of Simon: “he shall be a father to you” (2:65).'},
+{s:'judas_wins',a:'judas',y:'kill',v:'kills',b:'#Apollonius, and routs Seron',r:'1 Macc 3:10–24',n:'“The success of war is not in the multitude of the army, but strength cometh from heaven” (3:19). He fights with Apollonius’s sword for the rest of his life.'},
+{s:'judas_wins',a:'antiochus4',y:'anoint',v:'leaves half his army with',b:'lysias',r:'1 Macc 3:27–37',n:'With orders to wipe out Judea, while he goes east to raise money.'},
+{s:'judas_wins',a:'gorgias',y:'kill',x:1,v:'raids by night the camp of',b:'judas',r:'1 Macc 4:1–5',n:'And finds it empty.'},
+{s:'judas_wins',a:'judas',y:'kill',v:'routs at Emmaus',b:'nicanor',r:'1 Macc 4:6–25; 2 Macc 8:8–36',n:'The slave-dealers who came to buy the prisoners lose their money, and Nicanor gets home alone.'},
+{s:'judas_wins',a:'judas',y:'kill',v:'beats at Beth-zur',b:'lysias',r:'1 Macc 4:26–35; 2 Macc 11:1–12',n:'The road to Jerusalem is open.'},
+{s:'dedication',a:'judas',y:'anoint',v:'cleanses and rededicates',b:'#the Temple',r:'1 Macc 4:36–59; 2 Macc 10:1–8',n:'“They kept the dedication of the altar eight days” (4:56), “after the manner of the feast of the tabernacles” (2 Macc 10:6).'},
+{s:'dedication',a:'#Blameless priests',y:'save',v:'take down and store',b:'#the profaned altar',r:'1 Macc 4:42–47',n:'Its stones are laid by “till there should come a prophet, and give answer concerning them” (4:46).'},
+{s:'epiphanes_dies',a:'#The Lord',y:'rebuke',v:'strikes down',b:'antiochus4',r:'1 Macc 6:1–16; 2 Macc 9',n:'“It is just to be subject to God, and that a mortal man should not equal himself to God” (2 Macc 9:12).'},
+{s:'epiphanes_dies',a:'antiochus4',y:'anoint',v:'leaves his son in the care of',b:'#Philip',r:'1 Macc 6:14–17',n:'Not Lysias, who has the boy and crowns him anyway. The rivalry will save Jerusalem.'},
+{s:'neighbors',a:'judas',y:'save',v:'brings out',b:'#the Jews of Gilead',r:'1 Macc 5:9–54; 2 Macc 12:10–31',n:'With Jonathan. They come home to Zion “with joy and gladness” without losing a man.'},
+{s:'neighbors',a:'simon',y:'save',v:'brings out',b:'#the Jews of Galilee',r:'1 Macc 5:14–23',n:'With three thousand men.'},
+{s:'neighbors',a:'gorgias',y:'kill',v:'routs',b:'#Joseph and Azariah',r:'1 Macc 5:55–62',n:'They wanted a name for themselves. “But they were not of the seed of those men by whom salvation was brought to Israel” (5:62).'},
+{s:'neighbors',a:'judas',y:'save',v:'has sacrifice offered for',b:'#his fallen soldiers',r:'2 Macc 12:38–45',n:'“It is therefore a holy and wholesome thought to pray for the dead, that they may be loosed from sins” (12:45; Douay 12:46).'},
+{s:'bethzechariah',a:'eleazar_a',y:'kill',v:'brings down',b:'#the royal elephant',r:'1 Macc 6:43–46',n:'And dies under it.'},
+{s:'bethzechariah',a:'lysias',y:'kill',v:'defeats',b:'judas',r:'1 Macc 6:28–54; 2 Macc 13:1–22',n:'The elephants are shown “the blood of grapes, and mulberries to provoke them to fight” (6:34).'},
+{s:'bethzechariah',a:'antiochus5',y:'kill',v:'has executed',b:'menelaus',by:['lysias'],r:'2 Macc 13:3–8',n:'In a tower of ashes: he had sinned against an altar whose fire and ashes were holy.'},
+{s:'bethzechariah',a:'lysias',y:'save',v:'grants terms to',b:'#the defenders of the Temple',r:'1 Macc 6:55–63; 2 Macc 13:23–26',n:'Philip is marching on Antioch. The Jews may live by their own laws, as before.'},
+{s:'nicanor',a:'demetrius1',y:'kill',v:'puts to death',b:'antiochus5',r:'1 Macc 7:1–4; 2 Macc 14:1–2',n:'And Lysias with him.'},
+{s:'nicanor',a:'alcimus',y:'betray',v:'swears peace to, and kills sixty of,',b:'hasideans',r:'1 Macc 7:12–18',n:'They had reasoned that a priest of the seed of Aaron would not wrong them.'},
+{s:'nicanor',a:'alcimus',y:'betray',v:'accuses to the king',b:'judas',r:'1 Macc 7:25; 2 Macc 14:3–11',n:'Twice.'},
+{s:'nicanor',a:'nicanor',y:'rebuke',v:'threatens to burn',b:'#the Temple',r:'1 Macc 7:33–38; 2 Macc 14:31–36',n:'Unless Judas is handed over. The priests weep before the altar.'},
+{s:'nicanor',a:'nicanor',y:'kill',v:'sends five hundred men to seize',b:'razis',r:'2 Macc 14:37–46',n:'He dies by his own hand rather than be taken.'},
+{s:'nicanor',a:'onias',y:'anoint',v:'appears in a dream to',b:'judas',r:'2 Macc 15:11–16',n:'With Jeremiah, who gives Judas a sword of gold: “this is he that prayeth much for the people” (15:14).'},
+{s:'nicanor',a:'judas',y:'kill',v:'kills at Adasa',b:'nicanor',r:'1 Macc 7:39–50; 2 Macc 15:20–36',n:'On the thirteenth of Adar. They “cut off Nicanor’s head, and his right hand, which he had proudly stretched out” (7:47), and the day is kept as a feast.'},
+{s:'rome',a:'judas',y:'anoint',v:'makes a treaty with',b:'romans',r:'1 Macc 8:17–32',n:'“None of all these wore a crown, or was clothed in purple” (8:14). The Senate warns Demetrius off. It sends no soldiers.'},
+{s:'elasa',a:'#His own army',y:'betray',v:'deserts',b:'judas',r:'1 Macc 9:5–7',n:'Three thousand become eight hundred.'},
+{s:'elasa',a:'bacchides',y:'kill',v:'kills at Elasa',b:'judas',r:'1 Macc 9:8–22',n:'“God forbid we should do this thing, and flee away from them: but if our time be come, let us die manfully for our brethren” (9:10).'},
+{s:'jonathan_rises',a:'#The friends of Judas',y:'anoint',v:'choose as leader',b:'jonathan',r:'1 Macc 9:28–31',n:'In “a great tribulation in Israel, such as was not since the day, that there was no prophet seen” (9:27).'},
+{s:'jonathan_rises',a:'#The sons of Jambri',y:'kill',v:'ambush and kill',b:'john_g',r:'1 Macc 9:35–36',n:'With the baggage he was taking to the Nabateans.'},
+{s:'jonathan_rises',a:'jonathan',y:'kill',v:'avenges his brother on',b:'#a wedding party at Medeba',r:'1 Macc 9:37–42',n:'“The marriage was turned into mourning” (9:41).'},
+{s:'jonathan_rises',a:'alcimus',y:'rebuke',v:'begins to pull down',b:'#the wall of the inner court',r:'1 Macc 9:54–56',n:'“The works of the prophets.” He is struck dumb and dies.'},
+{s:'jonathan_rises',a:'bacchides',y:'save',v:'makes peace with',b:'jonathan',r:'1 Macc 9:58–73',n:'“So the sword ceased from Israel … and Jonathan began there to judge the people” (9:73).'},
+{s:'balas',a:'balas',y:'anoint',v:'makes high priest',b:'jonathan',r:'1 Macc 10:15–21',n:'“We make thee this day high priest of thy nation, and that thou be called the king’s friend” (10:20).'},
+{s:'balas',a:'demetrius1',y:'anoint',x:1,v:'offers nearly everything to',b:'jonathan',r:'1 Macc 10:22–47',n:'No taxes, the citadel, three districts of Samaria, money for the Temple. Nobody believes him.'},
+{s:'balas',a:'balas',y:'kill',v:'defeats and kills',b:'demetrius1',r:'1 Macc 10:48–50',n:'In 150 BC.'},
+{s:'balas',a:'balas',y:'anoint',v:'seats beside him in purple',b:'jonathan',r:'1 Macc 10:59–66',n:'At his wedding to Ptolemy’s daughter in Ptolemais.'},
+{s:'balas',a:'jonathan',y:'kill',v:'defeats at Azotus',b:'#Apollonius, general of Demetrius II',r:'1 Macc 10:67–89',n:'And burns the temple of Dagon with those who fled into it.'},
+{s:'kingmaker',a:'ptolemy6',y:'betray',v:'turns on',b:'balas',r:'1 Macc 11:1–18',n:'He takes back his daughter and enters Antioch with “two crowns upon his head, that of Egypt, and that of Asia” (11:13).'},
+{s:'kingmaker',a:'jonathan',y:'save',v:'sends three thousand men to rescue',b:'demetrius2',r:'1 Macc 11:41–51',n:'From his own subjects in Antioch.'},
+{s:'kingmaker',a:'demetrius2',y:'betray',v:'breaks his word to',b:'jonathan',r:'1 Macc 11:52–53',n:'“He falsified all whatsoever he had said” (11:53).'},
+{s:'kingmaker',a:'tryphon',y:'anoint',v:'crowns a boy king, who confirms',b:'jonathan',r:'1 Macc 11:54–59',n:'The boy is Antiochus VI, son of Balas. Simon is made governor of the coast.'},
+{s:'kingmaker',a:'jonathan',y:'anoint',v:'renews the treaty with',b:'romans',r:'1 Macc 12:1–4',n:'They give his envoys letters of safe conduct home.'},
+{s:'kingmaker',a:'jonathan',y:'anoint',v:'writes as a kinsman to',b:'spartans',r:'1 Macc 12:5–23',n:'An old letter is quoted: Spartans and Jews “are brethren, and … are of the stock of Abraham” (12:21).'},
+{s:'ptolemais',a:'tryphon',y:'betray',v:'traps',b:'jonathan',r:'1 Macc 12:39–48',n:'Inside Ptolemais, with a thousand men, all of whom are killed.'},
+{s:'ptolemais',a:'#The people',y:'anoint',v:'make their leader',b:'simon',r:'1 Macc 13:1–9',n:'“You know what great battles I and my brethren, and the house of my father, have fought for the laws, and the sanctuary” (13:3).'},
+{s:'ptolemais',a:'tryphon',y:'kill',v:'takes a ransom for, then kills,',b:'jonathan',r:'1 Macc 13:12–24',n:'A hundred talents and two of his sons as hostages. A snowfall stops Tryphon’s march on Jerusalem.'},
+{s:'ptolemais',a:'simon',y:'anoint',v:'builds a tomb at Modein for',b:'#his father and brothers',r:'1 Macc 13:25–30',n:'Seven pyramids, with carved armor and ships.'},
+{s:'freedom',a:'demetrius2',y:'save',v:'releases from tribute',b:'simon',r:'1 Macc 13:34–42',n:'“In the year one hundred and seventy the yoke of the Gentiles was taken off from Israel” (13:41).'},
+{s:'freedom',a:'simon',y:'save',v:'starves out',b:'#the citadel in Jerusalem',r:'1 Macc 13:49–52',n:'They enter “with thanksgiving, and branches of palm trees, and harps” (13:51).'},
+{s:'freedom',a:'simon',y:'anoint',v:'makes commander of the army',b:'hyrcanus',r:'1 Macc 13:53',n:'At Gazara.'},
+{s:'decree',a:'#The priests and the people',y:'anoint',v:'confirm as high priest and prince',b:'simon',r:'1 Macc 14:25–49',n:'“Their prince, and high priest for ever, till there should arise a faithful prophet” (14:41).'},
+{s:'decree',a:'romans',y:'anoint',v:'renew their friendship with',b:'simon',r:'1 Macc 14:16–24; 15:15–24',n:'So does Sparta. A Roman consul writes to the kings and cities of the east on the Jews’ behalf.'},
+{s:'sidetes',a:'antiochus7',y:'anoint',v:'confirms, and lets coin money,',b:'simon',r:'1 Macc 15:1–9',n:'From overseas, while he still needs allies.'},
+{s:'sidetes',a:'antiochus7',y:'betray',v:'demands the citadel and a thousand talents from',b:'simon',r:'1 Macc 15:25–36',n:'Simon’s answer: we have taken no other man’s land, only the inheritance of our fathers.'},
+{s:'sidetes',a:'hyrcanus',y:'kill',v:'defeats',b:'#Cendebeus, the king’s general',r:'1 Macc 16:1–10',n:'Simon to his sons: “I am old, but be you instead of me, and my brethren” (16:3).'},
+{s:'dok',a:'ptolemy_a',y:'kill',v:'murders at table',b:'simon',r:'1 Macc 16:11–17',n:'With his sons Mattathias and Judas, “when Simon and his sons had drunk plentifully” (16:16).'},
+{s:'dok',a:'ptolemy_a',y:'kill',x:1,v:'sends men to kill',b:'hyrcanus',r:'1 Macc 16:18–22',n:'A runner reaches Gazara first.'}
+];
+const DIVES=[];
+const CHL={
+'1Ma':{
+1:'Alexander’s empire divided; Antiochus Epiphanes; renegades build a gymnasium; the Temple plundered; Jerusalem sacked and a citadel garrisoned; the Law forbidden and a pagan altar set on the altar of God.',
+2:'Mattathias refuses the king’s officer at Modein, kills at the altar and flees to the hills; a thousand die rather than fight on the sabbath; the Hasideans join; his dying speech.',
+3:'Judas defeats Apollonius and Seron; Antiochus goes east and leaves Lysias in charge; the army fasts and prays at Mizpah.',
+4:'Gorgias’s night raid finds an empty camp; Judas routs the army at Emmaus, then Lysias at Beth-zur; the Temple cleansed and the altar rededicated on the twenty-fifth of Kislev.',
+5:'The neighboring peoples attack; Judas and Jonathan rescue the Jews of Gilead, Simon those of Galilee; two commanders seek glory and are beaten; Hebron and Azotus.',
+6:'Antiochus IV dies in Persia; Judas besieges the citadel; elephants at Beth-zechariah and the death of Eleazar; the Temple besieged in a sabbath year, then terms.',
+7:'Demetrius I takes the throne; Alcimus made high priest and sixty Hasideans killed; Nicanor threatens the Temple and falls at Adasa.',
+8:'What Judas had heard of the Romans; the embassy; the text of the treaty.',
+9:'Judas dies at Elasa; Jonathan chosen; John killed and avenged; Bacchides fortifies Judea; Alcimus dies; peace made at Bethbasi.',
+10:'Two kings bid for Jonathan; he becomes high priest; Demetrius I’s offers; Balas wins and marries Cleopatra; Jonathan beats Apollonius at Azotus.',
+11:'Ptolemy VI turns on Balas and both die; Demetrius II confirms Jonathan, is rescued by Jewish troops and breaks his word; Tryphon and the boy Antiochus VI; Jonathan’s campaigns.',
+12:'Letters to Rome and Sparta; more fighting in the north; Jerusalem’s walls raised; Tryphon traps Jonathan at Ptolemais.',
+13:'Simon takes command; Tryphon takes the ransom and kills Jonathan; the tomb at Modein; freedom from tribute and year one of Simon; Gazara and the citadel taken.',
+14:'Demetrius II captured in the east; a poem on Simon’s peace; Sparta and Rome renew friendship; the decree on bronze tablets.',
+15:'Antiochus VII’s letter, then his demands; the Roman consul’s circular; Cendebeus sent against Judea.',
+16:'Simon’s sons defeat Cendebeus; Simon and two sons murdered at Dok; John escapes and succeeds him.'},
+'2Ma':{
+1:'Two letters from Jerusalem to the Jews of Egypt about the feast of the purification; a story of how Antiochus died; Nehemiah and the sacred fire.',
+2:'Jeremiah hides the tent, the ark and the altar of incense; Nehemiah’s library; the abridger explains what he is doing.',
+3:'Simon tells the governor about the treasury; Heliodorus is struck down in the Temple and restored at Onias’s prayer.',
+4:'Jason buys the high priesthood and builds a gymnasium; Menelaus outbids him and robs the Temple; Onias murdered at Daphne.',
+5:'Horsemen seen in the sky; Jason’s attack; Antiochus massacres and enters the Temple; Judas withdraws to the wilderness.',
+6:'The Temple given to Olympian Zeus and the Law forbidden; why God chastises his own people; the death of Eleazar.',
+7:'Seven brothers and their mother die under torture, professing the resurrection.',
+8:'Judas gathers six thousand men; Nicanor, who came to sell slaves, is routed; Timothy and Bacchides beaten.',
+9:'Antiochus, hurrying to make Jerusalem a graveyard, is struck with disease, repents too late and dies.',
+10:'The Temple purified and the feast decreed; Antiochus V succeeds; wars with the Idumeans and Timothy; five horsemen from heaven.',
+11:'Lysias beaten at Beth-zur; four letters settle the peace, one of them from Roman envoys.',
+12:'Joppa and Jamnia punished; the campaign across the Jordan; Pentecost; pagan amulets found on the fallen, and a sacrifice offered for the dead.',
+13:'Menelaus executed; Antiochus V and Lysias invade; a night attack near Modein; a treaty.',
+14:'Demetrius I takes the throne; Alcimus accuses Judas; Nicanor’s friendship, then his threat against the Temple; the death of Razis.',
+15:'Nicanor plans to attack on the sabbath; Judas’s dream of Onias and Jeremiah; Nicanor killed and his day decreed; the abridger signs off.'}
+};
+const GUIDE={};
+const MOM={};
+const DEEP={};
+const THREADS=[
+['Two books, two ways of telling it','1 Maccabees is court history: dates, treaties, battles, written in Hebrew by an admirer of the family, covering 175 to 134 BC. It never uses the name of God, saying “heaven” instead, reports no miracle, and has no word about life after death. 2 Maccabees is a Greek abridgment of a longer work, covers only 180 to 161, and is about the Temple: heavenly horsemen defend it, martyrs die for the Law, the dead will rise, and the writer breaks in to explain that God chastises his people to correct them (6:12–16). Read 2 Maccabees 3–7 before 1 Maccabees 2 and the two fit together.'],
+['The Temple','Honored by kings under [[onias]] (2 Macc 3), stripped by [[antiochus4]] (1 Macc 1:20–24), given to Zeus (2 Macc 6:2), cleansed by [[judas]] (1 Macc 4), threatened by [[nicanor]] (7:35), and overlooked by an enemy citadel until [[simon]] starved it out (13:49–52). It is the Temple the returned exiles built, on the Exile page ([[e:temple515|The Temple finished]]). 2 Maccabees puts the principle in a sentence: “God did not choose the people for the place’s sake, but the place for the people’s sake” (2 Macc 5:19).'],
+['Zeal for the Law','[[mattathias]] strikes at the altar “as Phinees did” (1 Macc 2:26; Num 25:6–13), and his last speech holds up Phinehas and [[k:elijah|Elijah]] as models of zeal (2:54, 58). The same word names the Zealots of the first century, and Paul uses it of his own past: “being more abundantly zealous for the traditions of my fathers” (Gal 1:14). The book treats zeal as the virtue of the hour. It also records what it cost: Jews killed Jews from the first day.'],
+['Daniel’s visions','The book of [[k:daniel|Daniel]] describes these years from the inside. The little horn of chapter 8 and the contemptible king of 11:21–45 are [[antiochus4]]; the ships of Kittim that turn him back are the Romans at Alexandria; and “the abomination unto desolation” (Dan 11:31) is the phrase 1 Maccabees uses for the altar of 167 (1:54). Mattathias cites Daniel and his three companions by name (2:59–60). Christ takes the phrase up for a desolation still to come (Mt 24:15).'],
+['Resurrection and the dead','The seven brothers die expecting their bodies back: “the King of the world will raise us up” (2 Macc 7:9). Their mother argues from creation out of nothing (7:28). [[judas]] has sacrifice offered for soldiers who died in sin, and the writer approves: “a holy and wholesome thought to pray for the dead” (12:45; Douay 12:46). [[razis]] dies calling on the Lord to return his body (14:46). And the dead pray for the living: [[onias]] and Jeremiah are seen interceding for the city (15:12–14). The letter to the Hebrews remembers the martyrs: “others were racked, not accepting deliverance, that they might find a better resurrection” (Heb 11:35). The Church’s teaching on purgatory and the intercession of the saints leans on these chapters.'],
+['Hanukkah','The feast of the Dedication is decreed at 1 Maccabees 4:59 and again at 2 Maccabees 10:8, and the two letters that open 2 Maccabees exist to commend it to the Jews of Egypt (1:9, 18). It is kept for eight days “after the manner of the feast of the tabernacles” (2 Macc 10:6), which they had missed while living in caves. John places Christ in the Temple at this feast: “it was the feast of the dedication at Jerusalem: and it was winter” (Jn 10:22). The story of the one day’s oil that burned for eight is not in either book; it comes from the Talmud (Shabbat 21b).'],
+['Until a prophet comes','Three times 1 Maccabees notes that there is no prophet. The stones of the defiled altar are stored “till there should come a prophet” (4:46); the distress after Judas’s death is the worst “since the day, that there was no prophet seen in Israel” (9:27); and Simon’s office is his “till there should arise a faithful prophet” (14:41). The age knows itself to be waiting. The last prophet’s last promise was Elijah (see [[eg:malachi|Malachi]] on the Exile page).'],
+['Rome','[[judas]] makes the first treaty (1 Macc 8), [[jonathan]] renews it (12:1–4), and [[simon]] sends a gold shield of a thousand minas (14:24; 15:15–24). Roman envoys even write to the Jews during the first peace (2 Macc 11:34–38). The alliance costs Rome nothing and helps a little. The book’s praise of a people among whom “none … wore a crown” (8:14) reads differently to anyone who knows that Pompey took Jerusalem in 63 BC, and that the family’s own quarrel invited him in.'],
+['The sabbath','A thousand refugees let themselves be killed rather than defend their caves on the sabbath (1 Macc 2:29–38), and Mattathias rules that they will fight if attacked (2:39–41). The enemy keeps trying it: Apollonius sacks Jerusalem on a sabbath (2 Macc 5:25–26), Nicanor plans a sabbath attack (15:1–5). Judas’s men break off a pursuit to keep the day (2 Macc 8:26–28). The question of what may be done on the sabbath to save life is still live in the Gospels.']
+];
+const CLASH=[
+{t:'Maccabees and Hasmoneans',ids:['judas','mattathias','mother'],d:'Maccabeus is the nickname of Judas alone. The family is properly the Hasmoneans, after an ancestor. Later use stretched “Maccabees” to all five brothers, to the books, and to the seven martyred brothers of 2 Maccabees 7, the Holy Maccabees, who were not related to them.'},
+{t:'Antiochus',ids:['antiochus4','antiochus5','antiochus7','tryphon'],d:'Five kings of the name touch these books. Antiochus III the Great took Judea from Egypt and lost to Rome (1 Macc 1:10; 8:6–8). His son Antiochus IV Epiphanes is the persecutor. Antiochus V Eupator is the boy king under Lysias. Antiochus VI is the child Tryphon crowned and killed (11:54; 13:31). Antiochus VII Sidetes deals with Simon.'},
+{t:'Demetrius',ids:['demetrius1','demetrius2'],d:'Demetrius I Soter (162–150) sent Bacchides and Nicanor and died fighting Balas. His son Demetrius II Nicator (from 145) confirmed Jonathan, cheated him, and later freed Simon from tribute.'},
+{t:'Alexander',ids:['alexander','balas'],d:'Alexander the Great opens 1 Maccabees and is dead by verse 7. The Alexander of chapters 10 and 11 is Alexander Balas, who made Jonathan high priest a hundred and seventy years later.'},
+{t:'Ptolemy',ids:['ptolemy6','ptolemy_a'],d:'Every king of Egypt was a Ptolemy; the one in these books is Ptolemy VI Philometor. Ptolemy son of Abubus is Simon’s murderous son-in-law. Two Seleucid officials also bear the name: Ptolemy son of Dorymenes (1 Macc 3:38; 2 Macc 4:45) and Ptolemy Macron (2 Macc 10:12). The Douay spells them all Ptolemee.'},
+{t:'Simon',ids:['simon','simon_t'],d:'Simon the son of Mattathias is the last of the five brothers. Simon the Temple captain, in 2 Maccabees 3–4, is the informer who started the trouble, and brother to Menelaus. Neither is Simon the high priest praised in Sirach 50, who lived a generation before.'},
+{t:'Eleazar',ids:['eleazar_s','eleazar_a'],d:'Eleazar the scribe dies on the rack at ninety (2 Macc 6). Eleazar Avaran, brother of Judas, dies under the elephant (1 Macc 6:43–46). A third reads the holy book aloud before battle (2 Macc 8:23; the Douay calls him Esdras), and a fourth is father of one of the envoys to Rome (1 Macc 8:17).'},
+{t:'Jason',ids:['jason'],d:'Jason the high priest bought his office. Jason of Cyrene wrote the five-volume history that 2 Maccabees abridges (2 Macc 2:23). Jason son of Eleazar went to Rome for Judas (1 Macc 8:17).'},
+{t:'John',ids:['john_g','hyrcanus'],d:'John Gaddi is the eldest of the five brothers, killed in 160. John Hyrcanus is Simon’s son and successor. Mattathias’s own father was a John (1 Macc 2:1), and so was one of the envoys to Lysias (2 Macc 11:17).'},
+{t:'Judas and Mattathias',ids:['judas','mattathias','simon'],d:'Simon named two of his sons after his brother and his father. Both were murdered with him at Dok (1 Macc 16:2, 14–16). A Mattathias son of Absalom is one of Jonathan’s captains (11:70).'},
+{t:'Onias',ids:['onias'],d:'The high priest of 2 Maccabees is Onias III. The Onias who received the Spartan king’s letter was an earlier high priest of the name (1 Macc 12:7–8, 19–20). Onias IV, son of the third, went to Egypt and built a Jewish temple at Leontopolis, by Josephus’s account.'},
+{t:'Apollonius',ids:[],d:'At least four. The officer who sacked Jerusalem on the sabbath (1 Macc 1:29; 2 Macc 5:24) is probably the governor of Samaria whom Judas killed (1 Macc 3:10–12). Apollonius son of Menestheus went as envoy to Egypt (2 Macc 4:21). Another governed Coele-Syria for Demetrius II and lost to Jonathan at Azotus (1 Macc 10:69–85). Another is a local governor in 2 Maccabees 12:2.'}
+];
+
+// Kings-page people and prophets that notes here link to.
+const KP=new Set(['elijah','elisha','ahijah','shemaiah','man_of_god','micaiah','jonah','amos','hosea','isaiah','micah','oded','nahum','zephaniah','huldah','jeremiah','uriah','habakkuk','baruch','daniel','ezekiel','joel','obadiah','zechariah_p','jehu_p','hanani','azariah_o','jahaziel']);
+
+const BOOKS={'1Ma':'1 Maccabees','2Ma':'2 Maccabees'};
+const CHAPS={'1Ma':R(1,16),'2Ma':R(1,15)};
+const ADD={};
+const GROUPS=[['The family of Mattathias',2],['High priests, martyrs and the devout',0],['The kings and their officers',1],['Renegades and allies',3]];
+
+const byId={}; SP.forEach(x=>byId[x.id]=x);
+const scById={}; SCENES.forEach(s=>scById[s.id]=s);
+const PS=new Set(Object.keys(GUIDE));
+const $=s=>document.querySelector(s);
+const state={book:'1Ma',chap:'',sel:null};
+const cv=v=>(v===''||isNaN(+v))?v:+v;
+function chLabel(b,c){ return typeof c==='string'?`${BOOKS[b]} ${ADD[c]}`:`${BOOKS[b]} ${c}`; }
+let lastFocus=null;
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function dates(x){ return x.dates || (x.s===x.e?`c. ${x.s} BC`:`c. ${x.s}–${x.e} BC`); }
+function chipCls(x){ return PS.has(x.id)?'c-prop':x.c===1?'c-saul':x.c===2?'c-men':x.c===3?'c-dav':'c-neutral'; }
+function chip(id){ const x=byId[id]; return `<button type="button" class="chip ${chipCls(x)}" data-go="${id}">${x.short||x.name}</button>`; }
+function who(ref,cls){
+  if(ref.startsWith('#')) return `<span class="${cls} plain">${ref.slice(1)}</span>`;
+  if(ref.startsWith('k:')){ const [k,lab]=ref.slice(2).split('|'); return `<a class="xref" href="kings.html#${KP.has(k)?'guide-':'k-'}${k}">${lab||k}</a>`; }
+  const x=byId[ref]; return `<button type="button" class="pn" data-go="${ref}">${x.short||x.name}</button>`;
+}
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+function evHTML(e,withScene){
+  let subj=who(e.a,'who'); if(e.a.startsWith('#')) subj=`<span class="who plain">${cap(e.a.slice(1))}</span>`;
+  const sc=withScene?` <button type="button" class="sc-link" data-scene="${e.s}">Scene: ${scById[e.s].t}</button>`:'';
+  return `<li class="ev t-${e.y}">${subj} <span class="vb">${e.v}</span> ${who(e.b,'who')}${e.v2?` <span class="vb">${e.v2}</span>`:''}<cite>${e.r}</cite><span class="nt">${e.n}${sc}</span></li>`;
+}
+
+function diveHTML(d){
+  const body=d.sec.map(([h,items])=>`<h5>${h}</h5>`+items.map(it=>Array.isArray(it)?`<p><b>${/[.?!]$/.test(it[0])?it[0]:it[0]+'.'}</b> ${xref(it[1])}</p>`:`<p>${xref(it)}</p>`).join('')).join('');
+  return `<details class="dive" id="dd-${d.id}"><summary><span class="dv-k">${d.k||'Deep dive'}</span><span class="dv-t">${d.t}</span><span class="dv-r">${d.r}</span><span class="dv-l">${d.lead}</span><span class="dv-more"><span class="o">${d.k?'Read the portrait':'Read the deep dive'}</span><span class="c">Close</span></span></summary><div class="dv-body">${body}<button type="button" class="dv-close" data-closedive="${d.id}">${d.k?'Close the portrait':'Close the deep dive'}</button></div></details>`;
+}
+function chsHTML(s){
+  const items=[]; Object.keys(s.ch).forEach(b=>s.ch[b].forEach(c=>{ const t=(CHL[b]||{})[c]; if(t) items.push(`<li data-ch="${b}:${c}"><b>${chLabel(b,c)}</b> ${t}</li>`); }));
+  return items.length?`<details class="chs"><summary>Chapter by chapter</summary><ul>${items.join('')}</ul></details>`:'';
+}
+function renderStory(){
+  let h='';
+  ACTS.forEach((a,i)=>{
+    h+=`<div class="act a${i}"><h3>${a.t}</h3><p>${a.n}</p></div><ol class="scenes a${i}">`;
+    SCENES.filter(s=>s.act===i).forEach(s=>{
+      const evs=EVS.filter(e=>e.s===s.id);
+      h+=`<li class="scene" id="sc-${s.id}"><h4 tabindex="-1">${s.t}</h4><p class="sc-ref">${s.r}<span>${s.d}</span></p><p class="sc-n">${s.n}</p><div class="sc-who">${s.who.map(chip).join('')}</div>${evs.length?`<ul class="evs">${evs.map(e=>evHTML(e,false)).join('')}</ul>`:''}${chsHTML(s)}${DIVES.filter(d=>d.s===s.id).map(diveHTML).join('')}</li>`;
+    });
+    h+='</ol>';
+  });
+  $('#story').innerHTML=h;
+}
+function renderCast(){
+  $('#cast-list').innerHTML=GROUPS.map(([t,c])=>`<h3>${t}</h3><ul class="cast-list">${SP.filter(p=>p.c===c).map(p=>`<li><button type="button" class="cast-row" data-go="${p.id}"><b>${p.name}</b><span>${p.role}</span></button></li>`).join('')}</ul>`).join('');
+}
+
+function scenesFor(){
+  if(!state.chap) return [];
+  const c=cv(state.chap);
+  return SCENES.filter(s=>s.ch[state.book]&&s.ch[state.book].includes(c));
+}
+function apply(){
+  const scs=scenesFor();
+  document.querySelectorAll('.scene').forEach(n=>n.classList.toggle('here',scs.some(s=>'sc-'+s.id===n.id)));
+  const f=$('#found');
+  if(!state.chap){ f.innerHTML='<span class="hint">Choose a chapter to jump to its scene.</span>'; }
+  else {
+    const c=cv(state.chap);
+    const people=SP.filter(x=>x.ch[state.book]&&x.ch[state.book].includes(c));
+    const sc=scs.map(s=>`<button type="button" class="sc-link" data-scene="${s.id}">${s.t}</button>`).join(', ');
+    const dv=DIVES.filter(d=>d.ch[state.book]&&d.ch[state.book].includes(c));
+    f.innerHTML=`<span class="hint">${chLabel(state.book,c)}: ${sc}</span>`+dv.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">Deep dive: ${d.t}</button>`).join('')+people.map(x=>chip(x.id)).join('');
+  }
+  $('#clear').hidden=!state.chap;
+  const key=state.chap?`${state.book}:${state.chap}`:'';
+  document.querySelectorAll('.chs li').forEach(li=>{ const on=li.dataset.ch===key; li.classList.toggle('here',on); if(on) li.closest('details').open=true; });
+}
+function goScene(id,flash){
+  const a=document.getElementById('sc-'+id); if(!a) return;
+  if($('#sheet').classList.contains('open')) close();
+  const y=a.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  if(flash){ a.classList.add('here'); setTimeout(()=>apply(),1600); }
+  const hh=a.querySelector('h4'); if(hh) hh.focus({preventScroll:true});
+}
+
+function goDive(id){
+  const d=document.getElementById('dd-'+id); if(!d) return;
+  if($('#sheet').classList.contains('open')) close();
+  d.open=true;
+  const y=d.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  const t=d.querySelector('summary'); if(t) t.focus({preventScroll:true});
+}
+function xref(s){
+  return s.replace(/\[\[([\w:]+)(?:\|([^\]]+))?\]\]/g,(m,id,label)=>{
+    if(id.startsWith('dd:')){ const dd=DIVES.find(v=>v.id===id.slice(3)); return `<button type="button" class="xref" data-dive="${id.slice(3)}">${label||(dd?dd.t:id)}</button>`; }
+    if(id.startsWith('k:')){ const k=id.slice(2); return `<a class="xref" href="kings.html#${KP.has(k)?'guide-':'k-'}${k}">${label||k}</a>`; }
+    if(id.startsWith('s:')){ const k=id.slice(2); return `<a class="xref" href="samuel.html#dd-${k}">${label||k}</a>`; }
+    if(id.startsWith('eg:')){ const k=id.slice(3); return `<a class="xref" href="exile.html#guide-${k}">${label||k}</a>`; }
+    if(id.startsWith('e:')){ const k=id.slice(2); return `<a class="xref" href="exile.html#dd-${k}">${label||k}</a>`; }
+    const x=byId[id]; if(!x) return label||id;
+    const lab=label||x.short||x.name;
+    return GUIDE[id]?`<button type="button" class="xref" data-guide="${id}">${lab}</button>`:`<button type="button" class="xref" data-go="${id}">${lab}</button>`;
+  });
+}
+function clashHTML(id){
+  const gs=CLASH.filter(g=>g.ids.includes(id));
+  if(!gs.length) return '';
+  return `<div class="clash"><h3>Watch the name</h3>${gs.map(g=>`<p><strong>${g.t}.</strong> ${xref(g.d)}</p>`).join('')}</div>`;
+}
+function personSheet(x){
+  let h=`<h2 id="sh-title" tabindex="-1">${x.name}</h2><p class="sh-sub">${x.role}, ${dates(x)}</p>`;
+  let a=''; if(x.aka) a+=`Also called ${x.aka}. `; if(x.dy) a+=`<span>Douay-Rheims: ${x.dy}.</span>`;
+  if(a) h+=`<p class="sh-aka">${a}</p>`;
+  h+=`<p class="sum" style="margin-top:12px">${x.sum}</p>`;
+  if(GUIDE[x.id]) h+=`<button type="button" class="guide-link" data-guide="${x.id}">Open the reading guide</button>`;
+  const pts=DIVES.filter(d=>d.p===x.id);
+  if(pts.length) h+=`<h3>${pts.length>1?'Portraits':'Portrait'}</h3><p class="sc-chips">${pts.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">${d.t}</button>`).join('')}</p>`;
+  const evs=EVS.filter(e=>e.a===x.id||e.b===x.id||(e.by||[]).includes(x.id));
+  if(evs.length) h+=`<h3>What they did, and what was done to them</h3><ul class="evs">${evs.map(e=>{
+    const li=evHTML(e,true);
+    return (e.by||[]).includes(x.id)?li.replace('<span class="nt">',`<span class="nt">${x.short||x.name} gave the order. `):li;
+  }).join('')}</ul>`;
+  const dvs=DIVES.filter(d=>d.who.includes(x.id));
+  if(dvs.length) h+=`<h3>Deep dives</h3><p class="sc-chips">${dvs.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">${d.t}</button>`).join('')}</p>`;
+  const scs=SCENES.filter(s=>s.who.includes(x.id));
+  h+=`<h3>Scenes</h3><p class="sc-chips">${scs.map(s=>`<button type="button" class="chip c-neutral" data-scene="${s.id}">${s.t}</button>`).join('')}</p>`;
+  h+=`<h3>Read</h3><p class="refs">${x.refs}</p>`;
+  return h+clashHTML(x.id);
+}
+function open(id){
+  const x=byId[id]; if(!x) return;
+  if(!$('#sheet').contains(document.activeElement)) lastFocus=document.activeElement;
+  state.sel=id;
+  $('#sheet-body').innerHTML=personSheet(x);
+  const sh=$('#sheet'); sh.inert=false; sh.classList.add('open'); sh.scrollTop=0;
+  requestAnimationFrame(()=>{ const t=$('#sh-title'); if(t) t.focus({preventScroll:true}); });
+}
+function close(){
+  const sh=$('#sheet'); sh.classList.remove('open'); sh.inert=true; state.sel=null;
+  if(lastFocus&&document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
+}
+
+function guideCard(id){
+  const p=byId[id], g=GUIDE[id];
+  return `<article class="g" style="--pc:var(--prophet)" id="guide-${id}"><h4 tabindex="-1">${p.name}</h4><p class="g-meta">${dates(p)}. ${p.role}.</p><p>${p.sum}</p><h5>Confronted</h5><p>${g.c}</p>${DEEP[id]?`<h5>Beneath the surface</h5><div class="g-deep">${DEEP[id].map(d=>`<p><b>${/[.?!]$/.test(d[0])?d[0]:d[0]+'.'}</b> ${xref(d[1])}</p>`).join('')}</div>`:''}<details class="g-mom"><summary>Key moments (${MOM[id].length})</summary><ol class="g-m">${MOM[id].map(m=>`<li><b>${m[0]}</b> <cite>${m[1]}</cite><span class="g-d">${m[2]}</span></li>`).join('')}</ol></details><h5>Reading path</h5><p>${g.r}</p><h5>As you read</h5><p>${g.t}</p><button type="button" class="g-back" data-go="${id}">Details and scenes</button></article>`;
+}
+function goGuide(id){
+  const a=document.getElementById('guide-'+id); if(!a) return;
+  if($('#sheet').classList.contains('open')) close();
+  const y=a.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-12;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  a.classList.add('flash'); setTimeout(()=>a.classList.remove('flash'),1800);
+  const hh=a.querySelector('h4'); if(hh) hh.focus({preventScroll:true});
+}
+function renderLower(){
+  $('#threads-list').innerHTML=THREADS.map(t=>`<div class="th"><h3>${t[0]}</h3><p>${xref(t[1])}</p></div>`).join('');
+  $('#clashes').innerHTML=CLASH.map(g=>`<article><h3>${g.t}</h3><p>${xref(g.d)}</p><div>${g.ids.map(chip).join('')}</div></article>`).join('');
+}
+
+function buildChaps(){
+  let h='<option value="">Chapter</option>';
+  CHAPS[state.book].forEach(c=>{ h+=`<option value="${c}">${typeof c==='string'?ADD[c]:c}</option>`; });
+  $('#chap').innerHTML=h; $('#chap').value=state.chap;
+}
+function save(){ try{ localStorage.setItem('mc-reading',JSON.stringify({b:state.book,c:state.chap})); }catch(e){} }
+function load(){
+  try{
+    const v=JSON.parse(localStorage.getItem('mc-reading')||'null');
+    if(v&&BOOKS[v.b]){ state.book=v.b; state.chap=(v.c&&CHAPS[v.b].map(String).includes(String(v.c)))?String(v.c):''; }
+  }catch(e){}
+}
+
+document.addEventListener('click',e=>{
+  const cd=e.target.closest('[data-closedive]');
+  if(cd){ const d=document.getElementById('dd-'+cd.dataset.closedive); if(d){ d.open=false; const y=d.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10; window.scrollTo({top:y,behavior:'auto'}); } return; }
+  const dvb=e.target.closest('[data-dive]');
+  if(dvb){ goDive(dvb.dataset.dive); return; }
+  const sc=e.target.closest('[data-scene]');
+  if(sc){ goScene(sc.dataset.scene,true); return; }
+  const gd=e.target.closest('[data-guide]');
+  if(gd){ goGuide(gd.dataset.guide); return; }
+  const g=e.target.closest('[data-go]');
+  if(g){ open(g.dataset.go); }
+});
+$('#close').addEventListener('click',close);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('#sheet').classList.contains('open')) close(); });
+$('#book').addEventListener('change',e=>{ state.book=e.target.value; state.chap=''; buildChaps(); save(); apply(); });
+$('#chap').addEventListener('change',e=>{ state.chap=e.target.value; save(); apply(); const s=scenesFor(); if(s.length) requestAnimationFrame(()=>goScene(s[0].id,false)); });
+$('#clear').addEventListener('click',()=>{ state.chap=''; $('#chap').value=''; save(); apply(); });
+
+load();
+$('#book').value=state.book;
+buildChaps();
+renderStory();
+renderCast();
+renderLower();
+apply();
+if(state.chap){ const s=scenesFor(); if(s.length) setTimeout(()=>goScene(s[0].id,false),250); }
+const hm=location.hash.match(/^#p-(\w+)$/);
+if(hm&&byId[hm[1]]) setTimeout(()=>open(hm[1]),300);
+const dm=location.hash.match(/^#dd-(\w+)$/);
+if(dm) setTimeout(()=>goDive(dm[1]),300);
+const gm=location.hash.match(/^#guide-(\w+)$/);
+if(gm&&GUIDE[gm[1]]) setTimeout(()=>goGuide(gm[1]),300);
+})();
+</script>
+<script>
+try{ if(/github\.io$/.test(location.hostname)) document.getElementById('home-link').hidden=false; }catch(e){}
+</script>
+</body>
+</html>
