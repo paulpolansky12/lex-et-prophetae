@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>In the beginning</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+:root{
+  --paper:#EDF0F2; --paper-2:#E1E6EB; --ink:#1A2130; --ink-soft:#4F596A; --rule:#C2CAD4;
+  --judah:#24408A; --judah-tint:rgba(36,64,138,.11); --judah-strong:rgba(36,64,138,.28);
+  --israel:#74601A; --israel-tint:rgba(116,96,26,.11); --israel-strong:rgba(116,96,26,.28);
+  --band-a:#8A7425; --band-b:#C4B06A; --band-a-ink:#F6F3E6; --band-b-ink:#2A2410; --judah-ink:#EEF1F8;
+  --prophet:#9A2334; --prophet-tint:rgba(154,35,52,.09); --prophet-strong:rgba(154,35,52,.26);
+  --sheet:#F8F9FA; --shadow:0 -10px 32px rgba(18,24,38,.16);
+  --pc0:#0E7C78; --pc1:#7A3E9C; --pc2:#C0561A; --pc3:#B0263F; --pc4:#3D7B2A; --pc5:#2D5BC0; --pc6:#B0397F; --pc7:#9C760C;
+  --axis:30px; --gap:6px; --band:14px;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121620; --paper-2:#1B212D; --ink:#E4E7EC; --ink-soft:#A5ADBA; --rule:#2F3746;
+    --judah:#94AAE6; --judah-tint:rgba(148,170,230,.12); --judah-strong:rgba(148,170,230,.30);
+    --israel:#D4BE6C; --israel-tint:rgba(212,190,108,.11); --israel-strong:rgba(212,190,108,.28);
+    --band-a:#B19C4D; --band-b:#5F5329; --band-a-ink:#16130A; --band-b-ink:#EDE5C6; --judah-ink:#10162A;
+    --prophet:#EA8C9C; --prophet-tint:rgba(234,140,156,.11); --prophet-strong:rgba(234,140,156,.28);
+    --sheet:#1A202B; --shadow:0 -10px 32px rgba(0,0,0,.5);
+    --pc0:#4CC3BD; --pc1:#BB8BDD; --pc2:#F28C4E; --pc3:#EF7287; --pc4:#82C76C; --pc5:#86A7F2; --pc6:#E87EC1; --pc7:#DCB64C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --pc0:#4CC3BD; --pc1:#BB8BDD; --pc2:#F28C4E; --pc3:#EF7287; --pc4:#82C76C; --pc5:#86A7F2; --pc6:#E87EC1; --pc7:#DCB64C;
+  --paper:#121620; --paper-2:#1B212D; --ink:#E4E7EC; --ink-soft:#A5ADBA; --rule:#2F3746;
+  --judah:#94AAE6; --judah-tint:rgba(148,170,230,.12); --judah-strong:rgba(148,170,230,.30);
+  --israel:#D4BE6C; --israel-tint:rgba(212,190,108,.11); --israel-strong:rgba(212,190,108,.28);
+  --band-a:#B19C4D; --band-b:#5F5329; --band-a-ink:#16130A; --band-b-ink:#EDE5C6; --judah-ink:#10162A;
+  --prophet:#EA8C9C; --prophet-tint:rgba(234,140,156,.11); --prophet-strong:rgba(234,140,156,.28);
+  --sheet:#1A202B; --shadow:0 -10px 32px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+@media (min-width:720px){ :root{ --axis:42px; --gap:14px; --band:16px; } }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"EB Garamond",Garamond,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+button:focus-visible,select:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
+
+/* Header */
+header{padding:40px 0 18px}
+h1{font-weight:500;font-size:clamp(2.5rem,9vw,4.6rem);line-height:1;letter-spacing:-.015em;margin:0 0 14px}
+.lede{max-width:36em;color:var(--ink-soft);margin:0 0 26px;font-size:1.08rem}
+.ledger{font-size:14px;line-height:1.4;align-items:start}
+.ledger p{margin:0}
+.ledger .lj{grid-column:1;color:var(--ink)}
+.ledger .lp{grid-column:2;color:var(--ink-soft);font-style:italic}
+.ledger .li{grid-column:3;text-align:right}
+.ledger b{font-weight:600;display:block;font-size:1.15rem;margin-bottom:2px}
+.ledger .lj b{color:var(--judah)} .ledger .li b{color:var(--israel)} .ledger .lp b{color:var(--prophet);font-style:normal}
+
+/* Sticky reading bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);margin-top:18px}
+.bar-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:8px}
+.bar label{font-style:italic;color:var(--ink-soft)}
+select{font:inherit;font-size:16px;color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:3px 6px}
+.clear{font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:4px}
+.clear[hidden]{display:none}
+.found{white-space:nowrap;overflow-x:auto;scrollbar-width:none;font-size:15px;padding:6px 0 4px;min-height:34px}
+.found::-webkit-scrollbar{display:none}
+.hint{color:var(--ink-soft);font-style:italic;margin-right:4px}
+.cols-head{font-size:15px;font-weight:600;padding:2px 0 6px}
+.cols-head .hj{grid-column:1;color:var(--judah);padding-left:calc(var(--band) + 6px)}
+.cols-head .hp{grid-column:2;color:var(--prophet)}
+.cols-head .hi{grid-column:3;color:var(--israel);text-align:right;padding-right:calc(var(--band) + 6px)}
+
+/* Chips */
+.chip{display:inline-flex;align-items:baseline;gap:4px;border:1px solid var(--cc,var(--rule));color:var(--ink);background:transparent;border-radius:999px;padding:1px 10px 2px;margin:2px 4px 2px 0;font-size:15px;line-height:1.35;white-space:nowrap}
+.chip small{font-size:12px;color:var(--ink-soft);font-style:italic}
+.c-judah{--cc:var(--judah)} .c-israel{--cc:var(--israel)} .c-prop{--cc:var(--prophet)} .c-neutral{--cc:var(--ink-soft)}
+.chip:hover{background:var(--paper-2)}
+
+/* Trunk: David to the split */
+.trunk{padding-top:14px}
+.node{--kc:var(--ink-soft);--kc-strong:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-self:center;width:100%;max-width:150px;padding:5px 8px 4px;border:1px solid var(--rule);background:var(--paper-2);border-radius:2px;line-height:1.15}
+.node .k-name{font-size:17px;font-weight:500}
+.node .k-years{font-size:12px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums}
+.stem{width:2px;height:14px;background:var(--ink-soft);justify-self:center}
+.t-note{font-size:13px;font-style:italic;color:var(--ink-soft);line-height:1.3;align-self:center}
+.fork{position:relative;height:30px}
+.fork span{position:absolute;display:block}
+.f-stem{left:calc(50% - 1px);top:0;width:2px;height:50%;background:var(--ink-soft)}
+.f-bar{top:calc(50% - 1px);height:2px;left:calc((100% - 2 * var(--gap)) / 6 - 1px);right:calc((100% - 2 * var(--gap)) / 6 - 1px);background:linear-gradient(to right,var(--judah) 50%,var(--israel) 50%)}
+.f-l,.f-r{top:50%;width:2px;height:50%}
+.f-l{left:calc((100% - 2 * var(--gap)) / 6 - 1px);background:var(--judah)}
+.f-r{right:calc((100% - 2 * var(--gap)) / 6 - 1px);background:var(--israel)}
+
+/* Chart */
+.chart{position:relative;grid-template-rows:100%}
+.col{position:relative;z-index:1}
+.overlay{position:absolute;inset:0;z-index:0;pointer-events:none}
+.gl{position:absolute;left:var(--axis);right:0;height:1px;background:var(--rule);opacity:.55}
+.axis span{position:absolute;right:4px;font-size:11.5px;color:var(--ink-soft);transform:translateY(-50%);font-variant-numeric:lining-nums tabular-nums;background:var(--paper);padding:0 2px}
+
+.k{position:absolute;left:0;right:0;display:flex;flex-direction:column;justify-content:flex-start;gap:1px;padding:6px 7px;border:1px solid var(--rule);border-radius:2px;text-align:left;overflow:hidden;line-height:1.2}
+.k-judah{--kc:var(--judah);--kc-strong:var(--judah-strong);--tint:var(--judah-tint);padding-left:calc(var(--band) + 6px)}
+.k-israel{--kc:var(--israel);--kc-strong:var(--israel-strong);--tint:var(--israel-tint);padding-right:calc(var(--band) + 6px);align-items:flex-end;text-align:right}
+.k .k-name{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.k .k-years{font-size:12px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.glyph{font-weight:600;color:var(--kc);margin-left:2px}
+.v-right{background:var(--tint)}
+.v-mixed{background-image:repeating-linear-gradient(135deg,var(--tint) 0 4px,transparent 4px 8px)}
+.usurper{border-style:dashed;border-color:var(--prophet)}
+.k:hover{border-color:var(--kc)}
+@media (min-width:720px){ .k .k-name{font-size:17px} .k .k-years{font-size:13px} }
+
+.band{position:absolute;width:var(--band);z-index:2;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:1px}
+.band i{writing-mode:vertical-rl;font-style:normal;font-size:11px;letter-spacing:.03em;white-space:nowrap}
+.band-j{left:0;background:var(--judah);color:var(--judah-ink)}
+.band-break{left:0;background:repeating-linear-gradient(135deg,var(--judah) 0 2px,transparent 2px 6px)}
+.band-a{right:0;background:var(--band-a);color:var(--band-a-ink)}
+.band-b{right:0;background:var(--band-b);color:var(--band-b-ink)}
+
+.fall{position:absolute;left:0;right:0;padding:8px;border:1px solid var(--rule);border-radius:2px;font-size:13.5px;line-height:1.3;text-align:left;background:repeating-linear-gradient(135deg,var(--tint) 0 5px,transparent 5px 11px)}
+.fall b{display:block;font-size:15px;font-weight:600;color:var(--kc)}
+.fall span{color:var(--ink-soft);font-style:italic}
+.fall.k-israel{text-align:right}
+
+.p{--kc:var(--pc);--kc-strong:var(--prophet-strong);position:absolute;right:0;height:28px;display:flex;align-items:center;gap:3px;padding:0 6px;font-size:14px;line-height:1;background:var(--pbg,var(--prophet-tint));border-left:4px solid var(--pc);border-radius:0 3px 3px 0;white-space:nowrap;overflow:hidden}
+.p span{overflow:hidden;text-overflow:ellipsis}
+.p .bk{color:var(--pc);font-size:13px;flex:none}
+.p.static{position:relative;right:auto;justify-self:start;align-self:center}
+.to-israel{--pc:var(--israel);--pbg:var(--israel-tint)} .to-judah,.to-united{--pc:var(--judah);--pbg:var(--judah-tint)} .to-both,.to-exile,.to-nations{--pc:var(--prophet);--pbg:var(--prophet-tint)}
+.pc0{--pc:var(--pc0)} .pc1{--pc:var(--pc1)} .pc2{--pc:var(--pc2)} .pc3{--pc:var(--pc3)} .pc4{--pc:var(--pc4)} .pc5{--pc:var(--pc5)} .pc6{--pc:var(--pc6)} .pc7{--pc:var(--pc7)}
+.hl{position:absolute;width:3px;background:var(--pc);opacity:.8;border-radius:2px;pointer-events:none}
+.hl.on{opacity:1;width:4px}
+@media (min-width:720px){ .p{font-size:15px} }
+
+/* States */
+.is-sel{outline:2px solid var(--kc);outline-offset:-1px;z-index:3}
+.chart-wrap.filtering [data-id]:not(.hit){opacity:.28}
+.chart-wrap.filtering .hl:not(.on){opacity:.1}
+.chart-wrap [data-id].hit{background-color:var(--kc-strong);border-color:var(--kc)}
+@media (prefers-reduced-motion:no-preference){ .chart-wrap [data-id]{transition:opacity .18s ease} }
+
+/* Key & lower sections */
+.key{margin:22px auto 0;display:grid;grid-template-columns:1fr;gap:10px;font-size:15.5px;line-height:1.45}
+@media (min-width:720px){ .key{grid-template-columns:1fr 1fr;column-gap:32px} }
+.key p{margin:0;display:flex;gap:10px;align-items:flex-start}
+.sw{flex:none;width:18px;height:20px;margin-top:2px;border-radius:1px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
+.sw-david{background:var(--judah)}
+.sw-dyn{background:linear-gradient(var(--band-a) 0 30%,var(--band-b) 30% 55%,var(--band-a) 55% 75%,var(--band-b) 75%)}
+.sw-v{background:var(--judah-tint);color:var(--judah);border:1px solid var(--rule)}
+.sw-p{background:var(--prophet-tint);color:var(--prophet);border-left:3px solid var(--prophet)}
+
+.lower{max-width:700px;margin:0 auto;padding:56px 14px 30vh}
+.lower h2{font-weight:500;font-size:1.9rem;line-height:1.1;margin:44px 0 6px}
+.lower h2:first-child{margin-top:0}
+.lower > p{margin:0 0 14px}
+.clashes{display:grid;gap:18px;margin-top:14px}
+.clashes article h3{font-size:1.15rem;font-weight:600;margin:0 0 2px}
+.clashes article p{margin:0 0 4px}
+.notes p{font-size:16px;color:var(--ink-soft);margin:0 0 10px}
+
+/* Prophet guide */
+.g-nav{margin:6px 0;line-height:1.9}
+.g-nav span{font-style:italic;color:var(--ink-soft);margin-right:6px;font-size:15px}
+.g-era{font-size:1.3rem;font-weight:600;margin:44px 0 2px}
+.g-era-n{margin:0 0 6px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.g{border-left:4px solid var(--pc);padding:4px 0 6px 16px;margin:22px 0 34px;border-radius:0 4px 4px 0}
+@media (prefers-reduced-motion:no-preference){ .g{transition:background-color .8s ease} }
+.g.flash{background:var(--prophet-tint)}
+.g h4{font-size:1.6rem;font-weight:500;line-height:1.1;margin:0;outline:none}
+.g .g-meta{margin:3px 0 10px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.g h5{font-size:1rem;font-weight:600;font-style:italic;margin:16px 0 2px}
+.g p{margin:0 0 6px}
+.g-m{margin:4px 0 0;padding-left:1.3em}
+.g-m li{margin:0 0 13px;padding-left:2px}
+.g-m li b{font-weight:600}
+.g-d{display:block;margin-top:2px}
+.g-m cite{font-style:normal;color:var(--ink-soft);font-size:15px;font-variant-numeric:lining-nums}
+.g-back{margin-top:8px;font-size:15px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.guide-link{display:inline-block;margin:4px 0 4px;padding:5px 14px;border:1px solid var(--prophet);color:var(--prophet);border-radius:999px;font-size:16px}
+.guide-link:hover{background:var(--prophet-tint)}
+a.guide-link{text-decoration:none}
+.g-deep{margin:4px 0 0}
+.g-deep p{margin:0 0 13px}
+.g-deep b{font-weight:600}
+.xref{display:inline;padding:0;font:inherit;color:var(--prophet);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.g-mom summary{cursor:pointer;font-weight:600;font-style:italic;margin:16px 0 4px}
+.g-mom[open] summary{margin-bottom:8px}
+.th{margin:18px 0 24px}
+.th h3{font-size:1.15rem;font-weight:600;margin:0 0 2px}
+.th p{margin:0}
+.home-link{margin:0 0 10px;font-size:16px}
+.home-link a{color:var(--ink-soft);text-underline-offset:3px}
+.page-nav{font-size:16px;color:var(--ink-soft)}
+.page-nav a{color:var(--prophet);text-underline-offset:3px}
+.lower h2{scroll-margin-top:150px}
+.era-strip{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:14px 0 6px;font-size:16px;line-height:1.4}
+.era-strip dt{color:var(--ink-soft);white-space:nowrap;font-variant-numeric:lining-nums}
+.era-strip dd{margin:0}
+.nb{border-left:4px solid var(--ink-soft);padding:4px 0 6px 16px;margin:24px 0 32px}
+.nb h3{font-size:1.6rem;font-weight:500;line-height:1.1;margin:0}
+.nb h3 span{font-size:1.1rem;color:var(--ink-soft)}
+.nb .nb-meta{margin:3px 0 10px;color:var(--ink-soft);font-style:italic;font-size:16px}
+.nb p{margin:0 0 8px}
+.nb h5{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.nb-r{margin:0 0 8px;padding-left:1.2em}
+.nb-r li{margin:0 0 8px}
+.nb-r cite{font-style:normal;color:var(--ink-soft);font-size:15px}
+
+/* Detail sheet */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--sheet);border-top:1px solid var(--rule);box-shadow:var(--shadow);max-height:min(66vh,680px);overflow-y:auto;overscroll-behavior:contain;transform:translateY(105%);padding:16px 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.sheet.open{transform:none}
+@media (prefers-reduced-motion:no-preference){ .sheet{transition:transform .22s ease} }
+.sheet-inner{max-width:680px;margin:0 auto;position:relative}
+.close{position:absolute;top:-4px;right:-6px;width:40px;height:40px;font-size:28px;line-height:1;color:var(--ink-soft)}
+.sheet h2{font-weight:500;font-size:2rem;line-height:1.05;margin:0 44px 2px 0;outline:none}
+.sh-sub{font-style:italic;color:var(--ink-soft);margin:0}
+.sh-aka{margin:4px 0 0;font-size:16px}
+.sh-aka span{color:var(--ink-soft)}
+.facts{display:grid;grid-template-columns:6.4em 1fr;gap:4px 12px;margin:14px 0;font-size:16.5px;line-height:1.4}
+.facts dt{font-style:italic;color:var(--ink-soft)}
+.facts dd{margin:0}
+.facts .vn{display:block;color:var(--ink-soft);font-size:15px}
+.facts .glyph{--kc:var(--ink);margin:0 3px 0 0}
+.sum{margin:0 0 12px}
+.sheet h3{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.refs{margin:0;font-variant-numeric:lining-nums}
+.clash{margin-top:16px;padding-top:10px;border-top:1px solid var(--rule)}
+.clash p{margin:0 0 8px;font-size:16px}
+
+@media print{
+  .bar,.sheet{display:none}
+  body{background:#fff;color:#000}
+  .chart-wrap.filtering [data-id]{opacity:1}
+  .lower{padding-bottom:0}
+}
+
+/* Samuel page */
+.reigns{font-size:14px;line-height:1.4;gap:14px}
+.reigns p{margin:0}
+.reigns b{font-weight:600;display:block;font-size:1.15rem;margin-bottom:2px}
+.reigns .rs b{color:var(--israel)} .reigns .rd b,.reigns .ro b{color:var(--judah)}
+.reigns .ro{text-align:right}
+.story{max-width:700px;margin:0 auto;padding:26px 14px 0}
+.story > h2,.lower h2{font-weight:500;font-size:1.9rem;line-height:1.1;margin:0 0 6px;scroll-margin-top:110px}
+.story > p{margin:0 0 10px}
+.verbs{font-size:15.5px;line-height:1.7;color:var(--ink-soft);margin:0 0 6px}
+.verbs span{white-space:nowrap;margin-right:10px}
+.verbs i{font-style:normal;font-weight:600;color:var(--tc)}
+.act{position:relative;margin:34px 0 4px;padding-left:30px}
+.act h3{font-size:1.45rem;font-weight:500;line-height:1.1;margin:0}
+.act p{margin:2px 0 0;font-style:italic;color:var(--ink-soft);font-size:16px}
+.a0,.a1,.a2{--ac:var(--judah)} .a3,.a4,.a5{--ac:var(--israel)}
+.scenes{list-style:none;margin:0;padding:0;position:relative}
+.scenes::before{content:"";position:absolute;left:7px;top:14px;bottom:14px;width:2px;background:var(--rule)}
+.scene{position:relative;padding:14px 0 18px 30px;scroll-margin-top:110px;border-radius:4px}
+.scene::before{content:"";position:absolute;left:1px;top:21px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--ac)}
+.scene.here{background:var(--judah-tint)}
+.scene.here::before{background:var(--ac)}
+@media (prefers-reduced-motion:no-preference){ .scene{transition:background-color .4s ease} }
+.scene h4{font-size:1.3rem;font-weight:500;line-height:1.15;margin:0;outline:none}
+.sc-ref{margin:1px 0 6px;font-size:15px;color:var(--ink-soft);font-variant-numeric:lining-nums}
+.sc-ref span{font-style:italic;margin-left:6px}
+.sc-n{margin:0 0 8px}
+.sc-who{margin:0 0 8px;line-height:1.9}
+.evs{list-style:none;margin:0;padding:0}
+.ev{--tc:var(--ink-soft);border-left:3px solid var(--tc);padding:1px 0 1px 11px;margin:0 0 11px;font-size:16.5px;line-height:1.45}
+.ev .vb{color:var(--tc);font-weight:600;font-style:italic}
+.ev cite{font-style:normal;color:var(--ink-soft);font-size:14.5px;margin-left:5px;white-space:nowrap;font-variant-numeric:lining-nums}
+.ev .nt{display:block;color:var(--ink-soft);font-size:15.5px}
+.ev .who{font-weight:600}
+.ev .who.plain{font-weight:500}
+.t-anoint{--tc:var(--pc7)} .t-save{--tc:var(--pc4)} .t-betray{--tc:var(--pc2)} .t-kill{--tc:var(--pc3)} .t-rebuke{--tc:var(--pc1)}
+.pn{display:inline;padding:0;font:inherit;font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--rule);text-decoration-thickness:1.5px;text-underline-offset:3px}
+.pn:hover{text-decoration-color:var(--ink)}
+.c-saul{--cc:var(--israel)} .c-men{--cc:var(--ink-soft)} .c-dav{--cc:var(--judah)}
+
+.cast h3{font-size:1.15rem;font-weight:600;margin:26px 0 4px}
+.cast-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.cast-row{display:grid;grid-template-columns:8.2em 1fr;gap:10px;width:100%;text-align:left;padding:8px 2px;border-bottom:1px solid var(--rule);line-height:1.3}
+.cast-row b{font-weight:600}
+.cast-row span{color:var(--ink-soft);font-size:16px}
+.cast-row:hover{background:var(--paper-2)}
+
+.sheet .evs{margin-top:4px}
+.sheet .ev{font-size:16px}
+.sc-link{display:inline;padding:0;font:inherit;font-size:14.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.sc-chips{line-height:1.9}
+/* Deep dives */
+.dive{margin:12px 0 4px;border:1px solid var(--rule);border-left:4px solid var(--ac);border-radius:0 4px 4px 0;background:var(--paper-2);scroll-margin-top:110px}
+.dive summary{list-style:none;cursor:pointer;padding:10px 12px 11px;display:block}
+.dive summary::-webkit-details-marker{display:none}
+.dv-k{display:block;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ac);font-weight:600}
+.dv-t{display:block;font-size:1.2rem;font-weight:600;line-height:1.2;margin:1px 0 1px}
+.dv-r{display:block;font-size:14.5px;color:var(--ink-soft);font-variant-numeric:lining-nums}
+.dv-l{display:block;margin-top:5px;font-size:16.5px;line-height:1.45}
+.dv-more{display:inline-block;margin-top:6px;font-size:14.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.dv-more .c,.dive[open] .dv-more .o{display:none}
+.dive[open] .dv-more .c{display:inline}
+.dv-body{padding:0 12px 6px;border-top:1px solid var(--rule)}
+.dv-body h5{font-size:1rem;font-weight:600;font-style:italic;margin:14px 0 4px}
+.dv-body p{margin:0 0 11px;font-size:17px;line-height:1.55}
+.dv-body p b{font-weight:600}
+.chs{margin:6px 0 4px}
+.chs summary{cursor:pointer;font-size:15.5px;font-style:italic;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:2px 0}
+.chs ul{list-style:none;margin:6px 0 0;padding:0}
+.chs li{font-size:16px;line-height:1.45;margin:0 0 9px;padding:2px 0 2px 10px;border-left:3px solid var(--rule);scroll-margin-top:120px}
+.chs li b{font-weight:600;font-variant-numeric:lining-nums;margin-right:4px}
+.chs li.here{border-left-color:var(--ac);background:var(--paper)}
+.lead-in a,.notes a,#prophets+p a{color:var(--prophet)}
+.lead-in{font-size:16.5px;color:var(--ink-soft)}
+.lead-in b{color:var(--ink);font-weight:600}
+.split-next{margin:18px 0 0;padding:10px 12px;border:1px solid var(--rule);border-radius:2px;font-size:15.5px;line-height:1.4;color:var(--ink-soft)}
+.split-next b{display:block;color:var(--ink);font-weight:600}
+.rulers{list-style:none;margin:10px 0 0;padding:0}
+.rulers li{margin:0 0 14px;padding-left:12px;border-left:3px solid var(--judah);font-size:16.5px;line-height:1.45}
+.rulers li b{font-weight:600}
+.rulers li span{display:block;font-size:14.5px;color:var(--ink-soft);font-style:italic;margin-bottom:2px}
+.dv-close{margin:2px 0 8px;font-size:14.5px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px}
+.c-dive{--cc:var(--judah);font-weight:600}
+a.xref{color:var(--prophet)}
+a.guide-link{text-decoration:none}
+.hint .sc-link{font-style:normal;color:var(--ink);font-size:15px}
+
+/* Genesis page: family lists */
+.fam-list{margin:8px 0 34px}
+.fam-list h3{font-size:1.3rem;font-weight:600;margin:28px 0 2px;scroll-margin-top:120px}
+.fam-intro{font-size:16px;color:var(--ink-soft);margin:0 0 6px}
+.fam-ctl{font-size:14.5px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;margin:0 14px 8px 0;padding:4px 0}
+ul.ft{list-style:none;margin:0;padding:0}
+ul.ft ul.ft{margin-left:10px;padding-left:9px;border-left:2px solid var(--rule)}
+ul.ft[hidden]{display:none}
+.fn{margin:0;padding:0;scroll-margin-top:130px}
+.fr{display:flex;align-items:baseline;gap:5px;padding:6px 2px;border-bottom:1px solid var(--rule);line-height:1.35;border-radius:2px}
+@media (prefers-reduced-motion:no-preference){ .fr{transition:background-color .6s ease} }
+.fn.flash>.fr{background:var(--judah-tint)}
+.ftg{flex:none;width:26px;min-height:26px;font-size:15px;line-height:1.35;color:var(--ink-soft);text-align:center;border-radius:4px}
+button.ftg{color:var(--ink);background:var(--paper-2);border:1px solid var(--rule)}
+.fgen{flex:none;width:1.7em;font-size:13px;color:var(--ink-soft);font-variant-numeric:lining-nums tabular-nums;text-align:right}
+.fb{flex:1;min-width:0}
+.fmark{color:var(--judah);font-size:12px}
+.fpr>.fr .pn{text-decoration-color:var(--judah)}
+.fage{font-size:14px;color:var(--ink-soft);font-style:italic;white-space:nowrap}
+.fnote{display:block;font-size:15.5px;color:var(--ink-soft)}
+.fm{font-size:14.5px;font-style:italic;color:var(--ink-soft);padding:9px 2px 2px 33px}
+.fam-key{font-size:15.5px;color:var(--ink-soft)}
+.th p b{font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="home-link" id="home-link" hidden><a href="./">Lex et Prophetae</a></p>
+  <h1>In the beginning</h1>
+  <p class="lede">Genesis: how the world and its troubles began, and four generations of the family God chose to mend them, from Abraham’s call to Joseph’s coffin in Egypt. Choose the chapter you’re reading to jump to its scene; each scene has a chapter-by-chapter guide, and the chapter you chose is marked. Tap any name for that person’s whole story.</p>
+  <div class="reigns grid">
+    <p class="rs"><b>1–11</b>The beginnings: creation to Babel.</p>
+    <p class="rd"><b>12–36</b>Abraham, Isaac and Jacob.</p>
+    <p class="ro"><b>37–50</b>Joseph, and the move to Egypt.</p>
+  </div>
+</header>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <div class="bar-row">
+      <label for="chap">Reading Genesis</label>
+      <select id="chap" aria-label="Chapter of Genesis"></select>
+      <button type="button" class="clear" id="clear" hidden>Clear</button>
+    </div>
+    <div class="found" id="found" aria-live="polite"></div>
+  </div>
+</div>
+
+<main>
+  <div class="story">
+    <p class="page-nav">Further down: <a href="#family">The family</a>, <a href="#cast">The cast</a>, <a href="#threads">Threads</a>, <a href="#names">Same name, different person</a>.</p>
+    <h2 id="scenes">The story in scenes</h2>
+    <p class="lead-in"><b>No date.</b> Genesis starts before there is anyone to keep a calendar, and its first eleven chapters cannot be put on a timeline. What it starts runs on through Exodus to the kings, who are on the <a href="samuel.html">united kingdom</a> and <a href="kings.html">divided kingdom</a> pages.</p>
+    <p>Each scene lists who is in it and what passed between them. The verb’s color says what kind of thing it was:</p>
+    <p class="verbs"><span class="t-anoint"><i>blesses, promises or sends</i></span> <span class="t-save"><i>spares or saves</i></span> <span class="t-betray"><i>deceives or wrongs</i></span> <span class="t-kill"><i>kills, or means to</i></span> <span class="t-rebuke"><i>judges, rebukes or curses</i></span></p>
+    <div id="story"></div>
+    <p class="split-next"><b>Exodus 1:8</b>“There arose a new king over Egypt, that knew not Joseph.” The family of seventy becomes a people, and the people become slaves. The page for Exodus is not built yet.</p>
+  </div>
+
+  <div class="lower">
+    <h2 id="family">The family</h2>
+    <p>Genesis is a family record, and most of the Old Testament’s peoples are somewhere in it. Three lists follow. Tap ▸ to open a branch, and any name for that person’s details.</p>
+    <p class="fam-key"><span class="fmark">◆</span> marks the line of promise: from Adam through Seth, Noah, Shem, Abraham, Isaac, Jacob, Judah and Perez, toward David.</p>
+    <div id="family-lists"></div>
+
+    <h2 id="cast">The cast</h2>
+    <p>The people of the story, by generation. Tap a name for the full record of what they did and what was done to them. Names that appear only in the genealogies are in the family lists above.</p>
+    <div class="cast" id="cast-list"></div>
+
+    <h2 id="threads">Threads</h2>
+    <p>Patterns that run through the book and on into the rest of the Bible.</p>
+    <div id="threads-list"></div>
+
+    <h2 id="names">Same name, different person</h2>
+    <p>Names that repeat, people who are renamed, and places called two things.</p>
+    <div class="clashes" id="clashes"></div>
+
+    <h2>Notes</h2>
+    <div class="notes">
+      <p>Genesis is one book in two unequal parts. Chapters 1–11 cover the whole human race from creation to Babel; chapters 12–50 follow one family for four generations. The book marks its own sections with the heading “These are the generations of …” (see the Threads). Jewish and Christian tradition ascribe it to Moses. Most modern scholars hold that it was put together over a long time from older sources; where that view explains something you can see in the text, such as a story told twice, these pages say so in a clause and mark it as scholarship.</p>
+      <p>How the Church reads chapters 1–11. The Catechism says that Scripture presents the Creator’s work symbolically, as six days of work and a seventh of rest (CCC 337), and that the account of the fall “uses figurative language, but affirms a primeval event,” a deed at the beginning of human history (CCC 390). Pius XII taught that these eleven chapters are not history as the Greek and Roman historians or modern ones write it, but do belong to history in a real sense, telling in simple and figurative language the truths on which salvation rests and the origin of the human race and of the chosen people (Humani Generis 38). Within those limits a good deal is left open, and the Fathers did not always agree among themselves. The deep dives give Church teaching first and the Fathers second, and say where they differ.</p>
+      <p>Dates. None can be given for chapters 1–11. The patriarchs are usually placed somewhere in the first half of the second millennium BC, but nothing in Genesis can be tied to an outside record, and this page gives no dates for them. The ages in chapters 5 and 11 are those of the Hebrew text, which the Douay and the RSV-2CE both follow. The Greek Old Testament has higher figures at many points, and Luke’s genealogy follows it in adding a second Cainan (Lk 3:36).</p>
+      <p>Names and numbers. The Douay-Rheims follows the Latin and spells many names differently, such as Noe, Sem, Cham, Agar, Lia or Juda. Those spellings are in each person’s details. It also translates some names that other Bibles leave in Hebrew: Eden is the “paradise of pleasure,” the Nephilim are “giants,” Moriah is the “land of vision,” Machpelah is the “double cave,” Paddan-aram is “Mesopotamia of Syria,” Sheol is “hell,” and Ararat is “Armenia.” Verse numbers follow the RSV-2CE. The Douay differs only at the end of the book: it lacks the RSV-2CE’s 49:32, so that 49:33 is its 49:32, and in chapter 50 it runs one verse behind from 50:23.</p>
+      <p>Quotations follow the Douay-Rheims, with its name forms left as printed inside quotation marks. Where the Douay, which follows the Latin, parts from the Hebrew in a way that matters, the note says what the Hebrew has. The best-known case is 3:15, where the Douay reads “she shall crush thy head” and the Hebrew has he, or it.</p>
+      <p>Deep dives are being added to the scenes in batches.</p>
+    </div>
+  </div>
+</main>
+
+<div class="sheet" id="sheet" role="dialog" aria-labelledby="sh-title" inert>
+  <div class="sheet-inner">
+    <button type="button" class="close" id="close" aria-label="Close details">×</button>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const R=(a,b)=>Array.from({length:b-a+1},(_,i)=>a+i);
+const SP=[
+// ---- Before Abraham (c:0)
+{id:'adam',name:'Adam',c:0,dates:'lived 930 years',role:'The first man',aka:'the Man',nn:'The Hebrew adam is both his name and the common word for a human being, and it plays on adamah, the ground he is made from',sum:'Formed “of the slime of the earth” and given the breath of life, set in the garden to dress and keep it, and given one command. He names the animals, receives the woman, eats what she hands him, hides, and blames her. His sentence is toil, thorns and a return to the dust. He fathers Cain, Abel and Seth, and Genesis traces everyone from him. Paul calls him “a figure of him who was to come” (Rom 5:14).',refs:'Gen 1:26–5:5',ch:{Gen:[1,2,3,4,5]}},
+{id:'eve',name:'Eve',c:0,role:'The first woman, “mother of all the living”',aka:'the Woman, until 3:20',nn:'Eve is Hebrew Chavvah, close to the word for living',sum:'Built from the man’s side as “a help like unto himself.” The serpent speaks to her; she eats and gives to her husband. Her sentence is pain in childbearing. She is named only after the fall, and named for life. The promise about the woman and her seed (3:15) is spoken to the serpent in her hearing. She bears Cain, Abel and Seth.',refs:'Gen 2:18–4:2; 4:25',ch:{Gen:[2,3,4]}},
+{id:'cain',name:'Cain',c:0,role:'Firstborn of Adam and Eve, a tiller of the ground',sum:'His offering is not regarded and his brother’s is. Warned that sin is at the door, he kills Abel in the field and answers the Lord, “am I my brother’s keeper?” He is cursed from the ground and made a wanderer, but marked so that no one kills him. He settles east of Eden, builds the first city, and heads a line that invents herding, music and metalwork and ends in Lamech’s boast.',refs:'Gen 4:1–24',ch:{Gen:[4]}},
+{id:'abel',name:'Abel',c:0,role:'Second son of Adam and Eve, a shepherd',sum:'He offers the firstlings of his flock, and “the Lord had respect to Abel, and to his offerings.” His brother kills him. He never speaks in Genesis; his blood does, crying from the ground. The New Testament calls him just (Mt 23:35; Heb 11:4) and sets Christ’s blood beside his (Heb 12:24).',refs:'Gen 4:2–10',ch:{Gen:[4]}},
+{id:'seth',name:'Seth',c:0,dates:'lived 912 years',role:'Third son of Adam and Eve',sum:'Born “for Abel whom Cain slew,” and begotten in Adam’s own image and likeness, as Adam was made in God’s. The line that leads to Noah, and so to everyone after the flood, runs through him. In the days of his son Enosh men begin to call on the name of the Lord.',refs:'Gen 4:25–5:8',ch:{Gen:[4,5]}},
+{id:'lamech_c',name:'Lamech, of Cain’s line',short:'Lamech (Cain’s line)',c:0,role:'Seventh from Adam through Cain',sum:'The first man said to take two wives. His three sons begin herding, music and metalwork. His song to his wives boasts of killing a man for a wound and claims vengeance seventy times sevenfold, against Cain’s seven. Christ’s “seventy times seven” for forgiveness (Mt 18:22) answers it.',refs:'Gen 4:18–24',ch:{Gen:[4]}},
+{id:'enoch',name:'Enoch',c:0,dates:'lived 365 years',role:'Seventh from Adam through Seth',dy:'Henoch',sum:'Every other entry in Genesis 5 ends “and he died.” His reads: “he walked with God, and was seen no more: because God took him.” He is the father of Methuselah. Sirach, Hebrews and Jude remember him (Sir 44:16; Heb 11:5; Jude 14), and a large later literature gathered round his name.',refs:'Gen 5:18–24',ch:{Gen:[5]}},
+{id:'noah',name:'Noah',c:0,dates:'lived 950 years',role:'Builder of the ark; tenth from Adam',dy:'Noe',sum:'“A just and perfect man in his generations,” who “found grace before the Lord.” He builds the ark as told, and says nothing at all until after the flood. He offers sacrifice, receives the covenant of the rainbow with every living creature, plants a vineyard, lies drunk and uncovered in his tent, and wakes to curse Canaan and bless Shem and Japheth. His father named him for comfort.',refs:'Gen 5:28–9:29',ch:{Gen:[5,6,7,8,9,10]}},
+{id:'shem',name:'Shem',c:0,dates:'lived 600 years',role:'Son of Noah, ancestor of Abraham',dy:'Sem',sum:'With Japheth he walks backward to cover his father, and Noah blesses “the Lord God of Sem.” The peoples of the east come from him: Elam, Asshur, Aram, and through Eber the Hebrews. The line from him to Abraham is counted out in ten generations. “Semitic” is from his name.',refs:'Gen 5:32; 9:18–27; 10:21–31; 11:10–11',ch:{Gen:[5,6,7,9,10,11]}},
+{id:'ham',name:'Ham',c:0,role:'Son of Noah, father of Canaan',dy:'Cham',sum:'He sees his father’s nakedness and tells his brothers outside. Noah’s curse falls not on him but on his son Canaan. Egypt, Cush, Put and Canaan are counted to him, with Nimrod, Babel, Nineveh and the Philistines: the powers Israel will have most to do with.',refs:'Gen 5:32; 9:18–27; 10:6–20',ch:{Gen:[5,6,7,9,10]}},
+{id:'japheth',name:'Japheth',c:0,role:'Son of Noah',sum:'He helps Shem cover their father. Noah’s blessing plays on his name: “May God enlarge Japheth, and may he dwell in the tents of Sem.” The peoples of the north and west are counted to him: the Medes, the Greeks, and “the islands of the Gentiles.”',refs:'Gen 5:32; 9:18–27; 10:2–5',ch:{Gen:[5,6,7,9,10]}},
+{id:'canaan',name:'Canaan',c:0,role:'Son of Ham; ancestor of the peoples of the land',dy:'Chanaan',sum:'Cursed by Noah for what his father did: “a servant of servants shall he be unto his brethren.” Sidon, the Hittites, the Jebusites, the Amorites and the rest descend from him, and the land promised to Abraham is called by his name. The curse is aimed at the peoples Israel will find in the land; it says nothing of Ham’s other sons.',refs:'Gen 9:18–27; 10:15–19',ch:{Gen:[9,10]}},
+{id:'nimrod',name:'Nimrod',c:0,role:'Son of Cush; the first empire-builder',dy:'Nemrod',sum:'“He began to be mighty on the earth,” and was “a stout hunter before the Lord.” His kingdom begins at Babel in the land of Shinar, and Nineveh is founded out of it. Genesis says no more of him, and does not connect him with the tower; later tradition did.',refs:'Gen 10:8–12',ch:{Gen:[10]}},
+{id:'terah',name:'Terah',c:0,dates:'lived 205 years',role:'Father of Abram, Nahor and Haran',dy:'Thare',sum:'He sets out from Ur of the Chaldees for Canaan with Abram, Sarai and his grandson Lot, gets as far as the city of Haran, and dies there. Joshua says of him and his house that “they served strange gods” (Josh 24:2). The call comes to his son.',refs:'Gen 11:24–32',ch:{Gen:[11]}},
+// ---- Abraham's household (c:1)
+{id:'abraham',name:'Abraham',c:1,dates:'lived 175 years',role:'Father of the promise',aka:'Abram, until 17:5',nn:'Abram is exalted father; Abraham is explained as “father of many nations”',sum:'Called at seventy-five to leave country, kindred and father’s house for a land not yet named, on a promise of descendants he has no child to begin. He believes, “and it was reputed to him unto justice.” He passes his wife off as his sister twice, takes Hagar at Sarah’s word, rescues Lot, is blessed by Melchizedek, bargains with God over Sodom, receives circumcision at ninety-nine and Isaac at a hundred, and is asked to give Isaac back. He dies owning one field and a cave. The New Testament calls him the father of all who believe (Rom 4:11) and the friend of God (Jas 2:23).',refs:'Gen 11:26–25:10',ch:{Gen:[11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]}},
+{id:'sarah',name:'Sarah',c:1,dates:'lived 127 years',role:'Wife of Abraham, mother of Isaac',aka:'Sarai, until 17:15',nn:'Both forms mean princess',dy:'Sara',sum:'Barren from her first mention. Twice taken into a king’s house as Abraham’s sister and twice returned. She gives Abraham her maid, then drives her out; laughs behind the tent door at ninety; bears Isaac, whose name is that laughter; and has Hagar and Ishmael sent away for good. Genesis gives her age at death, which it does for no other woman, and her burial is the reason Abraham buys his only land.',refs:'Gen 11:29–23:20',ch:{Gen:[11,12,16,17,18,20,21,23]}},
+{id:'lot',name:'Lot',c:1,role:'Nephew of Abraham',sum:'Son of Abraham’s dead brother Haran, he travels with Abram until their herds are too many, then chooses the well-watered plain and pitches toward Sodom. He is carried off in the war of the kings and rescued; entertains the two angels and offers the mob his daughters; is dragged out of the city by the hand; loses his wife on the road; and in a cave above Zoar fathers Moab and Ammon by his daughters. Peter calls him “just Lot” (2 Pet 2:7).',refs:'Gen 11:27, 31; 12:4–5; 13; 14:12–16; 19',ch:{Gen:[11,12,13,14,19]}},
+{id:'hagar',name:'Hagar',c:1,role:'Sarah’s Egyptian maid, mother of Ishmael',dy:'Agar',sum:'Given to Abram by Sarai to bear a child in her place. Pregnant, she looks down on her mistress, is treated harshly and runs. The angel of the Lord finds her at a spring, sends her back with a promise, and she names the God who spoke to her: “Thou the God who hast seen me.” Years later she and her son are sent away with bread and a skin of water, and God opens her eyes to a well. Paul reads her and Sarah as two covenants (Gal 4:22–26).',refs:'Gen 16; 21:8–21; 25:12',ch:{Gen:[16,21,25]}},
+{id:'ishmael',name:'Ishmael',c:1,dates:'lived 137 years',role:'Son of Abraham by Hagar',nn:'The name means God hears',dy:'Ismael',sum:'Named by the angel before his birth. Abraham pleads for him, “O that Ismael may live before thee,” and God answers that he will be blessed and father twelve princes, but that the covenant is Isaac’s. Circumcised at thirteen, on the same day as his father. Sent away with his mother, he grows up an archer in the wilderness of Paran and marries an Egyptian. He and Isaac bury Abraham together.',refs:'Gen 16:11–16; 17:18–26; 21:8–21; 25:9–18',ch:{Gen:[16,17,21,25,28]}},
+{id:'melchizedek',name:'Melchizedek',c:1,role:'King of Salem, “priest of the most high God”',dy:'Melchisedech',sum:'He comes out to meet Abram after the battle with bread and wine, blesses him, and receives from him a tenth of everything. He is the first man in Scripture called a priest. He has no genealogy, no birth and no death in a book built from them, appears for three verses and is gone. Psalm 110 and the letter to the Hebrews make him the pattern of a priesthood older than Aaron’s.',refs:'Gen 14:18–20; Ps 110:4; Heb 5–7',ch:{Gen:[14]}},
+{id:'abimelech',name:'Abimelech',c:1,role:'King of Gerar',sum:'He takes Sarah on Abraham’s word that she is his sister, is warned by God in a dream, and returns her untouched with a thousand pieces of silver and a just complaint. He later makes a treaty with Abraham at Beer-sheba. A king of Gerar with the same name, and the same general, goes through much the same with Isaac and Rebekah a generation on.',refs:'Gen 20; 21:22–34; 26',ch:{Gen:[20,21,26]}},
+{id:'servant',name:'Abraham’s servant',short:'The servant',c:1,role:'The elder of Abraham’s house, sent to find Isaac a wife',nn:'Unnamed in chapter 24; often taken to be the Eliezer of Damascus named at 15:2',sum:'He swears with his hand under Abraham’s thigh not to take a wife for Isaac from the Canaanites, travels to the city of Nahor with ten camels, prays at the well for a sign, and has not finished praying when Rebekah comes out. He will not eat until he has told his errand, and will not stay once it is done.',refs:'Gen 15:2; 24',ch:{Gen:[15,24]}},
+{id:'keturah',name:'Keturah',c:1,role:'Abraham’s wife after Sarah',dy:'Cetura',sum:'She bears Abraham six sons, of whom the one that matters later is Midian. Abraham gives them gifts and sends them east, away from Isaac, while he is still alive. 1 Chronicles 1:32 calls her his concubine.',refs:'Gen 25:1–6',ch:{Gen:[25]}},
+{id:'isaac',name:'Isaac',c:1,dates:'lived 180 years',role:'Son of Abraham and Sarah; the child of the promise',nn:'The name means he laughs',sum:'Promised for twenty-five years, born when his father is a hundred, and carried up Moriah with the wood on his back. He is the quiet one of the three patriarchs: a wife is found for him, he prays twenty years for children, repeats his father’s journeys and his father’s lie, reopens his father’s wells, and is deceived in his blindness by his wife and younger son. He never leaves the land. He blesses Jacob believing he is Esau, and will not take it back.',refs:'Gen 17:19; 21:1–12; 22; 24; 25:19–28:5; 35:27–29',ch:{Gen:[17,18,21,22,24,25,26,27,28,35]}},
+{id:'rebekah',name:'Rebekah',c:1,role:'Wife of Isaac, mother of Esau and Jacob',dy:'Rebecca',sum:'Granddaughter of Abraham’s brother Nahor, and sister of Laban. She waters ten camels for a stranger and, asked whether she will go, says, “I will go.” Barren twenty years, she is told while pregnant that “the elder shall serve the younger.” She loves Jacob, plans the theft of the blessing, takes the curse on herself, and sends him to her brother for “a few days.” She is not said to have seen him again.',refs:'Gen 22:23; 24; 25:20–28; 26:7–11; 27; 49:31',ch:{Gen:[22,24,25,26,27,28]}},
+// ---- Isaac's and Jacob's households (c:2)
+{id:'esau',name:'Esau',c:2,role:'Elder twin of Jacob; father of Edom',aka:'Edom, red, from the red pottage (25:30)',sum:'Red and hairy at birth, a hunter, his father’s favorite. He sells his birthright for a meal, “making little account” of it, marries two Hittite women who grieve his parents, and loses the blessing to his brother’s disguise. He means to kill Jacob, and twenty years later runs to meet him, falls on his neck and weeps. He moves to Mount Seir and becomes the nation of Edom. Hebrews calls him profane (Heb 12:16); Genesis is gentler with him than that.',refs:'Gen 25:21–34; 26:34–35; 27; 28:6–9; 32–33; 35:29; 36',ch:{Gen:[25,26,27,28,32,33,35,36]}},
+{id:'jacob',name:'Jacob',c:2,dates:'lived 147 years',role:'Younger twin of Esau; father of the twelve tribes',aka:'Israel, from 32:28 and again at 35:10',nn:'Jacob is heel-grabber, supplanter',sum:'He comes out holding his brother’s heel and spends half his life taking what belongs to someone else: the birthright by a bargain, the blessing by a lie. He flees, sees the ladder at Bethel, and meets in his uncle Laban a better cheat than himself. He comes home with two wives, two maids, eleven sons and a limp, renamed Israel after a night’s wrestling. Then the deceiver is deceived by his own sons with a bloodied coat, and mourns Joseph for twenty-two years. He dies in Egypt, blessing Pharaoh, his grandsons and his twelve sons, and is carried back to the cave at Hebron.',refs:'Gen 25:21–34; 27–35; 37; 42–50',ch:{Gen:[25,27,28,29,30,31,32,33,34,35,37,42,43,45,46,47,48,49,50]}},
+{id:'laban',name:'Laban',c:2,role:'Brother of Rebekah; father of Leah and Rachel',sum:'First seen running out to the servant when he notices the gold on his sister. A generation later he gives Jacob the wrong daughter after seven years’ work, takes seven more for the right one, and changes his wages ten times. He chases Jacob to Gilead for his stolen household gods, is warned off by God in a dream, and parts from him at a heap of stones that neither is to pass. He is “the Syrian,” and his is the family the patriarchs marry into.',refs:'Gen 24:29–60; 29–31',ch:{Gen:[24,29,30,31]}},
+{id:'leah',name:'Leah',c:2,role:'Elder daughter of Laban; Jacob’s first wife',dy:'Lia',sum:'Put in her sister’s place on the wedding night, and unloved. The Lord sees it and opens her womb: Reuben, Simeon, Levi and Judah, then Issachar, Zebulun and a daughter, Dinah. The names of the first three record her hope that her husband will now love her; at the fourth she only praises. Priesthood and kingship both come from her sons. She, not Rachel, is buried beside Jacob at Machpelah.',refs:'Gen 29:16–35; 30:9–21; 31:14–16; 49:31',ch:{Gen:[29,30,31,33,49]}},
+{id:'rachel',name:'Rachel',c:2,role:'Younger daughter of Laban; the wife Jacob loved',sum:'Jacob meets her at the well and works fourteen years for her. Barren while her sister bears, she says, “Give me children, otherwise I shall die.” She gives her maid, bargains for mandrakes, and at last bears Joseph. She steals her father’s household gods and sits on them. She dies on the road near Bethlehem giving birth to Benjamin, and is buried there, apart from the others. Jeremiah hears her weeping for her children (Jer 31:15), and Matthew hears it again at Bethlehem (Mt 2:18).',refs:'Gen 29–31; 33:1–7; 35:16–20; 48:7',ch:{Gen:[29,30,31,33,35]}},
+{id:'bilhah',name:'Bilhah',c:2,role:'Rachel’s maid; mother of Dan and Naphtali',dy:'Bala',sum:'Given by Laban to Rachel, and by Rachel to Jacob to bear children on her behalf. After Rachel’s death Reuben lies with her, which costs him the firstborn’s place.',refs:'Gen 29:29; 30:1–8; 35:22, 25',ch:{Gen:[29,30,35]}},
+{id:'zilpah',name:'Zilpah',c:2,role:'Leah’s maid; mother of Gad and Asher',dy:'Zelpha',sum:'Given by Laban to Leah, and by Leah to Jacob when Leah had stopped bearing.',refs:'Gen 29:24; 30:9–13; 35:26',ch:{Gen:[29,30,35]}},
+{id:'dinah',name:'Dinah',c:2,role:'Daughter of Jacob and Leah',dy:'Dina',sum:'She goes out to see the women of the land, and the prince’s son takes her and lies with her by force. He then asks to marry her. Her brothers Simeon and Levi answer with a trick and a massacre and bring her out of his house. She does not speak in the story, and nothing more is told of her except that she went down to Egypt.',refs:'Gen 30:21; 34; 46:15',ch:{Gen:[30,34,46]}},
+{id:'shechem',name:'Shechem and Hamor',short:'Shechem',c:2,role:'Prince of the city of Shechem, and his father',dy:'Sichem and Hemor',sum:'Shechem violates Dinah, loves her, and wants her for his wife at any price. His father Hamor proposes that the two peoples intermarry and trade. Jacob’s sons demand that every male be circumcised first; the town agrees, with an eye on Jacob’s cattle; and on the third day Simeon and Levi kill them all. Jacob had bought his field from Hamor’s sons.',refs:'Gen 33:19; 34',ch:{Gen:[33,34]}},
+// ---- The twelve sons, and Egypt (c:3)
+{id:'reuben',name:'Reuben',c:3,role:'Jacob’s firstborn, by Leah',nn:'The name is heard as “the Lord saw my affliction”',dy:'Ruben',sum:'The firstborn who loses the firstborn’s place. He lies with his father’s concubine Bilhah. He tries to save Joseph by having him put in the pit alive, and comes back to find him gone. He offers his own two sons as surety for Benjamin and is refused. Jacob’s last word to him: “Thou art poured out as water, grow thou not.”',refs:'Gen 29:32; 30:14; 35:22; 37:21–30; 42:22, 37; 49:3–4',ch:{Gen:[29,30,35,37,42,49]}},
+{id:'simeon',name:'Simeon',c:3,role:'Second son of Jacob and Leah',sum:'With Levi he avenges Dinah by killing the men of Shechem. Joseph keeps him bound in Egypt as hostage until Benjamin is brought. Jacob’s last words condemn his and Levi’s violence and scatter them in Israel; his tribe is later absorbed into Judah.',refs:'Gen 29:33; 34:25–31; 42:24; 43:23; 49:5–7',ch:{Gen:[29,34,42,43,49]}},
+{id:'levi',name:'Levi',c:3,role:'Third son of Jacob and Leah',sum:'Simeon’s partner at Shechem, and cursed with him: “I will divide them in Jacob, and will scatter them in Israel.” For Levi the scattering turns to honor: his tribe gets no territory because it gets the priesthood. Moses and Aaron are his great-grandsons.',refs:'Gen 29:34; 34:25–31; 49:5–7',ch:{Gen:[29,34,49]}},
+{id:'judah',name:'Judah',c:3,role:'Fourth son of Jacob and Leah; father of the royal tribe',nn:'The name is heard as praise',dy:'Juda',sum:'He proposes selling Joseph instead of killing him. He leaves his brothers, marries a Canaanite, loses two sons, and wrongs his daughter-in-law Tamar until she makes him say so: “She is juster than I.” The man who comes back is different. He pledges himself for Benjamin, and before the governor of Egypt offers to stay a slave in the boy’s place, the speech that breaks Joseph down. Jacob gives him the scepter. David comes from him through Tamar’s son Perez, and so does Christ, “the lion of the tribe of Juda” (Rev 5:5).',refs:'Gen 29:35; 37:26–27; 38; 43:3–10; 44:14–34; 46:28; 49:8–12',ch:{Gen:[29,37,38,43,44,46,49]}},
+{id:'dan',name:'Dan',c:3,role:'Son of Jacob by Bilhah, Rachel’s maid',sum:'Rachel names him for judgment: God has judged in her favor. Jacob’s blessing calls him a serpent by the road that bites the horse’s heel. Samson is a Danite.',refs:'Gen 30:5–6; 49:16–18',ch:{Gen:[30,49]}},
+{id:'naphtali',name:'Naphtali',c:3,role:'Son of Jacob by Bilhah',dy:'Nephtali',sum:'Named for Rachel’s wrestling with her sister; the Douay has “compared.” Jacob’s blessing calls him a hart let loose.',refs:'Gen 30:7–8; 49:21',ch:{Gen:[30,49]}},
+{id:'gad',name:'Gad',c:3,role:'Son of Jacob by Zilpah, Leah’s maid',sum:'Named for good fortune. Jacob’s blessing puns on the name in Hebrew: raiders will raid him, and he will raid at their heels. The Douay has him “girded” for the fight. His tribe settles east of the Jordan.',refs:'Gen 30:10–11; 49:19',ch:{Gen:[30,49]}},
+{id:'asher',name:'Asher',c:3,role:'Son of Jacob by Zilpah',dy:'Aser',sum:'Named for happiness. Jacob promises him rich bread and dainties fit for kings.',refs:'Gen 30:12–13; 49:20',ch:{Gen:[30,49]}},
+{id:'issachar',name:'Issachar',c:3,role:'Fifth son of Jacob and Leah',sum:'Born after Leah hires her husband for the night with her son’s mandrakes; the name is heard as hire or reward. Jacob calls him a strong ass lying down between the borders, who bows his shoulder to carry.',refs:'Gen 30:14–18; 49:14–15',ch:{Gen:[30,49]}},
+{id:'zebulun',name:'Zebulun',c:3,role:'Sixth son of Jacob and Leah',dy:'Zabulon',sum:'Leah’s last son, named in the hope that her husband will now dwell with her. Jacob places him by the sea, toward Sidon. The land of Zebulun and Naphtali, which Isaiah says will see a great light (Isa 9:1–2), is where Christ begins to preach (Mt 4:13–16).',refs:'Gen 30:19–20; 49:13',ch:{Gen:[30,49]}},
+{id:'joseph',name:'Joseph',c:3,dates:'lived 110 years',role:'Rachel’s firstborn; governor of Egypt',nn:'Pharaoh names him Zaphenath-paneah (41:45), which the Douay translates, “The saviour of the world”',sum:'His father’s favorite, with a coat to prove it and dreams his brothers hate him for. Sold at seventeen (sixteen in the Douay, 37:2) for twenty pieces of silver, he rises to run Potiphar’s house, is jailed on a false charge, rises to run the prison, and at thirty is brought up to interpret Pharaoh’s dreams and put over all Egypt. In the famine his brothers bow to him without knowing him. He tests them, turns away twice to weep, and at last makes himself known: “God sent me before you.” He settles the family in Goshen, buries his father in Canaan, forgives his brothers a second time, and dies making them swear to carry his bones home.',refs:'Gen 30:22–24; 37; 39–50; Exod 13:19; Josh 24:32',ch:{Gen:[30,33,35,37,39,40,41,42,43,44,45,46,47,48,49,50]}},
+{id:'benjamin',name:'Benjamin',c:3,role:'Rachel’s second son, Jacob’s youngest',aka:'Ben-oni, son of my pain, his dying mother’s name for him; his father changes it to son of the right hand',sum:'The only son born in the land, on the road where his mother dies. Jacob will not let him go to Egypt, and the whole test of the brothers turns on whether they will abandon Rachel’s other son as they did the first. Jacob calls him a ravenous wolf. Saul, the first king, and Paul the apostle are of his tribe.',refs:'Gen 35:16–18; 42:4, 36–38; 43–45; 49:27',ch:{Gen:[35,42,43,44,45,46,49]}},
+{id:'tamar',name:'Tamar',c:3,role:'Judah’s daughter-in-law; mother of Perez and Zerah',dy:'Thamar',sum:'Widow of Judah’s son Er, then of Onan, and kept waiting for the third son she is owed. She veils herself, sits by the road, and conceives by Judah himself, keeping his seal and staff as pledge. Sentenced to be burnt, she sends them back with a question. She is the first of the four women in Matthew’s genealogy of Christ (Mt 1:3), and the elders at Bethlehem bless Ruth by her name (Ruth 4:12).',refs:'Gen 38; Ruth 4:12; Mt 1:3',ch:{Gen:[38]}},
+{id:'perez',name:'Perez',c:3,role:'Son of Judah and Tamar; ancestor of David',nn:'The name means breach',dy:'Phares',sum:'His twin Zerah puts a hand out first and gets the scarlet thread, but Perez breaks through ahead of him: one more younger son who comes first. The line to David runs from him (Ruth 4:18–22), and Matthew’s genealogy follows it.',refs:'Gen 38:27–30; 46:12; Ruth 4:18–22; Mt 1:3',ch:{Gen:[38,46]}},
+{id:'potiphar',name:'Potiphar',c:3,role:'Pharaoh’s officer, captain of the guard; Joseph’s master',dy:'Putiphar',sum:'He buys Joseph, sees that the Lord is with him, and puts everything he has in his hands. On his wife’s accusation he puts him in the king’s prison. The Douay calls him a eunuch; the Hebrew word also means simply a court officer.',refs:'Gen 37:36; 39',ch:{Gen:[37,39]}},
+{id:'potwife',name:'Potiphar’s wife',c:3,role:'Joseph’s accuser',sum:'She asks Joseph day after day to lie with her. When he runs, leaving his garment in her hand, she uses it as evidence against him, first to the household and then to her husband. Genesis gives her no name. It is the second time a garment of Joseph’s is used to tell a lie about him.',refs:'Gen 39:7–20',ch:{Gen:[39]}},
+{id:'butler',name:'The chief butler and the chief baker',short:'The butler and the baker',c:3,role:'Pharaoh’s officers, in prison with Joseph',sum:'Each has a dream on the same night. Joseph reads the butler’s as restoration in three days and the baker’s as hanging in three days, and both come true on Pharaoh’s birthday. Joseph asks the butler to remember him. He forgets for two years, until Pharaoh dreams.',refs:'Gen 40; 41:9–13',ch:{Gen:[40,41]}},
+{id:'pharaoh',name:'Pharaoh',c:3,role:'King of Egypt in Joseph’s time',dy:'Pharao',sum:'Genesis does not name him. He dreams of seven fat cows eaten by seven lean and seven full ears swallowed by seven thin, finds no one to explain it, and on hearing Joseph makes him second in the kingdom the same day. He welcomes Joseph’s family, gives them Goshen, and is blessed by Jacob. By the end of the famine he owns all the land of Egypt except the priests’.',refs:'Gen 40–41; 45:16–20; 47; 50:4–6',ch:{Gen:[40,41,45,47,50]}},
+{id:'asenath',name:'Asenath',c:3,role:'Joseph’s Egyptian wife',dy:'Aseneth',sum:'Daughter of Potiphera, priest of On, the city the Greeks called Heliopolis, which is the name the Douay uses. Pharaoh gives her to Joseph. She is the mother of Manasseh and Ephraim, so that two of the tribes of Israel have an Egyptian priest for a grandfather.',refs:'Gen 41:45, 50; 46:20',ch:{Gen:[41,46]}},
+{id:'manasseh',name:'Manasseh',c:3,role:'Joseph’s elder son',nn:'The name is heard as forgetting',dy:'Manasses',sum:'Born in Egypt before the famine: “God hath made me to forget all my labours.” Jacob adopts him and his brother as his own sons, which gives Joseph a double share, and then crosses his hands to put the younger first.',refs:'Gen 41:51; 48; 50:23',ch:{Gen:[41,46,48,50]}},
+{id:'ephraim',name:'Ephraim',c:3,role:'Joseph’s younger son',nn:'The name is heard as fruitfulness',sum:'Blessed with Jacob’s right hand over his elder brother, against Joseph’s protest. His tribe becomes the strongest in the north, so much so that the prophets call the whole northern kingdom Ephraim.',refs:'Gen 41:52; 48; 50:23',ch:{Gen:[41,46,48,50]}}
+];
+// People who appear only in the family lists (c:9 keeps them out of the cast).
+const FP=[
+{id:'cainline',name:'Cain’s line',c:9,role:'Enoch, Irad, Mehujael, Methushael',dy:'Henoch, Irad, Maviael, Mathusael',sum:'Four generations from Cain to Lamech, with no ages and no deaths recorded. Cain builds a city and names it after his son Enoch. Two of the names, Enoch and Lamech, turn up again in Seth’s line, and two more are near-doubles of names there (Methushael and Methuselah, Irad and Jared).',refs:'Gen 4:17–18',ch:{Gen:[4]}},
+{id:'lamechkids',name:'Jabal, Jubal, Tubal-cain and Naamah',short:'Lamech’s children',c:9,role:'Children of Lamech of Cain’s line',dy:'Jabel, Jubal, Tubalcain, Noema',sum:'Jabal is “the father of such as dwell in tents, and of herdsmen”; Jubal of those who play harp and pipe; Tubal-cain is the first smith, working brass and iron. Naamah is their sister, and nothing is said of her. Genesis credits these crafts to men, in Cain’s line. The line is not carried further: everyone after the flood descends from Seth, through Noah.',refs:'Gen 4:19–22',ch:{Gen:[4]}},
+{id:'enosh',name:'Enosh',c:9,dates:'lived 905 years',role:'Son of Seth',dy:'Enos',sum:'His name is another Hebrew word for man. Of his time Genesis says men began to call on the name of the Lord; the Douay credits it to him personally: “this man began to call upon the name of the Lord.”',refs:'Gen 4:26; 5:6–11',ch:{Gen:[4,5]}},
+{id:'kenan',name:'Kenan',c:9,dates:'lived 910 years',role:'Son of Enosh',dy:'Cainan',sum:'Fourth from Adam. The Douay’s spelling, Cainan, makes him easy to confuse with Cain and with Canaan; he is neither.',refs:'Gen 5:9–14',ch:{Gen:[5]}},
+{id:'mahalalel',name:'Mahalalel',c:9,dates:'lived 895 years',role:'Son of Kenan',dy:'Malaleel',sum:'Fifth from Adam. Only his years are told.',refs:'Gen 5:12–17',ch:{Gen:[5]}},
+{id:'jared',name:'Jared',c:9,dates:'lived 962 years',role:'Son of Mahalalel, father of Enoch',sum:'Sixth from Adam, and the second-longest life in the list.',refs:'Gen 5:15–20',ch:{Gen:[5]}},
+{id:'methuselah',name:'Methuselah',c:9,dates:'lived 969 years',role:'Son of Enoch; the longest life in Scripture',dy:'Mathusala',sum:'Add up the figures and he dies in the year of the flood: 187 years to the birth of Lamech, 182 more to the birth of Noah, and 600 to the flood make 969.',refs:'Gen 5:21–27',ch:{Gen:[5]}},
+{id:'lamech_s',name:'Lamech, father of Noah',short:'Lamech (Noah’s father)',c:9,dates:'lived 777 years',role:'Son of Methuselah, of Seth’s line',sum:'He names his son Noah, saying he “shall comfort us from the works and labours of our hands on the earth, which the Lord hath cursed”: the first look back to the curse on the ground. His 777 years stand against the other Lamech’s seventy-sevenfold vengeance.',refs:'Gen 5:25–31',ch:{Gen:[5]}},
+{id:'arphaxad',name:'Arphaxad',c:9,role:'Son of Shem, born two years after the flood',sum:'First of the line from Shem to Abraham. In the Hebrew he lives 403 years after his son’s birth; the Douay, following the Latin, has 303. Luke’s genealogy, following the Greek Old Testament, puts a Cainan between him and Shelah (Lk 3:36).',refs:'Gen 10:22, 24; 11:10–13',ch:{Gen:[10,11]}},
+{id:'shelah_a',name:'Shelah, son of Arphaxad',short:'Shelah',c:9,role:'Father of Eber',dy:'Sale',sum:'Third from Shem. Not Judah’s son of the same name.',refs:'Gen 10:24; 11:12–15',ch:{Gen:[10,11]}},
+{id:'eber',name:'Eber',c:9,role:'Great-grandson of Shem',dy:'Heber',sum:'Shem is called “the father of all the children of Heber,” and the word Hebrew, first used of Abram at 14:13, looks like his name. He is the last of the long-lived: after him the ages in the list drop by half.',refs:'Gen 10:21, 24–25; 11:14–17',ch:{Gen:[10,11]}},
+{id:'peleg',name:'Peleg',c:9,role:'Son of Eber',nn:'The name means division',dy:'Phaleg',sum:'So named “because in his days the earth was divided,” which most read as the scattering at Babel. The line of promise runs through him; his brother Joktan’s line goes to Arabia.',refs:'Gen 10:25; 11:16–19',ch:{Gen:[10,11]}},
+{id:'joktan',name:'Joktan',c:9,role:'Son of Eber, brother of Peleg',dy:'Jectan',sum:'Father of thirteen peoples of southern Arabia, among them Sheba, Ophir and Havilah: the lands of gold and spice. Solomon’s visitor comes from Sheba (see [[s:sheba|The queen of Sheba]] on the Samuel page).',refs:'Gen 10:25–30',ch:{Gen:[10]}},
+{id:'reu',name:'Reu',c:9,role:'Son of Peleg',sum:'Fifth from Shem. Only his years are told.',refs:'Gen 11:18–21',ch:{Gen:[11]}},
+{id:'serug',name:'Serug',c:9,role:'Son of Reu',dy:'Sarug',sum:'Sixth from Shem, great-grandfather of Abraham.',refs:'Gen 11:20–23',ch:{Gen:[11]}},
+{id:'nahor_g',name:'Nahor, grandfather of Abraham',short:'Nahor (the grandfather)',c:9,role:'Son of Serug, father of Terah',dy:'Nachor',sum:'He lives 148 years, the shortest life in the line. Abraham’s brother is named after him.',refs:'Gen 11:22–25',ch:{Gen:[11]}},
+// ---- the nations
+{id:'gomer',name:'Gomer',c:9,role:'Son of Japheth',sum:'Usually identified with the Cimmerians, north of the Black Sea. His son Togarmah supplies horses to Tyre in Ezekiel 27:14, and Gomer marches with Gog in Ezekiel 38:6.',refs:'Gen 10:2–3; Ezek 38:6',ch:{Gen:[10]}},
+{id:'magog',name:'Magog, Tubal and Meshech',short:'Magog, Tubal, Meshech',c:9,role:'Sons of Japheth',dy:'Magog, Thubal, Mosoch',sum:'Peoples of the far north, in or beyond Asia Minor. Ezekiel gathers them under “Gog, the land of Magog,” for the last assault on Israel (Ezek 38–39), and the Apocalypse borrows the names (Rev 20:8).',refs:'Gen 10:2; Ezek 38:2',ch:{Gen:[10]}},
+{id:'madai',name:'Madai',c:9,role:'Son of Japheth: the Medes',sum:'The Medes, east of Assyria, who with the Persians take Babylon. Tobit’s story runs between Nineveh and Media (see [[e:road|The road and the wedding night]] on the Exile page).',refs:'Gen 10:2',ch:{Gen:[10]}},
+{id:'javan',name:'Javan',c:9,role:'Son of Japheth: the Greeks',sum:'Javan is Ionia, the Hebrew name for the Greeks. His sons include Tarshish, the far western port Jonah sails for, and Kittim, properly Cyprus, a name later stretched to cover Macedon and then Rome (1 Macc 1:1; Dan 11:30). The Greeks come into the story in earnest on the Maccabees page ([[m:desolation|The abomination of desolation]]).',refs:'Gen 10:2, 4–5',ch:{Gen:[10]}},
+{id:'cush',name:'Cush',c:9,role:'Son of Ham',dy:'Chus',sum:'The land south of Egypt, Nubia, which older Bibles call Ethiopia. Nimrod is counted his son, which ties him to Mesopotamia as well.',refs:'Gen 10:6–8',ch:{Gen:[10]}},
+{id:'mizraim',name:'Mizraim',c:9,role:'Son of Ham: Egypt',dy:'Mesram, Mesraim',sum:'Mizraim is simply the Hebrew word for Egypt. Abram goes down there in the first famine and Jacob’s whole house in the last.',refs:'Gen 10:6, 13–14',ch:{Gen:[10]}},
+{id:'philistines',name:'The Philistines',c:9,role:'Counted under Egypt, through the Casluhim and Caphtorim',sum:'Genesis lists them under Ham, by way of Egypt and Caphtor, which is usually taken to be Crete; Amos says the Lord brought them from there (Amos 9:7, where the Douay has Cappadocia). Abraham and Isaac deal with a king of Gerar in “the land of the Palestines.” As a power on the coast they belong to the Samuel page ([[s:arkcaptured|The ark taken and sent back]]; [[s:goliath|David and Goliath]]).',refs:'Gen 10:14; 21:32–34; 26',ch:{Gen:[10,21,26]}},
+{id:'put',name:'Put',c:9,role:'Son of Ham',dy:'Phuth',sum:'Usually identified with Libya. The prophets name it among Egypt’s allies.',refs:'Gen 10:6',ch:{Gen:[10]}},
+{id:'sidon',name:'Sidon',c:9,role:'Firstborn of Canaan: the Phoenicians',sum:'The great port north of Israel, older sister of Tyre. Jezebel is a Sidonian princess, and Elijah is sent to a widow in Sidon’s territory (see [[k:elijah|Elijah]] on the Kings page).',refs:'Gen 10:15, 19',ch:{Gen:[10]}},
+{id:'heth',name:'Heth',c:9,role:'Son of Canaan: the Hittites of the land',sum:'The “children of Heth” sell Abraham the cave at Hebron, and Esau marries two of their daughters, to his parents’ grief. Uriah, centuries on, is one of them ([[s:uriah|Bathsheba and Uriah]]).',refs:'Gen 10:15; 23; 26:34–35; 27:46',ch:{Gen:[10,23,26,27]}},
+{id:'canaanites',name:'The Jebusites, the Amorites and the rest',short:'Jebusites, Amorites and the rest',c:9,role:'The peoples of Canaan',sum:'Nine more peoples are listed under Canaan. The Jebusites hold Jerusalem until David takes it ([[s:zion|Jerusalem taken]]). Amorite is often used for all of them together, as when Abram is told that “as yet the iniquities of the Amorrhites are not at the full” (15:16): the reason the land is promised now and given four centuries later.',refs:'Gen 10:16–19; 15:16, 19–21',ch:{Gen:[10,15]}},
+{id:'elam',name:'Elam',c:9,role:'Son of Shem',sum:'The country east of Babylonia, with its capital at Susa. Its king Chedorlaomer leads the raid of chapter 14. Susa is later the Persian court of Esther ([[e:susa|The court at Susa]]).',refs:'Gen 10:22; 14:1',ch:{Gen:[10,14]}},
+{id:'asshur',name:'Asshur',c:9,role:'Son of Shem: Assyria',dy:'Assur',sum:'Assyria, the empire that will destroy the northern kingdom. Nineveh is founded out of Nimrod’s land (10:11). See [[k:jonah|Jonah]] and [[k:nahum|Nahum]] on the Kings page.',refs:'Gen 10:11, 22',ch:{Gen:[10]}},
+{id:'lud',name:'Lud',c:9,role:'Son of Shem',sum:'Often identified with Lydia in Asia Minor; the identification is uncertain.',refs:'Gen 10:22',ch:{Gen:[10]}},
+{id:'aram',name:'Aram',c:9,role:'Son of Shem: the Arameans, or Syrians',sum:'The people of Damascus and the upper Euphrates. Abraham’s kin in Haran are called Syrians, and the region is Paddan-aram, which the Douay gives as “Mesopotamia of Syria.” Aram’s son Uz shares a name with Job’s country. The kings of Damascus are the standing enemy in [[k:elisha|Elisha]]’s time.',refs:'Gen 10:22–23; 25:20; 28:5',ch:{Gen:[10,25,28]}},
+// ---- Abraham's house
+{id:'nahor',name:'Nahor, brother of Abraham',short:'Nahor',c:9,role:'Son of Terah; head of the family that stayed in Haran',dy:'Nachor',sum:'He marries his niece Milcah and has eight sons by her and four by a concubine: twelve, like Ishmael and like Jacob. One of the eight is Bethuel, father of Rebekah and Laban. His sons Uz and Buz share their names with Job’s country and with the clan of Elihu the Buzite, in the book of Job. Laban swears by “the God of Abraham, and the God of Nachor” (31:53).',refs:'Gen 11:26–29; 22:20–24; 24:10, 15; 31:53',ch:{Gen:[11,22,24,31]}},
+{id:'milcah',name:'Milcah',c:9,role:'Daughter of Haran; wife of her uncle Nahor',dy:'Melcha',sum:'Lot’s sister, and Rebekah’s grandmother. The news of her children reaches Abraham just after Moriah, which is how the reader learns there is a wife for Isaac.',refs:'Gen 11:29; 22:20–23; 24:15, 24',ch:{Gen:[11,22,24]}},
+{id:'bethuel',name:'Bethuel',c:9,role:'Son of Nahor and Milcah; father of Rebekah and Laban',dy:'Bathuel',sum:'He is alive when the servant comes for Rebekah, but his son Laban does most of the talking.',refs:'Gen 22:22–23; 24:15, 50; 25:20; 28:2, 5',ch:{Gen:[22,24,25,28]}},
+{id:'haran',name:'Haran, brother of Abraham',short:'Haran',c:9,role:'Son of Terah; father of Lot',dy:'Aran',sum:'He dies in Ur before the family leaves, “before Thare his father.” His son Lot goes with Abram; his daughter Milcah marries Nahor. He is not the city of Haran, which is a different word in Hebrew.',refs:'Gen 11:26–31',ch:{Gen:[11]}},
+{id:'moab',name:'Moab',c:9,role:'Son of Lot by his elder daughter: the Moabites',sum:'The people east of the Dead Sea. Israel is forbidden to take their land, “because I have given Ar to the children of Lot” (Deut 2:9), and forbidden to admit them to the assembly (Deut 23:3). Balak of Moab hires Balaam; Eglon of Moab oppresses Israel; and Ruth the Moabite becomes David’s great-grandmother.',refs:'Gen 19:30–37; Deut 2:9; Ruth 1:4; 4:17',ch:{Gen:[19]}},
+{id:'benammi',name:'Ben-ammi',c:9,role:'Son of Lot by his younger daughter: the Ammonites',nn:'The name means son of my people',dy:'Ammon',sum:'The people east of the Jordan, around Rabbah, the modern Amman. Their land too is off limits to Israel (Deut 2:19). Jephthah, Saul and David all fight them; Uriah dies under the walls of Rabbah ([[s:uriah|Bathsheba and Uriah]]); and Solomon’s heir Rehoboam has an Ammonite mother.',refs:'Gen 19:38; Deut 2:19; 1 Kgs 14:21',ch:{Gen:[19]}},
+{id:'princes',name:'The twelve princes of Ishmael',short:'The twelve princes',c:9,role:'Sons of Ishmael',dy:'Nabajoth, Cedar, Adbeel, Mabsam, Masma, Duma, Massa, Hadar, Thema, Jethur, Naphis, Cedma',sum:'Nebaioth, Kedar, Adbeel, Mibsam, Mishma, Dumah, Massa, Hadad, Tema, Jetur, Naphish and Kedemah: twelve, as God promised Abraham (17:20), settled “from Hevila as far as Sur,” across northern Arabia. Kedar is the one the prophets and psalms keep naming, for its tents and its flocks. Ishmael’s daughter, sister of Nebaioth, marries Esau.',refs:'Gen 17:20; 25:12–18; 28:9; 36:3',ch:{Gen:[25,28,36]}},
+{id:'midian',name:'Midian',c:9,role:'Son of Abraham by Keturah: the Midianites',dy:'Madian',sum:'A people of the desert east and south of Canaan. Midianite traders carry Joseph to Egypt. Moses flees to Midian, marries the daughter of its priest, and meets God there at the bush. Later Midian joins Moab against Israel (Num 25; 31), and Gideon drives them out (Judg 6–8).',refs:'Gen 25:2, 4; 37:28, 36; Exod 2:15–16',ch:{Gen:[25,37]}},
+{id:'keturahsons',name:'Keturah’s other sons',c:9,role:'Zimran, Jokshan, Medan, Ishbak and Shuah',dy:'Zamran, Jecsan, Madan, Jesboc, Sue',sum:'Peoples of the Arabian desert. Jokshan is father of a Sheba and a Dedan, names that also appear under Cush and under Joktan. Shuah may be the home of Job’s friend Bildad the Shuhite. Abraham sends them all “to the east country” with gifts, so that Isaac inherits alone.',refs:'Gen 25:1–6',ch:{Gen:[25]}},
+{id:'eliphaz',name:'Eliphaz',c:9,role:'Esau’s firstborn, by Adah',sum:'Father of Teman, whose name becomes a byword for Edom and its wise men, and by his concubine Timna father of Amalek. The chief of Job’s friends is an Eliphaz the Temanite.',refs:'Gen 36:4, 10–12, 15–16',ch:{Gen:[36]}},
+{id:'amalek',name:'Amalek',c:9,role:'Grandson of Esau, by Eliphaz and Timna',dy:'Amalech',sum:'Ancestor of the Amalekites, who attack Israel on the way out of Egypt (Exod 17) and are put under the ban. Saul’s failure to carry it out costs him the kingdom: see [[s:agag|Amalek and Agag]] on the Samuel page. Haman, in Esther, is called an Agagite.',refs:'Gen 36:12, 16; Exod 17:8–16',ch:{Gen:[36]}},
+{id:'reuel',name:'Reuel, and the sons of Oholibamah',short:'Esau’s other sons',c:9,role:'Sons of Esau',dy:'Rahuel; Oolibama’s sons Jehus, Ihelon and Core',sum:'Reuel is Esau’s son by Basemath, Ishmael’s daughter, so that Abraham’s two rejected lines join in him. Jeush, Jalam and Korah are the sons of Oholibamah. Each becomes a clan of Edom.',refs:'Gen 36:4–5, 13–14, 17–18',ch:{Gen:[36]}},
+{id:'chiefs',name:'The chiefs and kings of Edom',c:9,role:'Esau’s descendants in Mount Seir',sum:'Chapter 36 lists Edom’s clan chiefs, whom the Douay calls dukes, the Horites who were in Seir before them, and eight kings who reigned “before the children of Israel had a king.” Esau has chiefs and kings while Jacob’s sons are still shepherds bound for slavery. What became of Edom afterward is on the Exile page: [[e:esau|What became of Esau]].',refs:'Gen 36:15–43',ch:{Gen:[36]}},
+{id:'er_onan',name:'Er and Onan',c:9,role:'Judah’s first two sons, by the daughter of Shua',dy:'Her and Onan',sum:'Er marries Tamar and is “wicked in the sight of the Lord,” who takes his life; Genesis does not say how he sinned. Onan is told to raise a child for his dead brother and takes the wife while refusing the child, and dies for it.',refs:'Gen 38:3–10; 46:12',ch:{Gen:[38,46]}},
+{id:'shelah_j',name:'Shelah, son of Judah',short:'Shelah',c:9,role:'Judah’s third son',dy:'Sela',sum:'Promised to Tamar and withheld, which is what sends her to the roadside. He lives, and a clan of Judah descends from him (Num 26:20).',refs:'Gen 38:5, 11, 14, 26; 46:12',ch:{Gen:[38,46]}},
+{id:'zerah',name:'Zerah',c:9,role:'Son of Judah and Tamar, twin of Perez',dy:'Zara',sum:'His hand comes out first and is tied with a scarlet thread, and then his brother is born ahead of him. Achan, who brings trouble on Israel at Jericho, is of his clan (Josh 7:1).',refs:'Gen 38:27–30; 46:12',ch:{Gen:[38,46]}},
+{id:'hezron',name:'Hezron, and the line to David',short:'Hezron … David',c:9,role:'Son of Perez',dy:'Hesron',sum:'Born before the move to Egypt (46:12). The book of Ruth carries the line on from him: Ram, Amminadab, Nahshon, Salmon, Boaz, Obed, Jesse, David (Ruth 4:18–22). David’s story begins on the Samuel page ([[s:anointing|The Lord beholdeth the heart]]), and Matthew opens the New Testament with this same list (Mt 1:3–6).',refs:'Gen 46:12; Ruth 4:18–22; Mt 1:3–6',ch:{Gen:[46]}}
+];
+
+// The three descent lists. p = person id; n = one-line note (defaults to the person's role);
+// k = children; m = a label row (a mother, or a pointer); pr = on the line of promise; g = generation number.
+const FAM=[
+{id:'line',t:'From Adam to Abraham',n:'Twenty generations in two lists of ten: Adam to Noah (Genesis 5) and Shem to Abram (Genesis 11). The figures are the Hebrew ones, which the Douay follows. The Greek Old Testament has larger numbers at many points, so no date can be built on them. Branches that leave the line open under the name they leave from.',flat:true,tree:[
+{p:'adam',g:1,pr:1,n:'Father of Seth at 130.',k:[{p:'cain',n:'The firstborn. His line is told first, and stops.',k:[{p:'cainline'},{p:'lamech_c',k:[{p:'lamechkids'}]}]},{p:'abel',n:'Killed by Cain; no children.'}]},
+{p:'seth',g:2,pr:1,n:'Father of Enosh at 105.'},
+{p:'enosh',g:3,pr:1,n:'Father of Kenan at 90.'},
+{p:'kenan',g:4,pr:1,n:'Father of Mahalalel at 70.'},
+{p:'mahalalel',g:5,pr:1,n:'Father of Jared at 65.'},
+{p:'jared',g:6,pr:1,n:'Father of Enoch at 162.'},
+{p:'enoch',g:7,pr:1,n:'Father of Methuselah at 65. He does not die: “God took him.”'},
+{p:'methuselah',g:8,pr:1,n:'Father of Lamech at 187. Dies in the year of the flood.'},
+{p:'lamech_s',g:9,pr:1,n:'Father of Noah at 182.'},
+{p:'noah',g:10,pr:1,n:'Father of three sons after he is 500; 600 at the flood.',k:[{p:'ham',n:'See the nations, below.'},{p:'japheth',n:'See the nations, below.'}]},
+{p:'shem',g:11,pr:1,n:'Father of Arphaxad at 100, two years after the flood.'},
+{p:'arphaxad',g:12,pr:1,n:'Father of Shelah at 35; lived 403 years more (303 in the Douay).'},
+{p:'shelah_a',g:13,pr:1,n:'Father of Eber at 30; lived 403 years more.'},
+{p:'eber',g:14,pr:1,n:'Father of Peleg at 34; lived 430 years more.',k:[{p:'joktan',n:'Peleg’s brother: the peoples of southern Arabia.'}]},
+{p:'peleg',g:15,pr:1,n:'Father of Reu at 30; lived 209 years more. “In his days the earth was divided.”'},
+{p:'reu',g:16,pr:1,n:'Father of Serug at 32; lived 207 years more.'},
+{p:'serug',g:17,pr:1,n:'Father of Nahor at 30; lived 200 years more.'},
+{p:'nahor_g',g:18,pr:1,n:'Father of Terah at 29; lived 119 years more.'},
+{p:'terah',g:19,pr:1,n:'Father of Abram, Nahor and Haran after he is 70. Dies in Haran.'},
+{p:'abraham',g:20,pr:1,n:'His house is the third list, below.'}
+]},
+{id:'nations',t:'The nations from Noah’s sons',n:'Genesis 10 lists seventy peoples as one family. Only those that come back later in the Bible are shown here. The identifications with known peoples are the usual ones, and some are guesses. The list is a map more than a pedigree: peoples are grouped partly by region and by who ruled whom.',tree:[
+{p:'japheth',n:'The north and west.',k:[{p:'gomer'},{p:'magog',n:'The far north; Ezekiel’s Gog.'},{p:'madai'},{p:'javan'}]},
+{p:'ham',n:'The south, and the powers nearest Israel.',k:[{p:'cush',k:[{p:'nimrod',n:'Babel and the land of Shinar.'}]},{p:'mizraim',k:[{p:'philistines'}]},{p:'put'},{p:'canaan',n:'Cursed by Noah. The peoples of the promised land.',k:[{p:'sidon'},{p:'heth'},{p:'canaanites'}]}]},
+{p:'shem',pr:1,n:'The east; the line of promise.',k:[{p:'elam'},{p:'asshur'},{p:'arphaxad',pr:1,n:'To Eber, Peleg and Abraham: the first list.',k:[{p:'joktan',n:'Eber’s other son: southern Arabia.'}]},{p:'lud'},{p:'aram'}]}
+]},
+{id:'house',t:'Abraham’s house',n:'Terah’s three sons and what came of each. Abraham’s children are grouped by their mothers, and so are Jacob’s. Every people that descends from this family and comes back later in the Bible is here, with a pointer to where.',tree:[
+{p:'abraham',pr:1,n:'Terah’s son. Eight sons by three women; one heir.',o:1,k:[
+  {m:'By Hagar, Sarah’s Egyptian maid'},
+  {p:'ishmael',n:'Blessed, but not the heir. The Ishmaelites.',k:[{p:'princes'}]},
+  {m:'By Sarah'},
+  {p:'isaac',pr:1,n:'The heir. Marries Rebekah, of Nahor’s house.',o:1,k:[
+    {p:'esau',n:'The elder twin. Edom.',k:[{p:'eliphaz',k:[{p:'amalek'}]},{p:'reuel'},{p:'chiefs'}]},
+    {p:'jacob',pr:1,n:'The younger twin. Israel. Twelve sons and a daughter by four women.',o:1,k:[
+      {m:'By Leah'},
+      {p:'reuben',n:'The firstborn; loses his place.'},
+      {p:'simeon'},
+      {p:'levi',n:'The priestly tribe; Moses and Aaron.'},
+      {p:'judah',pr:1,n:'The royal tribe.',k:[
+        {m:'By the daughter of Shua, a Canaanite'},
+        {p:'er_onan'},{p:'shelah_j'},
+        {m:'By Tamar, his daughter-in-law'},
+        {p:'perez',pr:1,n:'The line goes on through him.',k:[{p:'hezron',pr:1,n:'Ram, Amminadab, Nahshon, Salmon, Boaz, Obed, Jesse, David.'}]},
+        {p:'zerah'}]},
+      {p:'issachar'},
+      {p:'zebulun'},
+      {p:'dinah',n:'The only daughter named.'},
+      {m:'By Bilhah, Rachel’s maid'},
+      {p:'dan'},{p:'naphtali'},
+      {m:'By Zilpah, Leah’s maid'},
+      {p:'gad'},{p:'asher'},
+      {m:'By Rachel'},
+      {p:'joseph',n:'Counted as two tribes through his sons.',k:[{m:'By Asenath, daughter of the priest of On'},{p:'manasseh'},{p:'ephraim',n:'The younger, set first.'}]},
+      {p:'benjamin',n:'The youngest; Saul’s tribe, and Paul’s.'}
+    ]}
+  ]},
+  {m:'By Keturah'},
+  {p:'midian'},
+  {p:'keturahsons'}
+]},
+{p:'nahor',n:'Terah’s son. Stays in Haran; the wives come from his house.',k:[{p:'milcah',n:'His wife, and his niece.'},{p:'bethuel',k:[{p:'rebekah',n:'Marries Isaac.'},{p:'laban',n:'Father of Leah and Rachel, who marry Jacob.'}]}]},
+{p:'haran',n:'Terah’s son. Dies in Ur.',k:[{p:'lot',n:'Goes with Abraham; settles in Sodom.',k:[{p:'moab'},{p:'benammi'}]},{p:'milcah',n:'Marries her uncle Nahor.'}]}
+]}
+];
+const ACTS=[
+{t:'The beginnings',n:'Genesis 1–11. Creation, the garden, the first murder, the flood, and the scattering of the nations. These chapters cannot be dated, and the Church does not ask that they be read as a modern history is written; see the Notes.'},
+{t:'Abraham',n:'Genesis 12:1–25:18. One man is called out of the nations so that all of them may be blessed. He is promised land and descendants at seventy-five, childless, and most of it is still unkept when he dies at a hundred and seventy-five.'},
+{t:'Isaac and Jacob',n:'Genesis 25:19–36:43. The promise passes to the younger twin, by means that do nobody credit. Twenty years in Haran, twelve sons, a new name.'},
+{t:'Joseph',n:'Genesis 37–50. The sons of Jacob sell their brother, and he saves their lives. The family ends the book in Egypt, seventy strong, holding a promise that they will leave.'}
+];
+const SCENES=[
+{id:'creation',act:0,t:'The seven days',r:'Genesis 1:1–2:3',d:'the beginning',ch:{Gen:[1,2]},who:['adam','eve'],n:'God speaks and it is so. Three days of dividing: light from dark, the waters above from the waters below, sea from land. Three days of filling what was divided: sun, moon and stars; fish and birds; beasts and man. Man and woman are made last, in the image of God, and told to fill the earth and rule it. On the seventh day God rests and makes the day holy. Everything in the account is good. The trouble starts in chapter 3.'},
+{id:'garden',act:0,t:'The garden and the fall',r:'Genesis 2:4–3:24',d:'Eden',ch:{Gen:[2,3]},who:['adam','eve'],n:'A second account, closer in: the man formed from the ground, the garden, one tree forbidden, the animals named, the woman built from his side. Then the serpent, a question about what God really said, the fruit, and the hiding. Judgment falls on serpent, woman and man in turn, and inside the sentence on the serpent is the first promise (3:15). They are clothed and sent out, and the way back to the tree of life is guarded.'},
+{id:'cain',act:0,t:'Cain and Abel',r:'Genesis 4',d:'east of Eden',ch:{Gen:[4]},who:['cain','abel','adam','eve','lamech_c','seth'],n:'Sin moves from the garden to the family in one generation. Two brothers bring offerings; one is regarded; the other brother kills him. Cain’s line builds a city and invents the crafts, and by its seventh generation Lamech is singing about revenge. Seth is born in Abel’s place, and with his son worship begins again.'},
+{id:'generations',act:0,t:'From Adam to Noah',r:'Genesis 5:1–6:8',d:'ten generations',ch:{Gen:[5,6]},who:['adam','seth','enoch','noah'],n:'Ten generations with one refrain, “and he died,” broken only for Enoch, whom God took. Then four of the strangest verses in the book: the sons of God, the daughters of men, and the giants. Who the sons of God are was disputed before Christ and has been since; the deep dive will set out the readings. The verdict is not in doubt. The Lord sees that every thought of man’s heart is bent on evil, and is sorry he made him. “But Noe found grace before the Lord.”'},
+{id:'flood',act:0,t:'The flood and the covenant',r:'Genesis 6:9–9:17',d:'the mountains of Ararat',ch:{Gen:[6,7,8,9]},who:['noah','shem','ham','japheth'],n:'The waters above and the waters below, divided on the second day, come back together, and creation is undone as far as one boat. Eight people and the animals ride it out. “God remembered Noe,” the waters go down, and the world starts again with the first altar, the blessing Adam was given, leave to eat meat, a law against bloodshed, and a covenant with every living creature, signed with the bow in the clouds.'},
+{id:'nations',act:0,t:'Noah’s sons, the nations and Babel',r:'Genesis 9:18–11:32',d:'Shinar; Ur; Haran',ch:{Gen:[9,10,11]},who:['noah','ham','canaan','shem','japheth','nimrod','terah','abraham','sarah','lot'],n:'The new world goes wrong as fast as the old: Noah drunk in his tent, Ham’s offense, a curse on Canaan. Some seventy nations are traced to the three sons. At Babel men build a tower to make a name for themselves, and are scattered with their languages confused. Then the list narrows, generation by generation, to one family in Ur, and to a man whose wife cannot have children.'},
+
+{id:'call',act:1,t:'The call, and the road to Canaan',r:'Genesis 12–13',d:'Haran; Shechem; Bethel; Egypt; Hebron',ch:{Gen:[12,13]},who:['abraham','sarah','lot'],n:'The Lord tells Abram to go, and promises a nation, a name, and a blessing for every family on earth. He goes, builds altars at Shechem and Bethel, and at the first famine leaves for Egypt, where he passes Sarai off as his sister and Pharaoh takes her. Back in the land, he and Lot separate. Lot takes the green plain by Sodom, and Abram is promised everything he can see.'},
+{id:'kings',act:1,t:'Four kings, and Melchizedek',r:'Genesis 14',d:'the Dead Sea; Dan; Salem',ch:{Gen:[14]},who:['abraham','lot','melchizedek'],n:'The only war in the patriarchs’ lives. Four eastern kings put down a revolt of five cities of the plain and carry off Lot. Abram, here called “the Hebrew” for the first time, goes after them with three hundred and eighteen men and brings everyone back. Two kings come out to meet him: the king of Salem with bread, wine and a blessing, and the king of Sodom with an offer Abram refuses.'},
+{id:'covenant',act:1,t:'The covenant between the pieces',r:'Genesis 15',d:'Hebron',ch:{Gen:[15]},who:['abraham','servant'],n:'Abram points out that he is still childless and that his heir is a servant. He is taken outside and shown the stars, and he believes. Then a covenant is cut. Animals are divided, a deep sleep and a horror of darkness fall on Abram, four hundred years of slavery are foretold, and a smoking furnace and a lamp of fire pass between the halves. Only God passes through.'},
+{id:'hagar',act:1,t:'Hagar, Ishmael and the sign of the covenant',r:'Genesis 16–17',d:'Hebron; the road to Shur',ch:{Gen:[16,17]},who:['abraham','sarah','hagar','ishmael','isaac'],n:'Ten years in the land and no child. Sarai proposes her maid; Abram agrees; Hagar conceives and the household comes apart. Thirteen years later the Lord appears again, renames Abram and Sarai, commands circumcision as the sign of the covenant in the flesh, and says for the first time that the heir will be Sarah’s own son. Abraham laughs, and asks whether Ishmael might do.'},
+{id:'sodom',act:1,t:'Three visitors, and Sodom',r:'Genesis 18–19',d:'Mamre; Sodom; Zoar',ch:{Gen:[18,19]},who:['abraham','sarah','lot'],n:'Three men come to Abraham’s tent in the heat of the day and are fed; the Lord is among them. Sarah, listening, laughs at the promise of a son within the year. Abraham then walks with the Lord toward Sodom and bargains him down from fifty just men to ten. Two angels reach the city by evening. By morning it is burning, Lot’s wife is a pillar of salt, and Lot is in a cave with his daughters, who get him drunk to have children by him.'},
+{id:'isaacborn',act:1,t:'Isaac born, Ishmael sent away',r:'Genesis 20–21',d:'Gerar; Beer-sheba',ch:{Gen:[20,21]},who:['abraham','sarah','abimelech','isaac','hagar','ishmael'],n:'Abraham tells the sister story again, to Abimelech of Gerar, in the very year Sarah is to bear the promised son. God warns the king in a dream. Then Isaac is born, “at the time that God had foretold.” At his weaning Sarah sees Ishmael at play and demands that mother and son be sent away; God tells Abraham to do it, and hears the boy in the wilderness. Abraham and Abimelech swear a treaty at the well of Beer-sheba.'},
+{id:'moriah',act:1,t:'The binding of Isaac',r:'Genesis 22',d:'the land of Moriah',ch:{Gen:[22]},who:['abraham','isaac','rebekah'],n:'“God tempted Abraham”: the reader is told it is a test, and Abraham is not. He is to offer the son he waited twenty-five years for. Three days’ journey, the wood laid on Isaac, one question from the boy and one answer from his father, the altar, the knife, and a voice from heaven. A ram dies instead. The promise is repeated, this time on oath. The chapter ends with news from Haran: Abraham’s brother has a granddaughter named Rebekah.'},
+{id:'machpelah',act:1,t:'A grave, a wife, and Abraham’s death',r:'Genesis 23:1–25:18',d:'Hebron; the city of Nahor',ch:{Gen:[23,24,25]},who:['abraham','sarah','servant','isaac','rebekah','laban','keturah','ishmael'],n:'Sarah dies, and Abraham, promised the whole land, has to buy a place to bury her: a field and a cave at Hebron, at full price, before witnesses. He sends his servant back to his own kin for a wife for Isaac, in the longest chapter of Genesis, and Rebekah comes. He marries again, sends his other sons east, and dies. Isaac and Ishmael bury him. Ishmael’s twelve sons are listed, and his line is set aside.'},
+
+{id:'twins',act:2,t:'The twins, and Isaac at Gerar',r:'Genesis 25:19–26:35',d:'Beer-lahai-roi; Gerar; Beer-sheba',ch:{Gen:[25,26]},who:['isaac','rebekah','esau','jacob','abimelech'],n:'Rebekah is barren twenty years. Isaac prays, she conceives twins who struggle in the womb, and she is told that the elder will serve the younger. Esau comes home hungry and sells his birthright for bread and lentils. Chapter 26 is the only chapter Isaac has to himself, and it is his father’s life in small: a famine, the promise, the wife called a sister, quarrels over wells, a treaty with Abimelech.'},
+{id:'blessing',act:2,t:'The stolen blessing, and Bethel',r:'Genesis 27–28',d:'Beer-sheba; Bethel',ch:{Gen:[27,28]},who:['isaac','rebekah','esau','jacob','ishmael'],n:'Isaac, blind and thinking himself near death, sends Esau to hunt for a meal and a blessing. Rebekah dresses Jacob in his brother’s clothes and in goatskins, and Jacob lies to his father three times. The blessing, once given, stands. Esau weeps and plans murder; Jacob is sent to Haran, officially for a wife. On the way he sleeps on a stone and sees a ladder from earth to heaven, and the Lord gives him, unasked, what he had stolen.'},
+{id:'laban',act:2,t:'Leah, Rachel and Laban',r:'Genesis 29–31',d:'Haran; Gilead',ch:{Gen:[29,30,31]},who:['jacob','laban','leah','rachel','bilhah','zilpah','reuben','simeon','levi','judah','dan','naphtali','gad','asher','issachar','zebulun','dinah','joseph'],n:'Jacob meets Rachel at a well and works seven years for her. In the morning it is Leah. The man who took the elder’s place by a disguise in the dark has the elder put in the younger’s place by the same means. He works seven more. The two sisters and their two maids bear him eleven sons and a daughter in a contest for his affection. After twenty years he slips away rich; Rachel takes her father’s household gods; Laban overtakes them, and the two men part at a boundary stone.'},
+{id:'peniel',act:2,t:'Peniel, and Esau',r:'Genesis 32–33',d:'Mahanaim; the Jabbok; Shechem',ch:{Gen:[32,33]},who:['jacob','esau','leah','rachel','joseph','shechem'],n:'Esau is coming with four hundred men. Jacob divides his camp, prays the first real prayer we hear from him, and sends ahead wave after wave of gifts. That night, alone at the ford, he wrestles a man until dawn, will not let go without a blessing, and leaves with a new name and a damaged hip. In the morning Esau runs to him, embraces him and weeps. Jacob promises to follow him to Seir and goes the other way.'},
+{id:'shechem',act:2,t:'Dinah and Shechem',r:'Genesis 34',d:'Shechem',ch:{Gen:[34]},who:['dinah','shechem','jacob','simeon','levi'],n:'Jacob has bought land outside Shechem and settled. The prince’s son violates his daughter and then asks to marry her. Jacob holds his peace. His sons make circumcision the price of the marriage, and while the men of the town are sore, Simeon and Levi kill every one of them and the rest plunder it. Jacob’s complaint is about his safety; the brothers’ answer is the last word in the chapter. God is not named in it.'},
+{id:'bethel2',act:2,t:'Back to Bethel, and Esau’s line',r:'Genesis 35–36',d:'Bethel; Bethlehem; Hebron; Seir',ch:{Gen:[35,36]},who:['jacob','rachel','benjamin','reuben','bilhah','isaac','esau'],n:'Jacob is sent back to Bethel to keep the vow he made there. The household buries its foreign gods; God appears and confirms the name Israel. Then three deaths and a scandal: Rebekah’s nurse; Rachel, in childbirth on the road to Bethlehem; Reuben’s offense with Bilhah; and Isaac, at a hundred and eighty, buried by both his sons. Chapter 36 gives Esau’s descendants in full, chiefs and kings, and with that Edom leaves the story.'},
+
+{id:'sold',act:3,t:'Joseph sold',r:'Genesis 37',d:'Hebron; Dothan',ch:{Gen:[37]},who:['joseph','jacob','reuben','judah','potiphar'],n:'Jacob loves Rachel’s son more than the rest and shows it with a coat. Joseph reports on his brothers and tells them his dreams, in which they bow to him. Sent to check on them at Dothan, he is stripped and thrown into a dry cistern. Reuben means to rescue him; Judah proposes selling him; he goes to Egypt for twenty pieces of silver. The brothers dip the coat in a kid’s blood and let their father draw his own conclusion.'},
+{id:'tamar',act:3,t:'Judah and Tamar',r:'Genesis 38',d:'Adullam; Timnah',ch:{Gen:[38]},who:['judah','tamar','perez'],n:'The Joseph story stops for a chapter to follow the brother who sold him. Judah marries a Canaanite and has three sons. Two die married to Tamar, and he keeps back the third. Tamar disguises herself, conceives by Judah, and when he orders her burnt, produces his own seal and staff. He admits she is more in the right than he. The chapter reads like an interruption, but the royal line comes out of it, and Judah begins to change in it.'},
+{id:'potiphar',act:3,t:'Potiphar’s house, and the prison',r:'Genesis 39–40',d:'Egypt',ch:{Gen:[39,40]},who:['joseph','potiphar','potwife','butler','pharaoh'],n:'Chapter 39 says four times that the Lord was with Joseph, twice as he rises and twice after he falls. He runs Potiphar’s house, refuses Potiphar’s wife, and is jailed on her word. Soon he is running the prison. He interprets dreams for two of Pharaoh’s officers, correctly, and asks the one who is freed to remember him. “But the chief butler, when things prospered with him, forgot his interpreter.”'},
+{id:'pharaoh',act:3,t:'Pharaoh’s dreams',r:'Genesis 41',d:'Egypt',ch:{Gen:[41]},who:['joseph','pharaoh','butler','asenath','manasseh','ephraim'],n:'Two years later Pharaoh dreams twice and no one can read it. The butler remembers. Joseph is shaved, dressed and brought up, and says before anything else that the answer is God’s and not his. Seven years of plenty, seven of famine, and a plan. By the end of the audience he has Pharaoh’s ring, an Egyptian name and an Egyptian wife. He is thirty. Two sons are born, and then the famine comes.'},
+{id:'brothers',act:3,t:'The brothers in Egypt',r:'Genesis 42–45',d:'Egypt and Canaan',ch:{Gen:[42,43,44,45]},who:['joseph','jacob','reuben','simeon','judah','benjamin','pharaoh'],n:'Ten brothers come to buy grain and bow to the governor, as the dreams said they would. He knows them; they do not know him. He neither takes revenge nor reveals himself. Step by step he sets up the choice they faced twenty-two years before, with Rachel’s other son in the place of the first. Will they go home and leave Benjamin a slave? Judah, who sold the first brother, offers himself for the second. Joseph cannot hold out any longer.'},
+{id:'goshen',act:3,t:'Jacob goes down to Egypt',r:'Genesis 46–47',d:'Beer-sheba; Goshen',ch:{Gen:[46,47]},who:['jacob','joseph','pharaoh','judah','dinah','perez','asenath','manasseh','ephraim','benjamin'],n:'At Beer-sheba, the last stop in the land, God tells Jacob not to fear Egypt: he will go down with him and bring him back. Seventy persons are counted. Father and son meet after twenty-two years. Jacob blesses Pharaoh and sums up his own life as short and hard. Joseph settles the family in Goshen and manages the famine so that Pharaoh ends up owning Egypt. Jacob makes Joseph swear to bury him at home.'},
+{id:'blessings',act:3,t:'The blessings, and two deaths',r:'Genesis 48–50',d:'Goshen; Hebron',ch:{Gen:[48,49,50]},who:['jacob','joseph','manasseh','ephraim','reuben','simeon','levi','judah','dan','naphtali','gad','asher','issachar','zebulun','benjamin','leah','pharaoh'],n:'Jacob adopts Joseph’s two sons and blesses them with his hands crossed, the younger first, as he himself once came first. He then speaks over each of his twelve sons in turn, part blessing, part verdict, part prophecy; the scepter goes to Judah. He dies and is carried to Hebron with an Egyptian state funeral. The brothers, afraid again, ask pardon, and Joseph gives the book its summary: “You thought evil against me: but God turned it into good.” He dies in Egypt, in a coffin, waiting.'}
+];
+// y: anoint (blesses, promises, commissions), save, betray (deceives, wrongs), kill, rebuke (judges, curses), tell (plain event)
+const EVS=[
+{s:'creation',a:'#God',y:'anoint',v:'creates',b:'#heaven and earth',r:'Gen 1:1–25',n:'By speaking. The refrain is that God saw that it was good, and after the sixth day, “very good.”'},
+{s:'creation',a:'#God',y:'anoint',v:'makes in his image, and blesses,',b:'#man, male and female',r:'Gen 1:26–31',n:'“Let us make man to our image and likeness.” The plural has been read as God addressing his heavenly court, and by Christians as a first hint of the Trinity.',also:['adam','eve']},
+{s:'creation',a:'#God',y:'anoint',v:'blesses and sanctifies',b:'#the seventh day',r:'Gen 2:1–3',n:'The only day that is blessed. The sabbath commandment appeals to it (Exod 20:11).'},
+{s:'garden',a:'#The Lord God',y:'anoint',v:'forms, and places in the garden,',b:'adam',r:'Gen 2:7–17',n:'One command: every tree but one. “In what day soever thou shalt eat of it, thou shalt die the death.”'},
+{s:'garden',a:'#The Lord God',y:'anoint',v:'builds from his side, and brings to him,',b:'eve',r:'Gen 2:18–25',n:'“Bone of my bones, and flesh of my flesh.” Christ quotes the next verse as the law of marriage (Mt 19:4–6).',also:['adam']},
+{s:'garden',a:'#The serpent',y:'betray',v:'deceives',b:'eve',r:'Gen 3:1–6',n:'He begins by misquoting the command and ends by denying the penalty: “you shall be as Gods.” She eats, and gives to her husband, and he eats.',also:['adam']},
+{s:'garden',a:'adam',y:'betray',v:'blames',b:'eve',r:'Gen 3:7–13',n:'And through her, God: “The woman, whom thou gavest me to be my companion.” She blames the serpent.'},
+{s:'garden',a:'#The Lord God',y:'rebuke',v:'curses',b:'#the serpent',r:'Gen 3:14–15',n:'“I will put enmities between thee and the woman, and thy seed and her seed.” The Douay goes on, “she shall crush thy head,” following the Latin; the Hebrew pronoun is he, or it, meaning the woman’s seed. Either way the serpent loses. Christians call the verse the first gospel.',also:['eve']},
+{s:'garden',a:'#The Lord God',y:'rebuke',v:'sentences',b:'eve',r:'Gen 3:16',n:'Pain in childbearing, and a husband’s rule where there had been a helper’s partnership.'},
+{s:'garden',a:'#The Lord God',y:'rebuke',v:'sentences',b:'adam',r:'Gen 3:17–19',n:'The ground is cursed on his account: toil, thorns, and “dust thou art, and into dust thou shalt return,” the words of Ash Wednesday.'},
+{s:'garden',a:'#The Lord God',y:'save',v:'clothes, and sends out of the garden,',b:'adam',r:'Gen 3:20–24',n:'Garments of skins first, then exile, so that he will not eat of the tree of life and live for ever as he now is. Cherubim and a flaming sword guard the way back.',also:['eve']},
+
+{s:'cain',a:'#The Lord',y:'anoint',v:'has regard for the offering of',b:'abel',r:'Gen 4:1–7',n:'Genesis does not say why. Hebrews says Abel offered by faith (Heb 11:4). Cain is warned that sin is “at the door,” and that he can master it.',also:['cain']},
+{s:'cain',a:'cain',y:'kill',v:'kills',b:'abel',r:'Gen 4:8–10',n:'“Where is thy brother Abel?” “I know not: am I my brother’s keeper?” As in the garden, the Lord opens with a question whose answer he knows.'},
+{s:'cain',a:'#The Lord',y:'rebuke',v:'curses, and marks for protection,',b:'cain',r:'Gen 4:11–16',n:'Cursed from the ground that drank the blood; a fugitive. What the mark was, Genesis does not say. Its purpose is that no one should kill him.'},
+{s:'cain',a:'lamech_c',y:'kill',v:'boasts of killing',b:'#a man',r:'Gen 4:17–24',n:'“Sevenfold vengeance shall be taken for Cain: but for Lamech seventy times sevenfold.”'},
+{s:'cain',a:'eve',y:'tell',v:'bears, in Abel’s place,',b:'seth',r:'Gen 4:25–26',n:'“God hath given me another seed.”',also:['adam']},
+
+{s:'generations',a:'#God',y:'save',v:'takes',b:'enoch',r:'Gen 5:21–24',n:'After three hundred and sixty-five years, a year of years. “He walked with God, and was seen no more.”'},
+{s:'generations',a:'#The sons of God',y:'betray',v:'take wives from',b:'#the daughters of men',r:'Gen 6:1–4',n:'“Now giants were upon the earth in those days.” The Hebrew word is Nephilim. The Lord limits man’s days to a hundred and twenty years.'},
+{s:'generations',a:'#The Lord',y:'rebuke',v:'resolves to destroy',b:'#mankind',r:'Gen 6:5–7',n:'“It repented him that he had made man on the earth.”'},
+{s:'generations',a:'#The Lord',y:'save',v:'looks with favor on',b:'noah',r:'Gen 6:8',n:'The first time the Bible uses its word for grace, or favor.'},
+
+{s:'flood',a:'#God',y:'anoint',v:'commands the ark of',b:'noah',r:'Gen 6:9–22',n:'Three hundred cubits by fifty by thirty; three decks, one door. “I will establish my covenant with thee”: the first use of the word covenant.'},
+{s:'flood',a:'#The Lord',y:'save',v:'shuts into the ark',b:'noah',r:'Gen 7:1–16',n:'With his wife, his three sons and their wives: eight in all (1 Pet 3:20). “The Lord shut him in on the outside.”',also:['shem','ham','japheth']},
+{s:'flood',a:'#The flood',y:'kill',v:'destroys',b:'#all flesh outside the ark',r:'Gen 7:11, 17–24',n:'“The fountains of the great deep” below and “the flood gates of heaven” above: the waters divided on the second day close again.'},
+{s:'flood',a:'#God',y:'save',v:'remembers',b:'noah',r:'Gen 8:1–19',n:'The turning point of the story. A wind passes over the waters, as the spirit of God moved over them at the beginning. The raven, the dove three times, the olive branch.'},
+{s:'flood',a:'noah',y:'anoint',v:'offers sacrifice to',b:'#the Lord',r:'Gen 8:20–22',n:'The first altar in Scripture. The Lord resolves never again to curse the earth for man’s sake, though man’s heart has not changed.'},
+{s:'flood',a:'#God',y:'anoint',v:'blesses, and makes a covenant with,',b:'noah',r:'Gen 9:1–17',n:'“Increase and multiply,” as to Adam. Meat is allowed, blood is not, and murder is answered with death, “for man was made to the image of God.” The sign is the bow in the clouds.',also:['shem','ham','japheth']},
+
+{s:'nations',a:'ham',y:'betray',v:'sees, and tells of, the nakedness of',b:'noah',r:'Gen 9:18–23',n:'Shem and Japheth walk in backward with a cloak. What exactly Ham did is argued over, because of the next line.',also:['shem','japheth']},
+{s:'nations',a:'noah',y:'rebuke',v:'curses',b:'canaan',r:'Gen 9:24–29',n:'When he learns “what his younger son had done to him.” The curse falls on Ham’s son and not on Ham; Shem is blessed, and Japheth with him.',also:['ham','shem','japheth']},
+{s:'nations',a:'nimrod',y:'tell',v:'founds a kingdom at',b:'#Babel',r:'Gen 10:8–12',n:'Set inside the table of nations. The first kingdom named in the Bible is Babylon.'},
+{s:'nations',a:'#The Lord',y:'rebuke',v:'confounds the speech of',b:'#the builders of Babel',r:'Gen 11:1–9',n:'“Let us make our name famous.” They build toward heaven, and the Lord has to come down to see it. Babel is Babylon; Genesis hears the name as confusion.'},
+{s:'nations',a:'terah',y:'tell',v:'sets out for Canaan with',b:'abraham',r:'Gen 11:27–32',n:'From Ur of the Chaldees, with Sarai and Lot. They stop at Haran, and Terah dies there. “And Sarai was barren, and had no children.”',also:['sarah','lot']},
+
+{s:'call',a:'#The Lord',y:'anoint',v:'calls',b:'abraham',r:'Gen 12:1–9',n:'“In thee shall all the kindred of the earth be blessed.” He is seventy-five. At Shechem he is told, “To thy seed will I give this land.”'},
+{s:'call',a:'abraham',y:'betray',v:'passes off as his sister',b:'sarah',r:'Gen 12:10–20',n:'In Egypt, for fear of being killed for her. Pharaoh takes her and enriches Abram for it; plagues strike Pharaoh’s house; he sends them both away. The first of three such stories.'},
+{s:'call',a:'abraham',y:'save',v:'gives the choice of the land to',b:'lot',r:'Gen 13:1–13',n:'“If thou wilt go to the left hand, I will take the right.” Lot chooses by sight: the plain looked “as the paradise of the Lord.”'},
+{s:'call',a:'#The Lord',y:'anoint',v:'promises all the land he can see to',b:'abraham',r:'Gen 13:14–18',n:'And descendants like the dust of the earth. He settles at Mamre, by Hebron.'},
+
+{s:'kings',a:'#Chedorlaomer and three kings',y:'kill',v:'carry off',b:'lot',r:'Gen 14:1–12',n:'After beating the five kings of the plain in the valley that is now the Dead Sea. The Douay calls him Chodorlahomor.'},
+{s:'kings',a:'abraham',y:'save',v:'rescues',b:'lot',r:'Gen 14:13–16',n:'With 318 men born in his house, by a night attack, chasing the kings past Dan to the country of Damascus.'},
+{s:'kings',a:'melchizedek',y:'anoint',v:'blesses',b:'abraham',r:'Gen 14:17–20',n:'“Bringing forth bread and wine, for he was the priest of the most high God.” Abram gives him a tenth of everything.'},
+{s:'kings',a:'abraham',y:'rebuke',v:'refuses the spoil offered by',b:'#the king of Sodom',r:'Gen 14:21–24',n:'Not “from the very woof thread unto the shoe latchet … lest thou say I have enriched Abram.”'},
+
+{s:'covenant',a:'#The Lord',y:'anoint',v:'promises a son of his own to',b:'abraham',r:'Gen 15:1–6',n:'“Look up to heaven and number the stars, if thou canst … So shall thy seed be.” Abram believes, and it is counted to him as justice: the verse Paul builds on in Romans 4 and Galatians 3.',also:['servant']},
+{s:'covenant',a:'#The Lord',y:'anoint',v:'makes a covenant with',b:'abraham',r:'Gen 15:7–21',n:'Four hundred years of bondage are foretold first. Then “a smoking furnace and a lamp of fire” pass between the divided animals: the Lord alone takes the oath.'},
+
+{s:'hagar',a:'sarah',y:'tell',v:'gives to Abram as a wife her maid',b:'hagar',r:'Gen 16:1–4',n:'“It may be I may have children of her at least.” Rachel and Leah will do the same. Here it goes wrong at once.',also:['abraham']},
+{s:'hagar',a:'sarah',y:'rebuke',v:'afflicts',b:'hagar',r:'Gen 16:5–6',n:'Abram hands the matter back to his wife: “Behold thy handmaid is in thy own hand.” Hagar runs toward Egypt.',also:['abraham']},
+{s:'hagar',a:'#The angel of the Lord',y:'save',v:'finds, and sends back,',b:'hagar',r:'Gen 16:7–16',n:'The first appearance of the angel of the Lord. He promises her descendants past counting and names her son. She names God: “Thou the God who hast seen me.”',also:['ishmael']},
+{s:'hagar',a:'#God',y:'anoint',v:'renames, and gives circumcision to,',b:'abraham',r:'Gen 17:1–14',n:'“Walk before me, and be perfect.” Every male, at eight days old, slave or free: “a sign of the covenant between me and you.”'},
+{s:'hagar',a:'#God',y:'anoint',v:'promises a son to',b:'sarah',r:'Gen 17:15–22',n:'Abraham falls on his face and laughs. The child is to be called Isaac, which means he laughs. Ishmael will be blessed, with twelve chiefs; “but my covenant I will establish with Isaac.”',also:['abraham','isaac','ishmael']},
+{s:'hagar',a:'abraham',y:'anoint',v:'circumcises',b:'ishmael',r:'Gen 17:23–27',n:'And himself, and every male of his house, “the very same day.” He is ninety-nine; Ishmael is thirteen.'},
+
+{s:'sodom',a:'#The Lord',y:'anoint',v:'visits, and promises a son within the year to,',b:'abraham',r:'Gen 18:1–15',n:'“There appeared to him three men.” Abraham speaks to them now as one, now as several. Sarah laughs. “Is there any thing hard to God?”',also:['sarah']},
+{s:'sodom',a:'abraham',y:'save',v:'pleads for Sodom with',b:'#the Lord',r:'Gen 18:16–33',n:'“Thou who judgest all the earth, wilt not make this judgment.” From fifty down to ten, and the Lord agrees each time. There are not ten.'},
+{s:'sodom',a:'lot',y:'save',v:'shelters',b:'#the two angels',r:'Gen 19:1–11',n:'The men of the city surround the house and demand the guests. Lot offers his daughters instead. The angels pull him inside and strike the crowd blind.'},
+{s:'sodom',a:'#The angels',y:'save',v:'lead out of Sodom',b:'lot',r:'Gen 19:12–22',n:'His sons-in-law think he is joking. He lingers, and is taken by the hand, “because the Lord spared him.”'},
+{s:'sodom',a:'#The Lord',y:'kill',v:'destroys',b:'#Sodom and Gomorrah',r:'Gen 19:23–29',n:'“Brimstone and fire from the Lord out of heaven.” Lot’s wife looks back and becomes “a statue of salt.” Lot is saved because God remembers Abraham.',also:['lot','abraham']},
+{s:'sodom',a:'#Lot’s daughters',y:'betray',v:'make drunk, and conceive by,',b:'lot',r:'Gen 19:30–38',n:'Believing no man is left on earth for them. Their sons are Moab and Ben-ammi, fathers of the Moabites and the Ammonites.'},
+
+{s:'isaacborn',a:'abraham',y:'betray',v:'again passes off as his sister',b:'sarah',r:'Gen 20:1–2',n:'At Gerar. This time he explains himself: she is his half-sister, “the daughter of my father, and not the daughter of my mother.”'},
+{s:'isaacborn',a:'abimelech',y:'save',v:'restores untouched',b:'sarah',r:'Gen 20:3–18',n:'Warned by God in a dream. The pagan king protests his innocence, and God agrees: “I know that thou didst it with a sincere heart.” Abraham is called a prophet, the first use of the word.',also:['abraham']},
+{s:'isaacborn',a:'sarah',y:'tell',v:'bears',b:'isaac',r:'Gen 21:1–7',n:'“God hath made a laughter for me.” Abraham is a hundred. The child is circumcised on the eighth day.',also:['abraham']},
+{s:'isaacborn',a:'sarah',y:'rebuke',v:'has Abraham send away',b:'hagar',r:'Gen 21:8–14',n:'With Ishmael. “The son of the bondwoman shall not be heir with my son Isaac.” Abraham is grieved; God tells him to listen to her, “for in Isaac shall thy seed be called.”',also:['abraham','ishmael']},
+{s:'isaacborn',a:'#God',y:'save',v:'hears the voice of',b:'ishmael',r:'Gen 21:15–21',n:'The water is gone, and Hagar sits where she will not see him die. The angel of God calls from heaven, and she sees a well. Ishmael means God hears.',also:['hagar']},
+{s:'isaacborn',a:'abimelech',y:'anoint',v:'swears a treaty with',b:'abraham',r:'Gen 21:22–34',n:'At a well Abraham dug. Beer-sheba is the well of the oath, or of the seven: seven ewe lambs seal it.'},
+
+{s:'moriah',a:'#God',y:'rebuke',v:'tests',b:'abraham',r:'Gen 22:1–2',n:'“Take thy only begotten son Isaac, whom thou lovest.” The Douay’s “land of vision” is the land of Moriah.'},
+{s:'moriah',a:'abraham',y:'kill',v:'binds on the altar',b:'isaac',r:'Gen 22:3–10',n:'“Where is the victim for the holocaust?” “God will provide himself a victim.” Isaac carries the wood; his father carries the fire and the knife.'},
+{s:'moriah',a:'#The angel of the Lord',y:'save',v:'stays the hand of',b:'abraham',r:'Gen 22:11–14',n:'A ram caught by its horns is offered instead. Abraham names the place “The Lord seeth.” Chronicles puts Solomon’s Temple on Mount Moriah (2 Chr 3:1).',also:['isaac']},
+{s:'moriah',a:'#The Lord',y:'anoint',v:'swears the promise to',b:'abraham',r:'Gen 22:15–19',n:'“By my own self have I sworn.” It is the oath Hebrews 6:13–18 rests on: “In thy seed shall all the nations of the earth be blessed.”'},
+{s:'moriah',a:'#A messenger',y:'tell',v:'brings news of the birth of',b:'rebekah',r:'Gen 22:20–24',n:'Nahor has twelve sons, and one of them a daughter.'},
+
+{s:'machpelah',a:'abraham',y:'tell',v:'buys a grave for',b:'sarah',r:'Gen 23',n:'From Ephron the Hittite, for four hundred shekels, weighed out before the elders at the gate. “I am a stranger and sojourner among you.” The Douay’s “double cave” is the cave of Machpelah.'},
+{s:'machpelah',a:'abraham',y:'anoint',v:'sends for a wife for Isaac',b:'servant',r:'Gen 24:1–9',n:'Under oath: she is not to be a Canaanite, and Isaac is not to be taken back to Haran.',also:['isaac']},
+{s:'machpelah',a:'servant',y:'anoint',v:'finds at the well',b:'rebekah',r:'Gen 24:10–61',n:'He asks for a sign of generosity, a girl who offers to water ten camels, and gets it before he has finished praying. Laban sees the gold. Asked whether she will leave at once, she says, “I will go.”',also:['laban']},
+{s:'machpelah',a:'isaac',y:'tell',v:'marries',b:'rebekah',r:'Gen 24:62–67',n:'He brings her into his mother’s tent, “and he loved her.” Two more marriages begin at a well, Jacob’s (29) and Moses’ (Exod 2), and John 4 may be playing on them; modern literary critics call it a set scene.'},
+{s:'machpelah',a:'abraham',y:'tell',v:'sends east the sons of',b:'keturah',r:'Gen 25:1–6',n:'With gifts. “And Abraham gave all his possessions to Isaac.”'},
+{s:'machpelah',a:'isaac',y:'tell',v:'with Ishmael buries',b:'abraham',r:'Gen 25:7–18',n:'In the cave he bought, beside Sarah. He was a hundred and seventy-five, “full of days.” Ishmael’s twelve princes are listed, and his death at a hundred and thirty-seven.',also:['ishmael']},
+
+{s:'twins',a:'#The Lord',y:'anoint',v:'foretells the twins to',b:'rebekah',r:'Gen 25:19–26',n:'“Two nations are in thy womb … and the elder shall serve the younger.” Esau comes out red and hairy; Jacob comes out holding his heel.',also:['esau','jacob','isaac']},
+{s:'twins',a:'jacob',y:'betray',v:'buys the birthright of',b:'esau',r:'Gen 25:27–34',n:'For bread and lentil stew, under oath. “Lo I die, what will the first birthright avail me?” The firstborn’s right was a double share and the headship of the family (Deut 21:17).'},
+{s:'twins',a:'#The Lord',y:'anoint',v:'renews the promise to',b:'isaac',r:'Gen 26:1–6, 23–25',n:'“Go not down into Egypt.” The oath sworn to Abraham is now his, “because Abraham obeyed my voice.”'},
+{s:'twins',a:'isaac',y:'betray',v:'passes off as his sister',b:'rebekah',r:'Gen 26:7–11',n:'At Gerar, like his father. No one takes her. Abimelech sees them together from a window and rebukes him.',also:['abimelech']},
+{s:'twins',a:'abimelech',y:'anoint',v:'makes a treaty with',b:'isaac',r:'Gen 26:12–33',n:'After his herdsmen drive Isaac from well to well. Isaac names the wells Esek, Sitnah and Rehoboth, which the Douay translates as Calumny, Enmity and Latitude, and names the last one, again, Beer-sheba.'},
+{s:'twins',a:'esau',y:'betray',v:'grieves by his marriages',b:'isaac',r:'Gen 26:34–35',n:'Two Hittite wives at forty. They “offended the mind of Isaac and Rebecca.”',also:['rebekah']},
+
+{s:'blessing',a:'rebekah',y:'betray',v:'plans the deception of',b:'isaac',r:'Gen 27:1–17',n:'She overhears, cooks the kids, and dresses Jacob in Esau’s clothes and the skins. “Upon me be this curse, my son.”',also:['jacob']},
+{s:'blessing',a:'jacob',y:'betray',v:'steals the blessing from',b:'esau',r:'Gen 27:18–26',n:'“I am Esau thy firstborn.” Isaac doubts the voice and trusts the hands and the smell of the clothes.',also:['isaac']},
+{s:'blessing',a:'isaac',y:'anoint',v:'blesses',b:'jacob',r:'Gen 27:27–33',n:'“Be thou lord of thy brethren.” When the truth comes out he is shaken, and lets it stand: “I have blessed him, and he shall be blessed.”'},
+{s:'blessing',a:'esau',y:'kill',v:'resolves to kill',b:'jacob',r:'Gen 27:34–41',n:'“Hast thou only one blessing, father?” He gets a lesser word: he will live by the sword, serve his brother, and one day shake off the yoke.',also:['isaac']},
+{s:'blessing',a:'rebekah',y:'save',v:'sends away to Laban',b:'jacob',r:'Gen 27:42–28:9',n:'For “a few days.” To Isaac she gives another reason: he must not marry a Hittite. Isaac blesses him again, knowingly this time, with “the blessings of Abraham.” Esau, hearing it, marries a daughter of Ishmael.',also:['isaac','esau']},
+{s:'blessing',a:'#The Lord',y:'anoint',v:'appears at Bethel to',b:'jacob',r:'Gen 28:10–22',n:'“A ladder standing upon the earth, and the top thereof touching heaven.” The promise of land and seed, and “I will be thy keeper whithersoever thou goest.” Jacob sets up the stone, names the place house of God, and vows a tenth.'},
+
+{s:'laban',a:'jacob',y:'save',v:'waters the flock of',b:'rachel',r:'Gen 29:1–14',n:'He rolls the stone from the well by himself, kisses her and weeps.'},
+{s:'laban',a:'laban',y:'betray',v:'substitutes Leah, and cheats,',b:'jacob',r:'Gen 29:15–30',n:'“Why hast thou deceived me?” “It is not the custom in this place, to give the younger in marriage first.” Jacob has no answer to that.',also:['leah','rachel']},
+{s:'laban',a:'#The Lord',y:'save',v:'opens the womb of',b:'leah',r:'Gen 29:31–35',n:'Because she was unloved. Reuben, Simeon, Levi, Judah. The Douay says Jacob “despised” her; the Hebrew says she was hated, its idiom for the less loved of two wives.',also:['reuben','simeon','levi','judah']},
+{s:'laban',a:'rachel',y:'tell',v:'gives to Jacob as a wife her maid',b:'bilhah',r:'Gen 30:1–24',n:'And Leah gives Zilpah. Dan and Naphtali, Gad and Asher; then Leah’s Issachar, Zebulun and Dinah; and at last, “the Lord also remembering Rachel,” Joseph.',also:['zilpah','leah','dan','naphtali','gad','asher','issachar','zebulun','dinah','joseph']},
+{s:'laban',a:'jacob',y:'betray',v:'outwits',b:'laban',r:'Gen 30:25–43',n:'His wages are to be the speckled and spotted animals. Laban removes them all first; Jacob breeds more with peeled rods at the troughs, and later credits God and not the rods (31:9–12).'},
+{s:'laban',a:'rachel',y:'betray',v:'steals the household gods of',b:'laban',r:'Gen 31:1–35',n:'The teraphim, which the Douay calls idols. Jacob, not knowing, pronounces death on whoever has them. She sits on them and pleads that she cannot rise.',also:['jacob']},
+{s:'laban',a:'#God',y:'save',v:'warns in a dream',b:'laban',r:'Gen 31:24, 29',n:'“Take heed thou speak not any thing harshly against Jacob.”',also:['jacob']},
+{s:'laban',a:'laban',y:'anoint',v:'makes a covenant with',b:'jacob',r:'Gen 31:36–55',n:'After Jacob’s one great outburst over twenty years of heat by day and frost by night. They raise a heap, each naming it in his own language, and swear not to pass it. “The Lord behold and judge between us” is a warning and not a blessing.'},
+
+{s:'peniel',a:'jacob',y:'anoint',v:'sends gifts ahead to',b:'esau',r:'Gen 32:1–21',n:'More than five hundred animals, in droves, after praying: “I am not worthy of the least of all thy mercies.”'},
+{s:'peniel',a:'#A man',y:'anoint',v:'wrestles until dawn with, renames and blesses',b:'jacob',r:'Gen 32:22–32',n:'“I will not let thee go except thou bless me.” He is named Israel, and names the place Peniel, face of God: “I have seen God face to face.” Hosea calls the wrestler an angel (Hos 12:4). The Douay spells the place Phanuel.'},
+{s:'peniel',a:'esau',y:'save',v:'embraces',b:'jacob',r:'Gen 33:1–17',n:'Jacob bows seven times, with the family behind him in order of his affection, Rachel and Joseph last. “I have seen thy face, as if I should have seen the countenance of God.”',also:['leah','rachel','joseph']},
+{s:'peniel',a:'jacob',y:'tell',v:'buys a field from',b:'#the sons of Hamor',r:'Gen 33:18–20',n:'At Shechem, for a hundred qesitah, a unit of unknown value that the Douay renders “lambs.” He builds an altar there. Joseph’s bones will be buried in this field (Josh 24:32).',also:['shechem']},
+
+{s:'shechem',a:'shechem',y:'betray',v:'violates',b:'dinah',r:'Gen 34:1–12',n:'Then he loves her, and tells his father to get her for him. He offers any bride-price they name.'},
+{s:'shechem',a:'#The sons of Jacob',y:'betray',v:'deceive',b:'shechem',r:'Gen 34:13–24',n:'The condition is circumcision: the sign of the covenant, used as a weapon. Hamor sells it to the town as good business.',also:['simeon','levi']},
+{s:'shechem',a:'#Simeon and Levi',y:'kill',v:'kill',b:'shechem',r:'Gen 34:25–29',n:'And his father, and every male in the city, on the third day. The other brothers plunder it and carry off the women and children.',also:['simeon','levi','dinah']},
+{s:'shechem',a:'jacob',y:'rebuke',v:'rebukes',b:'#Simeon and Levi',r:'Gen 34:30–31',n:'“You have troubled me.” Their answer: “Should they abuse our sister as a strumpet?” He does not forget it (49:5–7).',also:['simeon','levi']},
+
+{s:'bethel2',a:'jacob',y:'anoint',v:'buries the foreign gods of',b:'#his household',r:'Gen 35:1–8',n:'Under the tree at Shechem, with their earrings, before going up to Bethel. Rachel’s stolen gods are presumably among them.'},
+{s:'bethel2',a:'#God',y:'anoint',v:'confirms the name Israel to',b:'jacob',r:'Gen 35:9–15',n:'“Kings shall come out of thy loins.”'},
+{s:'bethel2',a:'rachel',y:'tell',v:'dies bearing',b:'benjamin',r:'Gen 35:16–20',n:'On the way to Ephrath, “this is Bethlehem.” She names him son of my pain; Jacob renames him son of the right hand.',also:['jacob']},
+{s:'bethel2',a:'reuben',y:'betray',v:'lies with',b:'bilhah',r:'Gen 35:21–26',n:'His father’s concubine, and his dead stepmother’s maid. Jacob hears of it, and says nothing until his deathbed.',also:['jacob']},
+{s:'bethel2',a:'esau',y:'tell',v:'with Jacob buries',b:'isaac',r:'Gen 35:27–29',n:'At Hebron, a hundred and eighty years old. Esau then moves to Seir, because the land cannot support them both (36:6–8).',also:['jacob']},
+
+{s:'sold',a:'jacob',y:'anoint',v:'favors with a coat',b:'joseph',r:'Gen 37:1–11',n:'“A coat of divers colours,” or perhaps a long robe with sleeves; the Hebrew is uncertain. Joseph dreams of sheaves, and of sun, moon and eleven stars, bowing to him.'},
+{s:'sold',a:'reuben',y:'save',v:'tries to save',b:'joseph',r:'Gen 37:12–24, 29–30',n:'“Do not take away his life.” He means to come back for him, and comes back too late.'},
+{s:'sold',a:'judah',y:'betray',v:'proposes the sale of',b:'joseph',r:'Gen 37:25–28',n:'“What will it profit us to kill our brother?” Twenty pieces of silver, to a caravan bound for Egypt.'},
+{s:'sold',a:'#The brothers',y:'betray',v:'deceive',b:'jacob',r:'Gen 37:31–35',n:'With a kid’s blood on the coat: “see whether it be thy son’s coat, or not.” The man who deceived his father with a kid’s skin and a brother’s clothes is deceived by his sons with a kid’s blood and a brother’s coat.',also:['joseph','reuben','judah']},
+{s:'sold',a:'#The Midianites',y:'tell',v:'sell in Egypt to Potiphar',b:'joseph',r:'Gen 37:36',n:'An officer of Pharaoh, captain of the guard.',also:['potiphar']},
+
+{s:'tamar',a:'judah',y:'betray',v:'withholds his third son from',b:'tamar',r:'Gen 38:1–11',n:'Er has died, and Onan after him, for refusing to give his brother an heir. Judah fears for the third and sends her home to her father.'},
+{s:'tamar',a:'tamar',y:'betray',v:'deceives, and conceives by,',b:'judah',r:'Gen 38:12–23',n:'Veiled, by the road to Timnah, at sheep-shearing. She takes his seal, its cord and his staff as pledge for a kid, and is gone when the kid arrives.'},
+{s:'tamar',a:'judah',y:'kill',v:'condemns, then clears,',b:'tamar',r:'Gen 38:24–26',n:'“Bring her out that she may be burnt.” She sends the pledge: “See whose ring, and bracelet, and staff this is.” “She is juster than I.”'},
+{s:'tamar',a:'tamar',y:'tell',v:'bears',b:'perez',r:'Gen 38:27–30',n:'And Zerah: twins. The one with the scarlet thread on his hand comes second.'},
+
+{s:'potiphar',a:'potiphar',y:'anoint',v:'sets over his house',b:'joseph',r:'Gen 39:1–6',n:'“The Lord was with him,” and the Egyptian can see it.'},
+{s:'potiphar',a:'potwife',y:'betray',v:'accuses',b:'joseph',r:'Gen 39:7–18',n:'He has refused her daily: “How then can I do this wicked thing, and sin against my God?” She keeps the garment he leaves behind.'},
+{s:'potiphar',a:'potiphar',y:'rebuke',v:'imprisons',b:'joseph',r:'Gen 39:19–23',n:'In the king’s prison, where the keeper soon hands everything over to him.'},
+{s:'potiphar',a:'joseph',y:'save',v:'interprets the dreams of',b:'butler',r:'Gen 40',n:'“Doth not interpretation belong to God?” In three days the butler is restored and the baker hanged. The butler forgets him.'},
+
+{s:'pharaoh',a:'butler',y:'save',v:'at last remembers',b:'joseph',r:'Gen 41:1–13',n:'When Pharaoh’s dreams of the cows and the ears of grain defeat every interpreter in Egypt.',also:['pharaoh']},
+{s:'pharaoh',a:'joseph',y:'save',v:'interprets the dreams of',b:'pharaoh',r:'Gen 41:14–36',n:'“Without me, God shall give Pharao a prosperous answer.” Seven years of plenty, then seven of famine; store a fifth.'},
+{s:'pharaoh',a:'pharaoh',y:'anoint',v:'sets over all Egypt',b:'joseph',r:'Gen 41:37–46',n:'Ring, robe, gold chain, the second chariot. The Egyptian name he is given the Douay translates, “The saviour of the world.” He is thirty.'},
+{s:'pharaoh',a:'asenath',y:'tell',v:'bears two sons to',b:'joseph',r:'Gen 41:47–52',n:'Manasseh and Ephraim, both named for what God has done for him in Egypt.',also:['manasseh','ephraim']},
+{s:'pharaoh',a:'pharaoh',y:'anoint',v:'sends the hungry to',b:'joseph',r:'Gen 41:53–57',n:'“Go to Joseph: and do all that he shall say to you.”'},
+
+{s:'brothers',a:'#Ten brothers',y:'tell',v:'bow down to',b:'joseph',r:'Gen 42:1–17',n:'“Though he knew his brethren, he was not known by them.” He remembers the dreams, calls them spies and jails them for three days.',also:['reuben','simeon','levi','judah']},
+{s:'brothers',a:'joseph',y:'rebuke',v:'keeps as hostage',b:'simeon',r:'Gen 42:18–38',n:'Until they bring Benjamin. They say in front of him, thinking he cannot understand, “We deserve to suffer these things, because we have sinned against our brother.” He turns away and weeps. Their money is back in their sacks. Jacob refuses to let Benjamin go.',also:['reuben','jacob']},
+{s:'brothers',a:'judah',y:'save',v:'pledges himself to Jacob for',b:'benjamin',r:'Gen 43:1–14',n:'“I take the boy upon me, require him at my hand.” Reuben had offered his sons’ lives; Judah offers himself.',also:['jacob']},
+{s:'brothers',a:'joseph',y:'anoint',v:'feasts, and favors,',b:'benjamin',r:'Gen 43:15–34',n:'He has to leave the room to weep. The brothers are seated in order of birth, to their alarm, and Benjamin gets five times as much as anyone. Nobody objects.'},
+{s:'brothers',a:'joseph',y:'rebuke',v:'has his cup planted on',b:'benjamin',r:'Gen 44:1–17',n:'The cup “in which he is wont to divine.” The sentence: the thief stays a slave and the rest go free. It is the offer they once took.'},
+{s:'brothers',a:'judah',y:'save',v:'offers himself in place of',b:'benjamin',r:'Gen 44:18–34',n:'Seventeen verses, all about what the loss would do to their father. “I thy servant will stay instead of the boy.”'},
+{s:'brothers',a:'joseph',y:'save',v:'makes himself known to',b:'#his brothers',r:'Gen 45:1–15',n:'“I am Joseph: is my father yet living?” They cannot answer. “Not by your counsel was I sent hither, but by the will of God.”',also:['judah','benjamin','reuben','simeon','levi']},
+{s:'brothers',a:'pharaoh',y:'anoint',v:'invites to Egypt',b:'jacob',r:'Gen 45:16–28',n:'Wagons are sent. Jacob does not believe it until he sees them: “I will go and see him before I die.”'},
+
+{s:'goshen',a:'#God',y:'anoint',v:'speaks at Beer-sheba to',b:'jacob',r:'Gen 46:1–27',n:'“Fear not, go down into Egypt … I will go down with thee thither, and will bring thee back again.” It is the last time God speaks in Genesis. Seventy persons are counted.'},
+{s:'goshen',a:'joseph',y:'save',v:'meets, after twenty-two years,',b:'jacob',r:'Gen 46:28–34',n:'In Goshen, with Judah sent ahead. “Now shall I die with joy, because I have seen thy face.”',also:['judah']},
+{s:'goshen',a:'jacob',y:'anoint',v:'blesses',b:'pharaoh',r:'Gen 47:1–12',n:'Twice. “The days of my pilgrimage are a hundred and thirty years, few, and evil.”'},
+{s:'goshen',a:'joseph',y:'tell',v:'buys all the land of Egypt for',b:'pharaoh',r:'Gen 47:13–26',n:'Grain for money, then for livestock, then for land and labor, at a fifth of the crop from then on. The priests’ land is exempt.'},
+{s:'goshen',a:'jacob',y:'anoint',v:'takes an oath of burial from',b:'joseph',r:'Gen 47:27–31',n:'Hand under the thigh, as Abraham’s servant swore. “I will sleep with my fathers.”'},
+
+{s:'blessings',a:'jacob',y:'anoint',v:'adopts and blesses the sons of',b:'joseph',r:'Gen 48',n:'“Ephraim and Manasses shall be reputed to me as Ruben and Simeon.” He crosses his hands; Joseph objects; “I know, my son, I know.”',also:['ephraim','manasseh']},
+{s:'blessings',a:'jacob',y:'rebuke',v:'passes over',b:'reuben',r:'Gen 49:1–7',n:'For Bilhah. Simeon and Levi are passed over for Shechem: “Cursed be their fury.” The first three sons are set aside.',also:['simeon','levi']},
+{s:'blessings',a:'jacob',y:'anoint',v:'gives the scepter to',b:'judah',r:'Gen 49:8–12',n:'“The sceptre shall not be taken away from Juda … till he come that is to be sent, and he shall be the expectation of nations.” Behind “he … that is to be sent” is an obscure Hebrew word, Shiloh.'},
+{s:'blessings',a:'jacob',y:'anoint',v:'blesses above his brothers',b:'joseph',r:'Gen 49:13–28',n:'After short words for Zebulun, Issachar, Dan, Gad, Asher and Naphtali. Benjamin, last, is a wolf.',also:['benjamin','dan','naphtali','gad','asher','issachar','zebulun']},
+{s:'blessings',a:'joseph',y:'tell',v:'buries at Hebron',b:'jacob',r:'Gen 49:29–50:14',n:'Embalmed for forty days, mourned for seventy by the Egyptians, and taken up to the cave of Machpelah with Pharaoh’s court in procession. Leah is already there.',also:['leah','pharaoh']},
+{s:'blessings',a:'joseph',y:'save',v:'forgives',b:'#his brothers',r:'Gen 50:15–21',n:'They fear he was only waiting for their father to die. “Can we resist the will of God? You thought evil against me: but God turned it into good.”',also:['judah','reuben','simeon','levi']},
+{s:'blessings',a:'joseph',y:'anoint',v:'makes swear to carry up his bones',b:'#the sons of Israel',r:'Gen 50:22–26',n:'“God will visit you.” Moses takes the bones at the Exodus (Exod 13:19), and they are buried at Shechem (Josh 24:32). The Douay numbers these verses 50:22–25.',also:['manasseh','ephraim']}
+];
+const DIVES=[];
+const CHL={
+Gen:{
+1:'Six days: light; the firmament; land, sea and plants; sun, moon and stars; fish and birds; beasts and man, male and female, in the image of God. All of it good.',
+2:'The seventh day blessed. Then the garden: man formed from the ground, the two trees, the four rivers, one command; the animals named; woman built from the man’s side; the two become one flesh.',
+3:'The serpent and the woman; the fruit; the hiding; the sentences on serpent, woman and man; the promise about the woman’s seed; garments of skins; the garden closed.',
+4:'Cain and Abel bring offerings; Cain kills Abel and is marked and exiled; his line down to Lamech, and the first crafts; Seth born.',
+5:'Ten generations from Adam to Noah, with their ages. Enoch walks with God and is taken. Methuselah lives 969 years.',
+6:'The sons of God and the daughters of men; giants on the earth; the Lord’s sorrow; Noah finds favor and is told to build the ark.',
+7:'Noah, his family and the animals go in; the Lord shuts the door; forty days of rain; the waters prevail a hundred and fifty days, and everything outside dies.',
+8:'God remembers Noah; the ark rests on the mountains of Ararat (Armenia in the Douay); the raven and the dove; they come out; Noah’s altar; seedtime and harvest shall not cease.',
+9:'The blessing renewed; meat allowed, blood and murder forbidden; the covenant of the rainbow. Then Noah’s vineyard, Ham’s offense, the curse on Canaan and the blessing of Shem and Japheth.',
+10:'The table of nations: the peoples descended from Japheth, Ham and Shem, with Nimrod and his kingdom at Babel.',
+11:'The tower of Babel and the scattering. Ten generations from Shem to Terah. Terah leaves Ur with Abram, Sarai and Lot, and settles at Haran.',
+12:'The call of Abram and the promise; altars at Shechem and Bethel; famine; in Egypt Sarai is passed off as his sister and taken by Pharaoh.',
+13:'Abram and Lot part; Lot chooses the plain of the Jordan, toward Sodom; the land promised to Abram as far as he can see; he settles at Mamre.',
+14:'Four kings defeat five and carry off Lot; Abram rescues him; Melchizedek brings bread and wine and blesses Abram; Abram refuses the king of Sodom’s goods.',
+15:'Abram is promised a son, and descendants like the stars; he believes; the covenant between the divided animals; four hundred years of bondage foretold.',
+16:'Sarai gives Hagar to Abram; Hagar conceives and runs away; the angel of the Lord meets her at the spring; Ishmael is born. Abram is eighty-six.',
+17:'Abram becomes Abraham and Sarai Sarah; circumcision commanded; Isaac promised by name; Abraham circumcises his household.',
+18:'Three visitors at Mamre; Sarah laughs at the promise of a son; Abraham pleads for Sodom, from fifty just men down to ten.',
+19:'Two angels at Lot’s house; the men of Sodom; Lot led out; fire on Sodom and Gomorrah; Lot’s wife; Lot’s daughters, and the births of Moab and Ben-ammi.',
+20:'At Gerar Abraham again calls Sarah his sister; Abimelech takes her, is warned in a dream, and gives her back.',
+21:'Isaac born and weaned; Hagar and Ishmael sent away, and saved in the wilderness; the treaty with Abimelech at Beer-sheba.',
+22:'God tests Abraham; Isaac bound on the altar in the land of Moriah; the ram; the promise sworn. Then Nahor’s children, among them Rebekah.',
+23:'Sarah dies at Hebron, aged a hundred and twenty-seven; Abraham buys the field and cave of Machpelah from Ephron the Hittite.',
+24:'Abraham’s servant goes to Nahor’s city to find a wife for Isaac; Rebekah at the well; Laban and Bethuel consent; she comes, and Isaac marries her.',
+25:'Abraham’s sons by Keturah; his death and burial; Ishmael’s twelve sons. Then Rebekah’s twins, Esau and Jacob, and the birthright sold for lentil stew.',
+26:'Isaac at Gerar: the promise renewed; Rebekah called his sister; the quarrels over wells; the treaty with Abimelech at Beer-sheba; Esau’s Hittite wives.',
+27:'Rebekah and Jacob deceive blind Isaac; Jacob gets the blessing meant for Esau; Esau’s cry, and his lesser blessing; he plans to kill Jacob.',
+28:'Isaac sends Jacob to Laban for a wife; Esau marries a daughter of Ishmael; Jacob’s dream of the ladder at Bethel, and his vow.',
+29:'Jacob at the well; seven years for Rachel; Leah substituted; seven years more; Leah bears Reuben, Simeon, Levi and Judah.',
+30:'The maids’ sons, Dan, Naphtali, Gad and Asher; the mandrakes; Issachar, Zebulun and Dinah; Rachel bears Joseph. Jacob’s wages and the peeled rods.',
+31:'Jacob leaves in secret; Rachel steals the household gods; Laban pursues, is warned in a dream, and searches the tents; the covenant at the heap in Gilead.',
+32:'Angels at Mahanaim; Esau approaches with four hundred men; Jacob’s prayer and his gifts; he wrestles at the Jabbok and is named Israel.',
+33:'Jacob and Esau meet and are reconciled; Esau goes back to Seir; Jacob goes to Succoth and then to Shechem, buys a field and builds an altar.',
+34:'Shechem violates Dinah and asks to marry her; the sons of Jacob demand circumcision; Simeon and Levi kill the men of the city.',
+35:'The foreign gods buried; Jacob at Bethel, named Israel again; Rachel dies bearing Benjamin; Reuben and Bilhah; the twelve sons listed; Isaac dies.',
+36:'Esau’s wives and sons; his move to Seir; the chiefs of Edom, the Horites of Seir, and the kings who reigned in Edom before Israel had a king.',
+37:'Joseph’s coat and his dreams; his brothers throw him into a pit and sell him to traders for twenty pieces of silver; the bloodied coat; Jacob mourns. Joseph is seventeen (sixteen in the Douay).',
+38:'Judah’s sons Er and Onan die; Tamar is denied the third; she disguises herself and conceives by Judah; he acknowledges her; Perez and Zerah are born.',
+39:'Joseph prospers in Potiphar’s house, refuses his master’s wife, is falsely accused and imprisoned, and prospers in the prison.',
+40:'The dreams of Pharaoh’s butler and baker; Joseph interprets both; the butler is restored and forgets him.',
+41:'Pharaoh’s two dreams; Joseph interprets them and is set over Egypt; he marries Asenath; Manasseh and Ephraim are born; the famine begins.',
+42:'Ten brothers come for grain; Joseph accuses them of spying, keeps Simeon, and sends the rest home with their money in their sacks.',
+43:'The grain runs out; Judah pledges himself for Benjamin; the brothers go back and dine in Joseph’s house.',
+44:'Joseph’s cup is found in Benjamin’s sack; Judah’s speech, offering himself as a slave in the boy’s place.',
+45:'Joseph makes himself known; Pharaoh sends wagons; Jacob is told that Joseph is alive.',
+46:'God speaks to Jacob at Beer-sheba; the seventy who went down to Egypt are listed; Jacob and Joseph meet in Goshen.',
+47:'Jacob before Pharaoh; the family settled in Goshen; Joseph buys the land of Egypt for Pharaoh during the famine; Jacob asks to be buried in Canaan.',
+48:'Jacob adopts Ephraim and Manasseh and blesses them with crossed hands, the younger over the elder.',
+49:'Jacob’s last words over his twelve sons; the scepter promised to Judah; his charge to be buried at Machpelah, and his death. The Douay’s last verse is 49:32; in the RSV-2CE it is 49:33.',
+50:'Jacob embalmed and buried at Hebron; Joseph reassures his brothers; Joseph’s death at a hundred and ten, and the oath about his bones. Douay verse numbers run one behind from 50:23.'}
+};
+const GUIDE={};
+const MOM={};
+const DEEP={};
+const THREADS=[
+['These are the generations','Genesis divides itself. Ten times a new section opens with the same formula, “These are the generations of …”: of heaven and earth (2:4), Adam (5:1), Noah (6:9), Noah’s sons (10:1), Shem (11:10), Terah (11:27), Ishmael (25:12), Isaac (25:19), Esau (36:1) and Jacob (37:2). Each heading names a father and then tells what came of him, so the section headed Terah is Abraham’s story and the one headed Jacob is Joseph’s. The side lines get a short section and are dismissed; the chosen line gets a long one. Matthew opens his Gospel with the same phrase: “The book of the generation of Jesus Christ” (Mt 1:1).'],
+['The promise','Three things are promised to [[abraham]]: land, descendants, and a blessing that will reach every nation (12:1–3). The promise is repeated and enlarged at each turn: after Lot leaves (13:14–17), by covenant (15), with the sign of circumcision (17), on oath after Moriah (22:16–18), to [[isaac]] (26:2–5), to [[jacob]] at Bethel (28:13–15; 35:9–12), and on the way down to Egypt (46:3–4). When Genesis ends the family owns a field with a cave and a plot at Shechem, and is living abroad. Paul reads the promise of blessing for the nations as the gospel told ahead of time: “In thee shall all nations be blessed” (Gal 3:8).'],
+['The younger son','The firstborn is passed over in almost every generation. Abel’s offering is preferred to [[cain]]’s, and the line goes on through [[seth]]. [[isaac]] is chosen over [[ishmael]], [[jacob]] over [[esau]], [[joseph]] and [[judah]] over [[reuben]], [[perez]] over his twin Zerah, [[ephraim]] over [[manasseh]]. The same pattern picks David, the youngest of eight, on the Samuel page ([[s:anointing|The Lord beholdeth the heart]]). Paul draws the conclusion that the promise goes by God’s call and not by birth order or desert (Rom 9:10–13).'],
+['Barren mothers','[[sarah]], [[rebekah]] and [[rachel]] are each barren, and each child of the promise is born against the odds: Isaac to a woman of ninety, the twins after twenty years of prayer, Joseph after Rachel’s long envy of her sister. The line of promise is never the natural course of things. The pattern goes on with Samson’s mother, with Hannah ([[s:hannah|Hannah’s prayer and song]]), and with Elizabeth, to whom the angel’s word about Sarah is repeated: “no word shall be impossible with God” (Lk 1:37; Gen 18:14).'],
+['The deceiver deceived','[[jacob]] takes the blessing by putting on his brother’s clothes and a kid’s skin in front of a father who cannot see (27). He is repaid in kind. [[laban]] puts the elder sister in the younger’s place in the dark, and answers him with a line about the rights of the firstborn (29:26). His sons bring him a brother’s coat dipped in a kid’s blood (37:31–33). [[judah]], who sent that coat with the words “see whether it be thy son’s coat,” is sent his own seal and staff with the words “See whose … this is” (38:25), and in both scenes the one deceived is said to acknowledge what he is shown. Genesis never comments on any of this. It only arranges it.'],
+['Brothers','The first brothers end in murder (4). After them come [[ishmael]] and [[isaac]], who are separated and meet again only at their father’s grave; [[esau]] and [[jacob]], who are reconciled and then live apart; and [[joseph]] and his brothers, where the wrong is the gravest since Cain and the ending is full forgiveness (45; 50:15–21). The book that begins with “am I my brother’s keeper?” ends with a brother who is one. [[judah]]’s offer to take [[benjamin]]’s place (44:33) is the turning point.'],
+['Altars, wells and graves','The patriarchs hold the land only in tokens, and the same few places keep returning. Shechem: Abram’s first altar (12:6–7), Jacob’s field (33:18–20), and later Joseph’s grave and Joshua’s covenant (Josh 24). Bethel: Abram’s altar (12:8), Jacob’s ladder and his return (28; 35); later the site of Jeroboam’s golden calf, denounced by [[k:amos|Amos]] and [[k:hosea|Hosea]]. Hebron, or Mamre: Abraham’s home, the three visitors, and the cave of Machpelah where three couples are buried; later David’s first capital. Beer-sheba: the well of the oath for Abraham and for Isaac, and the last stop before Egypt (46:1).'],
+['Egypt','Egypt is where the family goes when the land fails. Abram goes down in the first famine and comes back with wealth and trouble, including, it seems, [[hagar]] (12:10–20; 16:1). [[isaac]] is told not to go (26:2). [[joseph]] is carried there as a slave, and [[jacob]] goes only when God tells him to: “fear not, go down into Egypt” (46:3). The four hundred years of bondage were foretold to Abram before he had a son (15:13). Genesis ends there, with a coffin and an oath, and Exodus begins.'],
+['Dreams','God speaks to [[abraham]] directly, and to the next generations more and more by dreams. [[abimelech]] is warned in one (20:3), and so is [[laban]] (31:24). [[jacob]] sees the ladder in one (28:12) and is told to go home in another (31:10–13). [[joseph]] never hears God’s voice at all in Genesis. He has two dreams of his own and interprets four more, and insists each time that the meaning is God’s (40:8; 41:16). His namesake in Matthew’s Gospel is guided the same way, four times.'],
+['The angel of the Lord','A figure who speaks as God and is yet sent by God. He finds [[hagar]] at the spring, and she says she has seen God (16:7–13). He calls to her from heaven (21:17), stops [[abraham]]’s hand on Moriah and swears “by my own self” (22:11–16), and tells [[jacob]], “I am the God of Bethel” (31:11–13). Jacob calls the one he wrestled God, and Hosea calls him an angel (32:30; Hos 12:4); on his deathbed Jacob sets “God” and “the angel that delivereth me from all evils” side by side (48:15–16). The three visitors at Mamre belong here as well (18–19). Christians have read these appearances in two ways, as the Son of God before his incarnation and as a created angel speaking in God’s person. The deep dives will give both.'],
+['Types','Genesis is the book the New Testament reaches for most often when it wants a pattern, or type, for Christ. This page marks each one by where it comes from. <b>Named in the New Testament:</b> [[adam]] as “a figure of him who was to come” (Rom 5:14; 1 Cor 15:45); [[abel]]’s blood and Christ’s (Heb 12:24); the ark and baptism (1 Pet 3:20–21); [[melchizedek]]’s priesthood (Ps 110:4; Heb 7); [[isaac]] received back from death “for a parable” (Heb 11:19); Jacob’s ladder (Jn 1:51); [[hagar]] and [[sarah]] as two covenants (Gal 4:24). <b>From the Fathers and the liturgy:</b> [[eve]] and Mary, and the woman of 3:15 (CCC 411); Melchizedek’s bread and wine and the Eucharist, which Hebrews does not mention but the Roman Canon and the Catechism do (CCC 1333); Isaac carrying the wood (CCC 2572 for the sacrifice as a whole); and [[joseph]], sold by his brothers, counted with wrongdoers and raised up to save them, as a figure of Christ. [[joseph]] also points to his namesake: Leo XIII taught that the patriarch was the type of Saint Joseph, citing the Fathers and the liturgy (Quamquam Pluries 4), and “Go to Joseph” (41:55) became the saint’s motto. The deep dives will take these one at a time.']
+];
+const CLASH=[
+{t:'Two Enochs, two Lamechs',ids:['enoch','lamech_c','lamech_s','cainline'],d:'Cain’s line and Seth’s share names. Cain’s son Enoch has a city named after him (4:17); Seth’s descendant Enoch walks with God and is taken (5:24). Cain’s Lamech has two wives and a song of vengeance (4:19–24); Seth’s Lamech is Noah’s father (5:28–29). Cain’s Lamech and Seth’s Enoch are each the seventh from Adam, one boasting of blood and the other walking with God (Jude 14). There are two more Enochs later, a son of Midian and a son of Reuben (25:4; 46:9).'},
+{t:'Cain, Kenan and Canaan',ids:['cain','kenan','canaan'],d:'Three different people. Cain is Adam’s son. Kenan is Seth’s grandson, and the Douay spells him Cainan. Canaan is Ham’s son, cursed by Noah, and the land is named for him; the Douay spells him Chanaan.'},
+{t:'Nahor and Nahor, Haran and Haran',ids:['nahor_g','nahor','haran','terah'],d:'Abraham’s grandfather and his brother are both Nahor (11:24, 26), and the family’s town in Mesopotamia is called the city of Nahor (24:10). Haran is both Abraham’s brother, who died in Ur, and the city where Terah settled; in Hebrew the two are spelled with different letters, and the Douay keeps them apart as Aran and Haran.'},
+{t:'Abram and Abraham, Sarai and Sarah, Jacob and Israel',ids:['abraham','sarah','jacob'],d:'God renames all three. Abram and Sarai become Abraham and Sarah at 17:5 and 17:15, and the old names never come back. Jacob is named Israel twice (32:28; 35:10), and afterward Genesis uses both, sometimes in the same verse. This page uses Abraham, Sarah and Jacob throughout, except where the story is still at the earlier name.'},
+{t:'Pharaoh and Abimelech',ids:['pharaoh','abimelech'],d:'Pharaoh is a title, and Genesis names none of them. The one who takes Sarai (12) and the one who promotes Joseph (41) are different kings, generations apart, and the one who “knew not Joseph” (Exod 1:8) is another again. Abimelech of Gerar deals with Abraham (20–21) and an Abimelech of Gerar deals with Isaac (26), each with a general named Phicol. It may be one long-lived king, or father and son, or a throne name like Pharaoh.'},
+{t:'Ishmaelites and Midianites',ids:['ishmael','midian','joseph'],d:'Joseph’s brothers see Ishmaelites coming; Midianite merchants pass by; he is sold to the Ishmaelites; the Midianites sell him in Egypt; Potiphar buys him from the Ishmaelites (37:25–28, 36; 39:1). Both peoples descend from Abraham, by Hagar and by Keturah, and the two names seem to be used for the same caravan, as they are for the same army in Judges 8:22–24.'},
+{t:'Esau’s wives',ids:['esau','reuel','princes'],d:'The names do not match between the story and the genealogy. In the story Esau marries Judith daughter of Beeri and Basemath daughter of Elon, both Hittites, and then Mahalath daughter of Ishmael (26:34; 28:9). In chapter 36 his wives are Adah daughter of Elon, Oholibamah daughter of Anah, and Basemath daughter of Ishmael. The usual explanations are that the women had two names, or that two lists have been kept side by side.'},
+{t:'Sheba, Dedan and Havilah',ids:['joktan','keturahsons','cush'],d:'A Sheba appears among the descendants of Cush (10:7), of Joktan (10:28) and of Abraham by Keturah (25:3); Dedan is with him in the first and third lists, and Havilah in the first two. These are trading peoples of Arabia whom more than one family claimed.'},
+{t:'Tamar',ids:['tamar'],d:'Judah’s daughter-in-law is the first of three. David’s daughter Tamar is on the Samuel page ([[s:tamar|Amnon and Tamar]]), and Absalom names a daughter after her (2 Sam 14:27). All three are of Judah’s house.'},
+{t:'Shechem, Dan and other places',ids:['shechem','dan'],d:'Shechem is a city, and also the prince’s son who is named for it. Dan is Jacob’s son, but Abram pursues the four kings “to Dan” (14:14), generations before Dan is born: the writer is using the name the place had in his own day (Judg 18:29). Bethel was called Luz before Jacob named it (28:19); Hebron is also Mamre and Kiriath-arba; Ephrath is Bethlehem; and Beer-sheba is named twice, by Abraham and by Isaac (21:31; 26:33).'},
+{t:'Shelah and Zerah',ids:['shelah_a','shelah_j','zerah'],d:'Shelah son of Arphaxad is in Abraham’s ancestry (11:12); Shelah son of Judah is the husband Tamar never got (38). The Douay spells them Sale and Sela. Zerah is Tamar’s second twin, and also a grandson of Esau (36:13).'},
+{t:'Joseph',ids:['joseph','jacob'],d:'The Joseph of Genesis is the son of Jacob, a dreamer, and the man who keeps his family alive in Egypt. The Joseph of the Gospels is also the son of a Jacob (Mt 1:16), is guided by dreams, and takes his family to Egypt to keep it alive. The Church has treated the likeness as intended. See the Types thread.'}
+];
+
+// Kings-page people and prophets that notes here link to.
+const KP=new Set(['elijah','elisha','ahijah','shemaiah','man_of_god','micaiah','jonah','amos','hosea','isaiah','micah','oded','nahum','zephaniah','huldah','jeremiah','uriah','habakkuk','baruch','daniel','ezekiel','joel','obadiah','zechariah_p','jehu_p','hanani','azariah_o','jahaziel']);
+
+const BOOKS={Gen:'Genesis'};
+const CHAPS={Gen:R(1,50)};
+const ADD={};
+const GROUPS=[['Before Abraham',0],['Abraham’s household',1],['Jacob’s generation',2],['The twelve sons, and Egypt',3]];
+
+const byId={}; SP.concat(FP).forEach(x=>byId[x.id]=x);
+const famIds=new Set(); (function walk(a){ a.forEach(n=>{ if(n.p) famIds.add(n.p); if(n.k) walk(n.k); if(n.tree) walk(n.tree); }); })(FAM);
+const scById={}; SCENES.forEach(s=>scById[s.id]=s);
+const PS=new Set(Object.keys(GUIDE));
+const $=s=>document.querySelector(s);
+const state={book:'Gen',chap:'',sel:null};
+const cv=v=>(v===''||isNaN(+v))?v:+v;
+function chLabel(b,c){ return typeof c==='string'?`${BOOKS[b]} ${ADD[c]}`:`${BOOKS[b]} ${c}`; }
+let lastFocus=null;
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function dates(x){ return x.dates||''; }
+function chipCls(x){ return PS.has(x.id)?'c-prop':x.c===1?'c-saul':x.c===2?'c-men':x.c===3?'c-dav':'c-neutral'; }
+function chip(id){ const x=byId[id]; return `<button type="button" class="chip ${chipCls(x)}" data-go="${id}">${x.short||x.name}</button>`; }
+function who(ref,cls){
+  if(ref.startsWith('#')) return `<span class="${cls} plain">${ref.slice(1)}</span>`;
+  if(ref.startsWith('k:')){ const [k,lab]=ref.slice(2).split('|'); return `<a class="xref" href="kings.html#${KP.has(k)?'guide-':'k-'}${k}">${lab||k}</a>`; }
+  const x=byId[ref]; return `<button type="button" class="pn" data-go="${ref}">${x.short||x.name}</button>`;
+}
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+function evHTML(e,withScene){
+  let subj=who(e.a,'who'); if(e.a.startsWith('#')) subj=`<span class="who plain">${cap(e.a.slice(1))}</span>`;
+  const sc=withScene?` <button type="button" class="sc-link" data-scene="${e.s}">Scene: ${scById[e.s].t}</button>`:'';
+  return `<li class="ev t-${e.y}">${subj} <span class="vb">${e.v}</span> ${who(e.b,'who')}${e.v2?` <span class="vb">${e.v2}</span>`:''}<cite>${e.r}</cite><span class="nt">${e.n}${sc}</span></li>`;
+}
+
+function diveHTML(d){
+  const body=d.sec.map(([h,items])=>`<h5>${h}</h5>`+items.map(it=>Array.isArray(it)?`<p><b>${/[.?!]$/.test(it[0])?it[0]:it[0]+'.'}</b> ${xref(it[1])}</p>`:`<p>${xref(it)}</p>`).join('')).join('');
+  return `<details class="dive" id="dd-${d.id}"><summary><span class="dv-k">${d.k||'Deep dive'}</span><span class="dv-t">${d.t}</span><span class="dv-r">${d.r}</span><span class="dv-l">${d.lead}</span><span class="dv-more"><span class="o">${d.k?'Read the portrait':'Read the deep dive'}</span><span class="c">Close</span></span></summary><div class="dv-body">${body}<button type="button" class="dv-close" data-closedive="${d.id}">${d.k?'Close the portrait':'Close the deep dive'}</button></div></details>`;
+}
+function chsHTML(s){
+  const items=[]; Object.keys(s.ch).forEach(b=>s.ch[b].forEach(c=>{ const t=(CHL[b]||{})[c]; if(t) items.push(`<li data-ch="${b}:${c}"><b>${chLabel(b,c)}</b> ${t}</li>`); }));
+  return items.length?`<details class="chs"><summary>Chapter by chapter</summary><ul>${items.join('')}</ul></details>`:'';
+}
+function renderStory(){
+  let h='';
+  ACTS.forEach((a,i)=>{
+    h+=`<div class="act a${i}"><h3>${a.t}</h3><p>${a.n}</p></div><ol class="scenes a${i}">`;
+    SCENES.filter(s=>s.act===i).forEach(s=>{
+      const evs=EVS.filter(e=>e.s===s.id);
+      h+=`<li class="scene" id="sc-${s.id}"><h4 tabindex="-1">${s.t}</h4><p class="sc-ref">${s.r}<span>${s.d}</span></p><p class="sc-n">${s.n}</p><div class="sc-who">${s.who.map(chip).join('')}</div>${evs.length?`<ul class="evs">${evs.map(e=>evHTML(e,false)).join('')}</ul>`:''}${chsHTML(s)}${DIVES.filter(d=>d.s===s.id).map(diveHTML).join('')}</li>`;
+    });
+    h+='</ol>';
+  });
+  $('#story').innerHTML=h;
+}
+function renderCast(){
+  $('#cast-list').innerHTML=GROUPS.map(([t,c])=>`<h3>${t}</h3><ul class="cast-list">${SP.filter(p=>p.c===c).map(p=>`<li><button type="button" class="cast-row" data-go="${p.id}"><b>${p.name}</b><span>${p.role}</span></button></li>`).join('')}</ul>`).join('');
+}
+
+function scenesFor(){
+  if(!state.chap) return [];
+  const c=cv(state.chap);
+  return SCENES.filter(s=>s.ch[state.book]&&s.ch[state.book].includes(c));
+}
+function apply(){
+  const scs=scenesFor();
+  document.querySelectorAll('.scene').forEach(n=>n.classList.toggle('here',scs.some(s=>'sc-'+s.id===n.id)));
+  const f=$('#found');
+  if(!state.chap){ f.innerHTML='<span class="hint">Choose a chapter to jump to its scene.</span>'; }
+  else {
+    const c=cv(state.chap);
+    const people=SP.filter(x=>x.ch[state.book]&&x.ch[state.book].includes(c));
+    const sc=scs.map(s=>`<button type="button" class="sc-link" data-scene="${s.id}">${s.t}</button>`).join(', ');
+    const dv=DIVES.filter(d=>d.ch[state.book]&&d.ch[state.book].includes(c));
+    f.innerHTML=`<span class="hint">${chLabel(state.book,c)}: ${sc}</span>`+dv.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">Deep dive: ${d.t}</button>`).join('')+people.map(x=>chip(x.id)).join('');
+  }
+  $('#clear').hidden=!state.chap;
+  const key=state.chap?`${state.book}:${state.chap}`:'';
+  document.querySelectorAll('.chs li').forEach(li=>{ const on=li.dataset.ch===key; li.classList.toggle('here',on); if(on) li.closest('details').open=true; });
+}
+function goScene(id,flash){
+  const a=document.getElementById('sc-'+id); if(!a) return;
+  if($('#sheet').classList.contains('open')) close();
+  const y=a.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  if(flash){ a.classList.add('here'); setTimeout(()=>apply(),1600); }
+  const hh=a.querySelector('h4'); if(hh) hh.focus({preventScroll:true});
+}
+
+function goDive(id){
+  const d=document.getElementById('dd-'+id); if(!d) return;
+  if($('#sheet').classList.contains('open')) close();
+  d.open=true;
+  const y=d.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  const t=d.querySelector('summary'); if(t) t.focus({preventScroll:true});
+}
+function xref(s){
+  return s.replace(/\[\[([\w:]+)(?:\|([^\]]+))?\]\]/g,(m,id,label)=>{
+    if(id.startsWith('dd:')){ const dd=DIVES.find(v=>v.id===id.slice(3)); return `<button type="button" class="xref" data-dive="${id.slice(3)}">${label||(dd?dd.t:id)}</button>`; }
+    if(id.startsWith('k:')){ const k=id.slice(2); return `<a class="xref" href="kings.html#${KP.has(k)?'guide-':'k-'}${k}">${label||k}</a>`; }
+    if(id.startsWith('s:')){ const k=id.slice(2); return `<a class="xref" href="samuel.html#dd-${k}">${label||k}</a>`; }
+    if(id.startsWith('m:')){ const k=id.slice(2); return `<a class="xref" href="maccabees.html#dd-${k}">${label||k}</a>`; }
+    if(id.startsWith('eg:')){ const k=id.slice(3); return `<a class="xref" href="exile.html#guide-${k}">${label||k}</a>`; }
+    if(id.startsWith('e:')){ const k=id.slice(2); return `<a class="xref" href="exile.html#dd-${k}">${label||k}</a>`; }
+    const x=byId[id]; if(!x) return label||id;
+    const lab=label||x.short||x.name;
+    return GUIDE[id]?`<button type="button" class="xref" data-guide="${id}">${lab}</button>`:`<button type="button" class="xref" data-go="${id}">${lab}</button>`;
+  });
+}
+function clashHTML(id){
+  const gs=CLASH.filter(g=>g.ids.includes(id));
+  if(!gs.length) return '';
+  return `<div class="clash"><h3>Watch the name</h3>${gs.map(g=>`<p><strong>${g.t}.</strong> ${xref(g.d)}</p>`).join('')}</div>`;
+}
+function personSheet(x){
+  let h=`<h2 id="sh-title" tabindex="-1">${x.name}</h2><p class="sh-sub">${x.role}${dates(x)?'; '+dates(x):''}</p>`;
+  let a=''; if(x.aka) a+=`Also called ${x.aka}. `; if(x.nn) a+=`${x.nn}. `; if(x.dy) a+=`<span>Douay-Rheims: ${x.dy}.</span>`;
+  if(a) h+=`<p class="sh-aka">${a}</p>`;
+  h+=`<p class="sum" style="margin-top:12px">${xref(x.sum)}</p>`;
+  if(famIds.has(x.id)) h+=`<button type="button" class="guide-link" data-fam="${x.id}">Find in the family lists</button>`;
+  if(GUIDE[x.id]) h+=`<button type="button" class="guide-link" data-guide="${x.id}">Open the reading guide</button>`;
+  const pts=DIVES.filter(d=>d.p===x.id);
+  if(pts.length) h+=`<h3>${pts.length>1?'Portraits':'Portrait'}</h3><p class="sc-chips">${pts.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">${d.t}</button>`).join('')}</p>`;
+  const evs=EVS.filter(e=>e.a===x.id||e.b===x.id||(e.by||[]).includes(x.id)||(e.also||[]).includes(x.id));
+  if(evs.length) h+=`<h3>What they did, and what was done to them</h3><ul class="evs">${evs.map(e=>{
+    const li=evHTML(e,true);
+    return (e.by||[]).includes(x.id)?li.replace('<span class="nt">',`<span class="nt">${x.short||x.name} gave the order. `):li;
+  }).join('')}</ul>`;
+  const dvs=DIVES.filter(d=>d.who.includes(x.id));
+  if(dvs.length) h+=`<h3>Deep dives</h3><p class="sc-chips">${dvs.map(d=>`<button type="button" class="chip c-dive" data-dive="${d.id}">${d.t}</button>`).join('')}</p>`;
+  const scs=SCENES.filter(s=>s.who.includes(x.id));
+  if(scs.length) h+=`<h3>Scenes</h3><p class="sc-chips">${scs.map(s=>`<button type="button" class="chip c-neutral" data-scene="${s.id}">${s.t}</button>`).join('')}</p>`;
+  h+=`<h3>Read</h3><p class="refs">${x.refs}</p>`;
+  return h+clashHTML(x.id);
+}
+function open(id){
+  const x=byId[id]; if(!x) return;
+  if(!$('#sheet').contains(document.activeElement)) lastFocus=document.activeElement;
+  state.sel=id;
+  $('#sheet-body').innerHTML=personSheet(x);
+  const sh=$('#sheet'); sh.inert=false; sh.classList.add('open'); sh.scrollTop=0;
+  requestAnimationFrame(()=>{ const t=$('#sh-title'); if(t) t.focus({preventScroll:true}); });
+}
+function close(){
+  const sh=$('#sheet'); sh.classList.remove('open'); sh.inert=true; state.sel=null;
+  if(lastFocus&&document.contains(lastFocus)) lastFocus.focus({preventScroll:true});
+}
+
+function guideCard(id){
+  const p=byId[id], g=GUIDE[id];
+  return `<article class="g" style="--pc:var(--prophet)" id="guide-${id}"><h4 tabindex="-1">${p.name}</h4><p class="g-meta">${dates(p)}. ${p.role}.</p><p>${p.sum}</p><h5>Confronted</h5><p>${g.c}</p>${DEEP[id]?`<h5>Beneath the surface</h5><div class="g-deep">${DEEP[id].map(d=>`<p><b>${/[.?!]$/.test(d[0])?d[0]:d[0]+'.'}</b> ${xref(d[1])}</p>`).join('')}</div>`:''}<details class="g-mom"><summary>Key moments (${MOM[id].length})</summary><ol class="g-m">${MOM[id].map(m=>`<li><b>${m[0]}</b> <cite>${m[1]}</cite><span class="g-d">${m[2]}</span></li>`).join('')}</ol></details><h5>Reading path</h5><p>${g.r}</p><h5>As you read</h5><p>${g.t}</p><button type="button" class="g-back" data-go="${id}">Details and scenes</button></article>`;
+}
+function goGuide(id){
+  const a=document.getElementById('guide-'+id); if(!a) return;
+  if($('#sheet').classList.contains('open')) close();
+  const y=a.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-12;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  a.classList.add('flash'); setTimeout(()=>a.classList.remove('flash'),1800);
+  const hh=a.querySelector('h4'); if(hh) hh.focus({preventScroll:true});
+}
+
+function famNode(nd){
+  if(nd.m) return `<li class="fm">${nd.m}</li>`;
+  const x=byId[nd.p]; const kids=nd.k&&nd.k.length; const op=!!nd.o; const nm=x.short||x.name;
+  return `<li class="fn${nd.pr?' fpr':''}" data-fn="${nd.p}"><div class="fr">${nd.g?`<span class="fgen">${nd.g}</span>`:''}${kids?`<button type="button" class="ftg" aria-expanded="${op}" aria-label="Show or hide what came of ${nm}">${op?'▾':'▸'}</button>`:'<span class="ftg" aria-hidden="true">·</span>'}<span class="fb">${nd.pr?'<span class="fmark" title="Line of promise">◆</span> ':''}<button type="button" class="pn" data-go="${nd.p}">${nm}</button>${nd.g&&x.dates?` <span class="fage">${x.dates}</span>`:''}<span class="fnote">${xref(nd.n||(x.role+'.'))}</span></span></div>${kids?`<ul class="ft"${op?'':' hidden'}>${nd.k.map(famNode).join('')}</ul>`:''}</li>`;
+}
+function renderFamily(){
+  $('#family-lists').innerHTML=FAM.map(f=>`<section class="fam-list" id="fam-${f.id}"><h3>${f.t}</h3><p class="fam-intro">${f.n}</p><button type="button" class="fam-ctl" data-famall="open" data-list="${f.id}">Open every branch</button><button type="button" class="fam-ctl" data-famall="close" data-list="${f.id}">Close them</button><ul class="ft">${f.tree.map(famNode).join('')}</ul></section>`).join('');
+}
+function setBranch(li,open){
+  const ul=li.querySelector(':scope > ul.ft'); if(!ul) return;
+  ul.hidden=!open;
+  const b=li.querySelector(':scope > .fr > button.ftg'); if(b){ b.setAttribute('aria-expanded',open?'true':'false'); b.textContent=open?'▾':'▸'; }
+}
+function goFam(id){
+  const li=document.querySelector('.fn[data-fn="'+id+'"]'); if(!li) return;
+  if($('#sheet').classList.contains('open')) close();
+  let p=li.parentElement.closest('.fn'); while(p){ setBranch(p,true); p=p.parentElement.closest('.fn'); }
+  const y=li.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-12;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  li.classList.add('flash'); setTimeout(()=>li.classList.remove('flash'),1800);
+  const b=li.querySelector('.pn'); if(b) b.focus({preventScroll:true});
+}
+function renderLower(){
+  $('#threads-list').innerHTML=THREADS.map(t=>`<div class="th"><h3>${t[0]}</h3><p>${xref(t[1])}</p></div>`).join('');
+  $('#clashes').innerHTML=CLASH.map(g=>`<article><h3>${g.t}</h3><p>${xref(g.d)}</p><div>${g.ids.map(chip).join('')}</div></article>`).join('');
+}
+
+function buildChaps(){
+  let h='<option value="">Chapter</option>';
+  CHAPS[state.book].forEach(c=>{ h+=`<option value="${c}">${typeof c==='string'?ADD[c]:c}</option>`; });
+  $('#chap').innerHTML=h; $('#chap').value=state.chap;
+}
+function save(){ try{ localStorage.setItem('gn-reading',JSON.stringify({b:state.book,c:state.chap})); }catch(e){} }
+function load(){
+  try{
+    const v=JSON.parse(localStorage.getItem('gn-reading')||'null');
+    if(v&&BOOKS[v.b]){ state.book=v.b; state.chap=(v.c&&CHAPS[v.b].map(String).includes(String(v.c)))?String(v.c):''; }
+  }catch(e){}
+}
+
+document.addEventListener('click',e=>{
+  const tg=e.target.closest('button.ftg');
+  if(tg){ const li=tg.closest('.fn'); setBranch(li,tg.getAttribute('aria-expanded')!=='true'); return; }
+  const fa=e.target.closest('[data-famall]');
+  if(fa){ const op=fa.dataset.famall==='open'; document.querySelectorAll('#fam-'+fa.dataset.list+' .fn').forEach(li=>setBranch(li,op)); return; }
+  const fm=e.target.closest('[data-fam]');
+  if(fm){ goFam(fm.dataset.fam); return; }
+  const cd=e.target.closest('[data-closedive]');
+  if(cd){ const d=document.getElementById('dd-'+cd.dataset.closedive); if(d){ d.open=false; const y=d.getBoundingClientRect().top+window.scrollY-$('#bar').offsetHeight-10; window.scrollTo({top:y,behavior:'auto'}); } return; }
+  const dvb=e.target.closest('[data-dive]');
+  if(dvb){ goDive(dvb.dataset.dive); return; }
+  const sc=e.target.closest('[data-scene]');
+  if(sc){ goScene(sc.dataset.scene,true); return; }
+  const gd=e.target.closest('[data-guide]');
+  if(gd){ goGuide(gd.dataset.guide); return; }
+  const g=e.target.closest('[data-go]');
+  if(g){ open(g.dataset.go); }
+});
+$('#close').addEventListener('click',close);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('#sheet').classList.contains('open')) close(); });
+$('#chap').addEventListener('change',e=>{ state.chap=e.target.value; save(); apply(); const s=scenesFor(); if(s.length) requestAnimationFrame(()=>goScene(s[0].id,false)); });
+$('#clear').addEventListener('click',()=>{ state.chap=''; $('#chap').value=''; save(); apply(); });
+
+load();
+buildChaps();
+renderStory();
+renderCast();
+renderFamily();
+renderLower();
+apply();
+if(state.chap){ const s=scenesFor(); if(s.length) setTimeout(()=>goScene(s[0].id,false),250); }
+const hm=location.hash.match(/^#p-(\w+)$/);
+if(hm&&byId[hm[1]]) setTimeout(()=>open(hm[1]),300);
+const dm=location.hash.match(/^#dd-(\w+)$/);
+if(dm) setTimeout(()=>goDive(dm[1]),300);
+const fh=location.hash.match(/^#fam-(\w+)$/);
+if(fh&&famIds.has(fh[1])) setTimeout(()=>goFam(fh[1]),300);
+const gm=location.hash.match(/^#guide-(\w+)$/);
+if(gm&&GUIDE[gm[1]]) setTimeout(()=>goGuide(gm[1]),300);
+})();
+</script>
+<script>
+try{ if(/github\.io$/.test(location.hostname)) document.getElementById('home-link').hidden=false; }catch(e){}
+</script>
+</body>
+</html>
